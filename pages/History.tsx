@@ -10,12 +10,12 @@ export default function History() {
 
         <div className="relative border-l-2 border-brandCyan/30 ml-4 md:ml-0 md:left-1/2">
           {HISTORY.map((item, index) => (
-            <div key={index} className={`relative mb-8 md:w-1/2 ${index % 2 === 0 ? 'md:left-[-50%] md:pr-6 md:text-right' : 'md:left-[50%] md:pl-6'}`}>
+            <div key={index} className={`relative mb-8 md:w-1/2 ${index % 2 === 0 ? 'md:left-[-50%] md:pr-6 md:text-right' : 'md:left-0 md:pl-6'}`}>
               <div className={`absolute top-0 w-4 h-4 brand-bg rounded-full border-2 border-brandBlack shadow-[0_0_15px_rgba(0,210,255,0.6)] ${index % 2 === 0 ? '-left-[9px] md:left-auto md:-right-[9px]' : '-left-[9px]'}`}></div>
               <div className="group">
-                {/* Image Component - Smaller */}
+                {/* Image Component - Smaller (md:w-[50%]) */}
                 {item.imageUrl && (
-                   <div className={`w-3/4 md:w-[60%] aspect-video rounded-xl overflow-hidden border border-white/10 mb-3 relative shadow-lg ${index % 2 === 0 ? 'ml-auto' : 'mr-auto'}`}>
+                   <div className={`w-3/4 md:w-[50%] aspect-video rounded-xl overflow-hidden border border-white/10 mb-3 relative shadow-lg ${index % 2 === 0 ? 'ml-auto' : 'mr-auto'}`}>
                       <img 
                         src={item.imageUrl} 
                         alt={item.title} 
