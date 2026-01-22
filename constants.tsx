@@ -157,8 +157,46 @@ export const OPPORTUNITIES: Opportunity[] = Array.from({ length: 30 }).map((_, i
 }));
 
 export const HISTORY: HistoryEvent[] = [
-  { year: "Year 1", title: "Establishment", description: "Founded in Los Angeles with initial agency partnerships." },
-  { year: "Year 2", title: "Production Launch", description: "First short film productions and festival entries." },
-  { year: "Year 3", title: "Expansion", description: "Signed 30+ young talents and expanded casting network." },
-  { year: "Present", title: "Hollywood Standard", description: "Ongoing quarterly productions and global talent search." },
+  { 
+    year: "Year 1", 
+    title: "The Foundation", 
+    description: "Founded in Los Angeles with initial agency partnerships, establishing the core curriculum and industry connections.",
+    imageUrl: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=600"
+  },
+  { 
+    year: "Year 2", 
+    title: "Production Launch", 
+    description: "First slate of short film productions and festival entries, marking the transition from classroom theory to camera reality.",
+    imageUrl: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=600"
+  },
+  { 
+    year: "Year 3", 
+    title: "Talent Expansion", 
+    description: "Signed 30+ young talents and expanded our casting network to include major streaming platforms and TV networks.",
+    imageUrl: "https://images.unsplash.com/photo-1515634928627-2a4e0dae3ddf?auto=format&fit=crop&q=80&w=600"
+  },
+  { 
+    year: "Year 4", 
+    title: "Digital Evolution", 
+    description: "Launched our dedicated post-production facility, enabling higher quality outputs and faster distribution to digital markets.",
+    imageUrl: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=600"
+  },
+  { 
+    year: "Year 5", 
+    title: "International Circuit", 
+    description: "Our student films began accepting awards at international youth film festivals, putting ALT actors on the global map.",
+    imageUrl: "https://images.unsplash.com/photo-1478720568477-152d9b164e63?auto=format&fit=crop&q=80&w=600"
+  },
+  { 
+    year: "Year 6", 
+    title: "Studio Infrastructure", 
+    description: "Acquired new dedicated soundstages in LA, allowing for multi-cam sitcom setups and green screen VFX productions.",
+    imageUrl: "https://images.unsplash.com/photo-1585644198527-36ef83f800c7?auto=format&fit=crop&q=80&w=600"
+  },
+  { 
+    year: "Year 7", 
+    title: "Hollywood Standard", 
+    description: "Today, we operate as a fully integrated production house with 100% student placement in professional projects.",
+    imageUrl: "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?auto=format&fit=crop&q=80&w=600"
+  },
 ];
