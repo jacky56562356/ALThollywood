@@ -162,6 +162,30 @@ export const ACTORS: Actor[] = [
     credits: ['Hollywood Movie Filmed', 'Fashion Print'],
     imageUrl: 'https://i.ibb.co/3m7NqcW0/20260122132047-1628-151.jpg',
   },
+  {
+    id: 'mason-chen',
+    name: 'Mason Chen',
+    ageRange: '6-10',
+    skills: ['Acting', 'Modeling', 'Performing Arts'],
+    credits: ['Hollywood Movie Filmed', 'Commercial Project'],
+    imageUrl: 'https://i.ibb.co/GfGWD3mn/20260122132516-1633-151.jpg',
+  },
+  {
+    id: 'jasmine-zhang',
+    name: 'Jasmine Zhang',
+    ageRange: '6-10',
+    skills: ['Acting', 'Modeling', 'Performing Arts'],
+    credits: ['Hollywood Movie Filmed', 'Commercial Project'],
+    imageUrl: 'https://i.ibb.co/yTbPZXb/Wechat-IMG18.jpg',
+  },
+  {
+    id: 'caleb-lin',
+    name: 'Caleb Lin',
+    ageRange: '8-12',
+    skills: ['Acting', 'Modeling', 'Performing Arts'],
+    credits: ['Hollywood Movie Filmed', 'Commercial Project'],
+    imageUrl: 'https://i.ibb.co/RpLLMkCc/20260122134407-1644-151.jpg',
+  },
 ];
 
 export const FILMS: FilmProject[] = Array.from({ length: 12 }).map((_, i) => ({
