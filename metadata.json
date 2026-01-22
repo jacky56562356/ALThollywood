@@ -1,0 +1,8 @@
+{
+  "name": "ALT HOLLYWOOD DREAM STAR",
+  "description": "A Los Angeles–based professional youth film institution providing young talents with hands-on experience in real film production.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

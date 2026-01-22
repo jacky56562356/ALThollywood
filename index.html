@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ALT HOLLYWOOD DREAM STAR - Where Training Meets Real Film Production</title>
+    <meta name="description" content="A Los Angeles–based professional youth film institution providing young talents with hands-on experience in real film production." />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <style>
+      /* Global Reset & Base */
+      body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: #05070A; /* Deep Brand Black */
+        color: #FFFFFF;
+        margin: 0;
+        overflow-x: hidden;
+      }
+      
+      h1, h2, h3, .font-cinematic {
+        font-family: 'Playfair Display', serif;
+      }
+
+      /* Global Heading Gradients (Vertical: Cyan -> Purple) */
+      h1, h2, h3 {
+        background: linear-gradient(to bottom, #00E5FF 0%, #7000FF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+        /* Ensure specific overrides don't break the gradient visibility */
+        background-attachment: scroll; 
+      }
+      
+      /* BRAND COLOR UTILITIES */
+      
+      /* Text Gradient: Vertical (Cyan -> Purple) to match Headings */
+      .brand-gradient-text {
+        background: linear-gradient(to bottom, #00E5FF 0%, #7000FF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        display: inline-block;
+      }
+
+      /* Background Gradient: Diagonal 135deg (Cyan -> Purple) */
+      .brand-bg {
+        background: linear-gradient(135deg, #00E5FF 0%, #7000FF 100%);
+      }
+
+      /* Borders */
+      .brand-border {
+        border-color: #00E5FF;
+      }
+
+      /* Glassmorphism Effect */
+      .brand-glass {
+        background: rgba(0, 229, 255, 0.03);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 229, 255, 0.15);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .brand-glass:hover {
+        background: rgba(0, 229, 255, 0.05);
+        border-color: rgba(112, 0, 255, 0.5);
+        box-shadow: 0 0 30px rgba(0, 229, 255, 0.1);
+      }
+
+      /* Gradient Border Wrapper */
+      .brand-gradient-border {
+        position: relative;
+        background: #05070A;
+        background-clip: padding-box;
+        border: 2px solid transparent;
+        border-radius: inherit;
+      }
+      .brand-gradient-border::before {
+        content: '';
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        z-index: -1;
+        margin: -2px;
+        border-radius: inherit;
+        background: linear-gradient(135deg, #00E5FF 0%, #7000FF 100%);
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #05070A;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(to bottom, #00E5FF, #7000FF);
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(to bottom, #00E5FF, #9D4EDD);
+      }
+
+      /* Animations */
+      @keyframes neonPulse {
+        0%, 100% { opacity: 0.8; filter: drop-shadow(0 0 2px rgba(0, 229, 255, 0.5)); }
+        50% { opacity: 1; filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.8)); }
+      }
+      .neon-pulse {
+        animation: neonPulse 3s infinite ease-in-out;
+      }
+      
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-up {
+        animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+    </style>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brandBlack: '#05070A', // Updated Deep Black
+              brandCyan: '#00E5FF',  // Updated Neon Cyan
+              brandPurple: '#7000FF', // Updated Deep Purple
+              brandGray: '#8E9AAF',  // Cool Metallic Gray
+            },
+            fontFamily: {
+              sans: ['Montserrat', 'sans-serif'],
+              cinematic: ['Playfair Display', 'serif'],
+            },
+            backgroundImage: {
+              'brand-gradient': 'linear-gradient(to bottom, #00E5FF 0%, #7000FF 100%)', // Updated to Vertical
+            }
+          }
+        }
+      }
+    </script>
+    
+    <!-- Import Map -->
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+        "@google/genai": "https://esm.sh/@google/genai@^1.38.0"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="index.tsx"></script>
+  </body>
+</html>
