@@ -28,6 +28,7 @@ export default function Home() {
       {/* Hero Section - Clean Spacing */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
+          {/* 👇👇👇 【主页大背景图】修改下面的 src 链接 👇👇👇 */}
           <img 
             src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=1920" 
             className="w-full h-full object-cover opacity-20 grayscale"

@@ -1,24 +1,25 @@
-
 import { Actor, FilmProject, Opportunity, HistoryEvent } from './types';
 
 // ==================================================================================
-// 【小白修改指南】如何换成你自己的图片？
-// 1. 去 https://imgbb.com/ 上传你的照片。
-// 2. 复制上传后的“直接链接” (Direct Link)。
-// 3. 在下面找到 imageUrl: '...', 把引号里的内容换成你的链接。
+// 【小白修改图片指南】
+// 1. 准备你的照片。
+// 2. 打开免费图片上传网站: https://imgbb.com/ (不用注册也能用)
+// 3. 点击“开始上传”，选好图后，上传。
+// 4. 上传成功后，将“嵌入代码”改为 “HTML 全图链接” 或者直接找 “直接链接”。
+// 5. 复制那个以 http 开头，以 .jpg 或 .png 结尾的链接。
+// 6. 在下面代码中，找到 'imageUrl' 或 'posterUrl'，把冒号后面的引号里的内容换掉。
 // ==================================================================================
 
 export const ACTORS: Actor[] = [
   {
     id: 'parker-davies',
-    name: 'Parker Davies', // 这里可以改名字，比如改成 "Zhang San"
+    name: 'Parker Davies', 
     ageRange: '8-12',
     skills: ['Professional Acting', 'Runway Modeling', 'Public Speaking'],
     credits: ['4 Hollywood Films', 'National Commercials'],
-    
-    // 👇👇👇 【重点】修改下面这行引号里的链接 👇👇👇
-    imageUrl: 'https://picsum.photos/seed/parker-davies/600/800', 
-    // 例如改成: imageUrl: 'https://i.ibb.co/your-photo.jpg',
+    // 👇👇👇 【在这里换图片】 👇👇👇
+    // 把下面引号里的 https://... 换成你自己图片的链接
+    imageUrl: 'https://picsum.photos/seed/parker-davies/600/800',
   },
   {
     id: 'veronica-chen',
@@ -26,8 +27,7 @@ export const ACTORS: Actor[] = [
     ageRange: '6-10',
     skills: ['Acting', 'Classical Dance', 'Modeling'],
     credits: ['4 Hollywood Movies Filmed', 'Global Brand Commercials'],
-    
-    // 👇👇👇 修改第二张图片 👇👇👇
+    // 👇👇👇 换第二张图片 👇👇👇
     imageUrl: 'https://picsum.photos/seed/veronica-chen/600/800',
   },
   {
@@ -135,7 +135,7 @@ export const FILMS: FilmProject[] = Array.from({ length: 12 }).map((_, i) => ({
   description: "A professional youth production highlighting talent and modern storytelling. This project involved over 50 youth actors and a full professional crew, shot on location in Los Angeles studios.",
   platform: "Amazon Prime / Festival Circuit",
   
-  // 👇👇👇 电影海报图片链接改这里 👇👇👇
+  // 👇👇👇 【在这里换电影海报】 👇👇👇
   posterUrl: `https://picsum.photos/seed/film${i}/600/900`,
   
   stills: [
