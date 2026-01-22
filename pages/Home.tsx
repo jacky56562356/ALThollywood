@@ -3,60 +3,80 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Play, Film, Star, TrendingUp, Users, Clapperboard, Monitor, Send, Search, Award, ShieldCheck, Globe, Camera, Zap, CheckCircle } from 'lucide-react';
 
-const StatCard = ({ label, value }: { label: string, value: string }) => (
-  <div className="text-center p-6 border border-white/5 bg-white/5 rounded-xl hover:border-brandCyan/30 transition-all group">
-    <div className="text-3xl md:text-4xl font-cinematic font-black brand-gradient-text mb-2 group-hover:scale-110 transition-transform">
-      {value}
-    </div>
-    <div className="text-[10px] uppercase tracking-[0.2em] text-brandGray font-bold">{label}</div>
-  </div>
-);
-
-const FeatureBox = ({ title, desc, icon: Icon }: { title: string, desc: string, icon: any }) => (
-  <div className="p-8 border-l border-brandCyan/20 hover:border-brandCyan bg-white/5 transition-all group">
-    <div className="text-brandCyan mb-6 group-hover:brand-gradient-text transition-all">
-      <Icon size={32} />
-    </div>
-    <h3 className="text-xl font-cinematic font-bold mb-4 tracking-wide group-hover:brand-gradient-text">{title}</h3>
-    <p className="text-brandGray text-sm leading-relaxed">{desc}</p>
-  </div>
-);
+const ECOSYSTEM_ITEMS = [
+  {
+    title: "Hands-on Sets",
+    desc: "Experience real filming schedules, professional cues, and set etiquette.",
+    icon: Camera,
+    // Professional Film Set / Camera Crew
+    image: "https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    title: "Elite Training",
+    desc: "Advanced curriculum from emotional range to camera technicals.",
+    icon: Zap,
+    // Acting Class / Spotlight / Performance
+    image: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    title: "Global Network",
+    desc: "Partnerships spanning LA to international creative capitals.",
+    icon: Globe,
+    // Global Connections / Abstract Map
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    title: "Career Credits",
+    desc: "Building professional credibility through tangible film outcomes.",
+    icon: Award,
+    // Red Carpet / Awards / Success
+    image: "https://images.unsplash.com/photo-1616091216791-a5360b5fc78a?auto=format&fit=crop&q=80&w=800"
+  }
+];
 
 export default function Home() {
   return (
     <div>
-      {/* Hero Section - Clean Spacing */}
+      {/* Hero Section - Video Background */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          {/* 👇👇👇 【主页大背景图】修改下面的 src 链接 👇👇👇 */}
-          <img 
-            src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=1920" 
-            className="w-full h-full object-cover opacity-20 grayscale"
-            alt="Film production set"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-brandBlack via-brandBlack/60 to-transparent"></div>
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            className="w-full h-full object-cover opacity-60"
+            poster="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=1920"
+          >
+            {/* Cinematic Studio Lights / Set Video */}
+            <source src="https://videos.pexels.com/video-files/3196059/3196059-uhd_2560_1440_25fps.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-t from-brandBlack via-brandBlack/50 to-brandBlack/30"></div>
+          {/* Grid Overlay for texture */}
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
         </div>
         
-        <div className="relative z-10 max-w-7xl mx-auto text-center px-4">
-          <h2 className="brand-gradient-text text-xs md:text-sm font-black tracking-[0.5em] mb-10 uppercase">
+        <div className="relative z-10 max-w-7xl mx-auto text-center px-4 animate-fade-up">
+          <h2 className="brand-gradient-text text-xs md:text-sm font-black tracking-[0.5em] mb-10 uppercase drop-shadow-lg">
             Training · Film Production · Global Casting
           </h2>
           <div className="flex flex-col items-center justify-center mb-16">
-            <h1 className="text-7xl md:text-[11rem] font-cinematic font-black brand-gradient-text leading-tight md:leading-[0.9] tracking-tighter mb-4">
+            <h1 className="text-7xl md:text-[11rem] font-cinematic font-black brand-gradient-text leading-tight md:leading-[0.9] tracking-tighter mb-4 drop-shadow-2xl">
               ALT
             </h1>
-            <h2 className="text-2xl md:text-5xl font-cinematic font-bold tracking-[0.3em] uppercase text-white/95">
+            <h2 className="text-2xl md:text-5xl font-cinematic font-bold tracking-[0.3em] uppercase text-white/95 drop-shadow-xl">
               Hollywood Dream Star
             </h2>
           </div>
-          <p className="text-lg md:text-2xl text-white/60 font-medium mb-12 max-w-3xl mx-auto italic tracking-wide leading-relaxed">
+          <p className="text-lg md:text-2xl text-white/80 font-medium mb-12 max-w-3xl mx-auto italic tracking-wide leading-relaxed drop-shadow-md">
             "The premier bridge between world-class training and real Hollywood film production for the next generation of stars."
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Link to="/programs" className="w-full sm:w-auto px-10 py-5 brand-bg text-white font-black rounded-sm uppercase tracking-[0.2em] hover:scale-105 transition-all flex items-center justify-center gap-3 shadow-2xl shadow-brandCyan/20">
+            <Link to="/programs" className="w-full sm:w-auto px-10 py-5 brand-bg text-white font-black rounded-sm uppercase tracking-[0.2em] hover:scale-105 transition-all flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(0,229,255,0.4)]">
               <Play size={18} fill="currentColor" /> View Programs
             </Link>
-            <Link to="/films" className="w-full sm:w-auto px-10 py-5 border-2 border-white/20 hover:border-brandCyan hover:text-brandCyan text-white font-black rounded-sm uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-3">
+            <Link to="/films" className="w-full sm:w-auto px-10 py-5 border-2 border-white/20 hover:border-brandCyan hover:text-brandCyan text-white font-black rounded-sm uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-3 backdrop-blur-sm">
               <Film size={18} /> Explore Films
             </Link>
           </div>
@@ -119,7 +139,7 @@ export default function Home() {
               <div className="relative rounded-3xl overflow-hidden border border-white/10 aspect-video lg:aspect-square group">
                 <img 
                   src="https://images.unsplash.com/photo-1533488765986-dfa2a9939acd?auto=format&fit=crop&q=80&w=1000" 
-                  className="w-full h-full object-cover grayscale opacity-50 group-hover:scale-105 transition-transform duration-1000"
+                  className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-1000"
                   alt="Professional film equipment"
                 />
                 <div className="absolute inset-0 brand-bg opacity-[0.05]"></div>
@@ -154,8 +174,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pillars Section */}
-      <section className="py-32 bg-brandBlack/30 relative">
+      {/* Pillars Section with Images & Animation */}
+      <section className="py-32 bg-brandBlack relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-24">
             <h2 className="text-4xl md:text-5xl font-cinematic font-black mb-6 tracking-tight">Our Core Ecosystem</h2>
@@ -163,34 +183,44 @@ export default function Home() {
             <p className="text-brandGray max-w-2xl mx-auto text-lg">From initial discovery to international distribution, our system is designed for professional results.</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="p-10 bg-white/5 border border-white/5 rounded-2xl">
-              <Camera className="text-brandCyan mb-6" size={32} />
-              <h4 className="text-xl font-bold mb-4">Hands-on Sets</h4>
-              <p className="text-brandGray text-sm">Experience real filming schedules, professional cues, and set etiquette.</p>
-            </div>
-            <div className="p-10 bg-white/5 border border-white/5 rounded-2xl">
-              <Zap className="text-brandPurple mb-6" size={32} />
-              <h4 className="text-xl font-bold mb-4">Elite Training</h4>
-              <p className="text-brandGray text-sm">Advanced curriculum from emotional range to camera technicals.</p>
-            </div>
-            <div className="p-10 bg-white/5 border border-white/5 rounded-2xl">
-              <Globe className="text-brandCyan mb-6" size={32} />
-              <h4 className="text-xl font-bold mb-4">Global Network</h4>
-              <p className="text-brandGray text-sm">Partnerships spanning LA to international creative capitals.</p>
-            </div>
-            <div className="p-10 bg-white/5 border border-white/5 rounded-2xl">
-              <Award className="text-brandPurple mb-6" size={32} />
-              <h4 className="text-xl font-bold mb-4">Career Credits</h4>
-              <p className="text-brandGray text-sm">Building professional credibility through tangible film outcomes.</p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {ECOSYSTEM_ITEMS.map((item, index) => (
+              <div key={index} className="group relative h-96 rounded-2xl overflow-hidden border border-white/10 hover:border-brandCyan/50 transition-all duration-500">
+                {/* Background Image */}
+                <div className="absolute inset-0">
+                  <img 
+                    src={item.image} 
+                    alt={item.title} 
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-60 group-hover:opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brandBlack via-brandBlack/80 to-transparent"></div>
+                </div>
+                
+                {/* Content */}
+                <div className="absolute inset-0 flex flex-col justify-end p-8 transform transition-transform duration-500 group-hover:-translate-y-2">
+                  <div className="w-12 h-12 brand-bg rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-brandCyan/20 transform group-hover:scale-110 transition-transform duration-300">
+                    <item.icon size={24} />
+                  </div>
+                  <h4 className="text-2xl font-cinematic font-bold mb-3 text-white group-hover:brand-gradient-text transition-all">{item.title}</h4>
+                  <p className="text-brandGray text-sm leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
+                    {item.desc}
+                  </p>
+                  
+                  {/* Decorative Line */}
+                  <div className="w-0 h-0.5 brand-bg mt-6 transition-all duration-500 group-hover:w-full"></div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Call to Action */}
       <section className="py-40 relative overflow-hidden text-center">
-        <div className="absolute inset-0 brand-bg opacity-10 blur-3xl scale-150"></div>
+        <div className="absolute inset-0 z-0">
+             <img src="https://images.unsplash.com/photo-1595769816263-9b910be24d5f?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover opacity-10" alt="Stage lights" />
+             <div className="absolute inset-0 bg-gradient-to-r from-brandBlack via-transparent to-brandBlack"></div>
+        </div>
         <div className="max-w-4xl mx-auto px-4 relative z-10">
           <h2 className="text-5xl md:text-7xl font-cinematic font-black mb-10 tracking-tighter">Your Hollywood Debut Awaits</h2>
           <p className="text-brandGray text-xl mb-16 font-medium tracking-wide">Take the first step toward becoming a professional signed actor.</p>

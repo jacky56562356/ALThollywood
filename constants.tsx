@@ -185,13 +185,13 @@ export const HISTORY: HistoryEvent[] = [
     year: "Year 5", 
     title: "International Circuit", 
     description: "Our student films began accepting awards at international youth film festivals, putting ALT actors on the global map.",
-    imageUrl: "https://images.unsplash.com/photo-1478720568477-152d9b164e63?auto=format&fit=crop&q=80&w=600"
+    imageUrl: "https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?auto=format&fit=crop&q=80&w=600"
   },
   { 
     year: "Year 6", 
     title: "Studio Infrastructure", 
     description: "Acquired new dedicated soundstages in LA, allowing for multi-cam sitcom setups and green screen VFX productions.",
-    imageUrl: "https://images.unsplash.com/photo-1585644198527-36ef83f800c7?auto=format&fit=crop&q=80&w=600"
+    imageUrl: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&q=80&w=600"
   },
   { 
     year: "Year 7", 

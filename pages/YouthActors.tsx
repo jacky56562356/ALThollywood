@@ -21,7 +21,7 @@ export default function YouthActors() {
                 <img 
                   src={actor.imageUrl} 
                   alt={actor.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brandPurple/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
                   <p className="text-[10px] text-brandCyan uppercase font-black tracking-[0.2em] mb-2">Capabilities</p>

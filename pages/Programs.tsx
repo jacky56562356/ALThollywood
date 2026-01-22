@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Layout, Video, Share2, Clock, Award, Star, History as HistoryIcon } from 'lucide-react';
 import { HISTORY } from '../constants';
@@ -73,7 +74,7 @@ export default function Programs() {
                         <img 
                           src={item.imageUrl} 
                           alt={item.title} 
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:grayscale-0 grayscale-[0.3]"
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />
                       )}
                       <div className="absolute inset-0 bg-gradient-to-t from-brandBlack/80 via-transparent to-transparent"></div>

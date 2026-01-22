@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { FILMS } from '../constants';
 import { ChevronRight, X, ChevronLeft, Play, ArrowRight } from 'lucide-react';
@@ -35,7 +36,7 @@ export default function Films() {
               <div className="relative aspect-[16/9] mb-8 overflow-hidden border border-white/10 rounded-xl group-hover:border-brandCyan/40 transition-all cursor-pointer" onClick={() => setSelectedFilm(film)}>
                 <img 
                   src={film.stills[0]} 
-                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0 grayscale-[0.5]"
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                   alt={film.title}
                 />
                 <div className="absolute top-4 left-4">

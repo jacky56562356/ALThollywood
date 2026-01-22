@@ -1,3 +1,4 @@
+
 import React from 'react';
 // Added CheckCircle to imports
 import { Target, Users2, Rocket, Building2, Award, Clapperboard, Star, CheckCircle } from 'lucide-react';
@@ -45,7 +46,7 @@ export default function About() {
             <div className="h-64 overflow-hidden relative">
                 <img 
                   src="https://i.ibb.co/gZhJvX2t/blog-1.jpg" 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   alt="Professional Excellence"
                 />
                 <div className="absolute inset-0 bg-brandBlack/40 group-hover:bg-transparent transition-all"></div>
@@ -64,7 +65,7 @@ export default function About() {
             <div className="h-64 overflow-hidden relative">
                 <img 
                   src="https://i.ibb.co/yFJcxk8j/blog-4.jpg" 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   alt="Production Hub"
                 />
                 <div className="absolute inset-0 bg-brandBlack/40 group-hover:bg-transparent transition-all"></div>
@@ -83,7 +84,7 @@ export default function About() {
             <div className="h-64 overflow-hidden relative">
                 <img 
                   src="https://i.ibb.co/8DDg94mN/professional-camera-man-at-work-2022-02-09-18-59-44-utc.jpg" 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   alt="Talent Development"
                 />
                 <div className="absolute inset-0 bg-brandBlack/40 group-hover:bg-transparent transition-all"></div>
