@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Routes, Route, Link, useLocation, Navigate } from 'react-router-dom';
 import { Menu, X, Instagram, Facebook, Youtube, ChevronRight, FileDown, Mail, MapPin, Phone, Lock, User } from 'lucide-react';
@@ -112,6 +113,44 @@ const Header = () => {
   );
 };
 
+const Partners = () => {
+  const PARTNER_LOGOS = [
+    "https://i.ibb.co/VchGJNF0/20251229153109-206-10.png",
+    "https://i.ibb.co/mrMqxmgs/1.png",
+    "https://i.ibb.co/pvjT9QV9/1346.png",
+    "https://i.ibb.co/zV023dCb/20250905152435-265-151.jpg",
+    "https://i.ibb.co/4RNsSNYg/AI-8707697f3ab3980df8ccc03824c49fc3-3804x2800.png",
+    "https://i.ibb.co/Ldwg7vRN/4a2ec28a2689027a04641d8a150fda3f.png",
+    "https://i.ibb.co/cSVbb7ZM/list-2.png",
+    "https://i.ibb.co/RGZvtdWN/Alvantor-new-logo-2020-1.png"
+  ];
+
+  return (
+    <div className="bg-brandBlack border-t border-white/10 py-16 overflow-hidden relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
+        <h3 className="brand-gradient-text text-sm font-black tracking-[0.4em] uppercase">Our Partners</h3>
+      </div>
+      
+      {/* Gradient Masks for fade effect */}
+      <div className="absolute top-0 left-0 w-12 md:w-32 h-full bg-gradient-to-r from-brandBlack to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-12 md:w-32 h-full bg-gradient-to-l from-brandBlack to-transparent z-10 pointer-events-none"></div>
+
+      <div className="flex w-max animate-scroll">
+        {/* Tripled list for seamless loop */}
+        {[...PARTNER_LOGOS, ...PARTNER_LOGOS, ...PARTNER_LOGOS].map((logo, index) => (
+          <div key={index} className="mx-4 md:mx-8 w-32 md:w-48 h-20 md:h-28 flex items-center justify-center bg-white rounded-xl p-4 border border-white/10 hover:border-brandCyan/50 transition-all duration-300 shadow-lg">
+            <img 
+              src={logo} 
+              alt={`Partner ${index}`} 
+              className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const Footer = () => (
   <footer className="bg-brandBlack border-t border-white/10 pt-16 pb-8">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -205,6 +244,7 @@ export default function App() {
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
           </Routes>
         </main>
+        <Partners />
         <Footer />
         <ChatBot />
       </div>

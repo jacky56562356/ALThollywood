@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -124,6 +125,17 @@
       }
       .animate-fade-up {
         animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+
+      @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .animate-scroll {
+        animation: scroll 40s linear infinite;
+      }
+      .animate-scroll:hover {
+        animation-play-state: paused;
       }
     </style>
     

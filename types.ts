@@ -21,9 +21,14 @@ export interface FilmProject {
 export interface Opportunity {
   id: string;
   projectName: string;
+  company: string;
   roleType: string;
+  gender: 'Male' | 'Female' | 'Any';
+  genre: string;
   ageRange: string;
   location: string;
+  shootDates: string;
+  requirements: string;
   status: 'Open' | 'Closed' | 'In Progress';
 }
 

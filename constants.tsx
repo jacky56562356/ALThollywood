@@ -188,30 +188,171 @@ export const ACTORS: Actor[] = [
   },
 ];
 
-export const FILMS: FilmProject[] = Array.from({ length: 12 }).map((_, i) => ({
-  id: `film-${i + 1}`,
-  title: `Project Hollywood ${i + 1}`,
-  genre: i % 3 === 0 ? "Drama" : i % 3 === 1 ? "Sci-Fi" : "Comedy",
-  description: "A professional youth production highlighting talent and modern storytelling. This project involved over 50 youth actors and a full professional crew, shot on location in Los Angeles studios.",
-  platform: "Amazon Prime / Festival Circuit",
-  posterUrl: `https://picsum.photos/seed/film${i}/600/900`,
-  stills: [
-    `https://picsum.photos/seed/still${i}a/800/450`,
-    `https://picsum.photos/seed/still${i}b/800/450`,
-    `https://picsum.photos/seed/still${i}c/800/450`,
-    `https://picsum.photos/seed/still${i}d/800/450`,
-    `https://picsum.photos/seed/still${i}e/800/450`,
-  ],
-}));
+export const FILMS: FilmProject[] = [
+  {
+    id: 'film-poster-new-1',
+    title: 'Year End Grand Ceremony',
+    genre: "Event",
+    description: "The grand celebration of our year-end achievements featuring all our stars. A night of glamour, awards, and cinematic excellence.",
+    platform: "Live / Streaming",
+    posterUrl: "https://i.ibb.co/Lz53W353/YEAR-END-GRAND-CEREMONY.png",
+    stills: [
+      "https://i.ibb.co/Lz53W353/YEAR-END-GRAND-CEREMONY.png",
+      "https://picsum.photos/seed/still0a/800/450",
+      "https://picsum.photos/seed/still0b/800/450"
+    ]
+  },
+  {
+    id: 'film-poster-new-2',
+    title: 'ALT Dream Star New Film',
+    genre: "Premiere",
+    description: "Our latest feature film production showcasing the new wave of talent. Shot in professional studios in Los Angeles.",
+    platform: "Theatrical",
+    posterUrl: "https://i.ibb.co/C5ym3kR9/ALT-DREAM-STAR-NEW-FILM.png",
+    stills: [
+      "https://i.ibb.co/C5ym3kR9/ALT-DREAM-STAR-NEW-FILM.png",
+      "https://picsum.photos/seed/still1a/800/450",
+      "https://picsum.photos/seed/still1b/800/450"
+    ]
+  },
+  {
+    id: 'film-poster-1',
+    title: 'ALT Hollywood Dream Star: Official Selection',
+    genre: "Drama",
+    description: "The official showcase of ALT Hollywood Dream Star productions, featuring our top young talents in a professional cinematic environment.",
+    platform: "Amazon Prime / Festival Circuit",
+    posterUrl: "https://i.ibb.co/5XkvwS0b/image.png",
+    stills: [
+      "https://i.ibb.co/5XkvwS0b/image.png",
+      "https://picsum.photos/seed/still1a/800/450",
+      "https://picsum.photos/seed/still1b/800/450",
+      "https://picsum.photos/seed/still1c/800/450",
+      "https://picsum.photos/seed/still1d/800/450",
+    ]
+  },
+  ...Array.from({ length: 9 }).map((_, i) => ({
+    id: `film-${i + 1}`,
+    title: `Project Hollywood ${i + 1}`,
+    genre: i % 3 === 0 ? "Drama" : i % 3 === 1 ? "Sci-Fi" : "Comedy",
+    description: "A professional youth production highlighting talent and modern storytelling. This project involved over 50 youth actors and a full professional crew, shot on location in Los Angeles studios.",
+    platform: "Amazon Prime / Festival Circuit",
+    posterUrl: `https://picsum.photos/seed/film${i}/600/900`,
+    stills: [
+      `https://picsum.photos/seed/still${i}a/800/450`,
+      `https://picsum.photos/seed/still${i}b/800/450`,
+      `https://picsum.photos/seed/still${i}c/800/450`,
+      `https://picsum.photos/seed/still${i}d/800/450`,
+      `https://picsum.photos/seed/still${i}e/800/450`,
+    ],
+  }))
+];
 
-export const OPPORTUNITIES: Opportunity[] = Array.from({ length: 30 }).map((_, i) => ({
-  id: `job-${i + 1}`,
-  projectName: `Upcoming Feature ${i + 1}`,
-  roleType: i % 4 === 0 ? "Lead" : i % 4 === 1 ? "Supporting" : "Ensemble",
-  ageRange: "8-15",
-  location: "Los Angeles, CA",
-  status: i % 10 === 0 ? "Closed" : "Open",
-}));
+export const OPPORTUNITIES: Opportunity[] = [
+  {
+    id: 'cast-2025-001',
+    projectName: 'Chronicles of the Star Walker',
+    company: 'Nebula Core Pictures',
+    roleType: 'Lead (Hero)',
+    gender: 'Any',
+    genre: 'Sci-Fi Adventure',
+    ageRange: '11-15',
+    location: 'Los Angeles, CA',
+    shootDates: 'June 15 - July 30, 2025',
+    requirements: 'Must have high emotional range and ability to handle complex dialogue. Wire-work stunts capability is a plus.',
+    status: 'Open'
+  },
+  {
+    id: 'cast-2025-002',
+    projectName: 'The Secret of Maplewood Manor',
+    company: 'Silver Bourne Productions',
+    roleType: 'Supporting (Sibling)',
+    gender: 'Male',
+    genre: 'Mystery / Drama',
+    ageRange: '8-12',
+    location: 'Pasadena, CA',
+    shootDates: 'August 10 - Sept 5, 2025',
+    requirements: 'Requires subtle emotional acting and ability to cry on cue. Strong chemistry with lead actor required.',
+    status: 'Open'
+  },
+  {
+    id: 'cast-2025-003',
+    projectName: 'Operation: Lunchbox',
+    company: 'Golden Arch Entertainment',
+    roleType: 'Ensemble (Spy Team)',
+    gender: 'Any',
+    genre: 'Action Comedy',
+    ageRange: '6-10',
+    location: 'Burbank Studios, CA',
+    shootDates: 'July 1 - July 21, 2025',
+    requirements: 'High energy, great comedic timing, and improvisation skills. Comfort with physical comedy scenes.',
+    status: 'Open'
+  },
+  {
+    id: 'cast-2025-004',
+    projectName: 'Echoes of the Deep',
+    company: 'Lumina Horizon Studios',
+    roleType: 'Lead (Protagonist)',
+    gender: 'Female',
+    genre: 'Thriller',
+    ageRange: '13-17',
+    location: 'Malibu / Los Angeles',
+    shootDates: 'Sept 15 - Nov 10, 2025',
+    requirements: 'Intense dramatic performance required. Character deals with loss and fear. Strong swimming skills needed.',
+    status: 'In Progress'
+  },
+  {
+    id: 'cast-2025-005',
+    projectName: 'Robo-Pet',
+    company: 'Nebula Core Pictures',
+    roleType: 'Supporting (Tech Whiz)',
+    gender: 'Female',
+    genre: 'Family Sci-Fi',
+    ageRange: '9-13',
+    location: 'Los Angeles, CA',
+    shootDates: 'May 20 - June 25, 2025',
+    requirements: 'Fast talker, confident, ability to memorize technical jargon quickly. Expressive facial reactions.',
+    status: 'Open'
+  },
+  {
+    id: 'cast-2025-006',
+    projectName: 'Canvas of Dreams',
+    company: 'Silver Bourne Productions',
+    roleType: 'Lead (The Artist)',
+    gender: 'Male',
+    genre: 'Coming of Age / Drama',
+    ageRange: '12-16',
+    location: 'Downtown LA',
+    shootDates: 'Oct 1 - Nov 15, 2025',
+    requirements: 'Vulnerable, quiet intensity. Artistic ability (sketching/painting) is highly preferred.',
+    status: 'Open'
+  },
+  {
+    id: 'cast-2025-007',
+    projectName: 'Neon Racers',
+    company: 'Starlight Peak Films',
+    roleType: 'Supporting (Rival)',
+    gender: 'Male',
+    genre: 'Action / Sports',
+    ageRange: '7-11',
+    location: 'Long Beach, CA',
+    shootDates: 'July 15 - August 15, 2025',
+    requirements: 'Competitive attitude, sporty look. Scenes involve go-kart racing simulation.',
+    status: 'Open'
+  },
+  {
+    id: 'cast-2025-008',
+    projectName: 'The Velvet Key',
+    company: 'Lumina Horizon Studios',
+    roleType: 'Lead (Detective)',
+    gender: 'Female',
+    genre: 'Mystery',
+    ageRange: '9-13',
+    location: 'Historic LA',
+    shootDates: 'Winter 2025',
+    requirements: 'Mature demeanor for age, inquisitive, ability to carry scenes with adult actors.',
+    status: 'Open'
+  }
+];
 
 export const HISTORY: HistoryEvent[] = [
   { 

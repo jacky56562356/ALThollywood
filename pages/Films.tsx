@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { FILMS } from '../constants';
-import { ChevronRight, X, ChevronLeft, Play, ArrowRight } from 'lucide-react';
+import { ChevronRight, X, ChevronLeft, Play, ArrowRight, Clock, Star, Calendar } from 'lucide-react';
 import type { FilmProject } from '../types';
 
 export default function Films() {
@@ -30,41 +30,42 @@ export default function Films() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        {/* Updated Grid: 5 Columns, Vertical Posters */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-6 gap-y-12">
           {FILMS.map((film) => (
-            <div key={film.id} className="group flex flex-col h-full">
-              <div className="relative aspect-[16/9] mb-8 overflow-hidden border border-white/10 rounded-xl group-hover:border-brandCyan/40 transition-all cursor-pointer" onClick={() => setSelectedFilm(film)}>
+            <div key={film.id} className="group flex flex-col h-full cursor-pointer" onClick={() => setSelectedFilm(film)}>
+              {/* Vertical Poster Container (Aspect Ratio 2:3) */}
+              <div className="relative aspect-[2/3] mb-6 overflow-hidden border border-white/10 rounded-lg group-hover:border-brandCyan/40 transition-all shadow-2xl bg-brandBlack">
                 <img 
-                  src={film.stills[0]} 
-                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                  src={film.posterUrl} 
+                  className="w-full h-full object-contain transition-all duration-700 group-hover:scale-105"
                   alt={film.title}
                 />
-                <div className="absolute top-4 left-4">
-                  <span className="px-4 py-1 brand-bg text-white text-[10px] font-black uppercase tracking-widest rounded-full">
+                
+                {/* Overlay Gradient (Removed mostly to keep poster clear, but kept subtle for hover effect) */}
+                <div className="absolute inset-0 bg-gradient-to-t from-brandBlack/60 via-transparent to-transparent opacity-0 group-hover:opacity-40 transition-opacity"></div>
+                
+                <div className="absolute top-3 left-3 z-10">
+                  <span className="px-3 py-1 bg-brandBlack/80 backdrop-blur-md border border-white/10 text-white text-[8px] font-black uppercase tracking-widest rounded-full">
                     {film.genre}
                   </span>
                 </div>
+                
                 {/* Play Button Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-12 h-12 rounded-full bg-brandBlack/80 backdrop-blur-sm flex items-center justify-center border border-brandCyan text-brandCyan">
-                        <Play size={20} fill="currentColor" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                    <div className="w-10 h-10 rounded-full bg-brandCyan text-brandBlack flex items-center justify-center shadow-[0_0_20px_rgba(0,229,255,0.6)] transform scale-90 group-hover:scale-100 transition-transform">
+                        <Play size={16} fill="currentColor" />
                     </div>
                 </div>
               </div>
-              <h3 className="text-3xl font-cinematic font-bold mb-3 group-hover:brand-gradient-text transition-all cursor-pointer" onClick={() => setSelectedFilm(film)}>{film.title}</h3>
-              <p className="text-brandGray text-sm mb-6 line-clamp-2 leading-relaxed flex-grow">{film.description}</p>
               
-              <div className="border-t border-white/5 pt-6 mt-auto flex items-center justify-between">
-                 <div className="flex flex-col">
-                    <span className="text-[9px] brand-gradient-text uppercase font-black tracking-widest mb-1">Platform</span>
-                    <span className="text-xs text-white/60 font-medium">{film.platform}</span>
+              <h3 className="text-lg font-cinematic font-bold mb-2 leading-tight group-hover:brand-gradient-text transition-all">{film.title}</h3>
+              <div className="mt-auto pt-2 border-t border-white/5">
+                 <p className="text-[10px] text-brandGray font-medium line-clamp-2 mb-3">{film.description}</p>
+                 <div className="flex items-center justify-between">
+                     <span className="text-[9px] text-brandCyan font-black uppercase tracking-widest">Watch Now</span>
+                     <ArrowRight size={12} className="text-white/50 group-hover:text-brandCyan group-hover:translate-x-1 transition-all" />
                  </div>
-                 <button 
-                   onClick={() => setSelectedFilm(film)}
-                   className="px-6 py-2 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest text-white hover:brand-bg hover:border-transparent transition-all flex items-center gap-2 group/btn"
-                 >
-                   Read More <ArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
-                 </button>
               </div>
             </div>
           ))}
@@ -74,12 +75,12 @@ export default function Films() {
       {/* Film Detail Modal */}
       {selectedFilm && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-6 bg-brandBlack/95 backdrop-blur-xl animate-in fade-in duration-300">
-          <div className="w-full max-w-6xl h-full md:h-[90vh] bg-brandBlack md:border border-white/10 md:rounded-3xl overflow-hidden relative shadow-2xl flex flex-col">
+          <div className="w-full max-w-7xl h-full md:h-[95vh] bg-brandBlack md:border border-white/10 md:rounded-3xl overflow-hidden relative shadow-2xl flex flex-col">
             
             {/* Close Button */}
             <button 
               onClick={() => setSelectedFilm(null)}
-              className="absolute top-6 right-6 z-20 w-10 h-10 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-brandCyan hover:text-black transition-all border border-white/10"
+              className="absolute top-6 right-6 z-[60] w-10 h-10 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-brandCyan hover:text-black transition-all border border-white/10"
             >
               <X size={20} />
             </button>
@@ -96,116 +97,101 @@ export default function Films() {
 const FilmModalContent = ({ film }: { film: FilmProject }) => {
     const [currentStillIndex, setCurrentStillIndex] = useState(0);
 
-    const nextStill = () => {
-        setCurrentStillIndex((prev) => (prev + 1) % film.stills.length);
-    };
-
-    const prevStill = () => {
-        setCurrentStillIndex((prev) => (prev - 1 + film.stills.length) % film.stills.length);
-    };
-
     return (
-        <div className="overflow-y-auto flex-1 custom-scrollbar">
-          {/* Hero Carousel */}
-          <div className="relative aspect-video md:aspect-[21/9] w-full bg-black group">
-            <img 
-              src={film.stills[currentStillIndex]} 
-              className="w-full h-full object-cover transition-all duration-500 opacity-90"
-              alt={`Still ${currentStillIndex + 1}`} 
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-brandBlack via-transparent to-transparent opacity-100"></div>
-            
-            {/* Navigation Arrows */}
-            <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 md:px-8 opacity-0 group-hover:opacity-100 transition-opacity">
-              <button onClick={(e) => { e.stopPropagation(); prevStill(); }} className="p-3 rounded-full bg-black/40 hover:bg-brandCyan hover:text-black text-white backdrop-blur-md transition-all border border-white/10">
-                <ChevronLeft size={24} />
-              </button>
-              <button onClick={(e) => { e.stopPropagation(); nextStill(); }} className="p-3 rounded-full bg-black/40 hover:bg-brandCyan hover:text-black text-white backdrop-blur-md transition-all border border-white/10">
-                <ChevronRight size={24} />
-              </button>
-            </div>
-
-            {/* Pagination Dots */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
-              {film.stills.map((_, idx) => (
-                <button 
-                  key={idx}
-                  onClick={() => setCurrentStillIndex(idx)}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentStillIndex ? 'bg-brandCyan w-8' : 'bg-white/30 w-1.5 hover:bg-white'}`}
-                />
-              ))}
-            </div>
-
-            <div className="absolute bottom-10 left-8 md:left-14 max-w-2xl">
-                <span className="px-4 py-1.5 brand-bg text-white text-[10px] font-black uppercase tracking-widest rounded-full inline-block mb-4 shadow-lg shadow-brandCyan/20">
-                    {film.genre}
-                </span>
-                <h2 className="text-4xl md:text-6xl font-cinematic font-black text-white drop-shadow-2xl">{film.title}</h2>
-            </div>
+        <div className="overflow-y-auto flex-1 custom-scrollbar relative">
+          
+          {/* Backdrop Header */}
+          <div className="absolute top-0 left-0 w-full h-[60vh] overflow-hidden pointer-events-none z-0">
+             <img src={film.stills[0]} className="w-full h-full object-cover blur-2xl opacity-20" alt="Backdrop" />
+             <div className="absolute inset-0 bg-gradient-to-b from-brandBlack/60 via-brandBlack/90 to-brandBlack"></div>
           </div>
 
-          {/* Detailed Content */}
-          <div className="p-8 md:p-14">
-             <div className="flex flex-col lg:flex-row gap-16 items-start">
-                <div className="flex-1 space-y-8">
-                   <div className="flex items-center gap-12 border-b border-white/10 pb-8">
-                      <div>
-                        <p className="text-[10px] text-brandGray font-black uppercase tracking-widest mb-1">Release Platform</p>
-                        <p className="text-white font-medium">{film.platform}</p>
-                      </div>
-                      <div>
-                        <p className="text-[10px] text-brandGray font-black uppercase tracking-widest mb-1">Status</p>
-                        <p className="text-brandCyan font-bold uppercase tracking-widest text-xs">Released</p>
-                      </div>
-                      <div>
-                        <p className="text-[10px] text-brandGray font-black uppercase tracking-widest mb-1">Rating</p>
-                        <p className="text-white font-medium">G / PG</p>
-                      </div>
+          <div className="relative z-10 p-8 md:p-16">
+             <div className="flex flex-col lg:flex-row gap-16">
+                
+                {/* Left Column: Full Poster */}
+                <div className="flex-shrink-0 w-full lg:w-[350px] mx-auto lg:mx-0">
+                   <div className="aspect-[2/3] rounded-xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 relative group sticky top-8 bg-brandBlack">
+                      <img src={film.posterUrl} className="w-full h-full object-contain" alt="Full Poster" />
+                      {/* Reflection effect */}
+                      <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                    </div>
+                   
+                   <div className="mt-8 space-y-4">
+                      <button className="w-full py-4 brand-bg text-white font-black uppercase tracking-[0.2em] rounded-xl flex items-center justify-center gap-3 hover:scale-[1.02] transition-transform shadow-lg shadow-brandCyan/20 text-xs">
+                        <Play size={16} fill="currentColor" /> Watch Full Film
+                      </button>
+                      <button className="w-full py-4 bg-white/5 border border-white/10 text-white font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white/10 transition-colors text-xs">
+                        + Add to List
+                      </button>
+                   </div>
+                </div>
 
-                   <div className="space-y-6">
-                       <h3 className="text-2xl font-cinematic font-bold text-white">Synopsis</h3>
-                       <div className="prose prose-invert prose-lg text-brandGray font-light leading-relaxed max-w-none">
+                {/* Right Column: Details & Gallery */}
+                <div className="flex-1">
+                   <div className="mb-10 text-center lg:text-left">
+                       <div className="flex items-center justify-center lg:justify-start gap-4 mb-6">
+                          <span className="px-4 py-1.5 border border-brandCyan/30 bg-brandCyan/5 text-brandCyan text-[10px] font-black uppercase tracking-widest rounded-full">
+                             {film.genre}
+                          </span>
+                          <span className="px-4 py-1.5 border border-white/10 bg-white/5 text-white/70 text-[10px] font-black uppercase tracking-widest rounded-full flex items-center gap-2">
+                             <Clock size={12} /> 14 Min
+                          </span>
+                          <span className="px-4 py-1.5 border border-white/10 bg-white/5 text-white/70 text-[10px] font-black uppercase tracking-widest rounded-full flex items-center gap-2">
+                             <Calendar size={12} /> 2024
+                          </span>
+                       </div>
+                       
+                       <h1 className="text-5xl md:text-7xl font-cinematic font-black text-white mb-6 leading-none drop-shadow-2xl">{film.title}</h1>
+                       
+                       <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 text-sm text-brandGray border-b border-white/10 pb-10 mb-10">
+                          <div>
+                            <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">Director</p>
+                            <p className="text-white">Sarah Jenkins</p>
+                          </div>
+                          <div>
+                            <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">Starring</p>
+                            <p className="text-white">ALT Youth Ensemble</p>
+                          </div>
+                          <div>
+                            <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">Platform</p>
+                            <p className="text-brandCyan">{film.platform}</p>
+                          </div>
+                       </div>
+
+                       <h3 className="text-2xl font-cinematic font-bold text-white mb-6">Synopsis</h3>
+                       <div className="prose prose-invert prose-lg text-brandGray font-light leading-relaxed max-w-none mb-16">
                           <p className="text-xl text-white/90 font-normal">{film.description}</p>
                           <p>
-                            In the heart of Los Angeles, this production brought together our most promising young talents. 
-                            Utilizing state-of-the-art cinematography and professional sound design, the project serves as a cornerstone 
-                            for the portfolios of everyone involved.
-                          </p>
-                          <p>
-                            The film explores themes relevant to today's youth while maintaining the high production value expected 
-                            from ALT Hollywood Dream Star projects. From pre-production table reads to the final color grade, 
-                            students were immersed in the full lifecycle of a Hollywood-standard short film.
+                            Filmed on location in Los Angeles, this production highlights the exceptional capability of our youth talent to handle complex narratives and professional set etiquette.
+                            From table reads to the final cut, students were involved in every aspect of the creative process, ensuring an authentic performance that resonates with audiences worldwide.
                           </p>
                        </div>
                    </div>
-                </div>
-                
-                {/* Visuals Sidebar */}
-                <div className="w-full lg:w-96 shrink-0">
-                   <div className="p-8 border border-white/10 rounded-3xl bg-white/[0.02]">
-                      <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full brand-bg"></span> Gallery
-                      </h4>
-                      <div className="grid grid-cols-2 gap-3">
+
+                   {/* Stills Gallery */}
+                   <div>
+                      <h3 className="text-2xl font-cinematic font-bold text-white mb-8 flex items-center gap-3">
+                        <span className="w-8 h-1 brand-bg"></span> Production Stills
+                      </h3>
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                          {film.stills.map((still, idx) => (
-                           <div key={idx} className={`relative aspect-video rounded-lg overflow-hidden cursor-pointer group ${currentStillIndex === idx ? 'ring-2 ring-brandCyan' : 'opacity-60 hover:opacity-100'}`} onClick={() => setCurrentStillIndex(idx)}>
-                               <img src={still} className="w-full h-full object-cover" alt="Gallery thumbnail" />
-                               <div className="absolute inset-0 bg-brandCyan/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                           <div 
+                              key={idx} 
+                              className="aspect-video rounded-lg overflow-hidden cursor-pointer group relative border border-white/5 hover:border-brandCyan/40 transition-all"
+                              onClick={() => { /* Could open a lightbox here */ }}
+                           >
+                               <img src={still} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt={`Still ${idx}`} />
+                               <div className="absolute inset-0 bg-brandBlack/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                  <div className="p-2 bg-brandBlack/80 rounded-full text-brandCyan backdrop-blur-sm">
+                                     <Star size={16} />
+                                  </div>
+                               </div>
                            </div>
                          ))}
                       </div>
                    </div>
-                   
-                   <div className="mt-8 p-8 border border-brandCyan/20 rounded-3xl bg-brandCyan/5">
-                      <h4 className="text-brandCyan font-bold mb-2 uppercase tracking-widest text-xs">Behind The Scenes</h4>
-                      <p className="text-xs text-brandGray leading-relaxed mb-4">
-                        This project was filmed over 3 days at our main studio lot and on location in Downtown LA.
-                      </p>
-                      <button className="w-full py-3 bg-brandBlack border border-brandCyan/30 text-brandCyan text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-brandCyan hover:text-brandBlack transition-all">
-                        View Making Of
-                      </button>
-                   </div>
+
                 </div>
              </div>
           </div>
