@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Routes, Route, Link, useLocation, Navigate } from 'react-router-dom';
 import { Menu, X, Instagram, Facebook, Youtube, ChevronRight, FileDown, Mail, MapPin, Phone, Lock, User } from 'lucide-react';
@@ -28,18 +27,11 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 
 const Logo = ({ size = "normal" }: { size?: "normal" | "small" }) => (
   <Link to="/" className="flex items-center gap-3 group">
-    <div className="flex flex-col items-center">
-      <div className="flex gap-1 mb-1 opacity-80 group-hover:opacity-100 transition-opacity">
-        <div className="w-2 h-2 rounded-full brand-bg"></div>
-        <div className="w-2 h-2 rounded-full brand-bg"></div>
-      </div>
-      <div className="relative">
-        <div className="w-8 h-6 border-2 border-brandCyan flex items-center justify-center rounded-sm">
-          <div className="w-4 h-0.5 bg-brandCyan"></div>
-        </div>
-        <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent border-l-[6px] border-l-brandCyan"></div>
-      </div>
-    </div>
+    <img 
+      src="https://i.ibb.co/c4Rn9W9/ALT-LOGO-2400x1800.png" 
+      alt="ALT Logo"
+      className={`${size === 'small' ? 'h-10' : 'h-14'} w-auto object-contain group-hover:scale-105 transition-transform`}
+    />
     <div className="flex flex-col leading-none">
       <span className={`${size === 'small' ? 'text-xl' : 'text-3xl'} font-cinematic font-black brand-gradient-text tracking-tight`}>ALT</span>
       <span className={`${size === 'small' ? 'text-[8px]' : 'text-[10px]'} text-white/80 font-bold tracking-[0.2em] uppercase`}>Hollywood Dream Star</span>
