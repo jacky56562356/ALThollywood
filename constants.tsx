@@ -64,7 +64,7 @@ export const ACTORS: Actor[] = [
     ageRange: '10-14',
     skills: ['High Fashion Modeling', 'Actor', 'Bilingual (CN/EN)'],
     credits: ['Multiple Hollywood Movies', 'Editorial Print'],
-    imageUrl: 'https://picsum.photos/seed/xiaowan-jin/600/800',
+    imageUrl: 'https://i.ibb.co/1YMZF3XS/9.png',
   },
   {
     id: 'evan-wen',
@@ -80,7 +80,7 @@ export const ACTORS: Actor[] = [
     ageRange: '8-12',
     skills: ['Method Acting', 'Emotional Delivery', 'Runway'],
     credits: ['Independent Feature Lead', 'Dream Star Showcase'],
-    imageUrl: 'https://i.ibb.co/1YMZF3XS/9.png',
+    imageUrl: 'https://picsum.photos/seed/aria-song/600/800',
   },
   {
     id: 'mei-lin',
