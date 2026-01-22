@@ -20,7 +20,7 @@ import { AuthProvider, useAuth } from './AuthContext';
 // Components
 import ChatBot from './components/ChatBot';
 
-const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+const ProtectedRoute = ({ children }: { children?: React.ReactNode }) => {
   const { isAuthenticated } = useAuth();
   return isAuthenticated ? <>{children}</> : <Navigate to="/login" />;
 };
