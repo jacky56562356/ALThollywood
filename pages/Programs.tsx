@@ -1,7 +1,23 @@
 
 import React from 'react';
-import { Layout, Video, Share2, Clock, Award, Star, History as HistoryIcon } from 'lucide-react';
+import { Layout, Video, Share2, Trophy, Award, Star, History as HistoryIcon } from 'lucide-react';
 import { HISTORY } from '../constants';
+
+const FESTIVAL_IMAGES = [
+  "https://i.ibb.co/rKMzdsBR/DSC00105-edited.jpg",
+  "https://i.ibb.co/DcFdsvB/DSC00101-edited.jpg",
+  "https://i.ibb.co/mVLjTDxj/DSC00090-edited.jpg",
+  "https://i.ibb.co/1kdG6hS/DSC00074-edited.jpg",
+  "https://i.ibb.co/354mNfx4/DSC00048-edited.jpg",
+  "https://i.ibb.co/QvxzDBmj/DSC00021-edited.jpg",
+  "https://i.ibb.co/Dgtd13Zm/DSC00025-edited.jpg",
+  "https://i.ibb.co/S4dhM5h4/ba7e5988f9f6f47f8b22f59fedb551e5.jpg",
+  "https://i.ibb.co/TqHKNcjx/1731693e1e0ea8102582bec61f0aed1d.jpg",
+  "https://i.ibb.co/CsXTwYVB/789f8972a2a611f0a39472362ca9b9d2.jpg",
+  "https://i.ibb.co/tpMxQ0z3/93e11fe81b005b241daf7fe0ede317e1.jpg",
+  "https://i.ibb.co/1JdcHFK9/179b50bd376d8cfa82289e99501dac49-1.jpg",
+  "https://i.ibb.co/1Gj2K8CX/d92babf9ca9b15b9fe754beaa383a6cf.jpg"
+];
 
 const ProgramSection = ({ icon: Icon, title, items }: { icon: any, title: string, items: string[] }) => (
   <div className="bg-white/5 border border-white/5 p-10 rounded-2xl hover:border-brandCyan/30 transition-all group relative overflow-hidden h-full">
@@ -32,7 +48,7 @@ export default function Programs() {
         </div>
 
         {/* Programs Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mb-40">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mb-32">
           <ProgramSection 
             icon={Layout}
             title="Acting Mastery"
@@ -48,6 +64,63 @@ export default function Programs() {
             title="Global Exposure"
             items={["Streaming Releases", "Film Festival Strategy", "Industry Showcases", "Agency Signing Pathways"]}
           />
+        </div>
+
+        {/* New Section: Festival Success & Confidence */}
+        <div className="mb-40 border-t border-white/10 pt-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16 items-center">
+             <div>
+                <h2 className="brand-gradient-text text-sm font-black tracking-[0.4em] uppercase mb-6">Awards & Confidence</h2>
+                <h1 className="text-5xl font-cinematic font-black mb-8 tracking-tight leading-tight">The Power of Recognition</h1>
+                <div className="space-y-6 text-brandGray text-lg font-light leading-relaxed">
+                  <p>
+                    At ALT Hollywood Dream Star, we believe that true confidence is forged in the spotlight. 
+                    Our students routinely participate in prestigious international film festivals, where they not only showcase their work but experience the tangible rewards of their dedication.
+                  </p>
+                  <p>
+                    Beyond technical skills, we cultivate the mindset of a winner. Standing on the podium, receiving accolades from industry peers, and celebrating victory with their ensemble creates a profound sense of achievement. 
+                  </p>
+                  <p className="text-white font-medium">
+                    This validation fuels their confidence, turning aspiring young talents into poised professionals who believe in their own star power.
+                  </p>
+                </div>
+             </div>
+             <div className="bg-white/5 border border-white/10 p-8 rounded-3xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 brand-bg opacity-10 blur-3xl rounded-full"></div>
+                <div className="flex items-center gap-6 mb-8">
+                   <div className="w-16 h-16 brand-bg rounded-full flex items-center justify-center text-white shadow-xl shadow-brandCyan/20">
+                      <Trophy size={32} />
+                   </div>
+                   <div>
+                      <p className="text-4xl font-cinematic font-black text-white">50+</p>
+                      <p className="text-[10px] text-brandGray uppercase tracking-widest font-bold">International Awards Won</p>
+                   </div>
+                </div>
+                <p className="italic text-brandGray text-sm">"Seeing our students walk the red carpet with their heads held high is the ultimate proof of our method. The awards are just the beginning; the self-belief they gain lasts a lifetime."</p>
+             </div>
+          </div>
+
+          {/* Masonry-style Grid for Awards */}
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+            {FESTIVAL_IMAGES.map((src, i) => (
+              <div key={i} className="break-inside-avoid rounded-2xl overflow-hidden border border-white/10 group relative hover:border-brandCyan/50 transition-all duration-500 shadow-lg bg-brandBlack">
+                <img 
+                  src={src} 
+                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110" 
+                  alt="Festival Award Moment" 
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brandBlack/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                  <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                     <div className="flex items-center gap-2 text-brandCyan font-black uppercase tracking-widest text-[10px] mb-2">
+                        <Award size={14} /> Red Carpet Moment
+                     </div>
+                     <p className="text-white text-sm font-medium">Celebrating Excellence</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Divider */}
