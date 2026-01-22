@@ -142,7 +142,7 @@ const Partners = () => {
             <img 
               src={logo} 
               alt={`Partner ${index}`} 
-              className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+              className="max-w-full max-h-full object-contain transition-all duration-300"
             />
           </div>
         ))}

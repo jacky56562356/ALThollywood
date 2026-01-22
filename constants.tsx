@@ -249,7 +249,7 @@ export const FILMS: FilmProject[] = [
 
 export const OPPORTUNITIES: Opportunity[] = [
   {
-    id: 'cast-2025-001',
+    id: 'cast-2026-001',
     projectName: 'Chronicles of the Star Walker',
     company: 'Nebula Core Pictures',
     roleType: 'Lead (Hero)',
@@ -257,12 +257,12 @@ export const OPPORTUNITIES: Opportunity[] = [
     genre: 'Sci-Fi Adventure',
     ageRange: '11-15',
     location: 'Los Angeles, CA',
-    shootDates: 'June 15 - July 30, 2025',
+    shootDates: 'June 15 - July 30, 2026',
     requirements: 'Must have high emotional range and ability to handle complex dialogue. Wire-work stunts capability is a plus.',
     status: 'Open'
   },
   {
-    id: 'cast-2025-002',
+    id: 'cast-2026-002',
     projectName: 'The Secret of Maplewood Manor',
     company: 'Silver Bourne Productions',
     roleType: 'Supporting (Sibling)',
@@ -270,12 +270,12 @@ export const OPPORTUNITIES: Opportunity[] = [
     genre: 'Mystery / Drama',
     ageRange: '8-12',
     location: 'Pasadena, CA',
-    shootDates: 'August 10 - Sept 5, 2025',
+    shootDates: 'August 10 - Sept 5, 2026',
     requirements: 'Requires subtle emotional acting and ability to cry on cue. Strong chemistry with lead actor required.',
     status: 'Open'
   },
   {
-    id: 'cast-2025-003',
+    id: 'cast-2026-003',
     projectName: 'Operation: Lunchbox',
     company: 'Golden Arch Entertainment',
     roleType: 'Ensemble (Spy Team)',
@@ -283,12 +283,12 @@ export const OPPORTUNITIES: Opportunity[] = [
     genre: 'Action Comedy',
     ageRange: '6-10',
     location: 'Burbank Studios, CA',
-    shootDates: 'July 1 - July 21, 2025',
+    shootDates: 'July 1 - July 21, 2026',
     requirements: 'High energy, great comedic timing, and improvisation skills. Comfort with physical comedy scenes.',
     status: 'Open'
   },
   {
-    id: 'cast-2025-004',
+    id: 'cast-2026-004',
     projectName: 'Echoes of the Deep',
     company: 'Lumina Horizon Studios',
     roleType: 'Lead (Protagonist)',
@@ -296,12 +296,12 @@ export const OPPORTUNITIES: Opportunity[] = [
     genre: 'Thriller',
     ageRange: '13-17',
     location: 'Malibu / Los Angeles',
-    shootDates: 'Sept 15 - Nov 10, 2025',
+    shootDates: 'Sept 15 - Nov 10, 2026',
     requirements: 'Intense dramatic performance required. Character deals with loss and fear. Strong swimming skills needed.',
     status: 'In Progress'
   },
   {
-    id: 'cast-2025-005',
+    id: 'cast-2026-005',
     projectName: 'Robo-Pet',
     company: 'Nebula Core Pictures',
     roleType: 'Supporting (Tech Whiz)',
@@ -309,12 +309,12 @@ export const OPPORTUNITIES: Opportunity[] = [
     genre: 'Family Sci-Fi',
     ageRange: '9-13',
     location: 'Los Angeles, CA',
-    shootDates: 'May 20 - June 25, 2025',
+    shootDates: 'May 20 - June 25, 2026',
     requirements: 'Fast talker, confident, ability to memorize technical jargon quickly. Expressive facial reactions.',
     status: 'Open'
   },
   {
-    id: 'cast-2025-006',
+    id: 'cast-2026-006',
     projectName: 'Canvas of Dreams',
     company: 'Silver Bourne Productions',
     roleType: 'Lead (The Artist)',
@@ -322,12 +322,12 @@ export const OPPORTUNITIES: Opportunity[] = [
     genre: 'Coming of Age / Drama',
     ageRange: '12-16',
     location: 'Downtown LA',
-    shootDates: 'Oct 1 - Nov 15, 2025',
+    shootDates: 'Oct 1 - Nov 15, 2026',
     requirements: 'Vulnerable, quiet intensity. Artistic ability (sketching/painting) is highly preferred.',
     status: 'Open'
   },
   {
-    id: 'cast-2025-007',
+    id: 'cast-2026-007',
     projectName: 'Neon Racers',
     company: 'Starlight Peak Films',
     roleType: 'Supporting (Rival)',
@@ -335,12 +335,12 @@ export const OPPORTUNITIES: Opportunity[] = [
     genre: 'Action / Sports',
     ageRange: '7-11',
     location: 'Long Beach, CA',
-    shootDates: 'July 15 - August 15, 2025',
+    shootDates: 'July 15 - August 15, 2026',
     requirements: 'Competitive attitude, sporty look. Scenes involve go-kart racing simulation.',
     status: 'Open'
   },
   {
-    id: 'cast-2025-008',
+    id: 'cast-2026-008',
     projectName: 'The Velvet Key',
     company: 'Lumina Horizon Studios',
     roleType: 'Lead (Detective)',
@@ -348,7 +348,7 @@ export const OPPORTUNITIES: Opportunity[] = [
     genre: 'Mystery',
     ageRange: '9-13',
     location: 'Historic LA',
-    shootDates: 'Winter 2025',
+    shootDates: 'Jan 10 - Feb 20, 2026',
     requirements: 'Mature demeanor for age, inquisitive, ability to carry scenes with adult actors.',
     status: 'Open'
   }
