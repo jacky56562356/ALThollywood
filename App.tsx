@@ -11,12 +11,12 @@ import YouthActors from './pages/YouthActors';
 import Films from './pages/Films';
 import Casting from './pages/Casting';
 import Apply from './pages/Apply';
-import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 
 // Context
 import { AuthProvider, useAuth } from './AuthContext';
+import { DataProvider } from './DataContext';
 
 // Components
 import ChatBot from './components/ChatBot';
@@ -52,8 +52,7 @@ const Header = () => {
     { name: 'Actors', path: '/actors' },
     { name: 'Films', path: '/films' },
     { name: 'Jobs & Casting', path: '/casting' },
-    { name: 'Apply', path: '/apply' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'Apply & Contact', path: '/apply' },
   ];
 
   const isActive = (path: string) => pathname === path;
@@ -168,7 +167,7 @@ const Footer = () => (
             <li><Link to="/programs" className="hover:brand-gradient-text transition-colors">Programs & History</Link></li>
             <li><Link to="/films" className="hover:brand-gradient-text transition-colors">Films</Link></li>
             <li><Link to="/casting" className="hover:brand-gradient-text transition-colors">Jobs & Casting</Link></li>
-            <li><Link to="/apply" className="hover:brand-gradient-text transition-colors">Apply</Link></li>
+            <li><Link to="/apply" className="hover:brand-gradient-text transition-colors">Apply & Contact</Link></li>
           </ul>
         </div>
 
@@ -228,26 +227,27 @@ export default function App() {
 
   return (
     <AuthProvider>
-      <div className="min-h-screen bg-brandBlack text-white selection:bg-brandCyan selection:text-black">
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/programs" element={<Programs />} />
-            <Route path="/actors" element={<YouthActors />} />
-            <Route path="/films" element={<Films />} />
-            <Route path="/casting" element={<Casting />} />
-            <Route path="/apply" element={<Apply />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-          </Routes>
-        </main>
-        <Partners />
-        <Footer />
-        <ChatBot />
-      </div>
+      <DataProvider>
+        <div className="min-h-screen bg-brandBlack text-white selection:bg-brandCyan selection:text-black">
+          <Header />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/programs" element={<Programs />} />
+              <Route path="/actors" element={<YouthActors />} />
+              <Route path="/films" element={<Films />} />
+              <Route path="/casting" element={<Casting />} />
+              <Route path="/apply" element={<Apply />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+            </Routes>
+          </main>
+          <Partners />
+          <Footer />
+          <ChatBot />
+        </div>
+      </DataProvider>
     </AuthProvider>
   );
 }

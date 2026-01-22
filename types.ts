@@ -38,3 +38,12 @@ export interface HistoryEvent {
   description: string;
   imageUrl?: string;
 }
+
+export interface Resource {
+  id: string;
+  title: string;
+  description: string;
+  fileUrl: string;
+  fileSize: string;
+  uploadDate: string;
+}

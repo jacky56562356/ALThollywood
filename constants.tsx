@@ -1,5 +1,4 @@
-
-import { Actor, FilmProject, Opportunity, HistoryEvent } from './types';
+import { Actor, FilmProject, Opportunity, HistoryEvent, Resource } from './types';
 
 export const ACTORS: Actor[] = [
   {
@@ -144,7 +143,7 @@ export const ACTORS: Actor[] = [
     ageRange: '10-14',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['Hollywood Movie Filmed', 'Fashion Print'],
-    imageUrl: 'https://i.ibb.co/nsVwcdPG/20260122131604-1622-151.jpg',
+    imageUrl: 'https://i.ibb.co/nsVwcdPG/20260122131604-1.png',
   },
   {
     id: 'lexi-shen',
@@ -190,6 +189,32 @@ export const ACTORS: Actor[] = [
 
 export const FILMS: FilmProject[] = [
   {
+    id: 'film-poster-new-3',
+    title: 'ALT Hollywood: The New Era',
+    genre: "Documentary",
+    description: "Witness the dawn of a new generation of Hollywood talent in this exclusive feature presentation.",
+    platform: "Global Premiere",
+    posterUrl: "https://i.ibb.co/0RBsdNHX/Chat-GPT-Image-2026-1-22-15-20-56.png",
+    stills: [
+      "https://i.ibb.co/0RBsdNHX/Chat-GPT-Image-2026-1-22-15-20-56.png",
+      "https://picsum.photos/seed/still3a/800/450",
+      "https://picsum.photos/seed/still3b/800/450"
+    ]
+  },
+  {
+    id: 'film-poster-new-4',
+    title: 'Rising Stars 2026',
+    genre: "Showcase",
+    description: "A spectacular visual journey featuring the breakthrough performances of our 2026 cohort.",
+    platform: "Streaming Now",
+    posterUrl: "https://i.ibb.co/Y7Pp984p/Chat-GPT-Image-2026-1-22-15-34-28.png",
+    stills: [
+      "https://i.ibb.co/Y7Pp984p/Chat-GPT-Image-2026-1-22-15-34-28.png",
+      "https://picsum.photos/seed/still4a/800/450",
+      "https://picsum.photos/seed/still4b/800/450"
+    ]
+  },
+  {
     id: 'film-poster-new-1',
     title: 'Year End Grand Ceremony',
     genre: "Event",
@@ -229,22 +254,7 @@ export const FILMS: FilmProject[] = [
       "https://picsum.photos/seed/still1c/800/450",
       "https://picsum.photos/seed/still1d/800/450",
     ]
-  },
-  ...Array.from({ length: 9 }).map((_, i) => ({
-    id: `film-${i + 1}`,
-    title: `Project Hollywood ${i + 1}`,
-    genre: i % 3 === 0 ? "Drama" : i % 3 === 1 ? "Sci-Fi" : "Comedy",
-    description: "A professional youth production highlighting talent and modern storytelling. This project involved over 50 youth actors and a full professional crew, shot on location in Los Angeles studios.",
-    platform: "Amazon Prime / Festival Circuit",
-    posterUrl: `https://picsum.photos/seed/film${i}/600/900`,
-    stills: [
-      `https://picsum.photos/seed/still${i}a/800/450`,
-      `https://picsum.photos/seed/still${i}b/800/450`,
-      `https://picsum.photos/seed/still${i}c/800/450`,
-      `https://picsum.photos/seed/still${i}d/800/450`,
-      `https://picsum.photos/seed/still${i}e/800/450`,
-    ],
-  }))
+  }
 ];
 
 export const OPPORTUNITIES: Opportunity[] = [
@@ -397,4 +407,15 @@ export const HISTORY: HistoryEvent[] = [
     description: "Today, we operate as a fully integrated production house with 100% student placement in professional projects.",
     imageUrl: "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?auto=format&fit=crop&q=80&w=600"
   },
+];
+
+export const RESOURCES: Resource[] = [
+  {
+    id: 'res-official-form',
+    title: 'Hollywood Kids Movie Entry Form',
+    description: 'Official registration form including biometrics and personal preferences. (Official PDF)',
+    fileUrl: '#',
+    fileSize: '0.4 MB',
+    uploadDate: '2026-02-15'
+  }
 ];
