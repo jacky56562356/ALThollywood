@@ -218,7 +218,7 @@ export default function Home() {
       {/* Call to Action */}
       <section className="py-40 relative overflow-hidden text-center">
         <div className="absolute inset-0 z-0">
-             <img src="https://images.unsplash.com/photo-1595769816263-9b910be24d5f?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover opacity-10" alt="Stage lights" />
+             <img src="https://images.unsplash.com/photo-1595769816263-9b910be24d5f?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover opacity-30" alt="Stage lights" />
              <div className="absolute inset-0 bg-gradient-to-r from-brandBlack via-transparent to-brandBlack"></div>
         </div>
         <div className="max-w-4xl mx-auto px-4 relative z-10">

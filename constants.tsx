@@ -1,25 +1,22 @@
+
 import { Actor, FilmProject, Opportunity, HistoryEvent } from './types';
 
-// ==================================================================================
-// 【小白修改图片指南】
-// 1. 准备你的照片。
-// 2. 打开免费图片上传网站: https://imgbb.com/ (不用注册也能用)
-// 3. 点击“开始上传”，选好图后，上传。
-// 4. 上传成功后，将“嵌入代码”改为 “HTML 全图链接” 或者直接找 “直接链接”。
-// 5. 复制那个以 http 开头，以 .jpg 或 .png 结尾的链接。
-// 6. 在下面代码中，找到 'imageUrl' 或 'posterUrl'，把冒号后面的引号里的内容换掉。
-// ==================================================================================
-
 export const ACTORS: Actor[] = [
+  {
+    id: 'paul-liu',
+    name: 'Paul Liu',
+    ageRange: '12-16',
+    skills: ['Chinese Kong-Fu', 'Martial Arts Stunts', 'Action Acting'],
+    credits: ['ALT Hollywood Movies Filmed', 'International Stunt Team'],
+    imageUrl: 'https://i.ibb.co/v40LfrmN/4.png',
+  },
   {
     id: 'parker-davies',
     name: 'Parker Davies', 
     ageRange: '8-12',
     skills: ['Professional Acting', 'Runway Modeling', 'Public Speaking'],
     credits: ['4 Hollywood Films', 'National Commercials'],
-    // 👇👇👇 【在这里换图片】 👇👇👇
-    // 把下面引号里的 https://... 换成你自己图片的链接
-    imageUrl: 'https://picsum.photos/seed/parker-davies/600/800',
+    imageUrl: 'https://i.ibb.co/6CwNLnd/1.png',
   },
   {
     id: 'veronica-chen',
@@ -27,8 +24,7 @@ export const ACTORS: Actor[] = [
     ageRange: '6-10',
     skills: ['Acting', 'Classical Dance', 'Modeling'],
     credits: ['4 Hollywood Movies Filmed', 'Global Brand Commercials'],
-    // 👇👇👇 换第二张图片 👇👇👇
-    imageUrl: 'https://picsum.photos/seed/veronica-chen/600/800',
+    imageUrl: 'https://i.ibb.co/mVLL5mQs/2.png',
   },
   {
     id: 'catherine-jing',
@@ -36,15 +32,7 @@ export const ACTORS: Actor[] = [
     ageRange: '10-14',
     skills: ['Acting', 'Voiceover', 'Theater Performance'],
     credits: ['4 Hollywood Movies Filmed', 'Short Film Lead'],
-    imageUrl: 'https://picsum.photos/seed/catherine-jing/600/800',
-  },
-  {
-    id: 'paul-liu',
-    name: 'Paul Liu',
-    ageRange: '12-16',
-    skills: ['Chinese Kong-Fu', 'Martial Arts Stunts', 'Action Acting'],
-    credits: ['ALT Hollywood Movies Filmed', 'International Stunt Team'],
-    imageUrl: 'https://picsum.photos/seed/paul-liu/600/800',
+    imageUrl: 'https://i.ibb.co/fY46H6Dd/3.png',
   },
   {
     id: 'jolin-wu',
@@ -52,7 +40,15 @@ export const ACTORS: Actor[] = [
     ageRange: '14-18',
     skills: ['Acting', 'Contemporary Dance', 'Bilingual (CN/EN)'],
     credits: ['ALT Hollywood Movies Filmed', 'Drama Series Lead'],
-    imageUrl: 'https://picsum.photos/seed/jolin-wu/600/800',
+    imageUrl: 'https://i.ibb.co/KpBnB6Mf/5.png',
+  },
+  {
+    id: 'chris-li',
+    name: 'Chris Li',
+    ageRange: '6-10',
+    skills: ['On-Camera Acting', 'Fashion Modeling', 'Bilingual (CN/EN)'],
+    credits: ['Hollywood Short Film', 'Brand Commercial'],
+    imageUrl: 'https://i.ibb.co/Y7v0Wdb0/20250.jpg',
   },
   {
     id: 'ethan-pan',
@@ -60,15 +56,7 @@ export const ACTORS: Actor[] = [
     ageRange: '8-12',
     skills: ['Acting', 'Hip-Hop Dance', 'Modeling'],
     credits: ['ALT Hollywood Movies Filmed', 'National Print Ad'],
-    imageUrl: 'https://picsum.photos/seed/ethan-pan/600/800',
-  },
-  {
-    id: 'evan-wen',
-    name: 'Evan Wen',
-    ageRange: '6-10',
-    skills: ['Breakdancing', 'Acting', 'Live Performance'],
-    credits: ['ALT Hollywood Movies Filmed', 'Talent Showcase winner'],
-    imageUrl: 'https://picsum.photos/seed/evan-wen/600/800',
+    imageUrl: 'https://i.ibb.co/7JMjy3DF/6.png',
   },
   {
     id: 'xiaowan-jin',
@@ -79,12 +67,20 @@ export const ACTORS: Actor[] = [
     imageUrl: 'https://picsum.photos/seed/xiaowan-jin/600/800',
   },
   {
+    id: 'evan-wen',
+    name: 'Evan Wen',
+    ageRange: '6-10',
+    skills: ['Breakdancing', 'Acting', 'Live Performance'],
+    credits: ['ALT Hollywood Movies Filmed', 'Talent Showcase winner'],
+    imageUrl: 'https://i.ibb.co/60K4WqJV/7.png',
+  },
+  {
     id: 'aria-song',
     name: 'Aria Song',
     ageRange: '8-12',
     skills: ['Method Acting', 'Emotional Delivery', 'Runway'],
     credits: ['Independent Feature Lead', 'Dream Star Showcase'],
-    imageUrl: 'https://picsum.photos/seed/aria-song/600/800',
+    imageUrl: 'https://i.ibb.co/1YMZF3XS/9.png',
   },
   {
     id: 'mei-lin',
@@ -134,10 +130,7 @@ export const FILMS: FilmProject[] = Array.from({ length: 12 }).map((_, i) => ({
   genre: i % 3 === 0 ? "Drama" : i % 3 === 1 ? "Sci-Fi" : "Comedy",
   description: "A professional youth production highlighting talent and modern storytelling. This project involved over 50 youth actors and a full professional crew, shot on location in Los Angeles studios.",
   platform: "Amazon Prime / Festival Circuit",
-  
-  // 👇👇👇 【在这里换电影海报】 👇👇👇
   posterUrl: `https://picsum.photos/seed/film${i}/600/900`,
-  
   stills: [
     `https://picsum.photos/seed/still${i}a/800/450`,
     `https://picsum.photos/seed/still${i}b/800/450`,
