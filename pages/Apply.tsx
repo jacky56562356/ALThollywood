@@ -1,15 +1,46 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { FileDown, CheckCircle2, User, Activity, MapPin, FileText, Phone, Mail, Info } from 'lucide-react';
 import { useData } from '../DataContext';
 
 export default function Apply() {
-  const [submitted, setSubmitted] = React.useState(false);
-  const { resources } = useData();
+  const [submitted, setSubmitted] = useState(false);
+  const { resources, submitApplication } = useData();
+
+  // Form State
+  const [formData, setFormData] = useState({
+    englishName: '',
+    chineseName: '',
+    gender: 'Male',
+    dob: '',
+    height: '',
+    weight: '',
+    race: '',
+    idNumber: '',
+    address: '',
+    guardianMobile: '',
+    englishLevel: '',
+    hobbies: '',
+    resume: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Save to Context (Simulating Backend)
+    submitApplication({
+      id: `app-${Date.now()}`,
+      ...formData,
+      submittedAt: new Date().toISOString().split('T')[0]
+    });
+
     setSubmitted(true);
+    window.scrollTo(0, 0);
   };
 
   if (submitted) {
@@ -22,13 +53,19 @@ export default function Apply() {
           </div>
           <h2 className="text-4xl font-cinematic font-black mb-6 tracking-tight">Application Received</h2>
           <p className="text-brandGray text-lg leading-relaxed mb-12 font-light">
-            Thank you for applying to ALT HOLLYWOOD DREAM STAR. Our professional review team will analyze your portfolio and contact the parent/guardian within 5-7 business days.
+            Thank you for applying to ALT HOLLYWOOD DREAM STAR. Your data has been securely transmitted to our Agent Dashboard. Our professional review team will analyze your portfolio and contact you shortly.
           </p>
           <button 
-            onClick={() => setSubmitted(false)}
+            onClick={() => {
+              setSubmitted(false);
+              setFormData({
+                englishName: '', chineseName: '', gender: 'Male', dob: '', height: '', weight: '', 
+                race: '', idNumber: '', address: '', guardianMobile: '', englishLevel: '', hobbies: '', resume: ''
+              });
+            }}
             className="px-12 py-5 brand-bg text-white font-black uppercase tracking-[0.3em] rounded-full hover:scale-105 transition-all shadow-xl"
           >
-            Back to Application
+            Submit Another
           </button>
         </div>
       </div>
@@ -141,22 +178,22 @@ export default function Apply() {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                         <label className="block text-[9px] text-brandGray uppercase font-bold mb-2">English Name</label>
-                        <input required className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white" placeholder="Legal Name" />
+                        <input name="englishName" value={formData.englishName} onChange={handleChange} required className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white" placeholder="Legal Name" />
                     </div>
                     <div>
                         <label className="block text-[9px] text-brandGray uppercase font-bold mb-2">Chinese Name (If any)</label>
-                        <input className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white" placeholder="中文姓名" />
+                        <input name="chineseName" value={formData.chineseName} onChange={handleChange} className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white" placeholder="中文姓名" />
                     </div>
                     <div>
                         <label className="block text-[9px] text-brandGray uppercase font-bold mb-2">Gender</label>
-                        <select className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white/80">
-                          <option>Male</option>
-                          <option>Female</option>
+                        <select name="gender" value={formData.gender} onChange={handleChange} className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white/80">
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
                         </select>
                     </div>
                      <div>
                         <label className="block text-[9px] text-brandGray uppercase font-bold mb-2">Date of Birth</label>
-                        <input required type="date" className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white/80" />
+                        <input name="dob" value={formData.dob} onChange={handleChange} required type="date" className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white/80" />
                     </div>
                   </div>
                 </div>
@@ -167,19 +204,19 @@ export default function Apply() {
                   <div className="grid grid-cols-3 gap-4">
                     <div>
                         <label className="block text-[9px] text-brandGray uppercase font-bold mb-2">Height (cm)</label>
-                        <input type="number" className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white" placeholder="0" />
+                        <input name="height" value={formData.height} onChange={handleChange} type="number" className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white" placeholder="0" />
                     </div>
                     <div>
                         <label className="block text-[9px] text-brandGray uppercase font-bold mb-2">Weight (kg)</label>
-                        <input type="number" className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white" placeholder="0" />
+                        <input name="weight" value={formData.weight} onChange={handleChange} type="number" className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white" placeholder="0" />
                     </div>
                     <div>
                         <label className="block text-[9px] text-brandGray uppercase font-bold mb-2">Race</label>
-                        <input className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white" placeholder="Ethnicity" />
+                        <input name="race" value={formData.race} onChange={handleChange} className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white" placeholder="Ethnicity" />
                     </div>
                     <div className="col-span-3">
                         <label className="block text-[9px] text-brandGray uppercase font-bold mb-2">ID Card / Passport No.</label>
-                        <input className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white" placeholder="Govt Issued ID" />
+                        <input name="idNumber" value={formData.idNumber} onChange={handleChange} className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white" placeholder="Govt Issued ID" />
                     </div>
                   </div>
                 </div>
@@ -190,16 +227,16 @@ export default function Apply() {
                   <div className="space-y-4">
                     <div>
                         <label className="block text-[9px] text-brandGray uppercase font-bold mb-2">Residential Address</label>
-                        <input required className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white" placeholder="Street, City, Zip" />
+                        <input name="address" value={formData.address} onChange={handleChange} required className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white" placeholder="Street, City, Zip" />
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                         <div>
                             <label className="block text-[9px] text-brandGray uppercase font-bold mb-2"><Phone size={10} className="inline mr-1"/> Guardian Mobile</label>
-                            <input required type="tel" className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white" placeholder="+1 (555) 000-0000" />
+                            <input name="guardianMobile" value={formData.guardianMobile} onChange={handleChange} required type="tel" className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white" placeholder="+1 (555) 000-0000" />
                         </div>
                         <div>
                             <label className="block text-[9px] text-brandGray uppercase font-bold mb-2">English Level</label>
-                            <input className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white" placeholder="Fluent / Int / Basic" />
+                            <input name="englishLevel" value={formData.englishLevel} onChange={handleChange} className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all text-white" placeholder="Fluent / Int / Basic" />
                         </div>
                     </div>
                   </div>
@@ -210,11 +247,11 @@ export default function Apply() {
                    <h4 className="flex items-center gap-2 text-[10px] text-brandCyan uppercase font-black tracking-widest"><FileText size={12}/> Profile & Resume</h4>
                    <div>
                       <label className="block text-[9px] text-brandGray uppercase font-bold mb-2">Personal Preferences / Hobbies</label>
-                      <textarea rows={2} className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all resize-none text-white" placeholder="Singing, Dancing, Sports..."></textarea>
+                      <textarea name="hobbies" value={formData.hobbies} onChange={handleChange} rows={2} className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all resize-none text-white" placeholder="Singing, Dancing, Sports..."></textarea>
                    </div>
                    <div>
                       <label className="block text-[9px] text-brandGray uppercase font-bold mb-2">Resume (Previous acting/performance experience)</label>
-                      <textarea rows={4} className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all resize-none text-white" placeholder="List key roles, contests, or training..."></textarea>
+                      <textarea name="resume" value={formData.resume} onChange={handleChange} rows={4} className="w-full bg-brandBlack/50 border border-white/10 px-4 py-3 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-xl transition-all resize-none text-white" placeholder="List key roles, contests, or training..."></textarea>
                    </div>
                    <div className="flex items-start gap-3 mt-4">
                       <input type="checkbox" required className="mt-1" />

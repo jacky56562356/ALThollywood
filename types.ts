@@ -47,3 +47,21 @@ export interface Resource {
   fileSize: string;
   uploadDate: string;
 }
+
+export interface Application {
+  id: string;
+  englishName: string;
+  chineseName: string;
+  gender: string;
+  dob: string;
+  height: string;
+  weight: string;
+  race: string;
+  idNumber: string;
+  address: string;
+  guardianMobile: string;
+  englishLevel: string;
+  hobbies: string;
+  resume: string;
+  submittedAt: string;
+}

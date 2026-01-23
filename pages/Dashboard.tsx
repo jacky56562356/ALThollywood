@@ -1,18 +1,19 @@
 
 import React, { useState, useCallback } from 'react';
-import { Plus, Trash2, Edit2, UploadCloud, FileText, Download, X, Save, Users, FileStack } from 'lucide-react';
-import type { Actor, Resource } from '../types';
+import { Plus, Trash2, Edit2, UploadCloud, FileText, Download, X, Save, Users, FileStack, Inbox, Eye } from 'lucide-react';
+import type { Actor, Resource, Application } from '../types';
 import { useData } from '../DataContext';
 
-type Tab = 'talent' | 'resources';
+type Tab = 'talent' | 'resources' | 'applications';
 
 export default function Dashboard() {
-  const { actors, resources, addActor, updateActor, deleteActor, addResource, deleteResource } = useData();
+  const { actors, resources, applications, addActor, updateActor, deleteActor, addResource, deleteResource, deleteApplication } = useData();
   const [activeTab, setActiveTab] = useState<Tab>('talent');
   
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [viewingApp, setViewingApp] = useState<Application | null>(null);
 
   // Actor Form State
   const [actorForm, setActorForm] = useState<Partial<Actor>>({
@@ -91,8 +92,6 @@ export default function Dashboard() {
 
   const handleSaveResource = (e: React.FormEvent) => {
     e.preventDefault();
-    // Since we can't do real edits on files easily in this mock, we only support Add for now or simple Text edits if we expanded it.
-    // Assuming ADD ONLY for this demo flow or simple text updates.
     addResource({
       id: `res-${Date.now()}`,
       title: resourceForm.title || 'Untitled Document',
@@ -104,6 +103,18 @@ export default function Dashboard() {
 
     setIsModalOpen(false);
     resetResourceForm();
+  };
+
+  // --- APPLICATION HANDLERS ---
+  const handleViewApplication = (app: Application) => {
+    setViewingApp(app);
+    setIsModalOpen(true);
+  };
+
+  const handleDeleteApplication = (id: string) => {
+    if (confirm('Are you sure you want to delete this application?')) {
+      deleteApplication(id);
+    }
   };
 
   // --- DRAG & DROP & FILE HANDLERS ---
@@ -180,18 +191,26 @@ export default function Dashboard() {
              >
                 <FileStack size={14} /> Documents
              </button>
+             <button 
+                onClick={() => setActiveTab('applications')}
+                className={`px-6 py-3 rounded-lg text-xs font-black uppercase tracking-widest transition-all flex items-center gap-2 ${activeTab === 'applications' ? 'brand-bg text-white shadow-lg' : 'text-brandGray hover:text-white'}`}
+             >
+                <Inbox size={14} /> Inbox ({applications.length})
+             </button>
           </div>
         </div>
 
-        {/* Add Button */}
-        <div className="flex justify-end mb-8">
-           <button 
-            onClick={() => { setIsModalOpen(true); setEditingId(null); resetActorForm(); resetResourceForm(); }}
-            className="px-8 py-4 brand-bg text-white font-black rounded-xl uppercase tracking-widest text-xs flex items-center gap-3 hover:scale-105 transition-all shadow-xl shadow-brandCyan/20"
-          >
-            <Plus size={18} /> {activeTab === 'talent' ? 'Add New Talent' : 'Upload Document'}
-          </button>
-        </div>
+        {/* Add Button (Only for Talent/Resources) */}
+        {activeTab !== 'applications' && (
+          <div className="flex justify-end mb-8">
+             <button 
+              onClick={() => { setIsModalOpen(true); setEditingId(null); setViewingApp(null); resetActorForm(); resetResourceForm(); }}
+              className="px-8 py-4 brand-bg text-white font-black rounded-xl uppercase tracking-widest text-xs flex items-center gap-3 hover:scale-105 transition-all shadow-xl shadow-brandCyan/20"
+            >
+              <Plus size={18} /> {activeTab === 'talent' ? 'Add New Talent' : 'Upload Document'}
+            </button>
+          </div>
+        )}
 
         {/* CONTENT AREA */}
         {activeTab === 'talent' ? (
@@ -238,7 +257,7 @@ export default function Dashboard() {
               </tbody>
             </table>
           </div>
-        ) : (
+        ) : activeTab === 'resources' ? (
           // RESOURCES TABLE
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
              {resources.map((res) => (
@@ -264,19 +283,61 @@ export default function Dashboard() {
                </div>
              ))}
           </div>
+        ) : (
+          // APPLICATIONS INBOX
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="border-b border-white/10">
+                  <th className="pb-6 text-[10px] uppercase tracking-widest text-brandGray font-black">Date</th>
+                  <th className="pb-6 text-[10px] uppercase tracking-widest text-brandGray font-black">Applicant Name</th>
+                  <th className="pb-6 text-[10px] uppercase tracking-widest text-brandGray font-black">Details</th>
+                  <th className="pb-6 text-[10px] uppercase tracking-widest text-brandGray font-black text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5">
+                {applications.length === 0 ? (
+                  <tr>
+                    <td colSpan={4} className="py-8 text-center text-brandGray text-sm">No new applications.</td>
+                  </tr>
+                ) : (
+                  applications.map((app) => (
+                    <tr key={app.id} className="group hover:bg-white/[0.02] transition-colors">
+                      <td className="py-6 text-sm text-brandGray font-mono">{app.submittedAt}</td>
+                      <td className="py-6">
+                        <h4 className="text-lg font-bold text-white">{app.englishName}</h4>
+                        <p className="text-xs text-brandGray">{app.chineseName} ({app.gender})</p>
+                      </td>
+                      <td className="py-6 text-sm text-brandGray">
+                         <span className="block">DOB: {app.dob}</span>
+                         <span className="block">{app.address}</span>
+                      </td>
+                      <td className="py-6 text-right">
+                        <div className="flex justify-end gap-3">
+                          <button onClick={() => handleViewApplication(app)} className="p-2 brand-bg text-white rounded-lg hover:scale-105 transition-all"><Eye size={16} /></button>
+                          <button onClick={() => handleDeleteApplication(app.id)} className="p-2 bg-white/5 border border-white/10 rounded-lg hover:border-red-500/60 hover:text-red-500 transition-all"><Trash2 size={16} /></button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
         )}
 
         {/* --- MODALS --- */}
         {isModalOpen && (
           <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-brandBlack/90 backdrop-blur-md">
             <div className="w-full max-w-2xl bg-brandBlack border border-white/10 rounded-3xl p-8 relative shadow-2xl animate-in zoom-in duration-300 max-h-[90vh] overflow-y-auto custom-scrollbar">
-               <button onClick={() => setIsModalOpen(false)} className="absolute top-6 right-6 text-brandGray hover:text-white"><X /></button>
+               <button onClick={() => { setIsModalOpen(false); setViewingApp(null); }} className="absolute top-6 right-6 text-brandGray hover:text-white"><X /></button>
                
                {activeTab === 'talent' ? (
                  /* ACTOR FORM */
                  <>
                    <h3 className="text-3xl font-cinematic font-black mb-10 tracking-tight">{editingId ? 'Update Star Portfolio' : 'Register New Star'}</h3>
                    <form onSubmit={handleSaveActor} className="grid grid-cols-2 gap-8">
+                      {/* ... (Existing Actor Form inputs) ... */}
                       <div className="col-span-2">
                         <label className="block text-[10px] text-brandGray uppercase font-black mb-3 tracking-widest">Headshot Upload</label>
                         <div 
@@ -343,12 +404,13 @@ export default function Dashboard() {
                       </div>
                    </form>
                  </>
-               ) : (
+               ) : activeTab === 'resources' ? (
                  /* RESOURCE FORM */
                  <>
                    <h3 className="text-3xl font-cinematic font-black mb-10 tracking-tight">Upload Document</h3>
                    <form onSubmit={handleSaveResource} className="grid grid-cols-1 gap-8">
-                      <div>
+                      {/* ... (Existing Resource Form Inputs) ... */}
+                       <div>
                         <label className="block text-[10px] text-brandGray uppercase font-black mb-3 tracking-widest">PDF File</label>
                         <div 
                             onDrop={handleFileDrop}
@@ -399,6 +461,51 @@ export default function Dashboard() {
                       </div>
                    </form>
                  </>
+               ) : (
+                 /* VIEW APPLICATION DETAILS */
+                 viewingApp && (
+                  <div className="space-y-6">
+                    <div className="border-b border-white/10 pb-6">
+                      <h3 className="text-3xl font-cinematic font-black tracking-tight">{viewingApp.englishName}</h3>
+                      <p className="text-lg text-brandCyan">{viewingApp.chineseName}</p>
+                    </div>
+                    
+                    <div className="grid grid-cols-2 gap-6">
+                       <div className="bg-white/5 p-4 rounded-xl">
+                          <p className="text-[10px] text-brandGray uppercase font-black mb-1">Gender / DOB</p>
+                          <p className="text-white">{viewingApp.gender}, {viewingApp.dob}</p>
+                       </div>
+                       <div className="bg-white/5 p-4 rounded-xl">
+                          <p className="text-[10px] text-brandGray uppercase font-black mb-1">Physical</p>
+                          <p className="text-white">{viewingApp.height}cm / {viewingApp.weight}kg ({viewingApp.race})</p>
+                       </div>
+                       <div className="bg-white/5 p-4 rounded-xl">
+                          <p className="text-[10px] text-brandGray uppercase font-black mb-1">ID Number</p>
+                          <p className="text-white">{viewingApp.idNumber}</p>
+                       </div>
+                       <div className="bg-white/5 p-4 rounded-xl">
+                          <p className="text-[10px] text-brandGray uppercase font-black mb-1">English Level</p>
+                          <p className="text-white">{viewingApp.englishLevel}</p>
+                       </div>
+                    </div>
+
+                    <div className="bg-white/5 p-4 rounded-xl">
+                       <p className="text-[10px] text-brandGray uppercase font-black mb-1">Contact</p>
+                       <p className="text-white">{viewingApp.guardianMobile}</p>
+                       <p className="text-white text-sm mt-1">{viewingApp.address}</p>
+                    </div>
+
+                    <div className="bg-white/5 p-4 rounded-xl">
+                       <p className="text-[10px] text-brandGray uppercase font-black mb-1">Hobbies & Preferences</p>
+                       <p className="text-white text-sm">{viewingApp.hobbies}</p>
+                    </div>
+
+                    <div className="bg-white/5 p-4 rounded-xl">
+                       <p className="text-[10px] text-brandGray uppercase font-black mb-1">Resume / Experience</p>
+                       <p className="text-white text-sm whitespace-pre-wrap">{viewingApp.resume}</p>
+                    </div>
+                  </div>
+                 )
                )}
             </div>
           </div>
