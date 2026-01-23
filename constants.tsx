@@ -1,3 +1,4 @@
+
 import { Actor, FilmProject, Opportunity, HistoryEvent, Resource } from './types';
 
 export const ACTORS: Actor[] = [
@@ -360,6 +361,163 @@ export const OPPORTUNITIES: Opportunity[] = [
     location: 'Historic LA',
     shootDates: 'Jan 10 - Feb 20, 2026',
     requirements: 'Mature demeanor for age, inquisitive, ability to carry scenes with adult actors.',
+    status: 'Open'
+  },
+  // NEW ADDITIONS
+  {
+    id: 'cast-2026-009',
+    projectName: 'Future Tech Commercial',
+    company: 'Silicon Valley Media',
+    roleType: 'Principal',
+    gender: 'Any',
+    genre: 'Commercial',
+    ageRange: '8-12',
+    location: 'San Francisco / LA',
+    shootDates: 'April 5 - April 7, 2026',
+    requirements: 'Tech-savvy look, comfortable interacting with tablets and green screens. Expressive facial features.',
+    status: 'Open'
+  },
+  {
+    id: 'cast-2026-010',
+    projectName: 'The Little Bear Adventures',
+    company: 'Animation Works Studio',
+    roleType: 'Voiceover (Lead)',
+    gender: 'Male',
+    genre: 'Animation',
+    ageRange: '6-9',
+    location: 'Burbank Recording Studio',
+    shootDates: 'May 2026 (Multiple Sessions)',
+    requirements: 'Energetic, raspy or unique voice character. Must take direction well in booth.',
+    status: 'Open'
+  },
+  {
+    id: 'cast-2026-011',
+    projectName: 'Summer Pop Anthem',
+    company: 'Chart Topper Records',
+    roleType: 'Dancer / Extra',
+    gender: 'Any',
+    genre: 'Music Video',
+    ageRange: '13-17',
+    location: 'Venice Beach, CA',
+    shootDates: 'June 20, 2026',
+    requirements: 'Good rhythm, hip-hop or contemporary dance skills preferred. Summer beach attire.',
+    status: 'Open'
+  },
+  {
+    id: 'cast-2026-012',
+    projectName: 'The Silent Playground',
+    company: 'Dark Horizon Films',
+    roleType: 'Supporting (The Ghost)',
+    gender: 'Female',
+    genre: 'Horror / Thriller',
+    ageRange: '7-10',
+    location: 'Altadena, CA',
+    shootDates: 'Oct 10 - Oct 15, 2026',
+    requirements: 'Pale complexion, ability to stay very still. Gymnastics ability is a plus for movement scenes.',
+    status: 'Open'
+  },
+  {
+    id: 'cast-2026-013',
+    projectName: 'Back to School 2026',
+    company: 'Global Retail Brand',
+    roleType: 'Model (Print)',
+    gender: 'Any',
+    genre: 'Print / Commercial',
+    ageRange: '5-14',
+    location: 'Los Angeles Studio',
+    shootDates: 'March 15, 2026',
+    requirements: 'Bright smiles, diverse ethnicities. Comfortable changing outfits quickly.',
+    status: 'Open'
+  },
+  {
+    id: 'cast-2026-014',
+    projectName: 'Kingdom of Clouds',
+    company: 'Epic Sagacom',
+    roleType: 'Flashback (Young Hero)',
+    gender: 'Male',
+    genre: 'Fantasy Feature',
+    ageRange: '10-13',
+    location: 'Soundstage 4, Hollywood',
+    shootDates: 'July 2026',
+    requirements: 'Resemblance to lead actor (Caucasian, brown hair). Sword fighting basics (will train).',
+    status: 'In Progress'
+  },
+  {
+    id: 'cast-2026-015',
+    projectName: 'Science Squad',
+    company: 'EduTV Network',
+    roleType: 'Host / Presenter',
+    gender: 'Female',
+    genre: 'Educational Series',
+    ageRange: '12-15',
+    location: 'Culver City, CA',
+    shootDates: 'Weekly, Summer 2026',
+    requirements: 'Clear diction, high energy, interest in science/chemistry. Teleprompter reading skills.',
+    status: 'Open'
+  },
+  {
+    id: 'cast-2026-016',
+    projectName: 'Family Game Night',
+    company: 'Boardwalk Games',
+    roleType: 'Ensemble Family',
+    gender: 'Any',
+    genre: 'Commercial',
+    ageRange: '8-14',
+    location: 'Sherman Oaks (House Location)',
+    shootDates: 'April 22, 2026',
+    requirements: 'Sibling chemistry needed. Authentic laughter and competitive spirit.',
+    status: 'Open'
+  },
+  {
+    id: 'cast-2026-017',
+    projectName: 'Midnight Detectives',
+    company: 'StreamLine Original',
+    roleType: 'Background / Featured',
+    gender: 'Any',
+    genre: 'TV Series',
+    ageRange: '14-18',
+    location: 'High School Location, LA',
+    shootDates: 'May 1 - May 5, 2026',
+    requirements: 'Look like high school students. Various styles (Goth, Jock, Prep) needed.',
+    status: 'Open'
+  },
+  {
+    id: 'cast-2026-018',
+    projectName: 'Toy Unboxing Mania',
+    company: 'Digital Kids Network',
+    roleType: 'Host',
+    gender: 'Any',
+    genre: 'Web Series',
+    ageRange: '6-9',
+    location: 'YouTube Space LA',
+    shootDates: 'Monthly Recurring',
+    requirements: 'Extremely high energy, loud voice, engaging personality. Obsessed with toys.',
+    status: 'Open'
+  },
+  {
+    id: 'cast-2026-019',
+    projectName: 'The Last Symphony',
+    company: 'Indie Art Pictures',
+    roleType: 'Supporting (Prodigy)',
+    gender: 'Any',
+    genre: 'Drama Feature',
+    ageRange: '8-12',
+    location: 'Disney Concert Hall / Studio',
+    shootDates: 'August 2026',
+    requirements: 'Must play Violin or Cello at an intermediate/advanced level. Serious acting role.',
+    status: 'Open'
+  },
+  {
+    id: 'cast-2026-020',
+    projectName: 'Galactic Rangers',
+    company: 'Starlight Studios',
+    roleType: 'Action Double / Stunt',
+    gender: 'Female',
+    genre: 'Sci-Fi TV',
+    ageRange: '12-15',
+    location: 'Vasquez Rocks',
+    shootDates: 'June 10 - June 12, 2026',
+    requirements: 'Gymnastics/Parkour background mandatory. Willing to wear prosthetics/makeup.',
     status: 'Open'
   }
 ];

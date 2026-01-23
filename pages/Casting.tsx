@@ -35,7 +35,8 @@ export default function Casting() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {filtered.slice(0, 12).map((job) => (
+          {/* Increased slice to show more items, or just removed it to show all filtered items */}
+          {filtered.map((job) => (
             <div key={job.id} className="p-8 bg-white/5 border border-white/10 hover:border-brandCyan/40 transition-all rounded-3xl flex flex-col group relative overflow-hidden">
               <div className="absolute top-0 right-0 w-40 h-40 brand-bg opacity-[0.03] -mr-16 -mt-16 rounded-full blur-3xl group-hover:opacity-10 transition-opacity"></div>
               
