@@ -1,32 +1,54 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Play, Film, Star, TrendingUp, Users, Clapperboard, Monitor, Send, Search, Award, ShieldCheck, Globe, Camera, Zap, CheckCircle } from 'lucide-react';
+import { Play, Film, Star, TrendingUp, Users, Clapperboard, Monitor, Send, Search, Award, ShieldCheck, Globe, Camera, Zap, CheckCircle, Quote, ArrowRight, Trophy, Sparkles } from 'lucide-react';
+import { FILMS } from '../constants';
 
 const ECOSYSTEM_ITEMS = [
   {
     title: "Hands-on Sets",
-    desc: "Experience real filming schedules, professional cues, and set etiquette.",
+    desc: "Experience the intensity of active soundstages. Master professional call sheets, set etiquette, and rigorous shooting schedules under the guidance of union-level crews.",
     icon: Camera,
     image: "https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&q=80&w=800"
   },
   {
     title: "Elite Training",
-    desc: "Advanced curriculum from emotional range to camera technicals.",
+    desc: "A dual-focus curriculum mastering method acting and technical screen performance. From deep emotional recall to precise blocking and camera continuity.",
     icon: Zap,
     image: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&q=80&w=800"
   },
   {
     title: "Global Network",
-    desc: "Partnerships spanning LA to international creative capitals.",
+    desc: "A bridge to the world's entertainment capitals. Direct casting pipelines to major agencies in LA, New York, and abroad, ensuring your talent reaches a global audience.",
     icon: Globe,
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
   },
   {
     title: "Career Credits",
-    desc: "Building professional credibility through tangible film outcomes.",
+    desc: "Graduate with a verifiable IMDb resume. We ensure every student earns professional credits, a cinematic showreel, and tangible industry recognition before they leave.",
     icon: Award,
     image: "https://images.unsplash.com/photo-1616091216791-a5360b5fc78a?auto=format&fit=crop&q=80&w=800"
+  }
+];
+
+const TESTIMONIALS = [
+  {
+    quote: "ALT doesn't just teach acting; they build careers. My daughter went from a classroom to a professional set in 3 months.",
+    author: "Sarah Mitchell",
+    role: "Parent of Alumni",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150"
+  },
+  {
+    quote: "The discipline and set etiquette these kids have is comparable to adult professionals. A joy to cast.",
+    author: "David Chen",
+    role: "Casting Director, LA",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150"
+  },
+  {
+    quote: "Finally, a program that understands the industry. The IMDb credits are real, and the experience is invaluable.",
+    author: "Elena Rodriguez",
+    role: "Talent Agent",
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150"
   }
 ];
 
@@ -76,110 +98,234 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Featured Films Showcase (Visual Impact) */}
+      <section className="py-16 bg-brandBlack border-b border-white/5 relative overflow-hidden">
+         <div className="absolute top-0 right-0 w-1/2 h-full bg-brandCyan/5 blur-3xl rounded-full pointer-events-none"></div>
+         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
+               <div>
+                  <h2 className="brand-gradient-text text-xs font-black tracking-[0.4em] uppercase mb-2">Now Streaming</h2>
+                  <h3 className="text-3xl md:text-4xl font-cinematic font-black tracking-tight text-white">Latest Productions</h3>
+               </div>
+               <Link to="/films" className="flex items-center gap-2 text-brandCyan text-xs font-bold uppercase tracking-widest hover:text-white transition-colors group">
+                  View Full Library <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform"/>
+               </Link>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+               {FILMS.slice(0, 4).map((film) => (
+                  <Link to="/films" key={film.id} className="group relative aspect-[2/3] rounded-xl overflow-hidden shadow-2xl border border-white/10 hover:border-brandCyan/50 transition-all cursor-pointer">
+                     <img 
+                        src={film.posterUrl} 
+                        alt={film.title} 
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        loading="lazy"
+                     />
+                     <div className="absolute inset-0 bg-gradient-to-t from-brandBlack/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                        <span className="text-[9px] brand-bg text-white px-2 py-0.5 rounded w-fit mb-2 font-bold uppercase tracking-wide">{film.genre}</span>
+                        <h4 className="text-sm font-bold text-white leading-tight">{film.title}</h4>
+                     </div>
+                  </Link>
+               ))}
+            </div>
+         </div>
+      </section>
+
+      {/* NEW SECTION: Industry News & Awards */}
+      <section className="py-12 bg-[#080808] border-b border-white/5 relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute left-0 bottom-0 w-64 h-64 bg-amber-500/5 blur-[80px] rounded-full pointer-events-none"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex items-center gap-4 mb-8">
+             <div className="h-px bg-white/10 flex-1"></div>
+             <h2 className="text-xs font-black uppercase tracking-[0.3em] text-brandGray flex items-center gap-2">
+                <Sparkles size={12} className="text-amber-400" />
+                Industry Recognition & Awards
+             </h2>
+             <div className="h-px bg-white/10 flex-1"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+             {/* News Item 1: Golden State Film Festival */}
+             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 group hover:border-brandCyan/30 transition-all shadow-lg hover:shadow-brandCyan/5">
+                <div className="w-24 h-24 sm:w-28 sm:h-28 shrink-0 bg-black rounded-xl border border-white/20 flex items-center justify-center p-4 shadow-inner relative overflow-hidden">
+                   <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
+                   <img 
+                      src="https://i.ibb.co/kssxQ1DR/golden-state-film-festival-logo.jpg"
+                      onError={(e) => {
+                         // Fallback visual if image fails
+                         e.currentTarget.style.display = 'none';
+                         e.currentTarget.nextElementSibling!.classList.remove('hidden');
+                      }}
+                      className="w-full h-full object-contain drop-shadow-md" 
+                      alt="Golden State Film Festival" 
+                   />
+                   <div className="hidden flex flex-col items-center justify-center text-center">
+                      <Film size={32} className="text-white mb-1" />
+                      <span className="text-[8px] uppercase font-bold text-white leading-tight">Golden State<br/>Film Festival</span>
+                   </div>
+                </div>
+                <div className="text-center sm:text-left flex-1">
+                   <div className="inline-block px-3 py-1 border border-white/20 rounded-full bg-white/5 mb-3">
+                       <p className="text-[10px] font-black uppercase tracking-widest text-white/90">Official Selection</p>
+                   </div>
+                   <h3 className="text-3xl font-cinematic font-black text-white mb-1 group-hover:text-brandCyan transition-colors">THE garden</h3>
+                   <div className="w-12 h-0.5 bg-brandCyan/50 mx-auto sm:mx-0 mb-3"></div>
+                   <p className="text-brandGray text-sm font-bold tracking-wide uppercase">Golden State Film Festival</p>
+                   <p className="text-brandGray text-xs mt-1 font-medium opacity-60">Official Selection</p>
+                </div>
+             </div>
+
+             {/* News Item 2: Golden Feather Awards */}
+             <div className="bg-gradient-to-br from-[#1a1500] to-black border border-amber-500/20 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 group hover:border-amber-500/50 transition-all shadow-lg hover:shadow-amber-500/10 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-full h-full bg-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="w-24 h-24 sm:w-28 sm:h-28 shrink-0 bg-black rounded-xl border border-amber-500/30 flex items-center justify-center p-4 shadow-[0_0_30px_rgba(245,158,11,0.15)] relative z-10">
+                   <img 
+                      src="https://i.ibb.co/TqJBkL9F/Chat-GPT-Image-2025-8-29-15-46-30-1.jpg"
+                      onError={(e) => {
+                         e.currentTarget.style.display = 'none';
+                         e.currentTarget.nextElementSibling!.classList.remove('hidden');
+                      }}
+                      className="w-full h-full object-contain drop-shadow-md" 
+                      alt="Golden Feather Awards" 
+                   />
+                   <div className="hidden flex flex-col items-center justify-center text-center">
+                      <Trophy size={32} className="text-amber-400 mb-1" />
+                      <span className="text-[8px] uppercase font-bold text-amber-400 leading-tight">Golden Feather<br/>Awards</span>
+                   </div>
+                </div>
+                <div className="text-center sm:text-left flex-1 relative z-10">
+                   <div className="inline-block px-3 py-1 border border-amber-500/30 rounded-full bg-amber-500/10 mb-3">
+                       <p className="text-[10px] font-black uppercase tracking-widest text-amber-400 flex items-center gap-2">
+                          <Star size={8} fill="currentColor" /> Winner <Star size={8} fill="currentColor" />
+                       </p>
+                   </div>
+                   <h3 className="text-3xl font-cinematic font-black text-white mb-1 group-hover:text-amber-400 transition-colors">THE Shift</h3>
+                   <div className="w-12 h-0.5 bg-amber-500/50 mx-auto sm:mx-0 mb-3"></div>
+                   <p className="text-brandGray text-sm font-bold tracking-wide uppercase">Golden Feather Awards</p>
+                   <div className="flex flex-wrap justify-center sm:justify-start gap-2 mt-3">
+                      <span className="text-[9px] font-bold border border-amber-500/30 text-amber-200/90 px-2 py-1 rounded bg-amber-900/20">Best Story</span>
+                      <span className="text-[9px] font-bold border border-amber-500/30 text-amber-200/90 px-2 py-1 rounded bg-amber-900/20">Best Actor</span>
+                      <span className="text-[9px] font-bold border border-amber-500/30 text-amber-200/90 px-2 py-1 rounded bg-amber-900/20">Best Director</span>
+                   </div>
+                </div>
+             </div>
+          </div>
+        </div>
+      </section>
+
       {/* Introduction Section */}
-      <section className="py-16 bg-brandBlack">
+      <section className="py-20 bg-brandBlack">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="animate-in fade-in slide-in-from-left duration-1000">
-              <h2 className="brand-gradient-text text-xs font-black tracking-[0.4em] uppercase mb-2">Our Legacy & Mission</h2>
-              <h3 className="text-3xl md:text-4xl font-cinematic font-black mb-6 leading-tight tracking-tight">Professional Youth Film Ecosystem in LA</h3>
+              <h2 className="brand-gradient-text text-xs font-black tracking-[0.4em] uppercase mb-4">Our Legacy & Mission</h2>
+              <h3 className="text-3xl md:text-5xl font-cinematic font-black mb-8 leading-tight tracking-tight text-white">
+                Where Training Meets <br/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">Real Film Production</span>
+              </h3>
               
-              <div className="space-y-4 text-brandGray text-sm md:text-base leading-relaxed font-light">
+              <div className="space-y-6 text-brandGray text-sm md:text-base leading-relaxed font-light mb-10">
                 <p>
-                  ALT HOLLYWOOD DREAM STAR is a Los Angeles–based professional youth film institution built upon the Hollywood production system. We operate as a full-cycle creative hub where training meets real-world execution.
+                  ALT HOLLYWOOD DREAM STAR is not just a school; it's a launchpad. Based in Los Angeles, we operate as a full-cycle creative hub where acting training integrates seamlessly with professional filmmaking.
                 </p>
                 <p>
-                  We integrate structured acting training with real film production, providing young talents aged 6–18 with hands-on experience in professional sets, industry-standard workflows, and official film distribution.
-                </p>
-                <p>
-                  Our unique "Film-First" methodology ensures that education is never theoretical. Every technique taught in our studios is immediately applied in front of the camera.
+                  We provide young talents aged 6–18 with hands-on experience in professional sets, industry-standard workflows, and official film distribution. Our "Film-First" methodology ensures education translates directly to screen performance.
                 </p>
               </div>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+              <div className="grid grid-cols-2 gap-y-6 gap-x-4">
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="text-brandCyan mt-1 shrink-0" size={16} />
+                  <div className="p-1 rounded-full bg-brandCyan/10 text-brandCyan"><CheckCircle size={16} /></div>
                   <div>
-                    <h5 className="text-white font-bold mb-1 text-sm">Authentic Sets</h5>
-                    <p className="text-xs text-brandGray">High-fidelity environments.</p>
+                    <h5 className="text-white font-bold mb-0.5 text-sm">Authentic Sets</h5>
+                    <p className="text-xs text-brandGray">High-fidelity studio environments.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="text-brandCyan mt-1 shrink-0" size={16} />
+                   <div className="p-1 rounded-full bg-brandCyan/10 text-brandCyan"><CheckCircle size={16} /></div>
                   <div>
-                    <h5 className="text-white font-bold mb-1 text-sm">IMDb Credits</h5>
-                    <p className="text-xs text-brandGray">Verified recognition.</p>
+                    <h5 className="text-white font-bold mb-0.5 text-sm">IMDb Credits</h5>
+                    <p className="text-xs text-brandGray">Verified professional recognition.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="text-brandCyan mt-1 shrink-0" size={16} />
+                   <div className="p-1 rounded-full bg-brandCyan/10 text-brandCyan"><CheckCircle size={16} /></div>
                   <div>
-                    <h5 className="text-white font-bold mb-1 text-sm">Agency Access</h5>
-                    <p className="text-xs text-brandGray">Direct submissions.</p>
+                    <h5 className="text-white font-bold mb-0.5 text-sm">Agency Access</h5>
+                    <p className="text-xs text-brandGray">Direct submissions to top agents.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="text-brandCyan mt-1 shrink-0" size={16} />
+                   <div className="p-1 rounded-full bg-brandCyan/10 text-brandCyan"><CheckCircle size={16} /></div>
                   <div>
-                    <h5 className="text-white font-bold mb-1 text-sm">Global Reach</h5>
-                    <p className="text-xs text-brandGray">Festivals & Streaming.</p>
+                    <h5 className="text-white font-bold mb-0.5 text-sm">Global Reach</h5>
+                    <p className="text-xs text-brandGray">Festivals & Streaming platforms.</p>
                   </div>
                 </div>
               </div>
             </div>
             
-            <div className="space-y-6 animate-in fade-in slide-in-from-right duration-1000">
-              <div className="relative rounded-2xl overflow-hidden border border-white/10 aspect-video group shadow-xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1533488765986-dfa2a9939acd?auto=format&fit=crop&q=80&w=1000" 
-                  className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-1000"
-                  alt="Professional film equipment"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 brand-bg opacity-[0.05]"></div>
-                <div className="absolute inset-0 flex flex-col justify-end p-6">
-                  <div className="bg-brandBlack/80 backdrop-blur-xl p-5 border border-white/10 rounded-xl shadow-lg">
-                    <p className="text-brandCyan text-[10px] font-black uppercase tracking-[0.3em] mb-2">Hollywood Standard</p>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <p className="text-3xl font-cinematic font-black text-white">100+</p>
-                        <p className="text-xs text-brandGray uppercase tracking-widest font-bold">Partner Agencies</p>
-                      </div>
-                      <div>
-                        <p className="text-3xl font-cinematic font-black text-white">12+</p>
-                        <p className="text-xs text-brandGray uppercase tracking-widest font-bold">Films Produced</p>
-                      </div>
-                    </div>
+            <div className="relative">
+               <div className="absolute inset-0 bg-brandCyan/20 blur-[100px] rounded-full opacity-20"></div>
+               <div className="grid grid-cols-2 gap-4 relative z-10">
+                  <div className="space-y-4 translate-y-8">
+                     <img src="https://images.unsplash.com/photo-1533488765986-dfa2a9939acd?auto=format&fit=crop&q=80&w=600" className="rounded-2xl shadow-2xl border border-white/10 opacity-80" alt="Camera" />
+                     <div className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
+                        <p className="text-3xl font-cinematic font-black text-white mb-1">50+</p>
+                        <p className="text-[10px] text-brandGray uppercase tracking-widest font-bold">Partner Agencies</p>
+                     </div>
                   </div>
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="p-6 bg-white/5 border border-white/10 rounded-xl text-center hover:border-brandCyan/30 transition-all">
-                  <p className="text-2xl font-cinematic font-black brand-gradient-text">80+</p>
-                  <p className="text-xs text-brandGray uppercase tracking-widest mt-1 font-bold">Youth Stars</p>
-                </div>
-                <div className="p-6 bg-white/5 border border-white/10 rounded-xl text-center hover:border-brandCyan/30 transition-all">
-                  <p className="text-2xl font-cinematic font-black brand-gradient-text">15+</p>
-                  <p className="text-xs text-brandGray uppercase tracking-widest mt-1 font-bold">Prod. Houses</p>
-                </div>
-              </div>
+                  <div className="space-y-4">
+                     <div className="bg-brandBg border border-brandCyan/20 p-6 rounded-2xl bg-gradient-to-br from-brandCyan/10 to-brandPurple/10 backdrop-blur-sm">
+                        <p className="text-3xl font-cinematic font-black text-white mb-1">12+</p>
+                        <p className="text-[10px] text-brandGray uppercase tracking-widest font-bold">Original Films</p>
+                     </div>
+                     <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=600" className="rounded-2xl shadow-2xl border border-white/10 opacity-80" alt="Set Light" />
+                  </div>
+               </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* NEW SECTION: Impact Statistics */}
+      <section className="py-12 border-y border-white/5 bg-brandBlack/50 relative">
+         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/5">
+               <div className="group">
+                  <p className="text-4xl md:text-5xl font-cinematic font-black text-white mb-2 group-hover:brand-gradient-text transition-colors">80+</p>
+                  <p className="text-[10px] text-brandGray uppercase tracking-[0.2em] font-bold">Youth Stars</p>
+               </div>
+               <div className="group">
+                  <p className="text-4xl md:text-5xl font-cinematic font-black text-white mb-2 group-hover:brand-gradient-text transition-colors">30+</p>
+                  <p className="text-[10px] text-brandGray uppercase tracking-[0.2em] font-bold">Signed Talent</p>
+               </div>
+               <div className="group">
+                  <p className="text-4xl md:text-5xl font-cinematic font-black text-white mb-2 group-hover:brand-gradient-text transition-colors">50+</p>
+                  <p className="text-[10px] text-brandGray uppercase tracking-[0.2em] font-bold">Partner Agencies</p>
+               </div>
+               <div className="group">
+                  <p className="text-4xl md:text-5xl font-cinematic font-black text-white mb-2 group-hover:brand-gradient-text transition-colors">8+</p>
+                  <p className="text-[10px] text-brandGray uppercase tracking-[0.2em] font-bold">Industry Awards</p>
+               </div>
+            </div>
+         </div>
+      </section>
+
       {/* Pillars Section */}
-      <section className="py-16 bg-brandBlack relative">
+      <section className="py-20 bg-brandBlack relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-cinematic font-black mb-3 tracking-tight">Our Core Ecosystem</h2>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-cinematic font-black mb-4 tracking-tight text-white">Our Core Ecosystem</h2>
             <div className="w-12 h-0.5 brand-bg mx-auto mb-4"></div>
-            <p className="text-brandGray max-w-2xl mx-auto text-sm leading-relaxed">From initial discovery to international distribution, our system is designed for professional results.</p>
+            <p className="text-brandGray max-w-2xl mx-auto text-sm leading-relaxed font-light">From initial discovery to international distribution, our system is designed for professional results.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {ECOSYSTEM_ITEMS.map((item, index) => (
-              <div key={index} className="group relative h-64 rounded-2xl overflow-hidden border border-white/10 hover:border-brandCyan/50 transition-all duration-500">
+              <div key={index} className="group relative h-80 rounded-2xl overflow-hidden border border-white/10 hover:border-brandCyan/50 transition-all duration-500">
                 <div className="absolute inset-0">
                   <img 
                     src={item.image} 
@@ -190,15 +336,15 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-brandBlack via-brandBlack/80 to-transparent"></div>
                 </div>
                 
-                <div className="absolute inset-0 flex flex-col justify-end p-6 transform transition-transform duration-500 group-hover:-translate-y-2">
-                  <div className="w-10 h-10 brand-bg rounded-xl flex items-center justify-center text-white mb-3 shadow-lg shadow-brandCyan/20 transform group-hover:scale-110 transition-transform duration-300">
-                    <item.icon size={20} />
+                <div className="absolute inset-0 flex flex-col justify-end p-8 transform transition-transform duration-500 group-hover:-translate-y-2">
+                  <div className="w-12 h-12 brand-bg rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-brandCyan/20 transform group-hover:scale-110 transition-transform duration-300">
+                    <item.icon size={24} />
                   </div>
-                  <h4 className="text-lg font-cinematic font-bold mb-1 text-white group-hover:brand-gradient-text transition-all">{item.title}</h4>
+                  <h4 className="text-xl font-cinematic font-bold mb-2 text-white group-hover:brand-gradient-text transition-all">{item.title}</h4>
                   <p className="text-brandGray text-xs leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
                     {item.desc}
                   </p>
-                  <div className="w-0 h-0.5 brand-bg mt-3 transition-all duration-500 group-hover:w-full"></div>
+                  <div className="w-0 h-0.5 brand-bg mt-4 transition-all duration-500 group-hover:w-full"></div>
                 </div>
               </div>
             ))}
@@ -206,18 +352,53 @@ export default function Home() {
         </div>
       </section>
 
+      {/* NEW SECTION: Testimonials */}
+      <section className="py-20 bg-[#080a0e] relative overflow-hidden">
+         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h2 className="brand-gradient-text text-xs font-black tracking-[0.4em] uppercase mb-8 text-center">Industry & Parent Voices</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+               {TESTIMONIALS.map((t, i) => (
+                  <div key={i} className="bg-white/5 border border-white/5 p-8 rounded-2xl relative hover:bg-white/[0.07] transition-colors">
+                     <Quote className="text-brandCyan/20 absolute top-6 right-6" size={40} />
+                     <div className="flex items-center gap-4 mb-6">
+                        <img src={t.image} className="w-12 h-12 rounded-full object-cover border border-white/10" alt={t.author} />
+                        <div>
+                           <p className="text-white font-bold text-sm">{t.author}</p>
+                           <p className="text-brandGray text-xs uppercase tracking-wider">{t.role}</p>
+                        </div>
+                     </div>
+                     <p className="text-brandGray text-sm italic leading-relaxed">"{t.quote}"</p>
+                  </div>
+               ))}
+            </div>
+         </div>
+      </section>
+
       {/* Call to Action */}
-      <section className="py-24 relative overflow-hidden text-center">
-        <div className="absolute inset-0 z-0">
-             <img src="https://images.unsplash.com/photo-1535016120720-40c6874c3b1c?auto=format&fit=crop&q=100&w=2500" className="w-full h-full object-cover opacity-50" alt="Stage lights" loading="lazy" />
-             <div className="absolute inset-0 bg-gradient-to-r from-brandBlack via-brandBlack/40 to-brandBlack"></div>
+      <section className="py-32 relative overflow-hidden text-center flex items-center justify-center">
+        <div className="absolute inset-0 z-0 bg-brandBlack">
+             {/* Classic Colored Cinema Auditorium (Red Seats/Gold) - No Grayscale, bright and vivid */}
+             <img 
+               src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=2500" 
+               className="w-full h-full object-cover opacity-90" 
+               alt="Classic Hollywood Cinema" 
+               loading="lazy" 
+             />
+             {/* Subtle Gradient Overlay for text readability on colorful background */}
+             <div className="absolute inset-0 bg-gradient-to-t from-brandBlack/90 via-brandBlack/10 to-brandBlack/40"></div>
         </div>
-        <div className="max-w-4xl mx-auto px-4 relative z-10">
-          <h2 className="text-3xl md:text-5xl font-cinematic font-black mb-4 tracking-tighter drop-shadow-2xl">Your Hollywood Debut Awaits</h2>
-          <p className="text-brandGray text-base mb-8 font-medium tracking-wide drop-shadow-lg">Take the first step toward becoming a professional signed actor.</p>
-          <Link to="/apply" className="inline-block px-10 py-4 brand-bg text-white font-black rounded-full uppercase tracking-[0.3em] hover:scale-110 transition-all shadow-[0_0_40px_rgba(0,210,255,0.4)] text-xs">
-            Apply Now
-          </Link>
+        
+        <div className="max-w-4xl mx-auto px-6 relative z-10">
+           {/* Glass box to make text pop against the bright screen */}
+           <div className="bg-brandBlack/60 backdrop-blur-md p-10 md:p-14 rounded-3xl border border-white/10 shadow-2xl animate-fade-up">
+              <h2 className="text-4xl md:text-6xl font-cinematic font-black mb-6 tracking-tighter drop-shadow-2xl text-white">Your Hollywood Debut Awaits</h2>
+              <p className="text-white text-lg md:text-xl mb-10 font-medium tracking-wide drop-shadow-lg opacity-90 max-w-2xl mx-auto">
+                Step onto the big screen. The audience is waiting for your performance.
+              </p>
+              <Link to="/apply" className="inline-block px-14 py-6 brand-bg text-white font-black rounded-full uppercase tracking-[0.3em] hover:scale-105 transition-all shadow-[0_0_40px_rgba(0,210,255,0.6)] text-xs md:text-sm">
+                Apply Now
+              </Link>
+           </div>
         </div>
       </section>
     </div>

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Target, Users2, Rocket, Building2, Award, Clapperboard, Star, CheckCircle } from 'lucide-react';
+import { Target, Users2, Rocket, Building2, Award, Clapperboard, Star, CheckCircle, Network, Briefcase, Megaphone, Gem, ArrowUpRight } from 'lucide-react';
 
 export default function About() {
   return (
@@ -101,8 +101,124 @@ export default function About() {
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center border-t border-white/10 pt-12">
+      {/* NEW SECTION: Career Accelerator */}
+      <section className="py-16 my-16 relative border-y border-white/5 bg-white/[0.02] overflow-hidden">
+         {/* Decorative Background */}
+         <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
+         <div className="absolute -left-20 top-20 w-72 h-72 brand-bg blur-[100px] opacity-20 rounded-full"></div>
+         <div className="absolute -right-20 bottom-20 w-72 h-72 bg-amber-500 blur-[100px] opacity-10 rounded-full"></div>
+
+         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-16">
+               <h2 className="brand-gradient-text text-xs font-black tracking-[0.4em] uppercase mb-4">Talent Management & Career Development</h2>
+               <h1 className="text-4xl md:text-6xl font-cinematic font-black mb-6 tracking-tight text-white">
+                  The Ultimate <span className="text-transparent bg-clip-text bg-gradient-to-r from-brandCyan to-brandPurple">Career Accelerator</span>
+               </h1>
+               <div className="text-brandGray max-w-3xl mx-auto text-sm md:text-base leading-relaxed font-light space-y-4">
+                  <p>
+                    We are a professional youth talent management company dedicated to discovering, developing, and guiding the next generation of young performers.
+                  </p>
+                  <p>
+                    Our focus is long-term growth — building skills, confidence, and real industry experience while helping each child plan a clear and sustainable path in film and entertainment.
+                  </p>
+               </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+               {/* Card 1: Agency Push */}
+               <div className="group relative p-6 rounded-3xl border border-white/10 bg-brandBlack overflow-hidden hover:border-brandCyan/50 transition-all duration-500 min-h-[350px] flex flex-col justify-end">
+                  {/* Background Image: Professional Agreement/Handshake - Clearer */}
+                  <div className="absolute inset-0 z-0">
+                    <img 
+                        src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=800" 
+                        className="w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity duration-700 group-hover:scale-110"
+                        alt="Agency Agreement"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brandBlack via-brandBlack/80 to-transparent"></div>
+                  </div>
+                  
+                  <div className="relative z-10">
+                      <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity -mt-32">
+                         <Network size={80} />
+                      </div>
+                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-brandCyan/20 to-blue-600/20 border border-brandCyan/30 flex items-center justify-center text-brandCyan mb-6 group-hover:scale-110 transition-transform shadow-[0_0_30px_rgba(0,229,255,0.3)]">
+                         <Briefcase size={24} />
+                      </div>
+                      <h3 className="text-xl font-cinematic font-bold text-white mb-3">Agency Placement</h3>
+                      <p className="text-brandGray text-xs md:text-sm leading-relaxed mb-6 font-medium">
+                         We actively package and pitch our top students to Los Angeles' premier talent agencies. Our reputation opens doors that remain closed to the public.
+                      </p>
+                      <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-brandCyan group-hover:translate-x-2 transition-transform">
+                         <span>Direct Submissions</span> <ArrowUpRight size={14} />
+                      </div>
+                  </div>
+               </div>
+
+               {/* Card 2: Major Studios */}
+               <div className="group relative p-6 rounded-3xl border border-white/10 bg-brandBlack overflow-hidden hover:border-brandPurple/50 transition-all duration-500 min-h-[350px] flex flex-col justify-end">
+                   {/* Background Image: Professional Camera/Film Set - Clearer */}
+                  <div className="absolute inset-0 z-0">
+                    <img 
+                        src="https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&q=80&w=800" 
+                        className="w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity duration-700 group-hover:scale-110"
+                        alt="Filming On Set"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brandBlack via-brandBlack/80 to-transparent"></div>
+                  </div>
+                  
+                  <div className="relative z-10">
+                      <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity -mt-32">
+                         <Clapperboard size={80} />
+                      </div>
+                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-brandPurple/20 to-pink-600/20 border border-brandPurple/30 flex items-center justify-center text-brandPurple mb-6 group-hover:scale-110 transition-transform shadow-[0_0_30px_rgba(112,0,255,0.3)]">
+                         <Building2 size={24} />
+                      </div>
+                      <h3 className="text-xl font-cinematic font-bold text-white mb-3">Major Studio Access</h3>
+                      <p className="text-brandGray text-xs md:text-sm leading-relaxed mb-6 font-medium">
+                         From Disney to Netflix, our students are positioned for roles in major studio productions. We provide the connections to get you into the audition room.
+                      </p>
+                      <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-brandPurple group-hover:translate-x-2 transition-transform">
+                         <span>Studio Network</span> <ArrowUpRight size={14} />
+                      </div>
+                  </div>
+               </div>
+
+               {/* Card 3: Job Opportunities */}
+               <div className="group relative p-6 rounded-3xl border border-white/10 bg-brandBlack overflow-hidden hover:border-amber-500/50 transition-all duration-500 min-h-[350px] flex flex-col justify-end">
+                  {/* Background Image: Audition/Spotlight/Performance - Clearer */}
+                  <div className="absolute inset-0 z-0">
+                    <img 
+                        src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=800" 
+                        className="w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity duration-700 group-hover:scale-110"
+                        alt="Casting & Audition"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brandBlack via-brandBlack/80 to-transparent"></div>
+                  </div>
+                  
+                  <div className="relative z-10">
+                      <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity -mt-32">
+                         <Gem size={80} />
+                      </div>
+                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-600/20 border border-amber-500/30 flex items-center justify-center text-amber-500 mb-6 group-hover:scale-110 transition-transform shadow-[0_0_30px_rgba(245,158,11,0.3)]">
+                         <Megaphone size={24} />
+                      </div>
+                      <h3 className="text-xl font-cinematic font-bold text-white mb-3">Endless Opportunities</h3>
+                      <p className="text-brandGray text-xs md:text-sm leading-relaxed mb-6 font-medium">
+                         Commercials, print ads, voiceovers, and events. We constantly scout and aggregate filming jobs to ensure our talent stays booked and busy.
+                      </p>
+                      <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-amber-500 group-hover:translate-x-2 transition-transform">
+                         <span>Active Casting</span> <ArrowUpRight size={14} />
+                      </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center border-t border-white/10 pt-12">
            <div>
               <h2 className="text-2xl font-cinematic font-black mb-3">Our Commitment</h2>
               <p className="text-brandGray text-sm md:text-base leading-relaxed mb-6 font-light">
