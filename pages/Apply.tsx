@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { FileDown, CheckCircle2, User, Activity, MapPin, FileText, Phone, Mail, Info } from 'lucide-react';
+import { FileDown, CheckCircle2, User, Activity, MapPin, FileText, Phone, Mail, Info, Send } from 'lucide-react';
 import { useData } from '../DataContext';
 
 export default function Apply() {
@@ -32,12 +32,43 @@ export default function Apply() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Save to Context (Simulating Backend)
+    // 1. Save to Internal Context (Dashboard)
     submitApplication({
       id: `app-${Date.now()}`,
       ...formData,
       submittedAt: new Date().toISOString().split('T')[0]
     });
+
+    // 2. Prepare Email Body for Mailto
+    const subject = `New Talent Application: ${formData.englishName}`;
+    const body = `
+OFFICIAL REGISTRATION DETAILS
+-----------------------------
+Name: ${formData.englishName} ${formData.chineseName ? `(${formData.chineseName})` : ''}
+Gender: ${formData.gender}
+DOB: ${formData.dob}
+Height: ${formData.height}cm
+Weight: ${formData.weight}kg
+Race: ${formData.race}
+ID/Passport: ${formData.idNumber}
+
+CONTACT
+-------
+Address: ${formData.address}
+Guardian Mobile: ${formData.guardianMobile}
+English Level: ${formData.englishLevel}
+
+PROFILE
+-------
+Hobbies: ${formData.hobbies}
+Resume/Experience: ${formData.resume}
+
+Submitted via ALT Dream Star Web Portal
+    `;
+
+    // 3. Trigger Mail Client
+    const mailtoLink = `mailto:altdreamstar@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
 
     setSubmitted(true);
     window.scrollTo(0, 0);
@@ -51,9 +82,10 @@ export default function Apply() {
           <div className="w-20 h-20 brand-bg text-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_50px_rgba(0,210,255,0.4)] relative">
             <CheckCircle2 size={40} />
           </div>
-          <h2 className="text-2xl font-cinematic font-black mb-3 tracking-tight">Application Received</h2>
-          <p className="text-brandGray text-base leading-normal mb-8 font-light">
-            Thank you for applying. Your data has been securely transmitted. Our team will contact you shortly.
+          <h2 className="text-2xl font-cinematic font-black mb-3 tracking-tight">Application Generated</h2>
+          <p className="text-brandGray text-base leading-normal mb-8 font-light max-w-lg mx-auto">
+            Your data has been saved to our internal system. <br/>
+            <span className="text-brandCyan font-bold">Please confirm sending the email via your mail app to finalize the submission.</span>
           </p>
           <button 
             onClick={() => {
@@ -259,8 +291,8 @@ export default function Apply() {
                    </div>
                 </div>
 
-                <button type="submit" className="w-full py-4 brand-bg text-white font-black uppercase tracking-[0.3em] rounded-lg hover:scale-105 transition-all shadow-[0_0_30px_rgba(0,210,255,0.3)] text-xs">
-                  Submit Official Registration
+                <button type="submit" className="w-full py-4 brand-bg text-white font-black uppercase tracking-[0.3em] rounded-lg hover:scale-105 transition-all shadow-[0_0_30px_rgba(0,210,255,0.3)] text-xs flex items-center justify-center gap-2">
+                  <Send size={16} /> Submit & Email Application
                 </button>
               </form>
             </div>
