@@ -183,19 +183,19 @@ export default function Dashboard() {
                 onClick={() => setActiveTab('talent')}
                 className={`px-6 py-3 rounded-lg text-xs font-black uppercase tracking-widest transition-all flex items-center gap-2 ${activeTab === 'talent' ? 'brand-bg text-white shadow-lg' : 'text-brandGray hover:text-white'}`}
              >
-                <Users size={14} /> Talent Roster
+                <Users size={16} /> Talent Roster
              </button>
              <button 
                 onClick={() => setActiveTab('resources')}
                 className={`px-6 py-3 rounded-lg text-xs font-black uppercase tracking-widest transition-all flex items-center gap-2 ${activeTab === 'resources' ? 'brand-bg text-white shadow-lg' : 'text-brandGray hover:text-white'}`}
              >
-                <FileStack size={14} /> Documents
+                <FileStack size={16} /> Documents
              </button>
              <button 
                 onClick={() => setActiveTab('applications')}
                 className={`px-6 py-3 rounded-lg text-xs font-black uppercase tracking-widest transition-all flex items-center gap-2 ${activeTab === 'applications' ? 'brand-bg text-white shadow-lg' : 'text-brandGray hover:text-white'}`}
              >
-                <Inbox size={14} /> Inbox ({applications.length})
+                <Inbox size={16} /> Inbox ({applications.length})
              </button>
           </div>
         </div>
@@ -219,11 +219,11 @@ export default function Dashboard() {
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="border-b border-white/10">
-                  <th className="pb-6 text-[10px] uppercase tracking-widest text-brandGray font-black">Headshot</th>
-                  <th className="pb-6 text-[10px] uppercase tracking-widest text-brandGray font-black">Name & Credits</th>
-                  <th className="pb-6 text-[10px] uppercase tracking-widest text-brandGray font-black">Age Tier</th>
-                  <th className="pb-6 text-[10px] uppercase tracking-widest text-brandGray font-black">Skills</th>
-                  <th className="pb-6 text-[10px] uppercase tracking-widest text-brandGray font-black text-right">Actions</th>
+                  <th className="pb-6 text-xs uppercase tracking-widest text-brandGray font-black">Headshot</th>
+                  <th className="pb-6 text-xs uppercase tracking-widest text-brandGray font-black">Name & Credits</th>
+                  <th className="pb-6 text-xs uppercase tracking-widest text-brandGray font-black">Age Tier</th>
+                  <th className="pb-6 text-xs uppercase tracking-widest text-brandGray font-black">Skills</th>
+                  <th className="pb-6 text-xs uppercase tracking-widest text-brandGray font-black text-right">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
@@ -242,7 +242,7 @@ export default function Dashboard() {
                     <td className="py-6">
                       <div className="flex flex-wrap gap-2">
                         {actor.skills.slice(0, 2).map((s, i) => (
-                          <span key={i} className="text-[9px] px-2 py-1 bg-white/5 border border-white/10 rounded text-brandGray uppercase">{s}</span>
+                          <span key={i} className="text-[10px] px-2 py-1 bg-white/5 border border-white/10 rounded text-brandGray uppercase">{s}</span>
                         ))}
                       </div>
                     </td>
@@ -271,9 +271,9 @@ export default function Dashboard() {
                      </div>
                   </div>
                   <h4 className="text-xl font-cinematic font-bold text-white mb-2 leading-tight">{res.title}</h4>
-                  <p className="text-xs text-brandGray mb-6 line-clamp-2 font-light">{res.description}</p>
+                  <p className="text-sm text-brandGray mb-6 line-clamp-2 font-light">{res.description}</p>
                   
-                  <div className="mt-auto flex items-center justify-between pt-4 border-t border-white/5 text-[10px] text-brandGray uppercase font-black tracking-widest">
+                  <div className="mt-auto flex items-center justify-between pt-4 border-t border-white/5 text-xs text-brandGray uppercase font-black tracking-widest">
                      <span>{res.fileSize}</span>
                      <span>{res.uploadDate}</span>
                   </div>
@@ -289,10 +289,10 @@ export default function Dashboard() {
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="border-b border-white/10">
-                  <th className="pb-6 text-[10px] uppercase tracking-widest text-brandGray font-black">Date</th>
-                  <th className="pb-6 text-[10px] uppercase tracking-widest text-brandGray font-black">Applicant Name</th>
-                  <th className="pb-6 text-[10px] uppercase tracking-widest text-brandGray font-black">Details</th>
-                  <th className="pb-6 text-[10px] uppercase tracking-widest text-brandGray font-black text-right">Actions</th>
+                  <th className="pb-6 text-xs uppercase tracking-widest text-brandGray font-black">Date</th>
+                  <th className="pb-6 text-xs uppercase tracking-widest text-brandGray font-black">Applicant Name</th>
+                  <th className="pb-6 text-xs uppercase tracking-widest text-brandGray font-black">Details</th>
+                  <th className="pb-6 text-xs uppercase tracking-widest text-brandGray font-black text-right">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
@@ -339,7 +339,7 @@ export default function Dashboard() {
                    <form onSubmit={handleSaveActor} className="grid grid-cols-2 gap-8">
                       {/* ... (Existing Actor Form inputs) ... */}
                       <div className="col-span-2">
-                        <label className="block text-[10px] text-brandGray uppercase font-black mb-3 tracking-widest">Headshot Upload</label>
+                        <label className="block text-xs text-brandGray uppercase font-black mb-3 tracking-widest">Headshot Upload</label>
                         <div 
                             onDrop={handleImageDrop}
                             onDragOver={handleDragOver}
@@ -358,7 +358,7 @@ export default function Dashboard() {
                       </div>
 
                       <div className="col-span-2 sm:col-span-1">
-                        <label className="block text-[10px] text-brandGray uppercase font-black mb-3 tracking-widest">Full Stage Name</label>
+                        <label className="block text-xs text-brandGray uppercase font-black mb-3 tracking-widest">Full Stage Name</label>
                         <input 
                             value={actorForm.name} 
                             onChange={e => setActorForm({...actorForm, name: e.target.value})}
@@ -367,7 +367,7 @@ export default function Dashboard() {
                         />
                       </div>
                       <div className="col-span-2 sm:col-span-1">
-                        <label className="block text-[10px] text-brandGray uppercase font-black mb-3 tracking-widest">Age Category</label>
+                        <label className="block text-xs text-brandGray uppercase font-black mb-3 tracking-widest">Age Category</label>
                         <select 
                             value={actorForm.ageRange}
                             onChange={e => setActorForm({...actorForm, ageRange: e.target.value})}
@@ -382,7 +382,7 @@ export default function Dashboard() {
                       </div>
                       
                       <div className="col-span-2">
-                        <label className="block text-[10px] text-brandGray uppercase font-black mb-3 tracking-widest">Core Skills (Comma separated)</label>
+                        <label className="block text-xs text-brandGray uppercase font-black mb-3 tracking-widest">Core Skills (Comma separated)</label>
                         <input 
                             value={actorForm.skills?.join(', ')} 
                             onChange={e => setActorForm({...actorForm, skills: e.target.value.split(',').map(s => s.trim())})}
@@ -390,7 +390,7 @@ export default function Dashboard() {
                         />
                       </div>
                       <div className="col-span-2">
-                        <label className="block text-[10px] text-brandGray uppercase font-black mb-3 tracking-widest">Recent Credits</label>
+                        <label className="block text-xs text-brandGray uppercase font-black mb-3 tracking-widest">Recent Credits</label>
                         <input 
                             value={actorForm.credits?.join(', ')} 
                             onChange={e => setActorForm({...actorForm, credits: e.target.value.split(',').map(s => s.trim())})}
@@ -411,7 +411,7 @@ export default function Dashboard() {
                    <form onSubmit={handleSaveResource} className="grid grid-cols-1 gap-8">
                       {/* ... (Existing Resource Form Inputs) ... */}
                        <div>
-                        <label className="block text-[10px] text-brandGray uppercase font-black mb-3 tracking-widest">PDF File</label>
+                        <label className="block text-xs text-brandGray uppercase font-black mb-3 tracking-widest">PDF File</label>
                         <div 
                             onDrop={handleFileDrop}
                             onDragOver={handleDragOver}
@@ -434,7 +434,7 @@ export default function Dashboard() {
                       </div>
 
                       <div>
-                        <label className="block text-[10px] text-brandGray uppercase font-black mb-3 tracking-widest">Document Title</label>
+                        <label className="block text-xs text-brandGray uppercase font-black mb-3 tracking-widest">Document Title</label>
                         <input 
                             value={resourceForm.title} 
                             onChange={e => setResourceForm({...resourceForm, title: e.target.value})}
@@ -445,7 +445,7 @@ export default function Dashboard() {
                       </div>
 
                       <div>
-                        <label className="block text-[10px] text-brandGray uppercase font-black mb-3 tracking-widest">Description</label>
+                        <label className="block text-xs text-brandGray uppercase font-black mb-3 tracking-widest">Description</label>
                         <textarea 
                             value={resourceForm.description} 
                             onChange={e => setResourceForm({...resourceForm, description: e.target.value})}
@@ -472,36 +472,36 @@ export default function Dashboard() {
                     
                     <div className="grid grid-cols-2 gap-6">
                        <div className="bg-white/5 p-4 rounded-xl">
-                          <p className="text-[10px] text-brandGray uppercase font-black mb-1">Gender / DOB</p>
+                          <p className="text-xs text-brandGray uppercase font-black mb-1">Gender / DOB</p>
                           <p className="text-white">{viewingApp.gender}, {viewingApp.dob}</p>
                        </div>
                        <div className="bg-white/5 p-4 rounded-xl">
-                          <p className="text-[10px] text-brandGray uppercase font-black mb-1">Physical</p>
+                          <p className="text-xs text-brandGray uppercase font-black mb-1">Physical</p>
                           <p className="text-white">{viewingApp.height}cm / {viewingApp.weight}kg ({viewingApp.race})</p>
                        </div>
                        <div className="bg-white/5 p-4 rounded-xl">
-                          <p className="text-[10px] text-brandGray uppercase font-black mb-1">ID Number</p>
+                          <p className="text-xs text-brandGray uppercase font-black mb-1">ID Number</p>
                           <p className="text-white">{viewingApp.idNumber}</p>
                        </div>
                        <div className="bg-white/5 p-4 rounded-xl">
-                          <p className="text-[10px] text-brandGray uppercase font-black mb-1">English Level</p>
+                          <p className="text-xs text-brandGray uppercase font-black mb-1">English Level</p>
                           <p className="text-white">{viewingApp.englishLevel}</p>
                        </div>
                     </div>
 
                     <div className="bg-white/5 p-4 rounded-xl">
-                       <p className="text-[10px] text-brandGray uppercase font-black mb-1">Contact</p>
+                       <p className="text-xs text-brandGray uppercase font-black mb-1">Contact</p>
                        <p className="text-white">{viewingApp.guardianMobile}</p>
                        <p className="text-white text-sm mt-1">{viewingApp.address}</p>
                     </div>
 
                     <div className="bg-white/5 p-4 rounded-xl">
-                       <p className="text-[10px] text-brandGray uppercase font-black mb-1">Hobbies & Preferences</p>
+                       <p className="text-xs text-brandGray uppercase font-black mb-1">Hobbies & Preferences</p>
                        <p className="text-white text-sm">{viewingApp.hobbies}</p>
                     </div>
 
                     <div className="bg-white/5 p-4 rounded-xl">
-                       <p className="text-[10px] text-brandGray uppercase font-black mb-1">Resume / Experience</p>
+                       <p className="text-xs text-brandGray uppercase font-black mb-1">Resume / Experience</p>
                        <p className="text-white text-sm whitespace-pre-wrap">{viewingApp.resume}</p>
                     </div>
                   </div>
