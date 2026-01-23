@@ -22,20 +22,20 @@ export default function Films() {
   return (
     <div className="pt-32 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mb-12">
-          <h2 className="brand-gradient-text text-sm font-black tracking-[0.4em] uppercase mb-6">Our Projects</h2>
-          <h1 className="text-6xl font-cinematic font-black mb-8 tracking-tight">Filmography</h1>
-          <p className="text-brandGray text-xl font-light leading-relaxed">
+        <div className="max-w-3xl mb-8">
+          <h2 className="brand-gradient-text text-[10px] font-black tracking-[0.4em] uppercase mb-3">Our Projects</h2>
+          <h1 className="text-4xl md:text-5xl font-cinematic font-black mb-4 tracking-tight">Filmography</h1>
+          <p className="text-brandGray text-sm font-light leading-relaxed">
             Showcasing our regular professional short films and feature projects produced within the Hollywood system.
           </p>
         </div>
 
         {/* Updated Grid: 5 Columns, Vertical Posters */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-6 gap-y-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-5 gap-y-8">
           {FILMS.map((film) => (
             <div key={film.id} className="group flex flex-col h-full cursor-pointer" onClick={() => setSelectedFilm(film)}>
               {/* Vertical Poster Container (Aspect Ratio 2:3) */}
-              <div className="relative aspect-[2/3] mb-6 overflow-hidden border border-white/10 rounded-lg group-hover:border-brandCyan/40 transition-all shadow-2xl bg-brandBlack">
+              <div className="relative aspect-[2/3] mb-3 overflow-hidden border border-white/10 rounded-lg group-hover:border-brandCyan/40 transition-all shadow-2xl bg-brandBlack">
                 <img 
                   src={film.posterUrl} 
                   className="w-full h-full object-contain transition-all duration-700 group-hover:scale-105"
@@ -45,8 +45,8 @@ export default function Films() {
                 {/* Overlay Gradient (Removed mostly to keep poster clear, but kept subtle for hover effect) */}
                 <div className="absolute inset-0 bg-gradient-to-t from-brandBlack/60 via-transparent to-transparent opacity-0 group-hover:opacity-40 transition-opacity"></div>
                 
-                <div className="absolute top-3 left-3 z-10">
-                  <span className="px-3 py-1 bg-brandBlack/80 backdrop-blur-md border border-white/10 text-white text-[8px] font-black uppercase tracking-widest rounded-full">
+                <div className="absolute top-2 left-2 z-10">
+                  <span className="px-2 py-0.5 bg-brandBlack/80 backdrop-blur-md border border-white/10 text-white text-[8px] font-black uppercase tracking-widest rounded-full">
                     {film.genre}
                   </span>
                 </div>
@@ -59,9 +59,9 @@ export default function Films() {
                 </div>
               </div>
               
-              <h3 className="text-lg font-cinematic font-bold mb-2 leading-tight group-hover:brand-gradient-text transition-all">{film.title}</h3>
+              <h3 className="text-sm font-cinematic font-bold mb-1 leading-tight group-hover:brand-gradient-text transition-all">{film.title}</h3>
               <div className="mt-auto pt-2 border-t border-white/5">
-                 <p className="text-[10px] text-brandGray font-medium line-clamp-2 mb-3">{film.description}</p>
+                 <p className="text-[10px] text-brandGray font-medium line-clamp-2 mb-2 leading-snug">{film.description}</p>
                  <div className="flex items-center justify-between">
                      <span className="text-[9px] text-brandCyan font-black uppercase tracking-widest">Watch Now</span>
                      <ArrowRight size={12} className="text-white/50 group-hover:text-brandCyan group-hover:translate-x-1 transition-all" />
@@ -100,24 +100,24 @@ const FilmModalContent = ({ film }: { film: FilmProject }) => {
     return (
         <div className="overflow-y-auto flex-1 custom-scrollbar relative">
           
-          {/* Backdrop Header */}
-          <div className="absolute top-0 left-0 w-full h-[60vh] overflow-hidden pointer-events-none z-0">
+          {/* Backdrop Header - Reduced Height */}
+          <div className="absolute top-0 left-0 w-full h-[40vh] overflow-hidden pointer-events-none z-0">
              <img src={film.stills[0]} className="w-full h-full object-cover blur-2xl opacity-20" alt="Backdrop" />
              <div className="absolute inset-0 bg-gradient-to-b from-brandBlack/60 via-brandBlack/90 to-brandBlack"></div>
           </div>
 
           <div className="relative z-10 p-6 md:p-10">
-             <div className="flex flex-col lg:flex-row gap-10">
+             <div className="flex flex-col lg:flex-row gap-8">
                 
-                {/* Left Column: Full Poster */}
-                <div className="flex-shrink-0 w-full lg:w-[350px] mx-auto lg:mx-0">
+                {/* Left Column: Full Poster - Reduced Width */}
+                <div className="flex-shrink-0 w-full lg:w-[280px] mx-auto lg:mx-0">
                    <div className="aspect-[2/3] rounded-xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 relative group sticky top-8 bg-brandBlack">
                       <img src={film.posterUrl} className="w-full h-full object-contain" alt="Full Poster" />
                       {/* Reflection effect */}
                       <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                    </div>
                    
-                   <div className="mt-8 space-y-4">
+                   <div className="mt-6 space-y-3">
                       <button className="w-full py-4 brand-bg text-white font-black uppercase tracking-[0.2em] rounded-xl flex items-center justify-center gap-3 hover:scale-[1.02] transition-transform shadow-lg shadow-brandCyan/20 text-xs">
                         <Play size={16} fill="currentColor" /> Watch Full Film
                       </button>
@@ -130,7 +130,7 @@ const FilmModalContent = ({ film }: { film: FilmProject }) => {
                 {/* Right Column: Details & Gallery */}
                 <div className="flex-1">
                    <div className="mb-6 text-center lg:text-left">
-                       <div className="flex items-center justify-center lg:justify-start gap-4 mb-6">
+                       <div className="flex items-center justify-center lg:justify-start gap-4 mb-4">
                           <span className="px-4 py-1.5 border border-brandCyan/30 bg-brandCyan/5 text-brandCyan text-[10px] font-black uppercase tracking-widest rounded-full">
                              {film.genre}
                           </span>
@@ -142,9 +142,9 @@ const FilmModalContent = ({ film }: { film: FilmProject }) => {
                           </span>
                        </div>
                        
-                       <h1 className="text-5xl md:text-7xl font-cinematic font-black text-white mb-6 leading-none drop-shadow-2xl">{film.title}</h1>
+                       <h1 className="text-3xl md:text-5xl font-cinematic font-black text-white mb-3 leading-none drop-shadow-2xl">{film.title}</h1>
                        
-                       <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 text-sm text-brandGray border-b border-white/10 pb-6 mb-6">
+                       <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 text-xs text-brandGray border-b border-white/10 pb-4 mb-4">
                           <div>
                             <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">Director</p>
                             <p className="text-white">Sarah Jenkins</p>
@@ -159,10 +159,10 @@ const FilmModalContent = ({ film }: { film: FilmProject }) => {
                           </div>
                        </div>
 
-                       <h3 className="text-2xl font-cinematic font-bold text-white mb-6">Synopsis</h3>
-                       <div className="prose prose-invert prose-lg text-brandGray font-light leading-relaxed max-w-none mb-10">
-                          <p className="text-xl text-white/90 font-normal">{film.description}</p>
-                          <p>
+                       <h3 className="text-lg font-cinematic font-bold text-white mb-2">Synopsis</h3>
+                       <div className="prose prose-invert prose-lg text-brandGray font-light leading-relaxed max-w-none mb-6">
+                          <p className="text-sm text-white/90 font-normal mb-2">{film.description}</p>
+                          <p className="text-xs leading-relaxed">
                             Filmed on location in Los Angeles, this production highlights the exceptional capability of our youth talent to handle complex narratives and professional set etiquette.
                             From table reads to the final cut, students were involved in every aspect of the creative process, ensuring an authentic performance that resonates with audiences worldwide.
                           </p>
@@ -171,10 +171,10 @@ const FilmModalContent = ({ film }: { film: FilmProject }) => {
 
                    {/* Stills Gallery */}
                    <div>
-                      <h3 className="text-2xl font-cinematic font-bold text-white mb-8 flex items-center gap-3">
+                      <h3 className="text-lg font-cinematic font-bold text-white mb-3 flex items-center gap-3">
                         <span className="w-8 h-1 brand-bg"></span> Production Stills
                       </h3>
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                          {film.stills.map((still, idx) => (
                            <div 
                               key={idx} 
