@@ -67,8 +67,11 @@ Submitted via ALT Dream Star Web Portal
     `;
 
     // 3. Trigger Mail Client
-    const mailtoLink = `mailto:altdreamstar@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoLink;
+    // Use a timeout to ensure the UI updates first, and to avoid blocking by some browser pop-up blockers if immediate
+    setTimeout(() => {
+        const mailtoLink = `mailto:altdreamstar@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailtoLink;
+    }, 500);
 
     setSubmitted(true);
     window.scrollTo(0, 0);
@@ -214,7 +217,7 @@ Submitted via ALT Dream Star Web Portal
                     </div>
                     <div>
                         <label className="block text-[9px] text-brandGray uppercase font-bold mb-1">Chinese Name (If any)</label>
-                        <input name="chineseName" value={formData.chineseName} onChange={handleChange} className="w-full bg-brandBlack/50 border border-white/10 px-4 py-2.5 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-lg transition-all text-white" placeholder="中文姓名" />
+                        <input name="chineseName" value={formData.chineseName} onChange={handleChange} className="w-full bg-brandBlack/50 border border-white/10 px-4 py-2.5 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-lg transition-all text-white" placeholder="Name in Chinese (Optional)" />
                     </div>
                     <div>
                         <label className="block text-[9px] text-brandGray uppercase font-bold mb-1">Gender</label>
