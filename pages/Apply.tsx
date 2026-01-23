@@ -14,7 +14,7 @@ export default function Apply() {
 
   if (submitted) {
     return (
-      <div className="pt-60 pb-40 text-center px-4">
+      <div className="pt-40 pb-20 text-center px-4">
         <div className="max-w-2xl mx-auto bg-white/5 border border-brandCyan/20 p-16 rounded-3xl relative overflow-hidden">
           <div className="absolute inset-0 brand-bg opacity-[0.02] blur-3xl"></div>
           <div className="w-24 h-24 brand-bg text-white rounded-full flex items-center justify-center mx-auto mb-10 shadow-[0_0_50px_rgba(0,210,255,0.4)] relative">
@@ -36,9 +36,9 @@ export default function Apply() {
   }
 
   return (
-    <div className="pt-40 pb-32">
+    <div className="pt-32 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           
           {/* Left Column: Info, Downloads & Contact */}
           <div className="order-2 lg:order-1">
@@ -46,7 +46,7 @@ export default function Apply() {
             <h1 className="text-6xl font-cinematic font-black mb-10 tracking-tight leading-tight">Your Hollywood Journey Starts Here</h1>
             
             {/* Styled Notice from Contact page */}
-            <div className="p-8 border border-brandCyan/20 rounded-2xl bg-brandCyan/5 relative mb-16">
+            <div className="p-8 border border-brandCyan/20 rounded-2xl bg-brandCyan/5 relative mb-10">
               <div className="flex items-center gap-4 text-brandCyan mb-4">
                 <Info size={20} />
                 <h4 className="font-black uppercase tracking-[0.2em] text-xs">Registration Notice</h4>
@@ -56,7 +56,7 @@ export default function Apply() {
               </p>
             </div>
 
-            <div className="space-y-6 mb-20">
+            <div className="space-y-6 mb-12">
               <h3 className="text-xs font-black uppercase tracking-[0.3em] text-white/40 mb-8">Official Documentation</h3>
               
               {resources.length === 0 ? (
@@ -82,8 +82,8 @@ export default function Apply() {
             </div>
 
             {/* Contact Section Integrated */}
-            <div className="border-t border-white/10 pt-16">
-               <h3 className="text-xs font-black uppercase tracking-[0.3em] text-white/40 mb-10">Contact Offices</h3>
+            <div className="border-t border-white/10 pt-10">
+               <h3 className="text-xs font-black uppercase tracking-[0.3em] text-white/40 mb-6">Contact Offices</h3>
                <div className="space-y-8">
                   <div className="flex items-start gap-6 group">
                     <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-brandCyan group-hover:brand-bg group-hover:text-white transition-all shrink-0 border border-white/5 group-hover:shadow-lg group-hover:shadow-brandCyan/20">

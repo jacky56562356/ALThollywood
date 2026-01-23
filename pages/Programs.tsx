@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Layout, Video, Share2, Trophy, Award, Star, History as HistoryIcon } from 'lucide-react';
+import { Layout, Video, Share2, Trophy, Award, Star, History as HistoryIcon, Sparkles, Clapperboard, Mic2, Users, Film } from 'lucide-react';
 import { HISTORY } from '../constants';
 
 const FESTIVAL_IMAGES = [
@@ -17,6 +17,19 @@ const FESTIVAL_IMAGES = [
   "https://i.ibb.co/tpMxQ0z3/93e11fe81b005b241daf7fe0ede317e1.jpg",
   "https://i.ibb.co/1JdcHFK9/179b50bd376d8cfa82289e99501dac49-1.jpg",
   "https://i.ibb.co/1Gj2K8CX/d92babf9ca9b15b9fe754beaa383a6cf.jpg"
+];
+
+const MENTORSHIP_IMAGES = [
+  "https://i.ibb.co/Z1kzfsbV/20260122155720-1660-151.jpg",
+  "https://i.ibb.co/MWc9sm4/20260122155732-1661-151.jpg",
+  "https://i.ibb.co/gMwR9pqv/20260122155743-1662-151.jpg",
+  "https://i.ibb.co/Y4DfD2Vw/20260122155809-1664-151.jpg",
+  "https://i.ibb.co/Q3gXL7Gt/20260122155814-1665-151.jpg",
+  "https://i.ibb.co/6JTLb8tt/20260122155823-1666-151.jpg",
+  "https://i.ibb.co/F45Tp6qP/20260122155828-1667-151.jpg",
+  "https://i.ibb.co/0ynzzbsf/20260122155834-1668-151.jpg",
+  "https://i.ibb.co/Mxz5tV1h/20260122155855-1671-151.jpg",
+  "https://i.ibb.co/qLx5FzvQ/20260122155926-1673-151.jpg"
 ];
 
 const ProgramSection = ({ icon: Icon, title, items }: { icon: any, title: string, items: string[] }) => (
@@ -38,17 +51,17 @@ const ProgramSection = ({ icon: Icon, title, items }: { icon: any, title: string
 
 export default function Programs() {
   return (
-    <div className="pt-40 pb-32">
+    <div className="pt-32 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Programs Header */}
-        <div className="max-w-3xl mb-24">
+        <div className="max-w-3xl mb-12">
           <h2 className="brand-gradient-text text-sm font-black tracking-[0.4em] uppercase mb-6">Curriculum</h2>
           <h1 className="text-6xl font-cinematic font-black mb-8 tracking-tight leading-tight">Professional Pathways</h1>
           <p className="text-brandGray text-xl font-light leading-relaxed">A comprehensive integration of cinematic education and industry-standard workflows designed for the next generation of actors.</p>
         </div>
 
         {/* Programs Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
           <ProgramSection 
             icon={Layout}
             title="Acting Mastery"
@@ -65,10 +78,101 @@ export default function Programs() {
             items={["Streaming Releases", "Film Festival Strategy", "Industry Showcases", "Agency Signing Pathways"]}
           />
         </div>
+      </div>
 
+      {/* NEW: Hollywood Mentorship Program Section */}
+      <div className="relative w-full py-24 mb-20 overflow-hidden bg-[#0a0a0a]">
+         {/* Background Texture */}
+         <div className="absolute inset-0 z-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+         <div className="absolute inset-0 bg-gradient-to-b from-brandBlack via-transparent to-brandBlack z-10"></div>
+         
+         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+            {/* Cinematic Header */}
+            <div className="text-center mb-12">
+               <div className="flex items-center justify-center gap-4 mb-6">
+                 <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-amber-400"></div>
+                 <Star className="text-amber-400 fill-amber-400" size={16} />
+                 <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-amber-400"></div>
+               </div>
+               <h2 className="text-amber-100/80 text-sm font-black tracking-[0.5em] uppercase mb-4">The Elite Academy</h2>
+               <h1 className="text-5xl md:text-7xl font-cinematic font-black text-transparent bg-clip-text bg-gradient-to-b from-amber-100 to-amber-600 mb-8 drop-shadow-2xl tracking-tight">Hollywood Mentorship</h1>
+               <p className="text-white/60 text-xl font-light max-w-3xl mx-auto leading-relaxed italic">
+                 "We do not just teach acting. We immerse students in the professional world of cinema, guided by the very directors shaping the industry."
+               </p>
+            </div>
+
+            {/* Content Split */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-12">
+               <div className="space-y-12">
+                  <div className="flex gap-6">
+                     <div className="w-12 h-12 rounded-full border border-amber-500/30 flex items-center justify-center text-amber-400 bg-amber-900/10 shadow-[0_0_20px_rgba(251,191,36,0.2)] shrink-0">
+                        <Clapperboard size={24} />
+                     </div>
+                     <div>
+                        <h3 className="text-2xl font-cinematic font-bold text-amber-100 mb-3">On-Set Immersion</h3>
+                        <p className="text-white/70 leading-relaxed font-light">
+                           Forget the classroom. Our students train on active soundstages with professional lighting, boom operators, and camera crews. They learn to hit marks, handle props, and perform under the pressure of a real "Action!"
+                        </p>
+                     </div>
+                  </div>
+
+                  <div className="flex gap-6">
+                     <div className="w-12 h-12 rounded-full border border-amber-500/30 flex items-center justify-center text-amber-400 bg-amber-900/10 shadow-[0_0_20px_rgba(251,191,36,0.2)] shrink-0">
+                        <Users size={24} />
+                     </div>
+                     <div>
+                        <h3 className="text-2xl font-cinematic font-bold text-amber-100 mb-3">Director-Led Coaching</h3>
+                        <p className="text-white/70 leading-relaxed font-light">
+                           Instruction comes directly from working Hollywood directors and producers. Students receive real-time direction, learning the subtle nuances that separate a good audition from a booked role.
+                        </p>
+                     </div>
+                  </div>
+
+                  <div className="flex gap-6">
+                     <div className="w-12 h-12 rounded-full border border-amber-500/30 flex items-center justify-center text-amber-400 bg-amber-900/10 shadow-[0_0_20px_rgba(251,191,36,0.2)] shrink-0">
+                        <Film size={24} />
+                     </div>
+                     <div>
+                        <h3 className="text-2xl font-cinematic font-bold text-amber-100 mb-3">Official IMDb Credits</h3>
+                        <p className="text-white/70 leading-relaxed font-light">
+                           Every project is a legitimate production. Students graduate not just with a diploma, but with a verified IMDb page and a professional reel that commands respect from agents.
+                        </p>
+                     </div>
+                  </div>
+               </div>
+
+               {/* Hero Image Collage */}
+               <div className="relative">
+                  <div className="absolute -inset-4 bg-amber-500/10 blur-3xl rounded-full opacity-20"></div>
+                  <div className="grid grid-cols-2 gap-4 relative">
+                     <img src={MENTORSHIP_IMAGES[0]} className="w-full h-64 object-cover rounded-2xl border border-white/10 shadow-2xl hover:scale-105 transition-transform duration-700" alt="Director mentoring student" />
+                     <img src={MENTORSHIP_IMAGES[2]} className="w-full h-64 object-cover rounded-2xl border border-white/10 shadow-2xl translate-y-8 hover:scale-105 transition-transform duration-700" alt="Camera crew" />
+                  </div>
+               </div>
+            </div>
+
+            {/* BTS Gallery Grid */}
+            <div className="space-y-6">
+               <h3 className="text-center text-amber-200/50 text-xs font-black uppercase tracking-[0.4em] mb-8">Behind The Scenes</h3>
+               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                  {MENTORSHIP_IMAGES.slice(3, 8).map((img, idx) => (
+                     <div key={idx} className="aspect-[4/3] rounded-lg overflow-hidden border border-white/5 relative group cursor-pointer">
+                        {/* REMOVED grayscale CLASS HERE */}
+                        <img src={img} className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" alt="On set" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                           <span className="text-[9px] text-amber-400 uppercase font-bold tracking-widest">Production Still</span>
+                        </div>
+                     </div>
+                  ))}
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* New Section: Festival Success & Confidence */}
-        <div className="mb-40 border-t border-white/10 pt-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16 items-center">
+        <div className="mb-20 pt-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-10 items-center">
              <div>
                 <h2 className="brand-gradient-text text-sm font-black tracking-[0.4em] uppercase mb-6">Awards & Confidence</h2>
                 <h1 className="text-5xl font-cinematic font-black mb-8 tracking-tight leading-tight">The Power of Recognition</h1>
@@ -100,35 +204,44 @@ export default function Programs() {
              </div>
           </div>
 
-          {/* Masonry-style Grid for Awards */}
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+          {/* Compact Grid for Awards (Smaller images, aligned neatly) */}
+          <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-4 mb-10">
             {FESTIVAL_IMAGES.map((src, i) => (
-              <div key={i} className="break-inside-avoid rounded-2xl overflow-hidden border border-white/10 group relative hover:border-brandCyan/50 transition-all duration-500 shadow-lg bg-brandBlack">
+              <div key={i} className="group relative rounded-lg overflow-hidden border border-white/10 aspect-[3/4] hover:border-brandCyan/50 transition-all duration-300 bg-brandBlack">
                 <img 
                   src={src} 
-                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
                   alt="Festival Award Moment" 
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brandBlack/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
-                  <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                     <div className="flex items-center gap-2 text-brandCyan font-black uppercase tracking-widest text-[10px] mb-2">
-                        <Award size={14} /> Red Carpet Moment
-                     </div>
-                     <p className="text-white text-sm font-medium">Celebrating Excellence</p>
-                  </div>
+                <div className="absolute inset-0 bg-brandBlack/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <Award className="text-brandCyan" size={20} />
                 </div>
               </div>
             ))}
           </div>
+
+          {/* Decorative Footer for Grid */}
+          <div className="flex flex-col items-center justify-center gap-4 opacity-40">
+             <div className="flex items-center gap-4 w-full max-w-md">
+                <div className="h-px bg-gradient-to-r from-transparent via-brandCyan to-transparent flex-1"></div>
+                <div className="flex gap-2 text-brandCyan">
+                   <Sparkles size={12} />
+                   <Star size={16} fill="currentColor" />
+                   <Sparkles size={12} />
+                </div>
+                <div className="h-px bg-gradient-to-r from-transparent via-brandPurple to-transparent flex-1"></div>
+             </div>
+             <p className="text-[9px] uppercase tracking-[0.3em] font-bold text-brandGray">Excellence in Motion</p>
+          </div>
         </div>
 
         {/* Divider */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-40"></div>
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-20"></div>
 
         {/* History Section */}
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="brand-gradient-text text-sm font-black tracking-[0.4em] uppercase mb-4">Our Evolution</h2>
             <h1 className="text-5xl font-cinematic font-black tracking-tight">7 Years of Excellence</h1>
             <p className="text-brandGray text-lg mt-4 max-w-2xl mx-auto">From our foundation in Los Angeles to becoming a premier youth film platform.</p>

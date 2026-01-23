@@ -125,8 +125,8 @@ const Partners = () => {
   ];
 
   return (
-    <div className="bg-brandBlack border-t border-white/10 py-16 overflow-hidden relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
+    <div className="bg-brandBlack border-t border-white/10 py-10 overflow-hidden relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 text-center">
         <h3 className="brand-gradient-text text-sm font-black tracking-[0.4em] uppercase">Our Partners</h3>
       </div>
       
@@ -151,67 +151,67 @@ const Partners = () => {
 };
 
 const Footer = () => (
-  <footer className="bg-brandBlack border-t border-white/10 pt-16 pb-8">
+  <footer className="bg-brandBlack border-t border-white/10 pt-10 pb-6 font-sans">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
         <div className="col-span-1 md:col-span-1">
           <Logo size="small" />
-          <p className="text-brandGray text-sm mt-6 leading-relaxed">
+          <p className="text-gray-400 text-sm mt-6 leading-relaxed font-medium">
             Professional Youth Film Platform based in Los Angeles, bridging training and real production using Hollywood industry standards.
           </p>
         </div>
         
         <div>
           <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Quick Links</h4>
-          <ul className="space-y-4 text-sm text-brandGray">
-            <li><Link to="/programs" className="hover:brand-gradient-text transition-colors">Programs & History</Link></li>
-            <li><Link to="/films" className="hover:brand-gradient-text transition-colors">Films</Link></li>
-            <li><Link to="/casting" className="hover:brand-gradient-text transition-colors">Jobs & Casting</Link></li>
-            <li><Link to="/apply" className="hover:brand-gradient-text transition-colors">Apply & Contact</Link></li>
+          <ul className="space-y-4 text-sm text-gray-400 font-medium">
+            <li><Link to="/programs" className="hover:text-brandCyan transition-colors">Programs & History</Link></li>
+            <li><Link to="/films" className="hover:text-brandCyan transition-colors">Films</Link></li>
+            <li><Link to="/casting" className="hover:text-brandCyan transition-colors">Jobs & Casting</Link></li>
+            <li><Link to="/apply" className="hover:text-brandCyan transition-colors">Apply & Contact</Link></li>
           </ul>
         </div>
 
         <div>
           <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Industry Access</h4>
-          <ul className="space-y-4 text-sm text-brandGray">
-            <li><Link to="/login" className="flex items-center gap-2 hover:brand-gradient-text"><Lock size={12} /> Agent Portal</Link></li>
-            <li className="flex items-center gap-2 cursor-pointer hover:brand-gradient-text"><FileDown size={14} /> Application Forms</li>
+          <ul className="space-y-4 text-sm text-gray-400 font-medium">
+            <li><Link to="/login" className="flex items-center gap-2 hover:text-brandCyan"><Lock size={12} /> Agent Portal</Link></li>
+            <li className="flex items-center gap-2 cursor-pointer hover:text-brandCyan"><FileDown size={14} /> Application Forms</li>
           </ul>
         </div>
 
         <div>
           <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Follow Us</h4>
           <div className="flex space-x-4 mb-6">
-            <a href="https://www.instagram.com/altdreamstar" target="_blank" rel="noopener noreferrer" className="p-2 border border-white/10 rounded-full hover:border-brandCyan hover:text-brandCyan transition-all"><Instagram size={20} /></a>
-            <a href="#" className="p-2 border border-white/10 rounded-full hover:border-brandCyan hover:text-brandCyan transition-all"><Facebook size={20} /></a>
-            <a href="#" className="p-2 border border-white/10 rounded-full hover:border-brandCyan hover:text-brandCyan transition-all"><Youtube size={20} /></a>
+            <a href="https://www.instagram.com/altdreamstar" target="_blank" rel="noopener noreferrer" className="p-2 border border-white/10 rounded-full hover:border-brandCyan hover:text-brandCyan transition-all text-gray-400"><Instagram size={20} /></a>
+            <a href="#" className="p-2 border border-white/10 rounded-full hover:border-brandCyan hover:text-brandCyan transition-all text-gray-400"><Facebook size={20} /></a>
+            <a href="#" className="p-2 border border-white/10 rounded-full hover:border-brandCyan hover:text-brandCyan transition-all text-gray-400"><Youtube size={20} /></a>
           </div>
-          <div className="text-brandGray text-xs space-y-4">
+          <div className="text-gray-400 text-xs space-y-4 font-medium">
             <div className="flex items-start gap-2">
-              <MapPin size={12} className="mt-1 shrink-0" />
+              <MapPin size={12} className="mt-1 shrink-0 text-brandCyan" />
               <div>
-                <p className="font-bold text-white/90 text-[10px] mb-0.5">HEADQUARTERS</p>
+                <p className="font-bold text-white text-[10px] mb-0.5">HEADQUARTERS</p>
                 <p>633 W 5th St, Los Angeles, CA 90071</p>
               </div>
             </div>
             <div className="flex items-start gap-2">
-              <MapPin size={12} className="mt-1 shrink-0" />
+              <MapPin size={12} className="mt-1 shrink-0 text-brandCyan" />
               <div>
-                <p className="font-bold text-white/90 text-[10px] mb-0.5">BRANCH OFFICE</p>
+                <p className="font-bold text-white text-[10px] mb-0.5">BRANCH OFFICE</p>
                 <p>17800 Castleton St, Suite 173, City of Industry, CA 91748</p>
               </div>
             </div>
-            <p className="flex items-center gap-2"><Mail size={12} /> altdreamstar@gmail.com</p>
-            <p className="flex items-center gap-2"><Phone size={12} /> +1 (323) 918-6688</p>
+            <p className="flex items-center gap-2"><Mail size={12} className="text-brandCyan" /> altdreamstar@gmail.com</p>
+            <p className="flex items-center gap-2"><Phone size={12} className="text-brandCyan" /> +1 (323) 918-6688</p>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-brandGray uppercase tracking-[0.2em]">
-        <p>© 2025 ALT HOLLYWOOD DREAM STAR.</p>
+      <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 font-bold uppercase tracking-widest">
+        <p>© 2019 ALT HOLLYWOOD DREAM STAR.</p>
         <div className="flex space-x-6 mt-4 md:mt-0">
-          <a href="#" className="hover:text-white">Privacy Policy</a>
-          <a href="#" className="hover:text-white">Terms of Use</a>
+          <a href="#" className="hover:text-brandCyan transition-colors">Privacy Policy</a>
+          <a href="#" className="hover:text-brandCyan transition-colors">Terms of Use</a>
         </div>
       </div>
     </div>

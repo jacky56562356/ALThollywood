@@ -4,14 +4,14 @@ import { Mail, MapPin, Phone, Info } from 'lucide-react';
 
 export default function Contact() {
   return (
-    <div className="pt-40 pb-32">
+    <div className="pt-32 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div>
             <h2 className="brand-gradient-text text-sm font-black tracking-[0.4em] uppercase mb-6">Connect</h2>
             <h1 className="text-6xl font-cinematic font-black mb-12 tracking-tight">Get In Touch</h1>
             
-            <div className="space-y-10 mb-20">
+            <div className="space-y-10 mb-12">
               <div className="flex items-start gap-8 group">
                 <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-brandCyan group-hover:brand-bg group-hover:text-white transition-all shrink-0 shadow-lg border border-white/5">
                   <MapPin size={28} />

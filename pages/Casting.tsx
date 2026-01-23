@@ -12,11 +12,11 @@ export default function Casting() {
   );
 
   return (
-    <div className="pt-40 pb-32">
+    <div className="pt-32 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section 1: Jobs & Casting Opportunities */}
-        <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-20">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-12">
           <div className="max-w-2xl">
             <h2 className="brand-gradient-text text-sm font-black tracking-[0.4em] uppercase mb-6">Casting & Opportunities</h2>
             <h1 className="text-6xl font-cinematic font-black mb-8 tracking-tight leading-tight">Current Calls</h1>
@@ -34,7 +34,7 @@ export default function Casting() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-40">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {filtered.slice(0, 12).map((job) => (
             <div key={job.id} className="p-8 bg-white/5 border border-white/10 hover:border-brandCyan/40 transition-all rounded-3xl flex flex-col group relative overflow-hidden">
               <div className="absolute top-0 right-0 w-40 h-40 brand-bg opacity-[0.03] -mr-16 -mt-16 rounded-full blur-3xl group-hover:opacity-10 transition-opacity"></div>
@@ -105,8 +105,8 @@ export default function Casting() {
         </div>
 
         {/* Section 2: Industry Network */}
-        <div className="border-t border-white/10 pt-32">
-          <div className="max-w-3xl mb-24">
+        <div className="border-t border-white/10 pt-20">
+          <div className="max-w-3xl mb-12">
             <h2 className="brand-gradient-text text-sm font-black tracking-[0.4em] uppercase mb-6">Industry Network</h2>
             <h1 className="text-6xl font-cinematic font-black mb-8 tracking-tight leading-tight">Our Partnerships</h1>
             <p className="text-brandGray text-xl font-light leading-relaxed">
@@ -132,7 +132,7 @@ export default function Casting() {
             </div>
           </div>
           
-          <div className="mt-32 text-center border-t border-white/10 pt-32">
+          <div className="mt-20 text-center border-t border-white/10 pt-20">
             <h2 className="text-4xl font-cinematic font-black mb-16 tracking-tight">100+ Verified Industry Partners</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 grayscale opacity-30">
               {Array.from({length: 6}).map((_, i) => (

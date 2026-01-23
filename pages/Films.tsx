@@ -20,9 +20,9 @@ export default function Films() {
   }, [selectedFilm]);
 
   return (
-    <div className="pt-40 pb-32">
+    <div className="pt-32 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mb-24">
+        <div className="max-w-3xl mb-12">
           <h2 className="brand-gradient-text text-sm font-black tracking-[0.4em] uppercase mb-6">Our Projects</h2>
           <h1 className="text-6xl font-cinematic font-black mb-8 tracking-tight">Filmography</h1>
           <p className="text-brandGray text-xl font-light leading-relaxed">
@@ -106,8 +106,8 @@ const FilmModalContent = ({ film }: { film: FilmProject }) => {
              <div className="absolute inset-0 bg-gradient-to-b from-brandBlack/60 via-brandBlack/90 to-brandBlack"></div>
           </div>
 
-          <div className="relative z-10 p-8 md:p-16">
-             <div className="flex flex-col lg:flex-row gap-16">
+          <div className="relative z-10 p-6 md:p-10">
+             <div className="flex flex-col lg:flex-row gap-10">
                 
                 {/* Left Column: Full Poster */}
                 <div className="flex-shrink-0 w-full lg:w-[350px] mx-auto lg:mx-0">
@@ -129,7 +129,7 @@ const FilmModalContent = ({ film }: { film: FilmProject }) => {
 
                 {/* Right Column: Details & Gallery */}
                 <div className="flex-1">
-                   <div className="mb-10 text-center lg:text-left">
+                   <div className="mb-6 text-center lg:text-left">
                        <div className="flex items-center justify-center lg:justify-start gap-4 mb-6">
                           <span className="px-4 py-1.5 border border-brandCyan/30 bg-brandCyan/5 text-brandCyan text-[10px] font-black uppercase tracking-widest rounded-full">
                              {film.genre}
@@ -144,7 +144,7 @@ const FilmModalContent = ({ film }: { film: FilmProject }) => {
                        
                        <h1 className="text-5xl md:text-7xl font-cinematic font-black text-white mb-6 leading-none drop-shadow-2xl">{film.title}</h1>
                        
-                       <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 text-sm text-brandGray border-b border-white/10 pb-10 mb-10">
+                       <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 text-sm text-brandGray border-b border-white/10 pb-6 mb-6">
                           <div>
                             <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">Director</p>
                             <p className="text-white">Sarah Jenkins</p>
@@ -160,7 +160,7 @@ const FilmModalContent = ({ film }: { film: FilmProject }) => {
                        </div>
 
                        <h3 className="text-2xl font-cinematic font-bold text-white mb-6">Synopsis</h3>
-                       <div className="prose prose-invert prose-lg text-brandGray font-light leading-relaxed max-w-none mb-16">
+                       <div className="prose prose-invert prose-lg text-brandGray font-light leading-relaxed max-w-none mb-10">
                           <p className="text-xl text-white/90 font-normal">{film.description}</p>
                           <p>
                             Filmed on location in Los Angeles, this production highlights the exceptional capability of our youth talent to handle complex narratives and professional set etiquette.

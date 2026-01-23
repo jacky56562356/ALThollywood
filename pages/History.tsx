@@ -1,12 +1,13 @@
+
 import React from 'react';
 import { HISTORY } from '../constants';
 
 export default function History() {
   return (
-    <div className="pt-40 pb-32">
+    <div className="pt-32 pb-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="brand-gradient-text text-sm font-black tracking-[0.4em] uppercase mb-4 text-center">Our Evolution</h2>
-        <h1 className="text-5xl font-cinematic font-black mb-16 text-center tracking-tight">7 Years of Legacy</h1>
+        <h1 className="text-5xl font-cinematic font-black mb-12 text-center tracking-tight">7 Years of Legacy</h1>
 
         <div className="relative border-l-2 border-brandCyan/30 ml-4 md:ml-0 md:left-1/2">
           {HISTORY.map((item, index) => (

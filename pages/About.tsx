@@ -5,13 +5,13 @@ import { Target, Users2, Rocket, Building2, Award, Clapperboard, Star, CheckCirc
 
 export default function About() {
   return (
-    <div className="pt-40 pb-32">
+    <div className="pt-32 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Intro Section - Refactored to Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16 items-start">
           <div>
             <h2 className="brand-gradient-text text-sm font-black tracking-[0.4em] uppercase mb-6">About the Institution</h2>
-            <h1 className="text-6xl md:text-7xl font-cinematic font-black mb-10 tracking-tight leading-tight">Hollywood Standard. Youth Spirit.</h1>
+            <h1 className="text-6xl md:text-7xl font-cinematic font-black mb-6 tracking-tight leading-tight">Hollywood Standard. Youth Spirit.</h1>
             
             <div className="space-y-8 text-xl text-brandGray leading-relaxed font-light">
               <p>
@@ -40,7 +40,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-20">
           {/* Card 1: Professional Excellence */}
           <div className="group rounded-3xl border border-white/10 bg-white/5 overflow-hidden hover:border-brandCyan/40 transition-all">
             <div className="h-64 overflow-hidden relative">
@@ -99,7 +99,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="mt-40 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center border-t border-white/10 pt-40">
+        <div className="mt-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center border-t border-white/10 pt-20">
            <div>
               <h2 className="text-4xl font-cinematic font-black mb-8">Our Commitment to the Future</h2>
               <p className="text-brandGray text-lg leading-relaxed mb-8 font-light">
@@ -124,8 +124,8 @@ export default function About() {
               </div>
            </div>
            <div className="grid grid-cols-2 gap-4">
-              <img src="https://images.unsplash.com/photo-1542204113-e9354e74092b?auto=format&fit=crop&q=80&w=600" className="rounded-2xl border border-white/10" alt="Film crew" />
-              <img src="https://images.unsplash.com/photo-1594909122845-11baa439b7bf?auto=format&fit=crop&q=80&w=600" className="rounded-2xl border border-white/10 mt-12" alt="Acting workshop" />
+              <img src="https://i.ibb.co/nNQnFsHd/t.png" className="rounded-2xl border border-white/10 h-64 w-full object-cover" alt="On set production" />
+              <img src="https://i.ibb.co/x88927KP/E1138KI5.jpg" className="rounded-2xl border border-white/10 mt-12 h-64 w-full object-cover" alt="Film set" />
            </div>
         </div>
       </div>

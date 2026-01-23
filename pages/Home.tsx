@@ -84,14 +84,14 @@ export default function Home() {
       </section>
 
       {/* Enhanced Detailed Introduction Section */}
-      <section className="py-32 bg-brandBlack">
+      <section className="py-20 bg-brandBlack">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div className="animate-in fade-in slide-in-from-left duration-1000">
               <h2 className="brand-gradient-text text-xs font-black tracking-[0.4em] uppercase mb-6">Our Legacy & Mission</h2>
-              <h3 className="text-4xl md:text-5xl font-cinematic font-black mb-10 leading-tight tracking-tight">A Professional Youth Film Ecosystem Based in Los Angeles</h3>
+              <h3 className="text-4xl md:text-5xl font-cinematic font-black mb-8 leading-tight tracking-tight">A Professional Youth Film Ecosystem Based in Los Angeles</h3>
               
-              <div className="space-y-6 text-brandGray text-lg leading-relaxed mb-12 font-light">
+              <div className="space-y-6 text-brandGray text-lg leading-relaxed mb-8 font-light">
                 <p>
                   ALT HOLLYWOOD DREAM STAR is a Los Angeles–based professional youth film institution built upon the Hollywood production system. We operate as a full-cycle creative hub where training meets real-world execution.
                 </p>
@@ -103,7 +103,7 @@ export default function Home() {
                 </p>
               </div>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-16">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-10">
                 <div className="flex items-start gap-4">
                   <CheckCircle className="text-brandCyan mt-1 shrink-0" size={20} />
                   <div>
@@ -175,9 +175,9 @@ export default function Home() {
       </section>
 
       {/* Pillars Section with Images & Animation */}
-      <section className="py-32 bg-brandBlack relative">
+      <section className="py-20 bg-brandBlack relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-24">
+          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-cinematic font-black mb-6 tracking-tight">Our Core Ecosystem</h2>
             <div className="w-24 h-1 brand-bg mx-auto mb-8"></div>
             <p className="text-brandGray max-w-2xl mx-auto text-lg">From initial discovery to international distribution, our system is designed for professional results.</p>
@@ -216,14 +216,14 @@ export default function Home() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-40 relative overflow-hidden text-center">
+      <section className="py-24 relative overflow-hidden text-center">
         <div className="absolute inset-0 z-0">
              <img src="https://images.unsplash.com/photo-1595769816263-9b910be24d5f?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover opacity-30" alt="Stage lights" />
              <div className="absolute inset-0 bg-gradient-to-r from-brandBlack via-transparent to-brandBlack"></div>
         </div>
         <div className="max-w-4xl mx-auto px-4 relative z-10">
           <h2 className="text-5xl md:text-7xl font-cinematic font-black mb-10 tracking-tighter">Your Hollywood Debut Awaits</h2>
-          <p className="text-brandGray text-xl mb-16 font-medium tracking-wide">Take the first step toward becoming a professional signed actor.</p>
+          <p className="text-brandGray text-xl mb-10 font-medium tracking-wide">Take the first step toward becoming a professional signed actor.</p>
           <Link to="/apply" className="inline-block px-16 py-6 brand-bg text-white font-black rounded-full uppercase tracking-[0.3em] hover:scale-110 transition-all shadow-[0_0_40px_rgba(0,210,255,0.4)]">
             Apply Now
           </Link>

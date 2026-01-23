@@ -12,9 +12,9 @@ export default function Opportunities() {
   );
 
   return (
-    <div className="pt-40 pb-32">
+    <div className="pt-32 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-20">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-12">
           <div className="max-w-2xl">
             <h2 className="brand-gradient-text text-sm font-black tracking-[0.4em] uppercase mb-6">Casting</h2>
             <h1 className="text-6xl font-cinematic font-black mb-8 tracking-tight">Open Opportunities</h1>

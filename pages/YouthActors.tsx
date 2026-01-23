@@ -4,9 +4,9 @@ import { ACTORS } from '../constants';
 
 export default function YouthActors() {
   return (
-    <div className="pt-40 pb-32">
+    <div className="pt-32 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mb-24">
+        <div className="max-w-3xl mb-12">
           <h2 className="brand-gradient-text text-sm font-black tracking-[0.4em] uppercase mb-6">Youth Talents</h2>
           <h1 className="text-6xl font-cinematic font-black mb-8 tracking-tight">Our Stars</h1>
           <p className="text-brandGray text-xl font-light leading-relaxed">

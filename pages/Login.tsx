@@ -36,7 +36,7 @@ export default function Login() {
   };
 
   return (
-    <div className="pt-40 pb-32 flex items-center justify-center">
+    <div className="pt-32 pb-20 flex items-center justify-center">
       <div className="w-full max-w-md px-4">
         <div className="bg-white/5 border border-white/10 rounded-3xl p-10 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1 brand-bg"></div>
