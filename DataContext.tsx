@@ -38,7 +38,8 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
       englishLevel: 'Fluent',
       hobbies: 'Piano, Soccer',
       resume: 'School play lead role 2024',
-      submittedAt: new Date().toISOString().split('T')[0]
+      submittedAt: new Date().toISOString().split('T')[0],
+      headshotUrl: 'https://via.placeholder.com/150'
     }
   ]);
 

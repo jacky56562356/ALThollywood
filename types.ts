@@ -64,4 +64,5 @@ export interface Application {
   hobbies: string;
   resume: string;
   submittedAt: string;
+  headshotUrl?: string; // New field
 }
