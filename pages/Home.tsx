@@ -207,14 +207,14 @@ export default function Home() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 relative overflow-hidden text-center">
+      <section className="py-24 relative overflow-hidden text-center">
         <div className="absolute inset-0 z-0">
-             <img src="https://images.unsplash.com/photo-1595769816263-9b910be24d5f?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover opacity-30" alt="Stage lights" loading="lazy" />
-             <div className="absolute inset-0 bg-gradient-to-r from-brandBlack via-transparent to-brandBlack"></div>
+             <img src="https://images.unsplash.com/photo-1535016120720-40c6874c3b1c?auto=format&fit=crop&q=100&w=2500" className="w-full h-full object-cover opacity-50" alt="Stage lights" loading="lazy" />
+             <div className="absolute inset-0 bg-gradient-to-r from-brandBlack via-brandBlack/40 to-brandBlack"></div>
         </div>
         <div className="max-w-4xl mx-auto px-4 relative z-10">
-          <h2 className="text-3xl md:text-5xl font-cinematic font-black mb-4 tracking-tighter">Your Hollywood Debut Awaits</h2>
-          <p className="text-brandGray text-base mb-8 font-medium tracking-wide">Take the first step toward becoming a professional signed actor.</p>
+          <h2 className="text-3xl md:text-5xl font-cinematic font-black mb-4 tracking-tighter drop-shadow-2xl">Your Hollywood Debut Awaits</h2>
+          <p className="text-brandGray text-base mb-8 font-medium tracking-wide drop-shadow-lg">Take the first step toward becoming a professional signed actor.</p>
           <Link to="/apply" className="inline-block px-10 py-4 brand-bg text-white font-black rounded-full uppercase tracking-[0.3em] hover:scale-110 transition-all shadow-[0_0_40px_rgba(0,210,255,0.4)] text-xs">
             Apply Now
           </Link>

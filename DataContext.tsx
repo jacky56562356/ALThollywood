@@ -26,7 +26,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     {
       id: 'app-mock-1',
       englishName: 'David Chen',
-      chineseName: '',
+      chineseName: '陈大卫',
       gender: 'Male',
       dob: '2015-05-20',
       height: '145',

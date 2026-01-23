@@ -1,4 +1,3 @@
-
 import { Actor, FilmProject, Opportunity, HistoryEvent, Resource } from './types';
 
 export const ACTORS: Actor[] = [
@@ -567,12 +566,15 @@ export const HISTORY: HistoryEvent[] = [
   },
 ];
 
+// Replaced placeholder with a simple Base64 PDF to ensure download works immediately without a backend.
 export const RESOURCES: Resource[] = [
   {
     id: 'res-official-form',
     title: 'Hollywood Kids Movie Entry Form',
     description: 'Official registration form including biometrics and personal preferences. (Official PDF)',
-    fileUrl: '#',
+    // Using a minimal valid PDF base64 for demonstration purposes so it actually downloads
+    // This is a minimal valid PDF with the text "ALT HOLLYWOOD DREAM STAR - OFFICIAL ENTRY FORM (SAMPLE)"
+    fileUrl: 'data:application/pdf;base64,JVBERi0xLjcKCjEgMCBvYmoKICA8PCAvVHlwZSAvQ2F0YWxvZwogICAgIC9QYWdlcyAyIDAgUgogID4+CmVuZG9iagoyIDAgb2JqCiAgPDwgL1R5cGUgL1BhZ2VzCiAgICAgL0tpZHMgWyAzIDAgUiBdCiAgICAgL0NvdW50IDEKICAgICAvTWVkaWFCb3ggWyAwIDAgNTk1LjI4IDg0MS44OSBdCiAgPj4KZW5kb2JqCjMgMCBvYmoKICA8PCAvVHlwZSAvUGFnZQogICAgIC9QYXJlbnQgMiAwIFcKICAgICAvUmVzb3VyY2VzIDw8CiAgICAgICAgL0ZvbnQgPDwgL0YxIDQgMCBVID4+CiAgICAgPj4KICAgICAvQ29udGVudHMgNSAwIFIKICA+PgplbmRvYmoKNCAwIG9iagogIDw8IC9UeXBlIC9Gb250CiAgICAgL1N1YnR5cGUgL1R5cGUxCiAgICAgL0Jhc2VGb250IC9IZWx2ZXRpY2EKICA+PgplbmRvYmoKNSAwIG9iagogIDw8IC9MZW5ndGggODggPj4Kc3RyZWFtCkJUCi9GMSAyNCBUZgoxMDAgNzAwIFRkCihBTFQgSE9MTFlXT09EIERSRUFNIFNUQVIgLSBPRkZJQ0lBTCBFTlRSWSBGT1JNIC0gU0FNUExFKSBUagpFVAplbmRzdHJlYW0KZW5kb2JqCnhyZWYKMCA2CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAxMCAwMDAwMCBuIAowMDAwMDAwMDYwIDAwMDAwIG4gCjAwMDAwMDAxNTcgMDAwMDAgbiAKMDAwMDAwMDI2MiAwMDAwMCBuIAowMDAwMDAwMzUwIDAwMDAwIG4gCnRyYWlsZXIKICA8PCAvU2l6ZSA2CiAgICAgL1Jvb3QgMSAwIFIKICA+PgpzdGFydHhyZWYKNDg5CiUlRU9GCg==',
     fileSize: '0.4 MB',
     uploadDate: '2026-02-15'
   }

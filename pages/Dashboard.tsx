@@ -277,7 +277,11 @@ export default function Dashboard() {
                      <span>{res.fileSize}</span>
                      <span>{res.uploadDate}</span>
                   </div>
-                  <a href={res.fileUrl} download className="mt-4 w-full py-3 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center gap-2 text-xs font-bold uppercase hover:bg-brandCyan hover:text-brandBlack transition-all">
+                  <a 
+                    href={res.fileUrl} 
+                    download={`${res.title}.pdf`} // Added filename
+                    className="mt-4 w-full py-3 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center gap-2 text-xs font-bold uppercase hover:bg-brandCyan hover:text-brandBlack transition-all"
+                  >
                      <Download size={14} /> Download PDF
                   </a>
                </div>
@@ -465,9 +469,14 @@ export default function Dashboard() {
                  /* VIEW APPLICATION DETAILS */
                  viewingApp && (
                   <div className="space-y-6">
-                    <div className="border-b border-white/10 pb-6">
-                      <h3 className="text-3xl font-cinematic font-black tracking-tight">{viewingApp.englishName}</h3>
-                      <p className="text-lg text-brandCyan">{viewingApp.chineseName}</p>
+                    <div className="border-b border-white/10 pb-6 flex justify-between items-start">
+                      <div>
+                        <h3 className="text-3xl font-cinematic font-black tracking-tight">{viewingApp.englishName}</h3>
+                        <p className="text-lg text-brandCyan">{viewingApp.chineseName}</p>
+                      </div>
+                      {viewingApp.headshotUrl && (
+                        <img src={viewingApp.headshotUrl} className="w-20 h-24 object-cover rounded-lg border border-white/10" alt="Headshot" />
+                      )}
                     </div>
                     
                     <div className="grid grid-cols-2 gap-6">
@@ -501,7 +510,18 @@ export default function Dashboard() {
                     </div>
 
                     <div className="bg-white/5 p-4 rounded-xl">
-                       <p className="text-xs text-brandGray uppercase font-black mb-1">Resume / Experience</p>
+                       <div className="flex justify-between items-center mb-1">
+                          <p className="text-xs text-brandGray uppercase font-black">Resume / Experience</p>
+                          {viewingApp.resumeFileUrl && (
+                             <a 
+                               href={viewingApp.resumeFileUrl} 
+                               download={viewingApp.resumeFileName || 'resume.pdf'}
+                               className="text-[10px] brand-bg px-2 py-1 rounded text-white flex items-center gap-1 hover:opacity-80 transition-opacity"
+                             >
+                               <Download size={10} /> Download PDF
+                             </a>
+                          )}
+                       </div>
                        <p className="text-white text-sm whitespace-pre-wrap">{viewingApp.resume}</p>
                     </div>
                   </div>

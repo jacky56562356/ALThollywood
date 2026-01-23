@@ -64,5 +64,7 @@ export interface Application {
   hobbies: string;
   resume: string;
   submittedAt: string;
-  headshotUrl?: string; // New field
+  headshotUrl?: string;
+  resumeFileUrl?: string; // New: Base64 string of PDF
+  resumeFileName?: string; // New: Original filename
 }

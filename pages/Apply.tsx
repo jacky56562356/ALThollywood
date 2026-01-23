@@ -1,12 +1,13 @@
 
 import React, { useState, useRef } from 'react';
-import { FileDown, CheckCircle2, User, Activity, MapPin, FileText, Phone, Mail, Info, Send, UploadCloud, Printer, ArrowRight } from 'lucide-react';
+import { FileDown, CheckCircle2, User, Activity, MapPin, FileText, Phone, Mail, Info, Send, UploadCloud, Printer, ArrowLeft, ScrollText, ShieldCheck, FileType } from 'lucide-react';
 import { useData } from '../DataContext';
 
 export default function Apply() {
   const [submitted, setSubmitted] = useState(false);
   const { resources, submitApplication } = useData();
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const resumeInputRef = useRef<HTMLInputElement>(null);
 
   // Form State
   const [formData, setFormData] = useState({
@@ -23,7 +24,9 @@ export default function Apply() {
     englishLevel: '',
     hobbies: '',
     resume: '',
-    headshotUrl: ''
+    headshotUrl: '',
+    resumeFileUrl: '',
+    resumeFileName: ''
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -40,6 +43,37 @@ export default function Apply() {
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleResumeSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      if (file.type !== 'application/pdf') {
+        alert("Please upload a PDF file.");
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setFormData(prev => ({ 
+          ...prev, 
+          resumeFileUrl: event.target?.result as string,
+          resumeFileName: file.name
+        }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const calculateAge = (dob: string) => {
+    if (!dob) return '';
+    const birthDate = new Date(dob);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    return age;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -63,21 +97,21 @@ export default function Apply() {
 
   const handleEmailDraft = () => {
     const subject = `Application: ${formData.englishName}`;
-    const body = `To ALT Hollywood Dream Star Casting,\n\nPlease find my application details attached (PDF/Screenshot).\n\nName: ${formData.englishName}\nMobile: ${formData.guardianMobile}\n\n[Please attach the saved application form here]`;
+    const body = `To ALT Hollywood Dream Star Casting,\n\nPlease find my application details attached.\n\nNOTE: I have attached the printed Application PDF and my Resume PDF.\n\nName: ${formData.englishName}\nMobile: ${formData.guardianMobile}\n\n`;
     window.location.href = `mailto:altdreamstar@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-white text-black pt-20 pb-20 px-4">
+      <div className="min-h-screen bg-white text-black pt-10 pb-20 px-4 font-sans">
         {/* SUCCESS MESSAGE UI (Screen Only) */}
         <div className="max-w-4xl mx-auto text-center mb-10 print:hidden">
           <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg text-white">
             <CheckCircle2 size={32} />
           </div>
-          <h2 className="text-3xl font-black mb-2">Registration Form Generated</h2>
+          <h2 className="text-3xl font-black mb-2">Application Generated</h2>
           <p className="text-gray-600 mb-8 max-w-xl mx-auto">
-            Please <strong>Save/Print</strong> this official form below, then <strong>Email</strong> it to us along with any other portfolio materials.
+            Your form is ready. Please <strong>Print/Save as PDF</strong> and email it to us along with your Resume file.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <button onClick={handlePrint} className="px-8 py-3 bg-brandBlack text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-all shadow-xl">
@@ -91,142 +125,227 @@ export default function Apply() {
                   setSubmitted(false);
                   setFormData({
                     englishName: '', chineseName: '', gender: 'Male', dob: '', height: '', weight: '', 
-                    race: '', idNumber: '', address: '', guardianMobile: '', englishLevel: '', hobbies: '', resume: '', headshotUrl: ''
+                    race: '', idNumber: '', address: '', guardianMobile: '', englishLevel: '', hobbies: '', resume: '', headshotUrl: '', resumeFileUrl: '', resumeFileName: ''
                   });
                 }}
-                className="px-8 py-3 text-gray-500 font-bold hover:text-black transition-colors"
+                className="px-8 py-3 text-gray-500 font-bold hover:text-black transition-colors flex items-center gap-2"
             >
-                Start New
+                <ArrowLeft size={16} /> Back
             </button>
           </div>
         </div>
 
-        {/* OFFICIAL FORM LAYOUT (This is what gets printed) */}
-        <div className="max-w-[210mm] mx-auto bg-white border-2 border-black p-8 md:p-12 shadow-2xl print:shadow-none print:border-black print:w-full print:max-w-none print:p-0">
+        {/* OFFICIAL FORM LAYOUT - A4 Scaled */}
+        <div className="max-w-[210mm] mx-auto bg-white print:p-0 print:w-full print:max-w-none shadow-2xl print:shadow-none p-8">
           
-          {/* Header */}
-          <div className="flex justify-between items-start border-b-4 border-black pb-6 mb-8">
-             <div className="flex items-center gap-4">
-                <img src="https://i.ibb.co/c4Rn9W9/ALT-LOGO-2400x1800.png" className="h-20 w-auto object-contain" alt="Logo" />
-                <div>
-                   <h1 className="text-3xl font-black uppercase tracking-tighter leading-none">ALT Hollywood</h1>
-                   <h2 className="text-sm font-bold tracking-[0.4em] uppercase text-gray-600">Dream Star</h2>
-                </div>
+          {/* Header Section */}
+          <div className="text-center mb-6">
+             <div className="flex justify-center mb-3">
+                <img src="https://i.ibb.co/c4Rn9W9/ALT-LOGO-2400x1800.png" className="h-20 object-contain" alt="Logo" />
              </div>
-             <div className="text-right">
-                <h3 className="text-xl font-black uppercase border-2 border-black px-4 py-1 inline-block">Official Casting Form</h3>
-                <p className="text-xs font-bold mt-2 text-gray-500">REF: {`APP-${Date.now().toString().slice(-6)}`}</p>
-             </div>
+             <h1 className="text-2xl font-serif font-bold uppercase tracking-wide leading-none text-black">Hollywood Kids Movie Entry Form</h1>
+             <h2 className="text-xl font-serif font-bold mt-2 text-black tracking-wide">ALT 好莱坞儿童电影报名表</h2>
           </div>
 
-          <div className="grid grid-cols-3 gap-8">
-             {/* Left: Photo area */}
-             <div className="col-span-1">
-                <div className="aspect-[3/4] w-full border-2 border-black bg-gray-100 flex items-center justify-center overflow-hidden relative">
+          {/* Main Form Border */}
+          <div className="border-2 border-black">
+             
+             {/* Row 0: Title Bar */}
+             <div className="border-b border-black p-2 pl-4 font-bold text-sm uppercase tracking-wider bg-white">
+                ALT HOLLYWOOD DREAM STAR
+             </div>
+
+             <div className="flex">
+                {/* LEFT SIDE: DATA FIELDS */}
+                <div className="flex-grow">
+                   
+                   {/* ROW 1: Name Block */}
+                   <div className="flex border-b border-black h-24">
+                      {/* Name Label */}
+                      <div className="w-24 border-r border-black flex flex-col items-center justify-center text-center text-xs font-bold p-1">
+                         <span>Name</span>
+                         <span>姓名</span>
+                      </div>
+                      
+                      {/* Name Inputs */}
+                      <div className="flex-grow flex flex-col">
+                         {/* Chinese Name + Sex Row */}
+                         <div className="flex h-1/2 border-b border-black">
+                            <div className="w-24 border-r border-black flex flex-col items-center justify-center text-center text-xs font-bold bg-gray-50 p-1">
+                               <span>Chinese</span>
+                               <span>中文</span>
+                            </div>
+                            <div className="flex-grow border-r border-black flex items-center justify-center text-sm font-bold">
+                               {formData.chineseName}
+                            </div>
+                            <div className="w-16 border-r border-black flex flex-col items-center justify-center text-center text-xs font-bold bg-gray-50 p-1">
+                               <span>Sex</span>
+                               <span>性别</span>
+                            </div>
+                            <div className="w-32 flex items-center justify-center text-xs font-bold gap-3">
+                               <div className="flex items-center gap-1">
+                                  <span>Male</span>
+                                  <div className={`w-3 h-3 border border-black flex items-center justify-center ${formData.gender === 'Male' ? 'bg-black text-white' : ''}`}>
+                                     {formData.gender === 'Male' && '✓'}
+                                  </div>
+                               </div>
+                               <div className="flex items-center gap-1">
+                                  <span>Female</span>
+                                  <div className={`w-3 h-3 border border-black flex items-center justify-center ${formData.gender === 'Female' ? 'bg-black text-white' : ''}`}>
+                                     {formData.gender === 'Female' && '✓'}
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                         
+                         {/* English Name Row */}
+                         <div className="flex h-1/2">
+                            <div className="w-24 border-r border-black flex flex-col items-center justify-center text-center text-xs font-bold bg-gray-50 p-1">
+                               <span>English</span>
+                               <span>英文</span>
+                            </div>
+                            <div className="flex-grow flex items-center justify-center text-sm font-bold">
+                               {formData.englishName}
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+
+                   {/* ROW 2: DOB & Age */}
+                   <div className="flex border-b border-black h-12">
+                      <div className="w-24 border-r border-black flex flex-col items-center justify-center text-center text-xs font-bold p-1">
+                         <span>Date of Birth</span>
+                         <span>出生日期</span>
+                      </div>
+                      <div className="flex-grow border-r border-black flex items-center justify-center text-sm font-bold">
+                         {formData.dob}
+                      </div>
+                      <div className="w-16 border-r border-black flex flex-col items-center justify-center text-center text-xs font-bold bg-gray-50 p-1">
+                         <span>Age</span>
+                         <span>年龄</span>
+                      </div>
+                      <div className="w-32 flex items-center justify-center text-sm font-bold">
+                         {calculateAge(formData.dob)}
+                      </div>
+                   </div>
+
+                   {/* ROW 3: ID & Height */}
+                   <div className="flex border-b border-black h-12">
+                      <div className="w-24 border-r border-black flex flex-col items-center justify-center text-center text-xs font-bold p-1">
+                         <span>ID Card No.</span>
+                         <span>ID</span>
+                      </div>
+                      <div className="flex-grow border-r border-black flex items-center justify-center text-sm font-bold">
+                         {formData.idNumber}
+                      </div>
+                      <div className="w-16 border-r border-black flex flex-col items-center justify-center text-center text-xs font-bold bg-gray-50 p-1">
+                         <span>Height</span>
+                         <span>身高</span>
+                      </div>
+                      <div className="w-32 flex items-center justify-center text-sm font-bold">
+                         {formData.height} cm
+                      </div>
+                   </div>
+
+                </div>
+
+                {/* RIGHT SIDE: PHOTO (Spanning Rows 1-3) */}
+                <div className="w-40 border-l border-black flex flex-col items-center justify-center bg-gray-50 relative">
                    {formData.headshotUrl ? (
-                      <img src={formData.headshotUrl} className="w-full h-full object-cover" alt="Headshot" />
+                      <img src={formData.headshotUrl} className="absolute inset-0 w-full h-full object-cover" alt="Headshot" />
                    ) : (
-                      <span className="text-gray-400 font-bold text-center p-4">PHOTO<br/>ATTACHED</span>
+                      <div className="text-gray-400 font-bold text-center text-sm">
+                         相片<br/>PHOTO
+                      </div>
                    )}
                 </div>
              </div>
 
-             {/* Right: Personal Details Table */}
-             <div className="col-span-2">
-                <table className="w-full border-collapse border-2 border-black text-sm">
-                   <tbody>
-                      <tr>
-                         <td className="border border-black p-2 bg-gray-100 font-bold uppercase w-1/3">Full Name (English)</td>
-                         <td className="border border-black p-2 font-medium text-lg">{formData.englishName}</td>
-                      </tr>
-                      <tr>
-                         <td className="border border-black p-2 bg-gray-100 font-bold uppercase">Chinese Name</td>
-                         <td className="border border-black p-2 font-medium">{formData.chineseName || 'N/A'}</td>
-                      </tr>
-                      <tr>
-                         <td className="border border-black p-2 bg-gray-100 font-bold uppercase">Date of Birth</td>
-                         <td className="border border-black p-2 font-medium">{formData.dob}</td>
-                      </tr>
-                      <tr>
-                         <td className="border border-black p-2 bg-gray-100 font-bold uppercase">Gender</td>
-                         <td className="border border-black p-2 font-medium">{formData.gender}</td>
-                      </tr>
-                      <tr>
-                         <td className="border border-black p-2 bg-gray-100 font-bold uppercase">Nationality / Race</td>
-                         <td className="border border-black p-2 font-medium">{formData.race}</td>
-                      </tr>
-                      <tr>
-                         <td className="border border-black p-2 bg-gray-100 font-bold uppercase">ID / Passport No.</td>
-                         <td className="border border-black p-2 font-medium">{formData.idNumber}</td>
-                      </tr>
-                   </tbody>
-                </table>
-
-                <div className="grid grid-cols-2 gap-4 mt-4">
-                   <div className="border-2 border-black p-3 text-center">
-                      <p className="text-xs font-bold uppercase text-gray-500 mb-1">Height</p>
-                      <p className="text-xl font-black">{formData.height} CM</p>
-                   </div>
-                   <div className="border-2 border-black p-3 text-center">
-                      <p className="text-xs font-bold uppercase text-gray-500 mb-1">Weight</p>
-                      <p className="text-xl font-black">{formData.weight} KG</p>
-                   </div>
+             {/* ROW 4: Address / Weight / English */}
+             <div className="flex border-b border-black h-12">
+                <div className="w-24 border-r border-black flex flex-col items-center justify-center text-center text-xs font-bold p-1">
+                   <span>Address</span>
+                   <span>家庭住址</span>
                 </div>
-             </div>
-          </div>
-
-          {/* Contact & Profile */}
-          <div className="mt-8 space-y-6">
-             <div>
-                <h4 className="font-black uppercase border-b-2 border-black mb-3 pb-1">Contact Information</h4>
-                <div className="grid grid-cols-2 gap-4 text-sm">
-                   <div>
-                      <span className="block font-bold text-gray-500 text-xs uppercase">Guardian Mobile</span>
-                      <span className="block text-lg font-medium border-b border-gray-300 pb-1">{formData.guardianMobile}</span>
-                   </div>
-                   <div>
-                      <span className="block font-bold text-gray-500 text-xs uppercase">English Level</span>
-                      <span className="block text-lg font-medium border-b border-gray-300 pb-1">{formData.englishLevel}</span>
-                   </div>
-                   <div className="col-span-2">
-                      <span className="block font-bold text-gray-500 text-xs uppercase">Residential Address</span>
-                      <span className="block text-lg font-medium border-b border-gray-300 pb-1">{formData.address}</span>
-                   </div>
+                <div className="flex-grow border-r border-black flex items-center justify-center text-xs font-medium px-2 text-center">
+                   {formData.address}
+                </div>
+                <div className="w-16 border-r border-black flex flex-col items-center justify-center text-center text-xs font-bold bg-gray-50 p-1">
+                   <span>Weight</span>
+                   <span>体重</span>
+                </div>
+                <div className="w-24 border-r border-black flex items-center justify-center text-sm font-bold">
+                   {formData.weight} kg
+                </div>
+                <div className="w-16 border-r border-black flex flex-col items-center justify-center text-center text-xs font-bold bg-gray-50 p-1">
+                   <span>English</span>
+                   <span>英语</span>
+                </div>
+                <div className="w-24 flex items-center justify-center text-sm font-bold">
+                   {formData.englishLevel}
                 </div>
              </div>
 
-             <div>
-                <h4 className="font-black uppercase border-b-2 border-black mb-3 pb-1">Experience & Skills</h4>
-                <div className="space-y-4 text-sm">
-                   <div>
-                      <span className="block font-bold text-gray-500 text-xs uppercase">Hobbies / Special Skills</span>
-                      <div className="p-3 bg-gray-50 border border-gray-200 min-h-[60px]">{formData.hobbies}</div>
+             {/* ROW 5: Guardian Mobile / Race */}
+             <div className="flex border-b border-black h-12">
+                <div className="w-48 border-r border-black flex flex-col items-center justify-center text-center text-xs font-bold p-1">
+                   <span>Guardians Mobile Phone</span>
+                   <span>父母移动电话</span>
+                </div>
+                <div className="flex-grow border-r border-black flex items-center justify-center text-sm font-bold">
+                   {formData.guardianMobile}
+                </div>
+                <div className="w-24 border-r border-black flex flex-col items-center justify-center text-center text-xs font-bold bg-gray-50 p-1">
+                   <span>Race</span>
+                   <span>民族</span>
+                </div>
+                <div className="w-40 flex items-center justify-center text-sm font-bold">
+                   {formData.race}
+                </div>
+             </div>
+
+             {/* ROW 6: Personal Preference */}
+             <div className="border-b border-black">
+                <div className="h-8 border-b border-black flex items-center px-4 text-xs font-bold bg-gray-100">
+                   Personal preference 个人爱好
+                </div>
+                {/* Empty Grid for Visual */}
+                <div className="grid grid-cols-4 divide-x divide-black h-10 border-b border-black">
+                   <div className="col-span-4 p-2 text-sm font-medium">{formData.hobbies}</div>
+                </div>
+                <div className="grid grid-cols-4 divide-x divide-black h-8">
+                   <div></div><div></div><div></div><div></div>
+                </div>
+             </div>
+
+             {/* ROW 7: Personal Resume */}
+             <div className="flex h-64">
+                <div className="w-32 border-r border-black flex flex-col items-center justify-center text-center text-xs font-bold bg-gray-50 p-2">
+                   <div className="mb-4">Personal Resume</div>
+                   <div className="mb-2">个人简历</div>
+                   <div className="text-[10px] text-gray-500 font-normal leading-tight">
+                      (曾参与表演类似的活动<br/>或者赛事)
                    </div>
-                   <div>
-                      <span className="block font-bold text-gray-500 text-xs uppercase">Resume / Past Experience</span>
-                      <div className="p-3 bg-gray-50 border border-gray-200 min-h-[100px] whitespace-pre-wrap">{formData.resume}</div>
-                   </div>
+                </div>
+                <div className="flex-grow p-4 text-sm font-medium whitespace-pre-wrap leading-relaxed relative">
+                   {formData.resumeFileUrl ? (
+                      <div className="absolute inset-0 flex items-center justify-center flex-col text-gray-600 bg-gray-50/50">
+                        <FileText size={40} className="mb-2" />
+                        <p className="font-bold">SEE ATTACHED RESUME PDF</p>
+                        <p className="text-xs">{formData.resumeFileName}</p>
+                      </div>
+                   ) : (
+                      formData.resume
+                   )}
                 </div>
              </div>
           </div>
 
           {/* Footer Declaration */}
-          <div className="mt-12 pt-6 border-t-2 border-black flex justify-between items-end">
-             <div className="text-xs text-gray-500 max-w-md">
-                <p className="font-bold text-black mb-1">DECLARATION</p>
-                I hereby certify that the information above is true and accurate. I understand that this application is for internal casting review only.
-             </div>
-             <div className="text-center">
-                <div className="w-48 border-b border-black mb-2"></div>
-                <p className="text-xs font-bold uppercase">Guardian Signature / Date</p>
-             </div>
+          <div className="mt-4 italic text-sm font-serif text-black">
+             I hereby declare that all the information given by me in this form is true.
           </div>
 
-        </div>
-        
-        {/* Helper text for print */}
-        <div className="text-center mt-10 text-gray-400 text-xs print:hidden">
-           &copy; 2025 ALT Hollywood Dream Star. Internal System.
         </div>
       </div>
     );
@@ -240,7 +359,118 @@ export default function Apply() {
           {/* Left Column: Info */}
           <div className="order-2 lg:order-1">
             <h2 className="brand-gradient-text text-xs font-black tracking-[0.4em] uppercase mb-2">Join Us</h2>
-            <h1 className="text-3xl md:text-5xl font-cinematic font-black mb-4 tracking-tight leading-tight">Your Hollywood Journey Starts Here</h1>
+            <h1 className="text-3xl md:text-5xl font-cinematic font-black mb-6 tracking-tight leading-tight">Your Hollywood Journey Starts Here</h1>
+            
+            {/* New Guidelines Section */}
+            <div className="w-full bg-brandBlack/60 border border-brandCyan/20 rounded-2xl p-6 mb-8 relative overflow-hidden group shadow-xl">
+               <div className="absolute top-0 left-0 w-1 h-full brand-bg"></div>
+               <div className="flex items-center gap-3 mb-5 border-b border-white/5 pb-4">
+                  <div className="p-2.5 bg-brandCyan/10 rounded-lg text-brandCyan shadow-[0_0_15px_rgba(0,229,255,0.2)]">
+                    <ScrollText size={20} />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-cinematic font-bold text-white leading-none mb-1">Enrollment Guidelines</h3>
+                    <p className="text-[10px] text-brandGray uppercase tracking-[0.2em] font-bold">Policy & Procedures</p>
+                  </div>
+               </div>
+               
+               <div className="h-80 overflow-y-auto pr-3 custom-scrollbar space-y-6 text-xs text-brandGray leading-relaxed font-light">
+                  <div>
+                    <h4 className="text-white font-bold mb-2 uppercase tracking-wide text-[10px]">Welcome</h4>
+                    <p>Welcome to our Children’s Film & Acting Training Program. This program is designed to provide professional training in screen acting, on-camera performance, and real-world film production experience. Through systematic instruction and hands-on practice, students will develop confidence, creativity, communication skills, and teamwork.</p>
+                    <p className="mt-2 text-brandCyan/80 italic">To ensure a safe, productive, and professional learning environment, parents and students are kindly requested to carefully read and comply with the following guidelines.</p>
+                  </div>
+
+                  <div>
+                    <h4 className="text-white font-bold mb-3 uppercase tracking-wide text-[10px] border-b border-white/10 pb-1">I. Enrollment Guidelines</h4>
+                    
+                    <div className="mb-3">
+                       <h5 className="text-white font-bold mb-1">1. Eligibility</h5>
+                       <ul className="list-disc pl-4 space-y-1 marker:text-brandCyan">
+                          <li>Children and youth ages 6–18</li>
+                          <li>Students interested in acting, film, and performing arts</li>
+                          <li>Students willing to participate in professional training and production practice</li>
+                          <li>Students with a positive learning attitude and cooperative spirit</li>
+                          <li>No prior acting experience is required. Beginners are welcome.</li>
+                       </ul>
+                    </div>
+
+                    <div className="mb-3">
+                       <h5 className="text-white font-bold mb-1">2. Enrollment Process</h5>
+                       <ul className="list-disc pl-4 space-y-1 marker:text-brandCyan">
+                          <li>Complete the enrollment application</li>
+                          <li>Submit student information and optional materials (photo/video/talent introduction)</li>
+                          <li>Selected courses may require an interview or audition</li>
+                          <li>Admission will be confirmed upon review</li>
+                          <li>Registration is finalized once enrollment procedures are completed</li>
+                       </ul>
+                       <p className="mt-1 opacity-70">Admission decisions are based on age suitability, learning attitude, potential, and class availability.</p>
+                    </div>
+
+                    <div>
+                       <h5 className="text-white font-bold mb-1">3. Training Format</h5>
+                       <p className="mb-1">The program includes, but is not limited to:</p>
+                       <ul className="list-disc pl-4 space-y-1 marker:text-brandCyan">
+                          <li>Acting fundamentals & On-camera performance techniques</li>
+                          <li>Voice and dialogue training</li>
+                          <li>Movement and body expression</li>
+                          <li>Improvisation and scene study</li>
+                          <li>Team collaboration</li>
+                          <li>Short film and movie production practice</li>
+                       </ul>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="text-white font-bold mb-3 uppercase tracking-wide text-[10px] border-b border-white/10 pb-1">II. Class Policies</h4>
+                    
+                    <div className="space-y-4">
+                       <div>
+                          <h5 className="text-white font-bold mb-1">4. Attendance</h5>
+                          <p>Students are expected to attend classes on time. Tardiness or unexcused absences may affect learning progress. Parents should notify instructors in advance if a student needs to be absent.</p>
+                       </div>
+                       
+                       <div>
+                          <h5 className="text-white font-bold mb-1">5. Class Preparation</h5>
+                          <p>Students should bring comfortable clothing suitable for movement, water, and writing materials. Avoid bringing valuables.</p>
+                       </div>
+
+                       <div>
+                          <h5 className="text-white font-bold mb-1">6. Conduct & Behavior</h5>
+                          <p>Students must respect instructors and classmates, follow instructions, and maintain a safe environment. Disruptive behavior may result in warnings.</p>
+                       </div>
+
+                       <div>
+                          <h5 className="text-white font-bold mb-1">7. Practice & Progress</h5>
+                          <p>Regular practice is essential. Parents are encouraged to support their children’s learning at home.</p>
+                       </div>
+
+                       <div>
+                          <h5 className="text-white font-bold mb-1">8. Filming & Media Participation</h5>
+                          <p>By enrolling, parents agree that students may participate in educational filming. Projects may be used for educational or promotional purposes (non-commercial). Please notify us in writing of any restrictions.</p>
+                       </div>
+
+                       <div>
+                          <h5 className="text-white font-bold mb-1">9. Parent Responsibilities</h5>
+                          <p>Parents should ensure timely drop-off/pick-up and maintain communication with instructors.</p>
+                       </div>
+                       
+                       <div>
+                          <h5 className="text-white font-bold mb-1">10. Safety</h5>
+                          <p>Students may not leave premises without permission. Safety is our highest priority.</p>
+                       </div>
+
+                       <div>
+                          <h5 className="text-white font-bold mb-1">11. General Provisions</h5>
+                          <p>The institution reserves the right to make reasonable adjustments to course arrangements. The institution retains final interpretation rights of these guidelines.</p>
+                       </div>
+                    </div>
+                  </div>
+               </div>
+               
+               {/* Fade Overlay */}
+               <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-brandBlack to-transparent pointer-events-none rounded-b-2xl"></div>
+            </div>
             
             {/* Styled Notice */}
             <div className="p-6 border border-brandCyan/20 rounded-2xl bg-brandCyan/5 relative mb-8">
@@ -249,14 +479,19 @@ export default function Apply() {
                 <h4 className="font-black uppercase tracking-[0.2em] text-[10px]">Registration Notice</h4>
               </div>
               <p className="text-xs text-brandGray leading-relaxed font-light">
-                Please fill out this digital form completely. Once submitted, you will be able to <strong>save an official PDF</strong> of your application to email to our casting directors directly.
+                Please fill out this digital form completely. Once submitted, the system will generate an <strong>Official Entry Form</strong> matching our casting standards. You can then print/save it and email it to us.
               </p>
             </div>
 
             <div className="space-y-4 mb-10">
               <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-3">Documents</h3>
               {resources.map((res) => (
-                  <a key={res.id} href={res.fileUrl} download className="flex items-center justify-between p-4 border border-white/10 bg-white/5 rounded-xl hover:border-brandCyan/40 transition-all group cursor-pointer relative overflow-hidden">
+                  <a 
+                    key={res.id} 
+                    href={res.fileUrl} 
+                    download={`${res.title}.pdf`}
+                    className="flex items-center justify-between p-4 border border-white/10 bg-white/5 rounded-xl hover:border-brandCyan/40 transition-all group cursor-pointer relative overflow-hidden"
+                  >
                     <div className="absolute inset-0 bg-brandCyan/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div className="flex items-center gap-4 relative z-10">
                       <div className="p-2.5 brand-bg rounded-lg group-hover:scale-110 transition-transform shadow-lg shadow-brandCyan/20"><FileDown className="text-white" size={18} /></div>
@@ -271,18 +506,6 @@ export default function Apply() {
                 ))
               }
             </div>
-            
-            <div className="border-t border-white/10 pt-8">
-               <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-brandCyan border border-white/5">
-                    <Mail size={18} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-xs mb-0.5 uppercase tracking-wide text-white">Submission Email</h4>
-                    <p className="text-brandGray text-sm font-light">altdreamstar@gmail.com</p>
-                  </div>
-               </div>
-            </div>
           </div>
 
           {/* Right Column: Form */}
@@ -292,7 +515,7 @@ export default function Apply() {
               <h3 className="text-2xl font-cinematic font-black mb-6 tracking-tight">Digital Registration</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
                 
-                {/* Photo Upload - NEW */}
+                {/* Photo Upload */}
                 <div className="mb-6">
                    <h4 className="flex items-center gap-2 text-[10px] text-brandCyan uppercase font-black tracking-widest mb-3"><UploadCloud size={12}/> Headshot Photo</h4>
                    <div 
@@ -399,10 +622,34 @@ export default function Apply() {
                       <label className="block text-[9px] text-brandGray uppercase font-bold mb-1">Personal Preferences / Hobbies</label>
                       <textarea name="hobbies" value={formData.hobbies} onChange={handleChange} rows={2} className="w-full bg-brandBlack/50 border border-white/10 px-4 py-2.5 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-lg transition-all resize-none text-white" placeholder="Singing, Dancing, Sports..."></textarea>
                    </div>
+                   
                    <div>
-                      <label className="block text-[9px] text-brandGray uppercase font-bold mb-1">Resume (Previous acting/performance experience)</label>
-                      <textarea name="resume" value={formData.resume} onChange={handleChange} rows={4} className="w-full bg-brandBlack/50 border border-white/10 px-4 py-2.5 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-lg transition-all resize-none text-white" placeholder="List key roles, contests, or training..."></textarea>
+                      <div className="flex justify-between items-center mb-1">
+                        <label className="block text-[9px] text-brandGray uppercase font-bold">Resume (Text or PDF)</label>
+                        {formData.resumeFileName && <span className="text-[9px] text-brandCyan font-bold">{formData.resumeFileName} Uploaded</span>}
+                      </div>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                         <textarea name="resume" value={formData.resume} onChange={handleChange} rows={4} className="w-full bg-brandBlack/50 border border-white/10 px-4 py-2.5 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-lg transition-all resize-none text-white" placeholder="Type detailed experience here..."></textarea>
+                         
+                         <div 
+                            onClick={() => resumeInputRef.current?.click()}
+                            className="w-full h-full min-h-[100px] border border-dashed border-white/10 rounded-lg flex flex-col items-center justify-center bg-white/5 hover:bg-white/10 hover:border-brandCyan/50 transition-all cursor-pointer group"
+                         >
+                            <FileType size={20} className="text-brandGray group-hover:text-brandCyan mb-2" />
+                            <p className="text-[10px] font-bold text-white">Upload PDF Resume</p>
+                            <p className="text-[9px] text-brandGray mt-1">(Optional)</p>
+                            <input 
+                              type="file" 
+                              ref={resumeInputRef} 
+                              onChange={handleResumeSelect} 
+                              accept="application/pdf" 
+                              className="hidden" 
+                            />
+                         </div>
+                      </div>
                    </div>
+
                    <div className="flex items-start gap-3 mt-3">
                       <input type="checkbox" required className="mt-1" />
                       <p className="text-[10px] text-brandGray">I hereby declare that all the information given by me in this form is true.</p>
