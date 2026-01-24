@@ -55,8 +55,8 @@ const TESTIMONIALS = [
 export default function Home() {
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative h-[90vh] md:h-screen flex items-center justify-center overflow-hidden">
+      {/* Hero Section - Slightly tighter height */}
+      <section className="relative h-[85vh] md:h-[90vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <video 
             autoPlay 
@@ -73,10 +73,10 @@ export default function Home() {
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto text-center px-4 animate-fade-up">
-          <h2 className="brand-gradient-text text-xs md:text-sm font-black tracking-[0.5em] mb-4 uppercase drop-shadow-lg">
+          <h2 className="brand-gradient-text text-xs md:text-sm font-black tracking-[0.5em] mb-3 uppercase drop-shadow-lg">
             Training · Film Production · Global Casting
           </h2>
-          <div className="flex flex-col items-center justify-center mb-6">
+          <div className="flex flex-col items-center justify-center mb-4">
             <h1 className="text-5xl md:text-8xl font-cinematic font-black brand-gradient-text leading-tight md:leading-[0.9] tracking-tighter mb-2 drop-shadow-2xl">
               ALT
             </h1>
@@ -84,7 +84,7 @@ export default function Home() {
               Hollywood Dream Star
             </h2>
           </div>
-          <p className="text-sm md:text-lg text-white/80 font-medium mb-8 max-w-2xl mx-auto italic tracking-wide leading-relaxed drop-shadow-md px-4">
+          <p className="text-sm md:text-lg text-white/80 font-medium mb-6 max-w-2xl mx-auto italic tracking-wide leading-relaxed drop-shadow-md px-4">
             "The premier bridge between world-class training and real Hollywood film production for the next generation of stars."
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -99,10 +99,10 @@ export default function Home() {
       </section>
 
       {/* Featured Films Showcase (Visual Impact) */}
-      <section className="py-16 bg-brandBlack border-b border-white/5 relative overflow-hidden">
+      <section className="py-10 bg-brandBlack border-b border-white/5 relative overflow-hidden">
          <div className="absolute top-0 right-0 w-1/2 h-full bg-brandCyan/5 blur-3xl rounded-full pointer-events-none"></div>
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-6 gap-4">
                <div>
                   <h2 className="brand-gradient-text text-xs font-black tracking-[0.4em] uppercase mb-2">Now Streaming</h2>
                   <h3 className="text-3xl md:text-4xl font-cinematic font-black tracking-tight text-white">Latest Productions</h3>
@@ -112,7 +112,7 @@ export default function Home() {
                </Link>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                {FILMS.slice(0, 4).map((film) => (
                   <Link to="/films" key={film.id} className="group relative aspect-[2/3] rounded-xl overflow-hidden shadow-2xl border border-white/10 hover:border-brandCyan/50 transition-all cursor-pointer">
                      <img 
@@ -132,12 +132,52 @@ export default function Home() {
       </section>
 
       {/* NEW SECTION: Industry News & Awards */}
-      <section className="py-12 bg-[#080808] border-b border-white/5 relative overflow-hidden">
+      <section className="py-10 bg-[#080808] border-b border-white/5 relative overflow-hidden min-h-[500px] flex items-center">
         {/* Decorative elements */}
         <div className="absolute left-0 bottom-0 w-64 h-64 bg-amber-500/5 blur-[80px] rounded-full pointer-events-none"></div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex items-center gap-4 mb-8">
+        {/* BIG TROPHY ANIMATION CONTAINER */}
+        <div className="hidden lg:block absolute right-0 top-0 h-full w-[45%] z-0 pointer-events-none select-none">
+           {/* Center positioning helper */}
+           <div className="relative w-full h-full flex items-center justify-center">
+               
+               {/* 1. Rotating Golden Arcs (SVG) - Scaled down to match smaller trophy */}
+               <svg className="absolute w-[80%] h-[80%] animate-[spin_20s_linear_infinite] opacity-30" viewBox="0 0 200 200">
+                  <defs>
+                    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="transparent" />
+                      <stop offset="50%" stopColor="#fbbf24" />
+                      <stop offset="100%" stopColor="transparent" />
+                    </linearGradient>
+                  </defs>
+                  <circle cx="100" cy="100" r="70" stroke="url(#goldGradient)" strokeWidth="0.5" fill="none" strokeDasharray="20 10" />
+                  <path d="M100 20 A 80 80 0 0 1 180 100" stroke="#f59e0b" strokeWidth="0.5" fill="none" strokeDasharray="5 5" opacity="0.5" />
+                  <path d="M100 180 A 80 80 0 0 1 20 100" stroke="#f59e0b" strokeWidth="0.5" fill="none" strokeDasharray="5 5" opacity="0.5" />
+               </svg>
+               
+               {/* 2. Floating Particles - Position adjusted closer to center */}
+               <div className="absolute inset-0">
+                  <div className="absolute top-[35%] left-[40%] w-1.5 h-1.5 bg-amber-300 rounded-full animate-pulse shadow-[0_0_10px_#fcd34d]"></div>
+                  <div className="absolute top-[55%] right-[35%] w-1 h-1 bg-white rounded-full animate-ping"></div>
+                  <div className="absolute bottom-[40%] left-[45%] w-1 h-1 bg-amber-500 rounded-full animate-bounce"></div>
+                  <div className="absolute top-[30%] right-[45%] w-2 h-2 bg-amber-400/50 rounded-full blur-[1px] animate-float"></div>
+                  <div className="absolute bottom-[35%] right-[40%] w-1.5 h-1.5 bg-amber-200 rounded-full animate-pulse delay-700"></div>
+               </div>
+
+               {/* 3. Ambient Glow - Reduced size */}
+               <div className="absolute w-[180px] h-[180px] bg-amber-500/10 blur-[80px] rounded-full"></div>
+
+               {/* 4. The Trophy Image - Reduced to w-[40%] */}
+               <img 
+                   src="https://i.ibb.co/4nXRfxf5/tongxiang.png" 
+                   alt="Award Trophy" 
+                   className="relative w-[40%] h-auto object-contain animate-float drop-shadow-[0_0_60px_rgba(245,158,11,0.25)] z-10"
+               />
+           </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+          <div className="flex items-center gap-4 mb-6">
              <div className="h-px bg-white/10 flex-1"></div>
              <h2 className="text-xs font-black uppercase tracking-[0.3em] text-brandGray flex items-center gap-2">
                 <Sparkles size={12} className="text-amber-400" />
@@ -146,10 +186,10 @@ export default function Home() {
              <div className="h-px bg-white/10 flex-1"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:w-[60%]">
              {/* News Item 1: Golden State Film Festival */}
-             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 group hover:border-brandCyan/30 transition-all shadow-lg hover:shadow-brandCyan/5">
-                <div className="w-24 h-24 sm:w-28 sm:h-28 shrink-0 bg-black rounded-xl border border-white/20 flex items-center justify-center p-4 shadow-inner relative overflow-hidden">
+             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6 group hover:border-brandCyan/30 transition-all shadow-lg hover:shadow-brandCyan/5 backdrop-blur-sm">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 shrink-0 bg-black rounded-xl border border-white/20 flex items-center justify-center p-3 shadow-inner relative overflow-hidden">
                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
                    <img 
                       src="https://i.ibb.co/kssxQ1DR/golden-state-film-festival-logo.jpg"
@@ -162,25 +202,24 @@ export default function Home() {
                       alt="Golden State Film Festival" 
                    />
                    <div className="hidden flex flex-col items-center justify-center text-center">
-                      <Film size={32} className="text-white mb-1" />
+                      <Film size={28} className="text-white mb-1" />
                       <span className="text-[8px] uppercase font-bold text-white leading-tight">Golden State<br/>Film Festival</span>
                    </div>
                 </div>
                 <div className="text-center sm:text-left flex-1">
-                   <div className="inline-block px-3 py-1 border border-white/20 rounded-full bg-white/5 mb-3">
-                       <p className="text-[10px] font-black uppercase tracking-widest text-white/90">Official Selection</p>
+                   <div className="inline-block px-3 py-1 border border-white/20 rounded-full bg-white/5 mb-2">
+                       <p className="text-[9px] font-black uppercase tracking-widest text-white/90">Official Selection</p>
                    </div>
-                   <h3 className="text-3xl font-cinematic font-black text-white mb-1 group-hover:text-brandCyan transition-colors">THE garden</h3>
-                   <div className="w-12 h-0.5 bg-brandCyan/50 mx-auto sm:mx-0 mb-3"></div>
-                   <p className="text-brandGray text-sm font-bold tracking-wide uppercase">Golden State Film Festival</p>
-                   <p className="text-brandGray text-xs mt-1 font-medium opacity-60">Official Selection</p>
+                   <h3 className="text-2xl font-cinematic font-black text-white mb-1 group-hover:text-brandCyan transition-colors">THE garden</h3>
+                   <div className="w-12 h-0.5 bg-brandCyan/50 mx-auto sm:mx-0 mb-2"></div>
+                   <p className="text-brandGray text-xs font-bold tracking-wide uppercase">Golden State Film Festival</p>
                 </div>
              </div>
 
              {/* News Item 2: Golden Feather Awards */}
-             <div className="bg-gradient-to-br from-[#1a1500] to-black border border-amber-500/20 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 group hover:border-amber-500/50 transition-all shadow-lg hover:shadow-amber-500/10 relative overflow-hidden">
+             <div className="bg-gradient-to-br from-[#1a1500] to-black border border-amber-500/20 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6 group hover:border-amber-500/50 transition-all shadow-lg hover:shadow-amber-500/10 relative overflow-hidden backdrop-blur-sm">
                 <div className="absolute top-0 right-0 w-full h-full bg-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="w-24 h-24 sm:w-28 sm:h-28 shrink-0 bg-black rounded-xl border border-amber-500/30 flex items-center justify-center p-4 shadow-[0_0_30px_rgba(245,158,11,0.15)] relative z-10">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 shrink-0 bg-black rounded-xl border border-amber-500/30 flex items-center justify-center p-3 shadow-[0_0_30px_rgba(245,158,11,0.15)] relative z-10">
                    <img 
                       src="https://i.ibb.co/TqJBkL9F/Chat-GPT-Image-2025-8-29-15-46-30-1.jpg"
                       onError={(e) => {
@@ -191,23 +230,22 @@ export default function Home() {
                       alt="Golden Feather Awards" 
                    />
                    <div className="hidden flex flex-col items-center justify-center text-center">
-                      <Trophy size={32} className="text-amber-400 mb-1" />
+                      <Trophy size={28} className="text-amber-400 mb-1" />
                       <span className="text-[8px] uppercase font-bold text-amber-400 leading-tight">Golden Feather<br/>Awards</span>
                    </div>
                 </div>
                 <div className="text-center sm:text-left flex-1 relative z-10">
-                   <div className="inline-block px-3 py-1 border border-amber-500/30 rounded-full bg-amber-500/10 mb-3">
-                       <p className="text-[10px] font-black uppercase tracking-widest text-amber-400 flex items-center gap-2">
+                   <div className="inline-block px-3 py-1 border border-amber-500/30 rounded-full bg-amber-500/10 mb-2">
+                       <p className="text-[9px] font-black uppercase tracking-widest text-amber-400 flex items-center gap-2">
                           <Star size={8} fill="currentColor" /> Winner <Star size={8} fill="currentColor" />
                        </p>
                    </div>
-                   <h3 className="text-3xl font-cinematic font-black text-white mb-1 group-hover:text-amber-400 transition-colors">THE Shift</h3>
-                   <div className="w-12 h-0.5 bg-amber-500/50 mx-auto sm:mx-0 mb-3"></div>
-                   <p className="text-brandGray text-sm font-bold tracking-wide uppercase">Golden Feather Awards</p>
-                   <div className="flex flex-wrap justify-center sm:justify-start gap-2 mt-3">
-                      <span className="text-[9px] font-bold border border-amber-500/30 text-amber-200/90 px-2 py-1 rounded bg-amber-900/20">Best Story</span>
-                      <span className="text-[9px] font-bold border border-amber-500/30 text-amber-200/90 px-2 py-1 rounded bg-amber-900/20">Best Actor</span>
-                      <span className="text-[9px] font-bold border border-amber-500/30 text-amber-200/90 px-2 py-1 rounded bg-amber-900/20">Best Director</span>
+                   <h3 className="text-2xl font-cinematic font-black text-white mb-1 group-hover:text-amber-400 transition-colors">THE Shift</h3>
+                   <div className="w-12 h-0.5 bg-amber-500/50 mx-auto sm:mx-0 mb-2"></div>
+                   <p className="text-brandGray text-xs font-bold tracking-wide uppercase">Golden Feather Awards</p>
+                   <div className="flex flex-wrap justify-center sm:justify-start gap-1.5 mt-2">
+                      <span className="text-[8px] font-bold border border-amber-500/30 text-amber-200/90 px-1.5 py-0.5 rounded bg-amber-900/20">Best Story</span>
+                      <span className="text-[8px] font-bold border border-amber-500/30 text-amber-200/90 px-1.5 py-0.5 rounded bg-amber-900/20">Best Actor</span>
                    </div>
                 </div>
              </div>
@@ -216,17 +254,17 @@ export default function Home() {
       </section>
 
       {/* Introduction Section */}
-      <section className="py-20 bg-brandBlack">
+      <section className="py-12 bg-brandBlack">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div className="animate-in fade-in slide-in-from-left duration-1000">
               <h2 className="brand-gradient-text text-xs font-black tracking-[0.4em] uppercase mb-4">Our Legacy & Mission</h2>
-              <h3 className="text-3xl md:text-5xl font-cinematic font-black mb-8 leading-tight tracking-tight text-white">
+              <h3 className="text-3xl md:text-5xl font-cinematic font-black mb-6 leading-tight tracking-tight text-white">
                 Where Training Meets <br/>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">Real Film Production</span>
               </h3>
               
-              <div className="space-y-6 text-brandGray text-sm md:text-base leading-relaxed font-light mb-10">
+              <div className="space-y-6 text-brandGray text-sm md:text-base leading-relaxed font-light mb-8">
                 <p>
                   ALT HOLLYWOOD DREAM STAR is not just a school; it's a launchpad. Based in Los Angeles, we operate as a full-cycle creative hub where acting training integrates seamlessly with professional filmmaking.
                 </p>
@@ -235,7 +273,7 @@ export default function Home() {
                 </p>
               </div>
               
-              <div className="grid grid-cols-2 gap-y-6 gap-x-4">
+              <div className="grid grid-cols-2 gap-y-4 gap-x-4">
                 <div className="flex items-start gap-3">
                   <div className="p-1 rounded-full bg-brandCyan/10 text-brandCyan"><CheckCircle size={16} /></div>
                   <div>
@@ -291,7 +329,7 @@ export default function Home() {
       </section>
 
       {/* NEW SECTION: Impact Statistics */}
-      <section className="py-12 border-y border-white/5 bg-brandBlack/50 relative">
+      <section className="py-8 border-y border-white/5 bg-brandBlack/50 relative">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/5">
                <div className="group">
@@ -315,15 +353,15 @@ export default function Home() {
       </section>
 
       {/* Pillars Section */}
-      <section className="py-20 bg-brandBlack relative">
+      <section className="py-12 bg-brandBlack relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-10">
             <h2 className="text-3xl md:text-5xl font-cinematic font-black mb-4 tracking-tight text-white">Our Core Ecosystem</h2>
             <div className="w-12 h-0.5 brand-bg mx-auto mb-4"></div>
             <p className="text-brandGray max-w-2xl mx-auto text-sm leading-relaxed font-light">From initial discovery to international distribution, our system is designed for professional results.</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {ECOSYSTEM_ITEMS.map((item, index) => (
               <div key={index} className="group relative h-80 rounded-2xl overflow-hidden border border-white/10 hover:border-brandCyan/50 transition-all duration-500">
                 <div className="absolute inset-0">
@@ -353,10 +391,10 @@ export default function Home() {
       </section>
 
       {/* NEW SECTION: Testimonials */}
-      <section className="py-20 bg-[#080a0e] relative overflow-hidden">
+      <section className="py-12 bg-[#080a0e] relative overflow-hidden">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <h2 className="brand-gradient-text text-xs font-black tracking-[0.4em] uppercase mb-8 text-center">Industry & Parent Voices</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                {TESTIMONIALS.map((t, i) => (
                   <div key={i} className="bg-white/5 border border-white/5 p-8 rounded-2xl relative hover:bg-white/[0.07] transition-colors">
                      <Quote className="text-brandCyan/20 absolute top-6 right-6" size={40} />
@@ -375,7 +413,7 @@ export default function Home() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-32 relative overflow-hidden text-center flex items-center justify-center">
+      <section className="py-20 relative overflow-hidden text-center flex items-center justify-center">
         <div className="absolute inset-0 z-0 bg-brandBlack">
              {/* Classic Colored Cinema Auditorium (Red Seats/Gold) - No Grayscale, bright and vivid */}
              <img 
@@ -390,9 +428,9 @@ export default function Home() {
         
         <div className="max-w-4xl mx-auto px-6 relative z-10">
            {/* Glass box to make text pop against the bright screen */}
-           <div className="bg-brandBlack/60 backdrop-blur-md p-10 md:p-14 rounded-3xl border border-white/10 shadow-2xl animate-fade-up">
-              <h2 className="text-4xl md:text-6xl font-cinematic font-black mb-6 tracking-tighter drop-shadow-2xl text-white">Your Hollywood Debut Awaits</h2>
-              <p className="text-white text-lg md:text-xl mb-10 font-medium tracking-wide drop-shadow-lg opacity-90 max-w-2xl mx-auto">
+           <div className="bg-brandBlack/60 backdrop-blur-md p-10 md:p-12 rounded-3xl border border-white/10 shadow-2xl animate-fade-up">
+              <h2 className="text-4xl md:text-6xl font-cinematic font-black mb-4 tracking-tighter drop-shadow-2xl text-white">Your Hollywood Debut Awaits</h2>
+              <p className="text-white text-lg md:text-xl mb-8 font-medium tracking-wide drop-shadow-lg opacity-90 max-w-2xl mx-auto">
                 Step onto the big screen. The audience is waiting for your performance.
               </p>
               <Link to="/apply" className="inline-block px-14 py-6 brand-bg text-white font-black rounded-full uppercase tracking-[0.3em] hover:scale-105 transition-all shadow-[0_0_40px_rgba(0,210,255,0.6)] text-xs md:text-sm">

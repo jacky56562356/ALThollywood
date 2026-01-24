@@ -104,7 +104,7 @@ export default function About() {
       </div>
 
       {/* NEW SECTION: Career Accelerator */}
-      <section className="py-16 my-16 relative border-y border-white/5 bg-white/[0.02] overflow-hidden">
+      <section className="py-12 my-12 relative border-y border-white/5 bg-white/[0.02] overflow-hidden">
          {/* Decorative Background */}
          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
          <div className="absolute -left-20 top-20 w-72 h-72 brand-bg blur-[100px] opacity-20 rounded-full"></div>

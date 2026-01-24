@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { Layout, Video, Share2, Trophy, Award, Star, History as HistoryIcon, Sparkles, Clapperboard, Mic2, Users, Film } from 'lucide-react';
+import React, { useState } from 'react';
+import { Layout, Video, Share2, Trophy, Award, Star, History as HistoryIcon, Sparkles, Clapperboard, Mic2, Users, Film, X, ZoomIn } from 'lucide-react';
 import { HISTORY } from '../constants';
 
 const FESTIVAL_IMAGES = [
@@ -50,6 +50,17 @@ const ProgramSection = ({ icon: Icon, title, items }: { icon: any, title: string
 );
 
 export default function Programs() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  // Split images for two rows
+  const midPoint = Math.ceil(FESTIVAL_IMAGES.length / 2);
+  const row1 = FESTIVAL_IMAGES.slice(0, midPoint);
+  const row2 = FESTIVAL_IMAGES.slice(midPoint);
+
+  // Duplicate arrays to ensure smooth infinite scrolling
+  const scrollRow1 = [...row1, ...row1, ...row1, ...row1];
+  const scrollRow2 = [...row2, ...row2, ...row2, ...row2];
+
   return (
     <div className="pt-28 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -199,21 +210,60 @@ export default function Programs() {
              </div>
           </div>
 
-          {/* Compact Grid for Awards */}
-          <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-3 mb-8">
-            {FESTIVAL_IMAGES.map((src, i) => (
-              <div key={i} className="group relative rounded-lg overflow-hidden border border-white/10 aspect-[3/4] hover:border-brandCyan/50 transition-all duration-300 bg-brandBlack">
-                <img 
-                  src={src} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-                  alt="Festival Award Moment" 
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-brandBlack/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <Award className="text-brandCyan" size={18} />
-                </div>
-              </div>
-            ))}
+          {/* Scrolling Image Rows */}
+          <div className="relative mb-8 space-y-6 overflow-hidden py-4">
+             
+             {/* Gradient Masks */}
+             <div className="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-brandBlack to-transparent z-10 pointer-events-none"></div>
+             <div className="absolute top-0 right-0 w-20 h-full bg-gradient-to-l from-brandBlack to-transparent z-10 pointer-events-none"></div>
+
+             {/* Row 1: Scrolling Left */}
+             <div className="flex animate-scroll hover:pause-animation gap-4 w-max">
+                {scrollRow1.map((src, i) => (
+                   <div 
+                      key={`r1-${i}`} 
+                      className="group relative w-64 aspect-video flex-shrink-0 rounded-lg overflow-hidden border border-white/10 cursor-pointer bg-brandBlack"
+                      onClick={() => setSelectedImage(src)}
+                   >
+                      <img 
+                        src={src} 
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" 
+                        alt="Festival Award Moment" 
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-brandBlack/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                          <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white border border-white/20">
+                             <ZoomIn size={18} />
+                          </div>
+                      </div>
+                   </div>
+                ))}
+             </div>
+
+             {/* Row 2: Scrolling Right (Simulated by reverse direction if CSS supported, or just different order) 
+                 Using style={{ animationDirection: 'reverse' }} for the container
+             */}
+             <div className="flex animate-scroll hover:pause-animation gap-4 w-max" style={{ animationDirection: 'reverse' }}>
+                {scrollRow2.map((src, i) => (
+                   <div 
+                      key={`r2-${i}`} 
+                      className="group relative w-64 aspect-video flex-shrink-0 rounded-lg overflow-hidden border border-white/10 cursor-pointer bg-brandBlack"
+                      onClick={() => setSelectedImage(src)}
+                   >
+                      <img 
+                        src={src} 
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" 
+                        alt="Festival Award Moment" 
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-brandBlack/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                          <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white border border-white/20">
+                             <ZoomIn size={18} />
+                          </div>
+                      </div>
+                   </div>
+                ))}
+             </div>
           </div>
 
           <div className="flex flex-col items-center justify-center gap-2 opacity-40">
@@ -274,6 +324,31 @@ export default function Programs() {
           </div>
         </div>
       </div>
+
+      {/* LIGHTBOX OVERLAY */}
+      {selectedImage && (
+        <div 
+           className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 animate-in fade-in duration-300"
+           onClick={() => setSelectedImage(null)}
+        >
+          <button 
+             className="absolute top-6 right-6 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors border border-white/10"
+          >
+             <X size={20} />
+          </button>
+          
+          <div className="max-w-[90vw] max-h-[85vh] relative" onClick={e => e.stopPropagation()}>
+             <img 
+               src={selectedImage} 
+               className="max-w-full max-h-[85vh] rounded-xl shadow-2xl border border-white/10" 
+               alt="Enlarged view" 
+             />
+             <div className="absolute -bottom-10 left-0 w-full text-center">
+                <p className="text-white/60 text-xs font-bold uppercase tracking-widest">Tap anywhere to close</p>
+             </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
