@@ -34,21 +34,21 @@ const ECOSYSTEM_ITEMS = [
 const TESTIMONIALS = [
   {
     quote: "ALT doesn't just teach acting; they build careers. My daughter went from a classroom to a professional set in 3 months.",
-    author: "Sarah Mitchell",
+    author: "Jennifer Brooks",
     role: "Parent of Alumni",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150"
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150"
   },
   {
     quote: "The discipline and set etiquette these kids have is comparable to adult professionals. A joy to cast.",
-    author: "David Chen",
+    author: "Robert Harrison",
     role: "Casting Director, LA",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150"
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150"
   },
   {
     quote: "Finally, a program that understands the industry. The IMDb credits are real, and the experience is invaluable.",
-    author: "Elena Rodriguez",
+    author: "Amanda Sterling",
     role: "Talent Agent",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150"
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150"
   }
 ];
 
