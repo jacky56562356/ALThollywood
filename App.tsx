@@ -209,7 +209,7 @@ const Footer = () => (
       </div>
 
       <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 font-bold uppercase tracking-widest">
-        <p>© 2025 ALT HOLLYWOOD DREAM STAR. All Rights Reserved.</p>
+        <p>© 2019 ALT HOLLYWOOD DREAM STAR. All Rights Reserved.</p>
         <div className="flex space-x-6 mt-4 md:mt-0">
           <a href="#" className="hover:text-brandCyan transition-colors">Privacy Policy</a>
           <a href="#" className="hover:text-brandCyan transition-colors">Terms of Use</a>
