@@ -132,63 +132,25 @@ export default function Home() {
       </section>
 
       {/* NEW SECTION: Industry News & Awards */}
-      <section className="py-10 bg-[#080808] border-b border-white/5 relative overflow-hidden min-h-[500px] flex items-center">
-        {/* Decorative elements */}
+      <section className="py-12 bg-[#080808] border-b border-white/5 relative overflow-hidden min-h-[400px] flex items-center">
+        {/* Background Decorative elements */}
         <div className="absolute left-0 bottom-0 w-64 h-64 bg-amber-500/5 blur-[80px] rounded-full pointer-events-none"></div>
-        
-        {/* BIG TROPHY ANIMATION CONTAINER */}
-        <div className="hidden lg:block absolute right-0 top-0 h-full w-[45%] z-0 pointer-events-none select-none">
-           {/* Center positioning helper */}
-           <div className="relative w-full h-full flex items-center justify-center">
-               
-               {/* 1. Rotating Golden Arcs (SVG) - Scaled down to match smaller trophy */}
-               <svg className="absolute w-[80%] h-[80%] animate-[spin_20s_linear_infinite] opacity-30" viewBox="0 0 200 200">
-                  <defs>
-                    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="transparent" />
-                      <stop offset="50%" stopColor="#fbbf24" />
-                      <stop offset="100%" stopColor="transparent" />
-                    </linearGradient>
-                  </defs>
-                  <circle cx="100" cy="100" r="70" stroke="url(#goldGradient)" strokeWidth="0.5" fill="none" strokeDasharray="20 10" />
-                  <path d="M100 20 A 80 80 0 0 1 180 100" stroke="#f59e0b" strokeWidth="0.5" fill="none" strokeDasharray="5 5" opacity="0.5" />
-                  <path d="M100 180 A 80 80 0 0 1 20 100" stroke="#f59e0b" strokeWidth="0.5" fill="none" strokeDasharray="5 5" opacity="0.5" />
-               </svg>
-               
-               {/* 2. Floating Particles - Position adjusted closer to center */}
-               <div className="absolute inset-0">
-                  <div className="absolute top-[35%] left-[40%] w-1.5 h-1.5 bg-amber-300 rounded-full animate-pulse shadow-[0_0_10px_#fcd34d]"></div>
-                  <div className="absolute top-[55%] right-[35%] w-1 h-1 bg-white rounded-full animate-ping"></div>
-                  <div className="absolute bottom-[40%] left-[45%] w-1 h-1 bg-amber-500 rounded-full animate-bounce"></div>
-                  <div className="absolute top-[30%] right-[45%] w-2 h-2 bg-amber-400/50 rounded-full blur-[1px] animate-float"></div>
-                  <div className="absolute bottom-[35%] right-[40%] w-1.5 h-1.5 bg-amber-200 rounded-full animate-pulse delay-700"></div>
-               </div>
-
-               {/* 3. Ambient Glow - Reduced size */}
-               <div className="absolute w-[180px] h-[180px] bg-amber-500/10 blur-[80px] rounded-full"></div>
-
-               {/* 4. The Trophy Image - Reduced to w-[40%] */}
-               <img 
-                   src="https://i.ibb.co/4nXRfxf5/tongxiang.png" 
-                   alt="Award Trophy" 
-                   className="relative w-[40%] h-auto object-contain animate-float drop-shadow-[0_0_60px_rgba(245,158,11,0.25)] z-10"
-               />
-           </div>
-        </div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brandCyan/5 blur-[100px] rounded-full pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-          <div className="flex items-center gap-4 mb-6">
-             <div className="h-px bg-white/10 flex-1"></div>
-             <h2 className="text-xs font-black uppercase tracking-[0.3em] text-brandGray flex items-center gap-2">
+          {/* Header */}
+          <div className="flex items-center gap-4 mb-10 justify-center">
+             <div className="h-px bg-white/10 w-12 md:w-24"></div>
+             <h2 className="text-xs font-black uppercase tracking-[0.3em] text-brandGray flex items-center gap-2 text-center">
                 <Sparkles size={12} className="text-amber-400" />
                 Industry Recognition & Awards
              </h2>
-             <div className="h-px bg-white/10 flex-1"></div>
+             <div className="h-px bg-white/10 w-12 md:w-24"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:w-[60%]">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-6 lg:gap-12 items-center">
              {/* News Item 1: Golden State Film Festival */}
-             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6 group hover:border-brandCyan/30 transition-all shadow-lg hover:shadow-brandCyan/5 backdrop-blur-sm">
+             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6 group hover:border-brandCyan/30 transition-all shadow-lg hover:shadow-brandCyan/5 backdrop-blur-sm h-full">
                 <div className="w-20 h-20 sm:w-24 sm:h-24 shrink-0 bg-black rounded-xl border border-white/20 flex items-center justify-center p-3 shadow-inner relative overflow-hidden">
                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
                    <img 
@@ -216,8 +178,18 @@ export default function Home() {
                 </div>
              </div>
 
+             {/* CENTER TROPHY - Scaled down (w-14), centered, flash animation only (no movement) */}
+             <div className="hidden lg:flex flex-col items-center justify-center relative mx-4">
+                <div className="absolute inset-0 bg-amber-500/20 blur-3xl rounded-full animate-pulse"></div>
+                <img 
+                   src="https://i.ibb.co/4nXRfxf5/tongxiang.png" 
+                   alt="Award Trophy" 
+                   className="relative w-14 h-auto object-contain animate-pulse drop-shadow-[0_0_30px_rgba(245,158,11,0.4)]"
+                />
+             </div>
+
              {/* News Item 2: Golden Feather Awards */}
-             <div className="bg-gradient-to-br from-[#1a1500] to-black border border-amber-500/20 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6 group hover:border-amber-500/50 transition-all shadow-lg hover:shadow-amber-500/10 relative overflow-hidden backdrop-blur-sm">
+             <div className="bg-gradient-to-br from-[#1a1500] to-black border border-amber-500/20 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6 group hover:border-amber-500/50 transition-all shadow-lg hover:shadow-amber-500/10 relative overflow-hidden backdrop-blur-sm h-full">
                 <div className="absolute top-0 right-0 w-full h-full bg-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="w-20 h-20 sm:w-24 sm:h-24 shrink-0 bg-black rounded-xl border border-amber-500/30 flex items-center justify-center p-3 shadow-[0_0_30px_rgba(245,158,11,0.15)] relative z-10">
                    <img 
