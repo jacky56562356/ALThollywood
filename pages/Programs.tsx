@@ -210,8 +210,8 @@ export default function Programs() {
              </div>
           </div>
 
-          {/* Scrolling Image Rows */}
-          <div className="relative mb-8 space-y-6 overflow-hidden py-4">
+          {/* Scrolling Image Rows - Fixed Height, Auto Width to prevent cropping */}
+          <div className="relative mb-8 space-y-4 overflow-hidden py-4">
              
              {/* Gradient Masks */}
              <div className="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-brandBlack to-transparent z-10 pointer-events-none"></div>
@@ -222,12 +222,12 @@ export default function Programs() {
                 {scrollRow1.map((src, i) => (
                    <div 
                       key={`r1-${i}`} 
-                      className="group relative w-64 aspect-video flex-shrink-0 rounded-lg overflow-hidden border border-white/10 cursor-pointer bg-brandBlack"
+                      className="group relative h-48 md:h-64 flex-shrink-0 rounded-lg overflow-hidden border border-white/10 cursor-pointer bg-brandBlack"
                       onClick={() => setSelectedImage(src)}
                    >
                       <img 
                         src={src} 
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" 
+                        className="h-full w-auto max-w-none object-contain transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" 
                         alt="Festival Award Moment" 
                         loading="lazy"
                       />
@@ -240,19 +240,17 @@ export default function Programs() {
                 ))}
              </div>
 
-             {/* Row 2: Scrolling Right (Simulated by reverse direction if CSS supported, or just different order) 
-                 Using style={{ animationDirection: 'reverse' }} for the container
-             */}
+             {/* Row 2: Scrolling Right */}
              <div className="flex animate-scroll hover:pause-animation gap-4 w-max" style={{ animationDirection: 'reverse' }}>
                 {scrollRow2.map((src, i) => (
                    <div 
                       key={`r2-${i}`} 
-                      className="group relative w-64 aspect-video flex-shrink-0 rounded-lg overflow-hidden border border-white/10 cursor-pointer bg-brandBlack"
+                      className="group relative h-48 md:h-64 flex-shrink-0 rounded-lg overflow-hidden border border-white/10 cursor-pointer bg-brandBlack"
                       onClick={() => setSelectedImage(src)}
                    >
                       <img 
                         src={src} 
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" 
+                        className="h-full w-auto max-w-none object-contain transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" 
                         alt="Festival Award Moment" 
                         loading="lazy"
                       />
