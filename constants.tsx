@@ -1,3 +1,4 @@
+
 import { Actor, FilmProject, Opportunity, HistoryEvent, Resource } from './types';
 
 export const ACTORS: Actor[] = [
@@ -196,9 +197,9 @@ export const FILMS: FilmProject[] = [
     platform: "Global Premiere",
     posterUrl: "https://i.ibb.co/0RBsdNHX/Chat-GPT-Image-2026-1-22-15-20-56.png",
     stills: [
-      "https://i.ibb.co/0RBsdNHX/Chat-GPT-Image-2026-1-22-15-20-56.png",
-      "https://picsum.photos/seed/still3a/800/450",
-      "https://picsum.photos/seed/still3b/800/450"
+      "https://images.unsplash.com/photo-1535016120720-40c646bebbfc?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?auto=format&fit=crop&q=80&w=1200"
     ]
   },
   {
@@ -209,9 +210,9 @@ export const FILMS: FilmProject[] = [
     platform: "Streaming Now",
     posterUrl: "https://i.ibb.co/Y7Pp984p/Chat-GPT-Image-2026-1-22-15-34-28.png",
     stills: [
-      "https://i.ibb.co/Y7Pp984p/Chat-GPT-Image-2026-1-22-15-34-28.png",
-      "https://picsum.photos/seed/still4a/800/450",
-      "https://picsum.photos/seed/still4b/800/450"
+      "https://images.unsplash.com/photo-1542204172-559332978044?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1524230572899-a752b3835840?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1514306191717-452ec28c7814?auto=format&fit=crop&q=80&w=1200"
     ]
   },
   {
@@ -222,9 +223,9 @@ export const FILMS: FilmProject[] = [
     platform: "Live / Streaming",
     posterUrl: "https://i.ibb.co/Lz53W353/YEAR-END-GRAND-CEREMONY.png",
     stills: [
-      "https://i.ibb.co/Lz53W353/YEAR-END-GRAND-CEREMONY.png",
-      "https://picsum.photos/seed/still0a/800/450",
-      "https://picsum.photos/seed/still0b/800/450"
+      "https://images.unsplash.com/photo-1496337589254-7e19d01cec44?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1478147427282-58a87a120781?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&q=80&w=1200"
     ]
   },
   {
@@ -235,9 +236,9 @@ export const FILMS: FilmProject[] = [
     platform: "Theatrical",
     posterUrl: "https://i.ibb.co/C5ym3kR9/ALT-DREAM-STAR-NEW-FILM.png",
     stills: [
-      "https://i.ibb.co/C5ym3kR9/ALT-DREAM-STAR-NEW-FILM.png",
-      "https://picsum.photos/seed/still1a/800/450",
-      "https://picsum.photos/seed/still1b/800/450"
+      "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1461344577544-4e5dc9487184?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1513106580663-1d80bc4bb34e?auto=format&fit=crop&q=80&w=1200"
     ]
   },
   {
@@ -248,11 +249,11 @@ export const FILMS: FilmProject[] = [
     platform: "Amazon Prime / Festival Circuit",
     posterUrl: "https://i.ibb.co/5XkvwS0b/image.png",
     stills: [
-      "https://i.ibb.co/5XkvwS0b/image.png",
-      "https://picsum.photos/seed/still1a/800/450",
-      "https://picsum.photos/seed/still1b/800/450",
-      "https://picsum.photos/seed/still1c/800/450",
-      "https://picsum.photos/seed/still1d/800/450",
+      "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1616091216791-a5360b5fc78a?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200",
     ]
   }
 ];
@@ -362,7 +363,6 @@ export const OPPORTUNITIES: Opportunity[] = [
     requirements: 'Mature demeanor for age, inquisitive, ability to carry scenes with adult actors.',
     status: 'Open'
   },
-  // NEW ADDITIONS
   {
     id: 'cast-2026-009',
     projectName: 'Future Tech Commercial',
@@ -566,14 +566,11 @@ export const HISTORY: HistoryEvent[] = [
   },
 ];
 
-// Replaced placeholder with a simple Base64 PDF to ensure download works immediately without a backend.
 export const RESOURCES: Resource[] = [
   {
     id: 'res-official-form',
     title: 'Hollywood Kids Movie Entry Form',
     description: 'Official registration form including biometrics and personal preferences. (Official PDF)',
-    // Using a minimal valid PDF base64 for demonstration purposes so it actually downloads
-    // This is a minimal valid PDF with the text "ALT HOLLYWOOD DREAM STAR - OFFICIAL ENTRY FORM (SAMPLE)"
     fileUrl: 'data:application/pdf;base64,JVBERi0xLjcKCjEgMCBvYmoKICA8PCAvVHlwZSAvQ2F0YWxvZwogICAgIC9QYWdlcyAyIDAgUgogID4+CmVuZG9iagoyIDAgb2JqCiAgPDwgL1R5cGUgL1BhZ2VzCiAgICAgL0tpZHMgWyAzIDAgUiBdCiAgICAgL0NvdW50IDEKICAgICAvTWVkaWFCb3ggWyAwIDAgNTk1LjI4IDg0MS44OSBdCiAgPj4KZW5kb2JqCjMgMCBvYmoKICA8PCAvVHlwZSAvUGFnZQogICAgIC9QYXJlbnQgMiAwIFcKICAgICAvUmVzb3VyY2VzIDw8CiAgICAgICAgL0ZvbnQgPDwgL0YxIDQgMCBVID4+CiAgICAgPj4KICAgICAvQ29udGVudHMgNSAwIFIKICA+PgplbmRvYmoKNCAwIG9iagogIDw8IC9UeXBlIC9Gb250CiAgICAgL1N1YnR5cGUgL1R5cGUxCiAgICAgL0Jhc2VGb250IC9IZWx2ZXRpY2EKICA+PgplbmRvYmoKNSAwIG9iagogIDw8IC9MZW5ndGggODggPj4Kc3RyZWFtCkJUCi9GMSAyNCBUZgoxMDAgNzAwIFRkCihBTFQgSE9MTFlXT09EIERSRUFNIFNUQVIgLSBPRkZJQ0lBTCBFTlRSWSBGT1JNIC0gU0FNUExFKSBUagpFVAplbmRzdHJlYW0KZW5kb2JqCnhyZWYKMCA2CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAxMCAwMDAwMCBuIAowMDAwMDAwMDYwIDAwMDAwIG4gCjAwMDAwMDAxNTcgMDAwMDAgbiAKMDAwMDAwMDI2MiAwMDAwMCBuIAowMDAwMDAwMzUwIDAwMDAwIG4gCnRyYWlsZXIKICA8PCAvU2l6ZSA2CiAgICAgL1Jvb3QgMSAwIFIKICA+PgpzdGFydHhyZWYKNDg5CiUlRU9GCg==',
     fileSize: '0.4 MB',
     uploadDate: '2026-02-15'
