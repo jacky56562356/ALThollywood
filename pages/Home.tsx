@@ -137,6 +137,58 @@ export default function Home() {
         <div className="absolute left-0 bottom-0 w-64 h-64 bg-amber-500/5 blur-[80px] rounded-full pointer-events-none"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brandCyan/5 blur-[100px] rounded-full pointer-events-none"></div>
 
+        {/* STARLIGHT & PARTICLES BACKGROUND */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            {/* Gold Dust Particles */}
+            {[...Array(30)].map((_, i) => (
+               <div
+                  key={`dust-${i}`}
+                  className="absolute bg-amber-400/30 rounded-full animate-float"
+                  style={{
+                     top: `${Math.random() * 100}%`,
+                     left: `${Math.random() * 100}%`,
+                     width: `${Math.random() * 2 + 1}px`,
+                     height: `${Math.random() * 2 + 1}px`,
+                     animationDuration: `${Math.random() * 10 + 10}s`,
+                     animationDelay: `${Math.random() * 5}s`,
+                  }}
+               />
+            ))}
+            
+            {/* Twinkling Stars (Walk of Fame vibe) */}
+            {[...Array(12)].map((_, i) => (
+               <div
+                  key={`star-${i}`}
+                  className="absolute text-amber-200/20 animate-pulse"
+                  style={{
+                     top: `${Math.random() * 100}%`,
+                     left: `${Math.random() * 100}%`,
+                     animationDuration: `${Math.random() * 3 + 2}s`,
+                     animationDelay: `${Math.random() * 2}s`,
+                     transform: `scale(${Math.random() * 0.5 + 0.5}) rotate(${Math.random() * 45}deg)`
+                  }}
+               >
+                  <Star size={Math.random() * 12 + 6} fill="currentColor" />
+               </div>
+            ))}
+
+            {/* Magic Sparkles */}
+            {[...Array(8)].map((_, i) => (
+               <div
+                  key={`sparkle-${i}`}
+                  className="absolute text-brandCyan/30 animate-pulse"
+                  style={{
+                     top: `${Math.random() * 100}%`,
+                     left: `${Math.random() * 100}%`,
+                     animationDuration: `${Math.random() * 2 + 1.5}s`,
+                     animationDelay: `${Math.random() * 3}s`,
+                  }}
+               >
+                  <Sparkles size={Math.random() * 16 + 8} />
+               </div>
+            ))}
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           {/* Header */}
           <div className="flex items-center gap-4 mb-10 justify-center">
@@ -150,7 +202,8 @@ export default function Home() {
 
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-6 lg:gap-12 items-center">
              {/* News Item 1: Golden State Film Festival */}
-             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6 group hover:border-brandCyan/30 transition-all shadow-lg hover:shadow-brandCyan/5 backdrop-blur-sm h-full">
+             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6 group hover:border-brandCyan/30 transition-all shadow-lg hover:shadow-brandCyan/5 backdrop-blur-sm h-full relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-brandCyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="w-20 h-20 sm:w-24 sm:h-24 shrink-0 bg-black rounded-xl border border-white/20 flex items-center justify-center p-3 shadow-inner relative overflow-hidden">
                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
                    <img 
@@ -168,7 +221,7 @@ export default function Home() {
                       <span className="text-[8px] uppercase font-bold text-white leading-tight">Golden State<br/>Film Festival</span>
                    </div>
                 </div>
-                <div className="text-center sm:text-left flex-1">
+                <div className="text-center sm:text-left flex-1 relative z-10">
                    <div className="inline-block px-3 py-1 border border-white/20 rounded-full bg-white/5 mb-2">
                        <p className="text-[9px] font-black uppercase tracking-widest text-white/90">Official Selection</p>
                    </div>
