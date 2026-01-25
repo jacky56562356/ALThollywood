@@ -30,6 +30,7 @@ export interface Opportunity {
   shootDates: string;
   requirements: string;
   status: 'Open' | 'Closed' | 'In Progress';
+  unionStatus: 'Union' | 'Non-Union';
 }
 
 export interface HistoryEvent {

@@ -1,6 +1,6 @@
 
 import React, { useState, useRef } from 'react';
-import { Search, MapPin, Calendar, Building2, Clock, Info, Plus, UploadCloud, CheckCircle2, X, Filter, Briefcase, Camera, Activity } from 'lucide-react';
+import { Search, MapPin, Calendar, Building2, Clock, Info, Plus, UploadCloud, CheckCircle2, X, Filter, Briefcase, Camera, Activity, Clapperboard, Globe, Shield, RotateCcw, Users } from 'lucide-react';
 import { useData } from '../DataContext';
 import type { Opportunity, JobApplication } from '../types';
 
@@ -10,8 +10,12 @@ export default function Casting() {
   // Filters State
   const [searchTerm, setSearchTerm] = useState('');
   const [filterGender, setFilterGender] = useState<string>('All');
+  const [filterAgeRange, setFilterAgeRange] = useState<string>('All');
   const [filterType, setFilterType] = useState<string>('All');
   const [filterStatus, setFilterStatus] = useState<string>('All');
+  const [filterGenre, setFilterGenre] = useState<string>('All');
+  const [filterLocation, setFilterLocation] = useState<string>('All');
+  const [filterUnion, setFilterUnion] = useState<string>('All');
 
   // Modal States
   const [isPostJobOpen, setIsPostJobOpen] = useState(false);
@@ -30,7 +34,8 @@ export default function Casting() {
     location: '',
     shootDates: '',
     requirements: '',
-    status: 'Open'
+    status: 'Open',
+    unionStatus: 'Non-Union'
   });
 
   // Application Form State
@@ -58,7 +63,8 @@ export default function Casting() {
       location: jobForm.location!,
       shootDates: jobForm.shootDates!,
       requirements: jobForm.requirements!,
-      status: 'Open'
+      status: 'Open',
+      unionStatus: jobForm.unionStatus as 'Union' | 'Non-Union'
     });
     setIsPostJobOpen(false);
     setSuccessMsg('Casting Call Posted Successfully!');
@@ -66,7 +72,7 @@ export default function Casting() {
     // Reset
     setJobForm({
         projectName: '', company: '', roleType: 'Lead', gender: 'Any', genre: '', 
-        ageRange: '', location: '', shootDates: '', requirements: '', status: 'Open'
+        ageRange: '', location: '', shootDates: '', requirements: '', status: 'Open', unionStatus: 'Non-Union'
     });
   };
 
@@ -101,16 +107,59 @@ export default function Casting() {
     }
   };
 
+  const clearFilters = () => {
+    setSearchTerm('');
+    setFilterGender('All');
+    setFilterAgeRange('All');
+    setFilterType('All');
+    setFilterStatus('All');
+    setFilterGenre('All');
+    setFilterLocation('All');
+    setFilterUnion('All');
+  };
+
+  // Helper to check if two age ranges overlap (e.g. "5-10" overlaps with "8-12")
+  const checkAgeOverlap = (jobRangeStr: string, filterRangeStr: string) => {
+    if (filterRangeStr === 'All') return true;
+    
+    // Parse filter "min-max"
+    const [fMin, fMax] = filterRangeStr.split('-').map(Number);
+    
+    // Parse job "min-max" - assuming format "X-Y" based on constants
+    // If parsing fails (e.g. "Flexible"), we default to true to include it
+    const parts = jobRangeStr.split('-').map(s => parseInt(s.trim()));
+    if (parts.length !== 2 || isNaN(parts[0]) || isNaN(parts[1])) return true;
+    
+    const [jMin, jMax] = parts;
+    
+    // Check overlap: max(start1, start2) <= min(end1, end2)
+    return Math.max(jMin, fMin) <= Math.min(jMax, fMax);
+  };
+
   // --- Filtering Logic ---
   const filtered = opportunities.filter(job => {
-    const matchesSearch = job.projectName.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                          job.roleType.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          job.company.toLowerCase().includes(searchTerm.toLowerCase());
+    const term = searchTerm.toLowerCase();
+    const matchesSearch = job.projectName.toLowerCase().includes(term) || 
+                          job.roleType.toLowerCase().includes(term) ||
+                          job.company.toLowerCase().includes(term) ||
+                          job.genre.toLowerCase().includes(term) ||
+                          job.location.toLowerCase().includes(term);
+
     const matchesGender = filterGender === 'All' || job.gender === 'Any' || job.gender === filterGender;
-    const matchesType = filterType === 'All' || job.roleType.includes(filterType); // simplified match
+    const matchesAge = checkAgeOverlap(job.ageRange, filterAgeRange);
+    const matchesType = filterType === 'All' || job.roleType.includes(filterType); 
     const matchesStatus = filterStatus === 'All' || job.status === filterStatus;
+    const matchesUnion = filterUnion === 'All' || job.unionStatus === filterUnion;
     
-    return matchesSearch && matchesGender && matchesType && matchesStatus;
+    const matchesGenre = filterGenre === 'All' || job.genre.toLowerCase().includes(filterGenre.toLowerCase());
+    
+    const matchesLocation = filterLocation === 'All' || (() => {
+        const loc = job.location.toLowerCase();
+        if (filterLocation === 'Los Angeles') return loc.includes('los angeles') || loc.includes('la') || loc.includes('hollywood');
+        return loc.includes(filterLocation.toLowerCase());
+    })();
+    
+    return matchesSearch && matchesGender && matchesAge && matchesType && matchesStatus && matchesGenre && matchesLocation && matchesUnion;
   });
 
   return (
@@ -151,7 +200,7 @@ export default function Casting() {
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-brandGray" size={18} />
               <input 
                 type="text"
-                placeholder="Search by keywords, title, or company..."
+                placeholder="Search projects, roles, locations..."
                 className="w-full bg-brandBlack/50 border border-white/10 rounded-xl py-3 pl-12 pr-4 focus:outline-none focus:border-brandCyan/60 text-sm text-white transition-all"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -159,6 +208,7 @@ export default function Casting() {
            </div>
            
            <div className="flex flex-wrap gap-4">
+              {/* Gender */}
               <div className="relative min-w-[140px] flex-grow md:flex-grow-0">
                  <select 
                     value={filterGender}
@@ -171,7 +221,23 @@ export default function Casting() {
                  </select>
                  <Filter size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-brandGray pointer-events-none" />
               </div>
+
+              {/* Age Range */}
+              <div className="relative min-w-[140px] flex-grow md:flex-grow-0">
+                 <select 
+                    value={filterAgeRange}
+                    onChange={(e) => setFilterAgeRange(e.target.value)}
+                    className="w-full appearance-none bg-brandBlack/50 border border-white/10 rounded-xl py-3 px-4 focus:outline-none focus:border-brandCyan/60 text-sm text-white font-medium cursor-pointer"
+                 >
+                    <option value="All">All Ages</option>
+                    <option value="5-10">Kids (5-10)</option>
+                    <option value="11-14">Pre-Teen (11-14)</option>
+                    <option value="15-18">Teen (15-18)</option>
+                 </select>
+                 <Users size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-brandGray pointer-events-none" />
+              </div>
               
+              {/* Role Type */}
               <div className="relative min-w-[140px] flex-grow md:flex-grow-0">
                  <select 
                     value={filterType}
@@ -187,6 +253,54 @@ export default function Casting() {
                  <Briefcase size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-brandGray pointer-events-none" />
               </div>
 
+              {/* Genre */}
+              <div className="relative min-w-[140px] flex-grow md:flex-grow-0">
+                 <select 
+                    value={filterGenre}
+                    onChange={(e) => setFilterGenre(e.target.value)}
+                    className="w-full appearance-none bg-brandBlack/50 border border-white/10 rounded-xl py-3 px-4 focus:outline-none focus:border-brandCyan/60 text-sm text-white font-medium cursor-pointer"
+                 >
+                    <option value="All">All Genres</option>
+                    <option value="Action">Action</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Sci-Fi">Sci-Fi</option>
+                    <option value="Commercial">Commercial</option>
+                    <option value="Thriller">Thriller</option>
+                 </select>
+                 <Clapperboard size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-brandGray pointer-events-none" />
+              </div>
+
+              {/* Location */}
+              <div className="relative min-w-[140px] flex-grow md:flex-grow-0">
+                 <select 
+                    value={filterLocation}
+                    onChange={(e) => setFilterLocation(e.target.value)}
+                    className="w-full appearance-none bg-brandBlack/50 border border-white/10 rounded-xl py-3 px-4 focus:outline-none focus:border-brandCyan/60 text-sm text-white font-medium cursor-pointer"
+                 >
+                    <option value="All">All Locations</option>
+                    <option value="Los Angeles">Los Angeles</option>
+                    <option value="Burbank">Burbank</option>
+                    <option value="San Francisco">San Francisco</option>
+                 </select>
+                 <Globe size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-brandGray pointer-events-none" />
+              </div>
+
+              {/* Union Status - NEW */}
+              <div className="relative min-w-[140px] flex-grow md:flex-grow-0">
+                 <select 
+                    value={filterUnion}
+                    onChange={(e) => setFilterUnion(e.target.value)}
+                    className="w-full appearance-none bg-brandBlack/50 border border-white/10 rounded-xl py-3 px-4 focus:outline-none focus:border-brandCyan/60 text-sm text-white font-medium cursor-pointer"
+                 >
+                    <option value="All">All Unions</option>
+                    <option value="Union">Union (SAG-AFTRA)</option>
+                    <option value="Non-Union">Non-Union</option>
+                 </select>
+                 <Shield size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-brandGray pointer-events-none" />
+              </div>
+
+              {/* Status */}
               <div className="relative min-w-[140px] flex-grow md:flex-grow-0">
                  <select 
                     value={filterStatus}
@@ -200,6 +314,15 @@ export default function Casting() {
                  </select>
                  <Activity size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-brandGray pointer-events-none" />
               </div>
+
+              {/* Clear Filters Button */}
+              <button 
+                  onClick={clearFilters}
+                  className="px-4 py-3 bg-red-500/10 border border-red-500/20 rounded-xl text-xs font-bold uppercase tracking-widest text-red-400 hover:bg-red-500/20 transition-all flex items-center gap-2"
+                  title="Clear all filters"
+               >
+                  <RotateCcw size={14} /> Clear
+               </button>
            </div>
         </div>
 
@@ -227,6 +350,11 @@ export default function Casting() {
                    <span className="px-2 py-1 rounded-md bg-white/5 border border-white/10 text-[10px] font-bold text-white/80">{job.gender}</span>
                    <span className="px-2 py-1 rounded-md bg-white/5 border border-white/10 text-[10px] font-bold text-white/80">{job.ageRange}</span>
                    <span className="px-2 py-1 rounded-md bg-white/5 border border-white/10 text-[10px] font-bold text-white/80">{job.genre}</span>
+                   
+                   {/* UNION STATUS BADGE */}
+                   <span className={`px-2 py-1 rounded-md border text-[10px] font-bold ${job.unionStatus === 'Union' ? 'bg-brandPurple/20 border-brandPurple/30 text-brandPurple' : 'bg-brandGray/10 border-white/10 text-brandGray'}`}>
+                      {job.unionStatus || 'Non-Union'}
+                   </span>
                 </div>
 
                 <div className="flex items-start gap-2 text-xs text-brandGray">
@@ -261,6 +389,12 @@ export default function Casting() {
           {filtered.length === 0 && (
             <div className="col-span-full py-16 text-center border border-dashed border-white/10 rounded-3xl">
               <p className="text-brandGray italic text-sm">No active calls matching your criteria.</p>
+              <button 
+                onClick={clearFilters}
+                className="mt-4 text-brandCyan text-xs font-bold hover:underline"
+              >
+                Clear Filters
+              </button>
             </div>
           )}
         </div>
@@ -327,6 +461,18 @@ export default function Casting() {
                           <option value="Any">Any</option>
                           <option value="Male">Male</option>
                           <option value="Female">Female</option>
+                       </select>
+                    </div>
+
+                    <div className="col-span-2 sm:col-span-1">
+                       <label className="block text-[10px] text-brandGray uppercase font-black mb-2 tracking-widest">Union Status</label>
+                       <select 
+                          value={jobForm.unionStatus}
+                          onChange={e => setJobForm({...jobForm, unionStatus: e.target.value as any})}
+                          className="w-full bg-brandBlack border border-white/10 rounded-xl p-3 text-sm focus:border-brandCyan outline-none text-white"
+                       >
+                          <option value="Non-Union">Non-Union</option>
+                          <option value="Union">Union (SAG-AFTRA)</option>
                        </select>
                     </div>
 

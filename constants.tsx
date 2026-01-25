@@ -269,7 +269,8 @@ export const OPPORTUNITIES: Opportunity[] = [
     location: 'Los Angeles, CA',
     shootDates: 'June 15 - July 30, 2026',
     requirements: 'Must have high emotional range and ability to handle complex dialogue. Wire-work stunts capability is a plus.',
-    status: 'Open'
+    status: 'Open',
+    unionStatus: 'Union'
   },
   {
     id: 'cast-2026-002',
@@ -282,7 +283,8 @@ export const OPPORTUNITIES: Opportunity[] = [
     location: 'Pasadena, CA',
     shootDates: 'August 10 - Sept 5, 2026',
     requirements: 'Requires subtle emotional acting and ability to cry on cue. Strong chemistry with lead actor required.',
-    status: 'Open'
+    status: 'Open',
+    unionStatus: 'Non-Union'
   },
   {
     id: 'cast-2026-003',
@@ -295,7 +297,8 @@ export const OPPORTUNITIES: Opportunity[] = [
     location: 'Burbank Studios, CA',
     shootDates: 'July 1 - July 21, 2026',
     requirements: 'High energy, great comedic timing, and improvisation skills. Comfort with physical comedy scenes.',
-    status: 'Open'
+    status: 'Open',
+    unionStatus: 'Non-Union'
   },
   {
     id: 'cast-2026-004',
@@ -308,7 +311,8 @@ export const OPPORTUNITIES: Opportunity[] = [
     location: 'Malibu / Los Angeles',
     shootDates: 'Sept 15 - Nov 10, 2026',
     requirements: 'Intense dramatic performance required. Character deals with loss and fear. Strong swimming skills needed.',
-    status: 'In Progress'
+    status: 'In Progress',
+    unionStatus: 'Union'
   },
   {
     id: 'cast-2026-005',
@@ -321,7 +325,8 @@ export const OPPORTUNITIES: Opportunity[] = [
     location: 'Los Angeles, CA',
     shootDates: 'May 20 - June 25, 2026',
     requirements: 'Fast talker, confident, ability to memorize technical jargon quickly. Expressive facial reactions.',
-    status: 'Open'
+    status: 'Open',
+    unionStatus: 'Union'
   },
   {
     id: 'cast-2026-006',
@@ -334,7 +339,8 @@ export const OPPORTUNITIES: Opportunity[] = [
     location: 'Downtown LA',
     shootDates: 'Oct 1 - Nov 15, 2026',
     requirements: 'Vulnerable, quiet intensity. Artistic ability (sketching/painting) is highly preferred.',
-    status: 'Open'
+    status: 'Open',
+    unionStatus: 'Non-Union'
   },
   {
     id: 'cast-2026-007',
@@ -347,7 +353,8 @@ export const OPPORTUNITIES: Opportunity[] = [
     location: 'Long Beach, CA',
     shootDates: 'July 15 - August 15, 2026',
     requirements: 'Competitive attitude, sporty look. Scenes involve go-kart racing simulation.',
-    status: 'Open'
+    status: 'Open',
+    unionStatus: 'Non-Union'
   },
   {
     id: 'cast-2026-008',
@@ -360,7 +367,8 @@ export const OPPORTUNITIES: Opportunity[] = [
     location: 'Historic LA',
     shootDates: 'Jan 10 - Feb 20, 2026',
     requirements: 'Mature demeanor for age, inquisitive, ability to carry scenes with adult actors.',
-    status: 'Open'
+    status: 'Open',
+    unionStatus: 'Union'
   },
   {
     id: 'cast-2026-009',
@@ -373,7 +381,8 @@ export const OPPORTUNITIES: Opportunity[] = [
     location: 'San Francisco / LA',
     shootDates: 'April 5 - April 7, 2026',
     requirements: 'Tech-savvy look, comfortable interacting with tablets and green screens. Expressive facial features.',
-    status: 'Open'
+    status: 'Open',
+    unionStatus: 'Union'
   },
   {
     id: 'cast-2026-010',
@@ -386,7 +395,8 @@ export const OPPORTUNITIES: Opportunity[] = [
     location: 'Burbank Recording Studio',
     shootDates: 'May 2026 (Multiple Sessions)',
     requirements: 'Energetic, raspy or unique voice character. Must take direction well in booth.',
-    status: 'Open'
+    status: 'Open',
+    unionStatus: 'Union'
   },
   {
     id: 'cast-2026-011',
@@ -399,7 +409,8 @@ export const OPPORTUNITIES: Opportunity[] = [
     location: 'Venice Beach, CA',
     shootDates: 'June 20, 2026',
     requirements: 'Good rhythm, hip-hop or contemporary dance skills preferred. Summer beach attire.',
-    status: 'Open'
+    status: 'Open',
+    unionStatus: 'Non-Union'
   },
   {
     id: 'cast-2026-012',
@@ -412,7 +423,8 @@ export const OPPORTUNITIES: Opportunity[] = [
     location: 'Altadena, CA',
     shootDates: 'Oct 10 - Oct 15, 2026',
     requirements: 'Pale complexion, ability to stay very still. Gymnastics ability is a plus for movement scenes.',
-    status: 'Open'
+    status: 'Open',
+    unionStatus: 'Non-Union'
   },
   {
     id: 'cast-2026-013',
@@ -425,7 +437,8 @@ export const OPPORTUNITIES: Opportunity[] = [
     location: 'Los Angeles Studio',
     shootDates: 'March 15, 2026',
     requirements: 'Bright smiles, diverse ethnicities. Comfortable changing outfits quickly.',
-    status: 'Open'
+    status: 'Open',
+    unionStatus: 'Non-Union'
   },
   {
     id: 'cast-2026-014',
@@ -438,7 +451,8 @@ export const OPPORTUNITIES: Opportunity[] = [
     location: 'Soundstage 4, Hollywood',
     shootDates: 'July 2026',
     requirements: 'Resemblance to lead actor (Caucasian, brown hair). Sword fighting basics (will train).',
-    status: 'In Progress'
+    status: 'In Progress',
+    unionStatus: 'Union'
   },
   {
     id: 'cast-2026-015',
@@ -451,7 +465,8 @@ export const OPPORTUNITIES: Opportunity[] = [
     location: 'Culver City, CA',
     shootDates: 'Weekly, Summer 2026',
     requirements: 'Clear diction, high energy, interest in science/chemistry. Teleprompter reading skills.',
-    status: 'Open'
+    status: 'Open',
+    unionStatus: 'Non-Union'
   },
   {
     id: 'cast-2026-016',
@@ -464,7 +479,8 @@ export const OPPORTUNITIES: Opportunity[] = [
     location: 'Sherman Oaks (House Location)',
     shootDates: 'April 22, 2026',
     requirements: 'Sibling chemistry needed. Authentic laughter and competitive spirit.',
-    status: 'Open'
+    status: 'Open',
+    unionStatus: 'Non-Union'
   },
   {
     id: 'cast-2026-017',
@@ -477,7 +493,8 @@ export const OPPORTUNITIES: Opportunity[] = [
     location: 'High School Location, LA',
     shootDates: 'May 1 - May 5, 2026',
     requirements: 'Look like high school students. Various styles (Goth, Jock, Prep) needed.',
-    status: 'Open'
+    status: 'Open',
+    unionStatus: 'Union'
   },
   {
     id: 'cast-2026-018',
@@ -490,7 +507,8 @@ export const OPPORTUNITIES: Opportunity[] = [
     location: 'YouTube Space LA',
     shootDates: 'Monthly Recurring',
     requirements: 'Extremely high energy, loud voice, engaging personality. Obsessed with toys.',
-    status: 'Open'
+    status: 'Open',
+    unionStatus: 'Non-Union'
   },
   {
     id: 'cast-2026-019',
@@ -503,7 +521,8 @@ export const OPPORTUNITIES: Opportunity[] = [
     location: 'Disney Concert Hall / Studio',
     shootDates: 'August 2026',
     requirements: 'Must play Violin or Cello at an intermediate/advanced level. Serious acting role.',
-    status: 'Open'
+    status: 'Open',
+    unionStatus: 'Union'
   },
   {
     id: 'cast-2026-020',
@@ -516,7 +535,8 @@ export const OPPORTUNITIES: Opportunity[] = [
     location: 'Vasquez Rocks',
     shootDates: 'June 10 - June 12, 2026',
     requirements: 'Gymnastics/Parkour background mandatory. Willing to wear prosthetics/makeup.',
-    status: 'Open'
+    status: 'Open',
+    unionStatus: 'Union'
   }
 ];
 

@@ -446,7 +446,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0 bg-brandBlack">
              {/* Classic Colored Cinema Auditorium (Red Seats/Gold) - No Grayscale, bright and vivid */}
              <img 
-               src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=2500" 
+               src="https://i.ibb.co/5xXXdHrB/u8238228639-v-7-f5d92d51-ca1a-4aea-9a0c-c19abca23644-1.png" 
                className="w-full h-full object-cover opacity-90" 
                alt="Classic Hollywood Cinema" 
                loading="lazy" 
