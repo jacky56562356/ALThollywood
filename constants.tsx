@@ -197,9 +197,9 @@ export const FILMS: FilmProject[] = [
     platform: "Global Premiere",
     posterUrl: "https://i.ibb.co/0RBsdNHX/Chat-GPT-Image-2026-1-22-15-20-56.png",
     stills: [
-      "https://images.unsplash.com/photo-1535016120720-40c646bebbfc?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?auto=format&fit=crop&q=80&w=1200"
+      "https://i.ibb.co/HTFkhG1c/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-d6e137ff-dba2-42c3-a871-20cb4c914e36-3.png",
+      "https://i.ibb.co/qLx5FzvQ/20260122155926-1673-151.jpg",
+      "https://i.ibb.co/LXS8q7yn/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-5253418c-4b1d-4d9b-8f51-219cc38fdef7-3.png"
     ]
   },
   {
@@ -210,9 +210,9 @@ export const FILMS: FilmProject[] = [
     platform: "Streaming Now",
     posterUrl: "https://i.ibb.co/Y7Pp984p/Chat-GPT-Image-2026-1-22-15-34-28.png",
     stills: [
-      "https://images.unsplash.com/photo-1542204172-559332978044?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1524230572899-a752b3835840?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1514306191717-452ec28c7814?auto=format&fit=crop&q=80&w=1200"
+      "https://i.ibb.co/S7JBKpZp/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-4ec21d2d-7796-4a10-a5a4-8ae8681d2ad7-1.png",
+      "https://i.ibb.co/6JTLb8tt/20260122155823-1666-151.jpg",
+      "https://i.ibb.co/Y4DfD2Vw/20260122155809-1664-151.jpg"
     ]
   },
   {
@@ -223,9 +223,9 @@ export const FILMS: FilmProject[] = [
     platform: "Live / Streaming",
     posterUrl: "https://i.ibb.co/Lz53W353/YEAR-END-GRAND-CEREMONY.png",
     stills: [
-      "https://images.unsplash.com/photo-1496337589254-7e19d01cec44?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1478147427282-58a87a120781?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&q=80&w=1200"
+      "https://i.ibb.co/LXS8q7yn/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-5253418c-4b1d-4d9b-8f51-219cc38fdef7-3.png",
+      "https://i.ibb.co/qLx5FzvQ/20260122155926-1673-151.jpg",
+      "https://i.ibb.co/HTFkhG1c/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-d6e137ff-dba2-42c3-a871-20cb4c914e36-3.png"
     ]
   },
   {
@@ -236,9 +236,9 @@ export const FILMS: FilmProject[] = [
     platform: "Theatrical",
     posterUrl: "https://i.ibb.co/C5ym3kR9/ALT-DREAM-STAR-NEW-FILM.png",
     stills: [
-      "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1461344577544-4e5dc9487184?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1513106580663-1d80bc4bb34e?auto=format&fit=crop&q=80&w=1200"
+      "https://i.ibb.co/6JTLb8tt/20260122155823-1666-151.jpg",
+      "https://i.ibb.co/Y4DfD2Vw/20260122155809-1664-151.jpg",
+      "https://i.ibb.co/S7JBKpZp/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-4ec21d2d-7796-4a10-a5a4-8ae8681d2ad7-1.png"
     ]
   },
   {
@@ -249,11 +249,10 @@ export const FILMS: FilmProject[] = [
     platform: "Amazon Prime / Festival Circuit",
     posterUrl: "https://i.ibb.co/5XkvwS0b/image.png",
     stills: [
-      "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1616091216791-a5360b5fc78a?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200",
+      "https://i.ibb.co/HTFkhG1c/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-d6e137ff-dba2-42c3-a871-20cb4c914e36-3.png",
+      "https://i.ibb.co/S7JBKpZp/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-4ec21d2d-7796-4a10-a5a4-8ae8681d2ad7-1.png",
+      "https://i.ibb.co/LXS8q7yn/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-5253418c-4b1d-4d9b-8f51-219cc38fdef7-3.png",
+      "https://i.ibb.co/qLx5FzvQ/20260122155926-1673-151.jpg"
     ]
   }
 ];
