@@ -15,14 +15,15 @@ export default function YouthActors() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
-          {ACTORS.map((actor) => (
+          {ACTORS.map((actor, index) => (
             <div key={actor.id} className="group cursor-pointer">
               <div className="relative aspect-[4/5] overflow-hidden rounded-xl mb-3 border border-white/10 group-hover:border-brandCyan/50 transition-all duration-500">
                 <img 
                   src={actor.imageUrl} 
                   alt={actor.name}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
+                  loading={index < 8 ? "eager" : "lazy"}
+                  fetchPriority={index < 4 ? "high" : "auto"}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brandPurple/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
                   <p className="text-[9px] text-brandCyan uppercase font-black tracking-[0.2em] mb-1">Capabilities</p>

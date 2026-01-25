@@ -119,7 +119,8 @@ export default function Home() {
                         src={film.posterUrl} 
                         alt={film.title} 
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        loading="lazy"
+                        loading="eager"
+                        fetchPriority="high"
                      />
                      <div className="absolute inset-0 bg-gradient-to-t from-brandBlack/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
                         <span className="text-[9px] brand-bg text-white px-2 py-0.5 rounded w-fit mb-2 font-bold uppercase tracking-wide">{film.genre}</span>
@@ -215,6 +216,7 @@ export default function Home() {
                       }}
                       className="w-full h-full object-contain drop-shadow-md" 
                       alt="Golden State Film Festival" 
+                      loading="lazy"
                    />
                    <div className="hidden flex flex-col items-center justify-center text-center">
                       <Film size={28} className="text-white mb-1" />
@@ -238,6 +240,7 @@ export default function Home() {
                    src="https://i.ibb.co/4nXRfxf5/tongxiang.png" 
                    alt="Award Trophy" 
                    className="relative w-14 h-auto object-contain animate-pulse drop-shadow-[0_0_30px_rgba(245,158,11,0.4)]"
+                   loading="lazy"
                 />
              </div>
 
@@ -253,6 +256,7 @@ export default function Home() {
                       }}
                       className="w-full h-full object-contain drop-shadow-md" 
                       alt="Golden Feather Awards" 
+                      loading="lazy"
                    />
                    <div className="hidden flex flex-col items-center justify-center text-center">
                       <Trophy size={28} className="text-amber-400 mb-1" />
@@ -334,7 +338,7 @@ export default function Home() {
                <div className="absolute inset-0 bg-brandCyan/20 blur-[100px] rounded-full opacity-20"></div>
                <div className="grid grid-cols-2 gap-4 relative z-10">
                   <div className="space-y-4 translate-y-8">
-                     <img src="https://images.unsplash.com/photo-1533488765986-dfa2a9939acd?auto=format&fit=crop&q=80&w=600" className="rounded-2xl shadow-2xl border border-white/10 opacity-80" alt="Camera" />
+                     <img src="https://images.unsplash.com/photo-1533488765986-dfa2a9939acd?auto=format&fit=crop&q=80&w=600" className="rounded-2xl shadow-2xl border border-white/10 opacity-80" alt="Camera" loading="lazy" />
                      <div className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
                         <p className="text-3xl font-cinematic font-black text-white mb-1">50+</p>
                         <p className="text-[10px] text-brandGray uppercase tracking-widest font-bold">Partner Agencies</p>
@@ -345,7 +349,7 @@ export default function Home() {
                         <p className="text-3xl font-cinematic font-black text-white mb-1">12+</p>
                         <p className="text-[10px] text-brandGray uppercase tracking-widest font-bold">Original Films</p>
                      </div>
-                     <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=600" className="rounded-2xl shadow-2xl border border-white/10 opacity-80" alt="Set Light" />
+                     <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=600" className="rounded-2xl shadow-2xl border border-white/10 opacity-80" alt="Set Light" loading="lazy" />
                   </div>
                </div>
             </div>
@@ -424,7 +428,7 @@ export default function Home() {
                   <div key={i} className="bg-white/5 border border-white/5 p-8 rounded-2xl relative hover:bg-white/[0.07] transition-colors">
                      <Quote className="text-brandCyan/20 absolute top-6 right-6" size={40} />
                      <div className="flex items-center gap-4 mb-6">
-                        <img src={t.image} className="w-12 h-12 rounded-full object-cover border border-white/10" alt={t.author} />
+                        <img src={t.image} className="w-12 h-12 rounded-full object-cover border border-white/10" alt={t.author} loading="lazy" />
                         <div>
                            <p className="text-white font-bold text-sm">{t.author}</p>
                            <p className="text-brandGray text-xs uppercase tracking-wider">{t.role}</p>

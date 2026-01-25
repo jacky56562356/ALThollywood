@@ -32,7 +32,7 @@ export default function Films() {
 
         {/* Updated Grid: 5 Columns, Vertical Posters */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-4 gap-y-8">
-          {FILMS.map((film) => (
+          {FILMS.map((film, index) => (
             <div key={film.id} className="group flex flex-col h-full cursor-pointer" onClick={() => setSelectedFilm(film)}>
               {/* Vertical Poster Container (Aspect Ratio 2:3) */}
               <div className="relative aspect-[2/3] mb-3 overflow-hidden border border-white/10 rounded-lg group-hover:border-brandCyan/40 transition-all shadow-2xl bg-brandBlack">
@@ -40,7 +40,8 @@ export default function Films() {
                   src={film.posterUrl} 
                   className="w-full h-full object-contain transition-all duration-700 group-hover:scale-105"
                   alt={film.title}
-                  loading="lazy"
+                  loading={index < 8 ? "eager" : "lazy"}
+                  fetchPriority={index < 4 ? "high" : "auto"}
                 />
                 
                 <div className="absolute inset-0 bg-gradient-to-t from-brandBlack/60 via-transparent to-transparent opacity-0 group-hover:opacity-40 transition-opacity"></div>

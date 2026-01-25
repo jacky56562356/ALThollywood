@@ -18,6 +18,9 @@ import Dashboard from './pages/Dashboard';
 import { AuthProvider, useAuth } from './AuthContext';
 import { DataProvider } from './DataContext';
 
+// Constants for Preloading
+import { ACTORS, FILMS } from './constants';
+
 // Components
 import ChatBot from './components/ChatBot';
 
@@ -225,6 +228,29 @@ export default function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
+  // BACKGROUND IMAGE PRELOADER
+  // This ensures that when a user navigates to Actors or Films pages, 
+  // the images are already cached, making them "present immediately".
+  useEffect(() => {
+    const preloadImages = async () => {
+      // Delay preloading slightly to prioritize LCP (Largest Contentful Paint) of the current page
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      const imagesToPreload = [
+        ...ACTORS.map(a => a.imageUrl),
+        ...FILMS.map(f => f.posterUrl)
+      ];
+
+      imagesToPreload.forEach(src => {
+        if (!src) return;
+        const img = new Image();
+        img.src = src;
+      });
+    };
+
+    preloadImages();
+  }, []);
 
   return (
     <AuthProvider>
