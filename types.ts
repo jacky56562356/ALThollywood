@@ -54,6 +54,7 @@ export interface Application {
   chineseName: string;
   gender: string;
   dob: string;
+  country?: string;
   height: string;
   weight: string;
   race: string;

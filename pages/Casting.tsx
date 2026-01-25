@@ -1,6 +1,6 @@
 
 import React, { useState, useRef } from 'react';
-import { Search, MapPin, Calendar, Building2, Clock, Info, Plus, UploadCloud, CheckCircle2, X, Filter, Briefcase, Camera } from 'lucide-react';
+import { Search, MapPin, Calendar, Building2, Clock, Info, Plus, UploadCloud, CheckCircle2, X, Filter, Briefcase, Camera, Activity } from 'lucide-react';
 import { useData } from '../DataContext';
 import type { Opportunity, JobApplication } from '../types';
 
@@ -11,6 +11,7 @@ export default function Casting() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterGender, setFilterGender] = useState<string>('All');
   const [filterType, setFilterType] = useState<string>('All');
+  const [filterStatus, setFilterStatus] = useState<string>('All');
 
   // Modal States
   const [isPostJobOpen, setIsPostJobOpen] = useState(false);
@@ -107,7 +108,9 @@ export default function Casting() {
                           job.company.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesGender = filterGender === 'All' || job.gender === 'Any' || job.gender === filterGender;
     const matchesType = filterType === 'All' || job.roleType.includes(filterType); // simplified match
-    return matchesSearch && matchesGender && matchesType;
+    const matchesStatus = filterStatus === 'All' || job.status === filterStatus;
+    
+    return matchesSearch && matchesGender && matchesType && matchesStatus;
   });
 
   return (
@@ -155,8 +158,8 @@ export default function Casting() {
               />
            </div>
            
-           <div className="flex gap-4">
-              <div className="relative min-w-[140px]">
+           <div className="flex flex-wrap gap-4">
+              <div className="relative min-w-[140px] flex-grow md:flex-grow-0">
                  <select 
                     value={filterGender}
                     onChange={(e) => setFilterGender(e.target.value)}
@@ -169,7 +172,7 @@ export default function Casting() {
                  <Filter size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-brandGray pointer-events-none" />
               </div>
               
-              <div className="relative min-w-[140px]">
+              <div className="relative min-w-[140px] flex-grow md:flex-grow-0">
                  <select 
                     value={filterType}
                     onChange={(e) => setFilterType(e.target.value)}
@@ -182,6 +185,20 @@ export default function Casting() {
                     <option value="Commercial">Commercial</option>
                  </select>
                  <Briefcase size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-brandGray pointer-events-none" />
+              </div>
+
+              <div className="relative min-w-[140px] flex-grow md:flex-grow-0">
+                 <select 
+                    value={filterStatus}
+                    onChange={(e) => setFilterStatus(e.target.value)}
+                    className="w-full appearance-none bg-brandBlack/50 border border-white/10 rounded-xl py-3 px-4 focus:outline-none focus:border-brandCyan/60 text-sm text-white font-medium cursor-pointer"
+                 >
+                    <option value="All">All Statuses</option>
+                    <option value="Open">Open</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Closed">Closed</option>
+                 </select>
+                 <Activity size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-brandGray pointer-events-none" />
               </div>
            </div>
         </div>

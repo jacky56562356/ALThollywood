@@ -15,6 +15,7 @@ export default function Apply() {
     chineseName: '',
     gender: 'Male',
     dob: '',
+    country: 'USA',
     height: '',
     weight: '',
     race: '',
@@ -124,7 +125,7 @@ export default function Apply() {
                 onClick={() => {
                   setSubmitted(false);
                   setFormData({
-                    englishName: '', chineseName: '', gender: 'Male', dob: '', height: '', weight: '', 
+                    englishName: '', chineseName: '', gender: 'Male', dob: '', country: 'USA', height: '', weight: '', 
                     race: '', idNumber: '', address: '', guardianMobile: '', englishLevel: '', hobbies: '', resume: '', headshotUrl: '', resumeFileUrl: '', resumeFileName: ''
                   });
                 }}
@@ -268,7 +269,7 @@ export default function Apply() {
                    <span>家庭住址</span>
                 </div>
                 <div className="flex-grow border-r border-black flex items-center justify-center text-xs font-medium px-2 text-center">
-                   {formData.address}
+                   {formData.address} {formData.country ? `(${formData.country})` : ''}
                 </div>
                 <div className="w-16 border-r border-black flex flex-col items-center justify-center text-center text-xs font-bold bg-gray-50 p-1">
                    <span>Weight</span>
@@ -598,6 +599,21 @@ export default function Apply() {
                 <div className="space-y-3">
                   <h4 className="flex items-center gap-2 text-[10px] text-brandCyan uppercase font-black tracking-widest"><MapPin size={12}/> Contact Information</h4>
                   <div className="space-y-3">
+                    
+                    {/* ADDED COUNTRY DROPDOWN */}
+                    <div>
+                        <label className="block text-[9px] text-brandGray uppercase font-bold mb-1">Country of Residence</label>
+                        <select name="country" value={formData.country} onChange={handleChange} className="w-full bg-brandBlack/50 border border-white/10 px-4 py-2.5 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-lg transition-all text-white/80">
+                          <option value="USA">United States</option>
+                          <option value="China">China</option>
+                          <option value="Canada">Canada</option>
+                          <option value="UK">United Kingdom</option>
+                          <option value="Australia">Australia</option>
+                          <option value="Singapore">Singapore</option>
+                          <option value="Other">Other</option>
+                        </select>
+                    </div>
+
                     <div>
                         <label className="block text-[9px] text-brandGray uppercase font-bold mb-1">Residential Address</label>
                         <input name="address" value={formData.address} onChange={handleChange} required className="w-full bg-brandBlack/50 border border-white/10 px-4 py-2.5 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-lg transition-all text-white" placeholder="Street, City, Zip" />
