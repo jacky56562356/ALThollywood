@@ -241,7 +241,7 @@ export default function About() {
            </div>
            <div className="grid grid-cols-2 gap-4">
               <img src="https://i.ibb.co/nNQnFsHd/t.png" className="rounded-xl border border-white/10 h-32 w-full object-cover" alt="On set production" loading="lazy" />
-              <img src="https://i.ibb.co/x88927KP/E1138KI5.jpg" className="rounded-xl border border-white/10 mt-6 h-32 w-full object-cover" alt="Film set" loading="lazy" />
+              <img src="https://i.ibb.co/rfRcKg31/20250929162748-126-10.jpg" className="rounded-xl border border-white/10 mt-6 h-32 w-full object-cover" alt="Film set" loading="lazy" />
            </div>
         </div>
       </div>

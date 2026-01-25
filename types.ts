@@ -68,3 +68,15 @@ export interface Application {
   resumeFileUrl?: string; // New: Base64 string of PDF
   resumeFileName?: string; // New: Original filename
 }
+
+export interface JobApplication {
+  id: string;
+  jobId: string;
+  applicantName: string;
+  email: string;
+  phone: string;
+  headshotUrl: string;
+  resumeUrl?: string;
+  coverLetter: string;
+  appliedAt: string;
+}
