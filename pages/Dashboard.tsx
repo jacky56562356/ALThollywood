@@ -4,11 +4,11 @@ import { Plus, Trash2, Edit2, UploadCloud, FileText, Download, X, Save, Users, F
 import type { Actor, Resource, Application } from '../types';
 import { useData } from '../DataContext';
 
-type Tab = 'talent' | 'resources' | 'applications';
+type Tab = 'students' | 'resources' | 'applications';
 
 export default function Dashboard() {
   const { actors, resources, applications, addActor, updateActor, deleteActor, addResource, deleteResource, deleteApplication } = useData();
-  const [activeTab, setActiveTab] = useState<Tab>('talent');
+  const [activeTab, setActiveTab] = useState<Tab>('students');
   
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -50,7 +50,7 @@ export default function Dashboard() {
   };
 
   const handleDeleteActor = (id: string) => {
-    if (confirm('Are you sure you want to remove this talent from the official roster?')) {
+    if (confirm('Are you sure you want to remove this student from the official roster?')) {
       deleteActor(id);
     }
   };
@@ -62,11 +62,11 @@ export default function Dashboard() {
     } else {
         addActor({
             id: `new-${Date.now()}`,
-            name: actorForm.name || 'New Talent',
+            name: actorForm.name || 'New Student',
             ageRange: actorForm.ageRange || '6-10',
             imageUrl: actorForm.imageUrl || 'https://via.placeholder.com/600x800',
             skills: actorForm.skills || [],
-            credits: actorForm.credits || ['New Signing']
+            credits: actorForm.credits || ['New Student']
         } as Actor);
     }
     setIsModalOpen(false);
@@ -175,15 +175,15 @@ export default function Dashboard() {
         {/* Header & Tabs */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-10 mb-8 border-b border-white/10 pb-8">
           <div>
-            <h2 className="brand-gradient-text text-sm font-black tracking-[0.4em] uppercase mb-4">Internal Management</h2>
-            <h1 className="text-5xl font-cinematic font-black tracking-tight">Agent Dashboard</h1>
+            <h2 className="brand-gradient-text text-sm font-black tracking-[0.4em] uppercase mb-4">System Management</h2>
+            <h1 className="text-5xl font-cinematic font-black tracking-tight">Internal Dashboard</h1>
           </div>
           <div className="flex bg-white/5 p-1 rounded-xl border border-white/10">
              <button 
-                onClick={() => setActiveTab('talent')}
-                className={`px-6 py-3 rounded-lg text-xs font-black uppercase tracking-widest transition-all flex items-center gap-2 ${activeTab === 'talent' ? 'brand-bg text-white shadow-lg' : 'text-brandGray hover:text-white'}`}
+                onClick={() => setActiveTab('students')}
+                className={`px-6 py-3 rounded-lg text-xs font-black uppercase tracking-widest transition-all flex items-center gap-2 ${activeTab === 'students' ? 'brand-bg text-white shadow-lg' : 'text-brandGray hover:text-white'}`}
              >
-                <Users size={16} /> Talent Roster
+                <Users size={16} /> Star Roster
              </button>
              <button 
                 onClick={() => setActiveTab('resources')}
@@ -207,14 +207,14 @@ export default function Dashboard() {
               onClick={() => { setIsModalOpen(true); setEditingId(null); setViewingApp(null); resetActorForm(); resetResourceForm(); }}
               className="px-8 py-4 brand-bg text-white font-black rounded-xl uppercase tracking-widest text-xs flex items-center gap-3 hover:scale-105 transition-all shadow-xl shadow-brandCyan/20"
             >
-              <Plus size={18} /> {activeTab === 'talent' ? 'Add New Talent' : 'Upload Document'}
+              <Plus size={18} /> {activeTab === 'students' ? 'Register New Star' : 'Upload Document'}
             </button>
           </div>
         )}
 
         {/* CONTENT AREA */}
-        {activeTab === 'talent' ? (
-          // TALENT TABLE
+        {activeTab === 'students' ? (
+          // STUDENT TABLE
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
@@ -336,7 +336,7 @@ export default function Dashboard() {
             <div className="w-full max-w-2xl bg-brandBlack border border-white/10 rounded-3xl p-8 relative shadow-2xl animate-in zoom-in duration-300 max-h-[90vh] overflow-y-auto custom-scrollbar">
                <button onClick={() => { setIsModalOpen(false); setViewingApp(null); }} className="absolute top-6 right-6 text-brandGray hover:text-white"><X /></button>
                
-               {activeTab === 'talent' ? (
+               {activeTab === 'students' ? (
                  /* ACTOR FORM */
                  <>
                    <h3 className="text-3xl font-cinematic font-black mb-10 tracking-tight">{editingId ? 'Update Star Portfolio' : 'Register New Star'}</h3>

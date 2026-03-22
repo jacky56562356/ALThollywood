@@ -19,7 +19,7 @@ const ECOSYSTEM_ITEMS = [
   },
   {
     title: "Global Network",
-    desc: "A bridge to the world's entertainment capitals. Direct casting pipelines to major agencies in LA, New York, and abroad, ensuring your talent reaches a global audience.",
+    desc: "A bridge to the world's entertainment capitals. Direct production pipelines to major studios in LA, New York, and abroad, ensuring our students reach a global audience.",
     icon: Globe,
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
   },
@@ -41,13 +41,13 @@ const TESTIMONIALS = [
   {
     quote: "The discipline and set etiquette these kids have is comparable to adult professionals. A joy to cast.",
     author: "Robert Harrison",
-    role: "Casting Director, LA",
+    role: "Production Director, LA",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150"
   },
   {
     quote: "Finally, a program that understands the industry. The IMDb credits are real, and the experience is invaluable.",
     author: "Amanda Sterling",
-    role: "Talent Agent",
+    role: "Industry Professional",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150"
   }
 ];
@@ -74,7 +74,7 @@ export default function Home() {
         
         <div className="relative z-10 max-w-7xl mx-auto text-center px-4 animate-fade-up">
           <h2 className="brand-gradient-text text-xs md:text-sm font-black tracking-[0.5em] mb-3 uppercase drop-shadow-lg">
-            Training · Film Production · Global Casting
+            Training · Film Production · Global Exposure
           </h2>
           <div className="flex flex-col items-center justify-center mb-4">
             <h1 className="text-5xl md:text-8xl font-cinematic font-black brand-gradient-text leading-tight md:leading-[0.9] tracking-tighter mb-2 drop-shadow-2xl">
@@ -298,7 +298,7 @@ export default function Home() {
                   ALT HOLLYWOOD DREAM STAR is not just a school; it's a launchpad. Based in Los Angeles, we operate as a full-cycle creative hub where acting training integrates seamlessly with professional filmmaking.
                 </p>
                 <p>
-                  We provide young talents aged 6–18 with hands-on experience in professional sets, industry-standard workflows, and official film distribution. Our "Film-First" methodology ensures education translates directly to screen performance.
+                  We provide young performers aged 6–18 with hands-on experience in professional sets, industry-standard workflows, and official film distribution. Our "Film-First" methodology ensures education translates directly to screen performance.
                 </p>
               </div>
               
@@ -320,8 +320,8 @@ export default function Home() {
                 <div className="flex items-start gap-3">
                    <div className="p-1 rounded-full bg-brandCyan/10 text-brandCyan"><CheckCircle size={16} /></div>
                   <div>
-                    <h5 className="text-white font-bold mb-0.5 text-sm">Agency Access</h5>
-                    <p className="text-xs text-brandGray">Direct submissions to top agents.</p>
+                    <h5 className="text-white font-bold mb-0.5 text-sm">Festival Exposure</h5>
+                    <p className="text-xs text-brandGray">Submission to international film festivals.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -340,8 +340,8 @@ export default function Home() {
                   <div className="space-y-4 translate-y-8">
                      <img src="https://images.unsplash.com/photo-1533488765986-dfa2a9939acd?auto=format&fit=crop&q=80&w=600" className="rounded-2xl shadow-2xl border border-white/10 opacity-80" alt="Camera" loading="lazy" />
                      <div className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
-                        <p className="text-3xl font-cinematic font-black text-white mb-1">50+</p>
-                        <p className="text-[10px] text-brandGray uppercase tracking-widest font-bold">Partner Agencies</p>
+                        <p className="text-3xl font-cinematic font-black text-white mb-1">20+</p>
+                        <p className="text-[10px] text-brandGray uppercase tracking-widest font-bold">Festival Selections</p>
                      </div>
                   </div>
                   <div className="space-y-4">
@@ -367,11 +367,11 @@ export default function Home() {
                </div>
                <div className="group">
                   <p className="text-4xl md:text-5xl font-cinematic font-black text-white mb-2 group-hover:brand-gradient-text transition-colors">30+</p>
-                  <p className="text-[10px] text-brandGray uppercase tracking-[0.2em] font-bold">Signed Talent</p>
+                  <p className="text-[10px] text-brandGray uppercase tracking-[0.2em] font-bold">Trained Performers</p>
                </div>
                <div className="group">
-                  <p className="text-4xl md:text-5xl font-cinematic font-black text-white mb-2 group-hover:brand-gradient-text transition-colors">50+</p>
-                  <p className="text-[10px] text-brandGray uppercase tracking-[0.2em] font-bold">Partner Agencies</p>
+                  <p className="text-4xl md:text-5xl font-cinematic font-black text-white mb-2 group-hover:brand-gradient-text transition-colors">20+</p>
+                  <p className="text-[10px] text-brandGray uppercase tracking-[0.2em] font-bold">Festival Selections</p>
                </div>
                <div className="group">
                   <p className="text-4xl md:text-5xl font-cinematic font-black text-white mb-2 group-hover:brand-gradient-text transition-colors">8+</p>
@@ -444,25 +444,26 @@ export default function Home() {
       {/* Call to Action */}
       <section className="py-20 relative overflow-hidden text-center flex items-center justify-center">
         <div className="absolute inset-0 z-0 bg-brandBlack">
-             {/* Classic Colored Cinema Auditorium (Red Seats/Gold) - No Grayscale, bright and vivid */}
+             {/* Grayscale Big Screen Effect */}
              <img 
                src="https://i.ibb.co/5xXXdHrB/u8238228639-v-7-f5d92d51-ca1a-4aea-9a0c-c19abca23644-1.png" 
-               className="w-full h-full object-cover opacity-90" 
+               className="w-full h-full object-cover opacity-60 grayscale brightness-75 contrast-125" 
                alt="Classic Hollywood Cinema" 
                loading="lazy" 
              />
-             {/* Subtle Gradient Overlay for text readability on colorful background */}
-             <div className="absolute inset-0 bg-gradient-to-t from-brandBlack/90 via-brandBlack/10 to-brandBlack/40"></div>
+             {/* Silver/Grey Overlay to simulate a big screen */}
+             <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-800/50 to-gray-900/80 mix-blend-multiply"></div>
+             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/5 via-transparent to-black/80 opacity-60"></div>
         </div>
         
         <div className="max-w-4xl mx-auto px-6 relative z-10">
-           {/* Glass box to make text pop against the bright screen */}
-           <div className="bg-brandBlack/60 backdrop-blur-md p-10 md:p-12 rounded-3xl border border-white/10 shadow-2xl animate-fade-up">
+           {/* Box styles updated to match grey screen theme */}
+           <div className="bg-white/5 backdrop-blur-sm p-10 md:p-12 rounded-3xl border border-white/10 shadow-2xl animate-fade-up">
               <h2 className="text-4xl md:text-6xl font-cinematic font-black mb-4 tracking-tighter drop-shadow-2xl text-white">Your Hollywood Debut Awaits</h2>
-              <p className="text-white text-lg md:text-xl mb-8 font-medium tracking-wide drop-shadow-lg opacity-90 max-w-2xl mx-auto">
+              <p className="text-white/80 text-lg md:text-xl mb-8 font-medium tracking-wide drop-shadow-lg max-w-2xl mx-auto">
                 Step onto the big screen. The audience is waiting for your performance.
               </p>
-              <Link to="/apply" className="inline-block px-14 py-6 brand-bg text-white font-black rounded-full uppercase tracking-[0.3em] hover:scale-105 transition-all shadow-[0_0_40px_rgba(0,210,255,0.6)] text-xs md:text-sm">
+              <Link to="/apply" className="inline-block px-14 py-6 bg-white text-black font-black rounded-full uppercase tracking-[0.3em] hover:scale-105 transition-all shadow-[0_0_40px_rgba(255,255,255,0.4)] text-xs md:text-sm hover:bg-gray-200">
                 Apply Now
               </Link>
            </div>

@@ -71,7 +71,7 @@ export const ACTORS: Actor[] = [
     name: 'Evan Wen',
     ageRange: '6-10',
     skills: ['Breakdancing', 'Acting', 'Live Performance'],
-    credits: ['ALT Hollywood Movies Filmed', 'Talent Showcase winner'],
+    credits: ['ALT Hollywood Movies Filmed', 'Performance Showcase winner'],
     imageUrl: 'https://i.ibb.co/60K4WqJV/7.png',
   },
   {
@@ -87,7 +87,7 @@ export const ACTORS: Actor[] = [
     name: 'Kent Zhao',
     ageRange: '6-10',
     skills: ['Traditional Performance', 'Screen Acting', 'Public Speaking'],
-    credits: ['Regional Film Credits', 'Commercial Talent'],
+    credits: ['Regional Film Credits', 'Commercial Performer'],
     imageUrl: 'https://i.ibb.co/bgQnZQrP/1cbde033c8e622982d9b59686f383e73.jpg',
   },
   {
@@ -127,7 +127,7 @@ export const ACTORS: Actor[] = [
     name: 'Yuxi Ling',
     ageRange: '6-10',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
-    credits: ['Hollywood Project', 'Talent Showcase'],
+    credits: ['Hollywood Project', 'Performance Showcase'],
     imageUrl: 'https://i.ibb.co/Z6FPqV6P/a1644427b71929307a2b9360bbca9fc3.jpg',
   },
   {
@@ -193,7 +193,7 @@ export const FILMS: FilmProject[] = [
     id: 'film-poster-new-3',
     title: 'ALT Hollywood: The New Era',
     genre: "Documentary",
-    description: "Witness the dawn of a new generation of Hollywood talent in this exclusive feature presentation.",
+    description: "Witness the dawn of a new generation of Hollywood performers in this exclusive feature presentation.",
     platform: "Global Premiere",
     posterUrl: "https://i.ibb.co/0RBsdNHX/Chat-GPT-Image-2026-1-22-15-20-56.png",
     stills: [
@@ -232,7 +232,7 @@ export const FILMS: FilmProject[] = [
     id: 'film-poster-new-2',
     title: 'ALT Dream Star New Film',
     genre: "Premiere",
-    description: "Our latest feature film production showcasing the new wave of talent. Shot in professional studios in Los Angeles.",
+    description: "Our latest feature film production showcasing the new wave of performers. Shot in professional studios in Los Angeles.",
     platform: "Theatrical",
     posterUrl: "https://i.ibb.co/C5ym3kR9/ALT-DREAM-STAR-NEW-FILM.png",
     stills: [
@@ -245,7 +245,7 @@ export const FILMS: FilmProject[] = [
     id: 'film-poster-1',
     title: 'ALT Hollywood Dream Star: Official Selection',
     genre: "Drama",
-    description: "The official showcase of ALT Hollywood Dream Star productions, featuring our top young talents in a professional cinematic environment.",
+    description: "The official showcase of ALT Hollywood Dream Star productions, featuring our top young performers in a professional cinematic environment.",
     platform: "Amazon Prime / Festival Circuit",
     posterUrl: "https://i.ibb.co/5XkvwS0b/image.png",
     stills: [
@@ -544,7 +544,7 @@ export const HISTORY: HistoryEvent[] = [
   { 
     year: "Year 1", 
     title: "The Foundation", 
-    description: "Founded in Los Angeles with initial agency partnerships, establishing the core curriculum and industry connections.",
+    description: "Founded in Los Angeles with initial industry partnerships, establishing the core curriculum and production connections.",
     imageUrl: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=600"
   },
   { 
@@ -555,8 +555,8 @@ export const HISTORY: HistoryEvent[] = [
   },
   { 
     year: "Year 3", 
-    title: "Talent Expansion", 
-    description: "Signed 30+ young talents and expanded our casting network to include major streaming platforms and TV networks.",
+    title: "Artistic Expansion", 
+    description: "Trained 30+ young performers and expanded our production network to include major streaming platforms and TV networks.",
     imageUrl: "https://images.unsplash.com/photo-1515634928627-2a4e0dae3ddf?auto=format&fit=crop&q=80&w=600"
   },
   { 
@@ -580,7 +580,7 @@ export const HISTORY: HistoryEvent[] = [
   { 
     year: "Year 7", 
     title: "Hollywood Standard", 
-    description: "Today, we operate as a fully integrated production house with 100% student placement in professional projects.",
+    description: "Today, we operate as a fully integrated production house with 100% student participation in professional projects.",
     imageUrl: "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?auto=format&fit=crop&q=80&w=600"
   },
 ];

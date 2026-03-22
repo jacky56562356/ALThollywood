@@ -29,7 +29,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => {
     if (token) {
       // Decode JWT normally here
-      setUser({ role: 'agent' }); 
+      setUser({ role: 'admin' }); 
     }
   }, [token]);
 

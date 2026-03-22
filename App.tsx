@@ -9,10 +9,10 @@ import About from './pages/About';
 import Programs from './pages/Programs';
 import YouthActors from './pages/YouthActors';
 import Films from './pages/Films';
-import Casting from './pages/Casting';
 import Apply from './pages/Apply';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import StudioPlan from './pages/StudioPlan';
 
 // Context
 import { AuthProvider, useAuth } from './AuthContext';
@@ -35,6 +35,8 @@ const Logo = ({ size = "normal" }: { size?: "normal" | "small" }) => (
       src="https://i.ibb.co/c4Rn9W9/ALT-LOGO-2400x1800.png" 
       alt="ALT Logo"
       className={`${size === 'small' ? 'h-10 md:h-12' : 'h-12 md:h-16'} w-auto object-contain group-hover:scale-105 transition-transform`}
+      fetchPriority="high"
+      loading="eager"
     />
     <div className="flex flex-col leading-none">
       <span className={`${size === 'small' ? 'text-xl md:text-2xl' : 'text-2xl md:text-3xl'} font-cinematic font-black brand-gradient-text tracking-tight`}>ALT</span>
@@ -54,8 +56,8 @@ const Header = () => {
     { name: 'Programs', path: '/programs' },
     { name: 'Actors', path: '/actors' },
     { name: 'Films', path: '/films' },
-    { name: 'Casting', path: '/casting' },
     { name: 'Apply', path: '/apply' },
+    { name: 'Expansion', path: '/studio-plan' },
   ];
 
   const isActive = (path: string) => pathname === path;
@@ -170,7 +172,6 @@ const Footer = () => (
           <ul className="space-y-2 text-xs md:text-sm text-gray-400 font-medium">
             <li><Link to="/programs" className="hover:text-brandCyan transition-colors">Programs & History</Link></li>
             <li><Link to="/films" className="hover:text-brandCyan transition-colors">Films</Link></li>
-            <li><Link to="/casting" className="hover:text-brandCyan transition-colors">Jobs & Casting</Link></li>
             <li><Link to="/apply" className="hover:text-brandCyan transition-colors">Apply & Contact</Link></li>
           </ul>
         </div>
@@ -178,7 +179,7 @@ const Footer = () => (
         <div>
           <h4 className="text-white font-bold mb-4 uppercase tracking-widest text-xs">Industry Access</h4>
           <ul className="space-y-2 text-xs md:text-sm text-gray-400 font-medium">
-            <li><Link to="/login" className="flex items-center gap-2 hover:text-brandCyan"><Lock size={14} /> Agent Portal</Link></li>
+            <li><Link to="/login" className="flex items-center gap-2 hover:text-brandCyan"><Lock size={14} /> Internal Portal</Link></li>
             <li className="flex items-center gap-2 cursor-pointer hover:text-brandCyan"><FileDown size={16} /> Application Forms</li>
           </ul>
         </div>
@@ -264,8 +265,8 @@ export default function App() {
               <Route path="/programs" element={<Programs />} />
               <Route path="/actors" element={<YouthActors />} />
               <Route path="/films" element={<Films />} />
-              <Route path="/casting" element={<Casting />} />
               <Route path="/apply" element={<Apply />} />
+              <Route path="/studio-plan" element={<StudioPlan />} />
               <Route path="/login" element={<Login />} />
               <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             </Routes>

@@ -16,9 +16,9 @@ export default function Opportunities() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-12">
           <div className="max-w-2xl">
-            <h2 className="brand-gradient-text text-sm font-black tracking-[0.4em] uppercase mb-6">Casting</h2>
+            <h2 className="brand-gradient-text text-sm font-black tracking-[0.4em] uppercase mb-6">Production</h2>
             <h1 className="text-6xl font-cinematic font-black mb-8 tracking-tight">Open Opportunities</h1>
-            <p className="text-brandGray text-lg font-light">Current casting calls and professional industry opportunities for our registered talents.</p>
+            <p className="text-brandGray text-lg font-light">Current production roles and professional industry opportunities for our registered students.</p>
           </div>
           <div className="relative w-full md:w-96 group">
             <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-brandGray group-focus-within:text-brandCyan transition-colors" size={20} />
@@ -91,7 +91,7 @@ export default function Opportunities() {
               </div>
               
               <button className="w-full py-4 border border-brandCyan/20 hover:brand-bg hover:text-white font-black uppercase tracking-[0.2em] text-[9px] transition-all rounded-xl mt-auto">
-                View Submission Details
+                View Application Details
               </button>
             </div>
           ))}

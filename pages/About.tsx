@@ -20,7 +20,7 @@ export default function About() {
                 We identified a critical gap in the industry—where traditional acting schools focused solely on classroom exercises, the professional world demanded set experience. ALT was built to bridge that gap.
               </p>
               <div className="p-5 border-l-4 border-brandCyan bg-brandCyan/5 italic text-white/90 rounded-r-xl text-sm leading-relaxed mt-4">
-                "Our philosophy is simple: True growth happens under the lights. We provide the platform to turn talent into a career."
+                "Our philosophy is simple: True growth happens under the lights. We provide the platform to turn potential into a career."
               </div>
             </div>
           </div>
@@ -30,7 +30,7 @@ export default function About() {
                 <img 
                   src="https://i.ibb.co/tM4zj1Zt/blog-3.jpg" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  alt="Young talent on set"
+                  alt="Young performers on set"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 brand-bg opacity-[0.05] mix-blend-overlay"></div>
@@ -77,7 +77,7 @@ export default function About() {
             </div>
             <div className="p-5">
                 <h3 className="text-lg font-cinematic font-black mb-1 group-hover:brand-gradient-text transition-colors">Production Hub</h3>
-                <p className="text-brandGray text-xs md:text-sm leading-snug">Scriptwriting, casting, and filming under one roof.</p>
+                <p className="text-brandGray text-xs md:text-sm leading-snug">Scriptwriting, role selection, and filming under one roof.</p>
             </div>
           </div>
 
@@ -87,7 +87,7 @@ export default function About() {
                 <img 
                   src="https://i.ibb.co/8DDg94mN/professional-camera-man-at-work-2022-02-09-18-59-44-utc.jpg" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  alt="Talent Development"
+                  alt="Artistic Development"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-brandBlack/40 group-hover:bg-transparent transition-all"></div>
@@ -96,7 +96,7 @@ export default function About() {
                 </div>
             </div>
             <div className="p-5">
-                <h3 className="text-lg font-cinematic font-black mb-1 group-hover:brand-gradient-text transition-colors">Talent Development</h3>
+                <h3 className="text-lg font-cinematic font-black mb-1 group-hover:brand-gradient-text transition-colors">Artistic Development</h3>
                 <p className="text-brandGray text-xs md:text-sm leading-snug">Developing discipline, portfolios, and networking.</p>
             </div>
           </div>
@@ -112,46 +112,46 @@ export default function About() {
 
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-16">
-               <h2 className="brand-gradient-text text-xs font-black tracking-[0.4em] uppercase mb-4">Talent Management & Career Development</h2>
+               <h2 className="brand-gradient-text text-xs font-black tracking-[0.4em] uppercase mb-4">Youth Performance Training & Film Production</h2>
                <h1 className="text-4xl md:text-6xl font-cinematic font-black mb-6 tracking-tight text-white">
-                  The Ultimate <span className="text-transparent bg-clip-text bg-gradient-to-r from-brandCyan to-brandPurple">Career Accelerator</span>
+                  The Ultimate <span className="text-transparent bg-clip-text bg-gradient-to-r from-brandCyan to-brandPurple">Creative Launchpad</span>
                </h1>
                <div className="text-brandGray max-w-3xl mx-auto text-sm md:text-base leading-relaxed font-light space-y-4">
                   <p>
-                    We are a professional youth talent management company dedicated to discovering, developing, and guiding the next generation of young performers.
+                    We are a leading institution dedicated to the artistic development of youth and children through professional performance training. Our systematic curriculum ensures that every student moves beyond theory to participate in real, self-produced film productions.
                   </p>
                   <p>
-                    Our focus is long-term growth — building skills, confidence, and real industry experience while helping each child plan a clear and sustainable path in film and entertainment.
+                    These original works are submitted to international film festivals, providing a prestigious platform to showcase our students' emerging skills. By immersing young performers in authentic filmmaking, we ignite their creative vitality and provide profound artistic experiences that enrich their youth.
                   </p>
                </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-               {/* Card 1: Agency Push */}
+               {/* Card 1: Festival Recognition */}
                <div className="group relative p-6 rounded-3xl border border-white/10 bg-brandBlack overflow-hidden hover:border-brandCyan/50 transition-all duration-500 min-h-[350px] flex flex-col justify-end">
-                  {/* Background Image: Professional Agreement/Handshake - Clearer */}
-                  <div className="absolute inset-0 z-0">
+                  {/* Background Image: Professional Recognition - Clearer */}
+                <div className="absolute inset-0 z-0">
                     <img 
-                        src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=800" 
+                        src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?auto=format&fit=crop&q=80&w=800" 
                         className="w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity duration-700 group-hover:scale-110"
-                        alt="Agency Agreement"
+                        alt="Film Festival Recognition"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brandBlack via-brandBlack/80 to-transparent"></div>
-                  </div>
+                </div>
                   
                   <div className="relative z-10">
                       <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity -mt-32">
                          <Network size={80} />
                       </div>
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-brandCyan/20 to-blue-600/20 border border-brandCyan/30 flex items-center justify-center text-brandCyan mb-6 group-hover:scale-110 transition-transform shadow-[0_0_30px_rgba(0,229,255,0.3)]">
-                         <Briefcase size={24} />
+                       <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-brandCyan/20 to-blue-600/20 border border-brandCyan/30 flex items-center justify-center text-brandCyan mb-6 group-hover:scale-110 transition-transform shadow-[0_0_30px_rgba(0,229,255,0.3)]">
+                         <Award size={24} />
                       </div>
-                      <h3 className="text-xl font-cinematic font-bold text-white mb-3">Agency Placement</h3>
+                      <h3 className="text-xl font-cinematic font-bold text-white mb-3">Festival Recognition</h3>
                       <p className="text-brandGray text-xs md:text-sm leading-relaxed mb-6 font-medium">
-                         We actively package and pitch our top students to Los Angeles' premier talent agencies. Our reputation opens doors that remain closed to the public.
+                         Our self-produced films are submitted to major international film festivals, giving our students a global platform to showcase their skills.
                       </p>
                       <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-brandCyan group-hover:translate-x-2 transition-transform">
-                         <span>Direct Submissions</span> <ArrowUpRight size={14} />
+                         <span>Global Exposure</span> <ArrowUpRight size={14} />
                       </div>
                   </div>
                </div>
@@ -163,7 +163,7 @@ export default function About() {
                     <img 
                         src="https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&q=80&w=800" 
                         className="w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity duration-700 group-hover:scale-110"
-                        alt="Filming On Set"
+                        alt="Professional Film Production"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brandBlack via-brandBlack/80 to-transparent"></div>
                   </div>
@@ -172,15 +172,15 @@ export default function About() {
                       <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity -mt-32">
                          <Clapperboard size={80} />
                       </div>
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-brandPurple/20 to-pink-600/20 border border-brandPurple/30 flex items-center justify-center text-brandPurple mb-6 group-hover:scale-110 transition-transform shadow-[0_0_30px_rgba(112,0,255,0.3)]">
-                         <Building2 size={24} />
+                       <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-brandPurple/20 to-pink-600/20 border border-brandPurple/30 flex items-center justify-center text-brandPurple mb-6 group-hover:scale-110 transition-transform shadow-[0_0_30px_rgba(112,0,255,0.3)]">
+                         <Clapperboard size={24} />
                       </div>
-                      <h3 className="text-xl font-cinematic font-bold text-white mb-3">Major Studio Access</h3>
+                      <h3 className="text-xl font-cinematic font-bold text-white mb-3">Professional Production</h3>
                       <p className="text-brandGray text-xs md:text-sm leading-relaxed mb-6 font-medium">
-                         From Disney to Netflix, our students are positioned for roles in major studio productions. We provide the connections to get you into the audition room.
+                         Every student participates in professional-grade filmmaking. We create original content that highlights individual performance and technical excellence.
                       </p>
                       <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-brandPurple group-hover:translate-x-2 transition-transform">
-                         <span>Studio Network</span> <ArrowUpRight size={14} />
+                         <span>Real Set Experience</span> <ArrowUpRight size={14} />
                       </div>
                   </div>
                </div>
@@ -192,7 +192,7 @@ export default function About() {
                     <img 
                         src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=800" 
                         className="w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity duration-700 group-hover:scale-110"
-                        alt="Casting & Audition"
+                        alt="Artistic Performance"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brandBlack via-brandBlack/80 to-transparent"></div>
                   </div>
@@ -201,15 +201,15 @@ export default function About() {
                       <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity -mt-32">
                          <Gem size={80} />
                       </div>
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-600/20 border border-amber-500/30 flex items-center justify-center text-amber-500 mb-6 group-hover:scale-110 transition-transform shadow-[0_0_30px_rgba(245,158,11,0.3)]">
-                         <Megaphone size={24} />
+                       <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-600/20 border border-amber-500/30 flex items-center justify-center text-amber-500 mb-6 group-hover:scale-110 transition-transform shadow-[0_0_30px_rgba(245,158,11,0.3)]">
+                         <Star size={24} />
                       </div>
-                      <h3 className="text-xl font-cinematic font-bold text-white mb-3">Endless Opportunities</h3>
+                      <h3 className="text-xl font-cinematic font-bold text-white mb-3">Artistic Experience</h3>
                       <p className="text-brandGray text-xs md:text-sm leading-relaxed mb-6 font-medium">
-                         Commercials, print ads, voiceovers, and events. We constantly scout and aggregate filming jobs to ensure our talent stays booked and busy.
+                         We empower children with creative vitality. Through real filmmaking, they gain profound artistic experiences that define their youth and build confidence.
                       </p>
                       <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-amber-500 group-hover:translate-x-2 transition-transform">
-                         <span>Active Casting</span> <ArrowUpRight size={14} />
+                         <span>Creative Growth</span> <ArrowUpRight size={14} />
                       </div>
                   </div>
                </div>

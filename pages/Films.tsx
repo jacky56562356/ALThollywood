@@ -158,7 +158,7 @@ const FilmModalContent = ({ film }: { film: FilmProject }) => {
                        <div className="prose prose-invert prose-lg text-brandGray font-light leading-normal max-w-none mb-8">
                           <p className="text-sm text-white/90 font-normal mb-2">{film.description}</p>
                           <p className="text-xs leading-relaxed">
-                            Filmed on location in Los Angeles, this production highlights the exceptional capability of our youth talent to handle complex narratives and professional set etiquette.
+                            Filmed on location in Los Angeles, this production highlights the exceptional capability of our youth performers to handle complex narratives and professional set etiquette.
                             From table reads to the final cut, students were involved in every aspect of the creative process.
                           </p>
                        </div>

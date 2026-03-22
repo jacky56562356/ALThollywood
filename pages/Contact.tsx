@@ -59,7 +59,7 @@ export default function Contact() {
                 <h4 className="font-black uppercase tracking-[0.2em] text-xs">Registration Notice</h4>
               </div>
               <p className="text-sm text-brandGray leading-relaxed font-light">
-                All talent applicants are reviewed by our professional casting board. Participation is strictly subject to specific project requirements and current ensemble availability. We strongly recommend submitting high-quality media links for faster review.
+                All student applicants are reviewed by our professional production board. Participation is strictly subject to specific project requirements and current ensemble availability. We strongly recommend submitting high-quality media links for faster review.
               </p>
             </div>
           </div>

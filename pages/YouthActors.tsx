@@ -7,7 +7,7 @@ export default function YouthActors() {
     <div className="pt-28 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-10">
-          <h2 className="brand-gradient-text text-xs font-black tracking-[0.4em] uppercase mb-2">Youth Talents</h2>
+          <h2 className="brand-gradient-text text-xs font-black tracking-[0.4em] uppercase mb-2">Youth Performers</h2>
           <h1 className="text-3xl md:text-5xl font-cinematic font-black mb-3 tracking-tight">Our Stars</h1>
           <p className="text-brandGray text-sm md:text-base font-light leading-snug">
             Selected, trained, and developed through real film projects, building professional portfolios and industry-ready experience.

@@ -81,12 +81,12 @@ export default function Programs() {
           <ProgramSection 
             icon={Video}
             title="Film Production"
-            items={["Script Development", "Casting & Rehearsals", "Professional Filming", "IMDb Post-Production Credits"]}
+            items={["Script Development", "Role Selection & Rehearsals", "Professional Filming", "IMDb Post-Production Credits"]}
           />
           <ProgramSection 
             icon={Share2}
             title="Global Exposure"
-            items={["Streaming Releases", "Film Festival Strategy", "Industry Showcases", "Agency Signing Pathways"]}
+            items={["Streaming Releases", "Film Festival Strategy", "Industry Showcases", "Professional Showreels"]}
           />
         </div>
       </div>
@@ -191,7 +191,7 @@ export default function Programs() {
                     Students routinely participate in prestigious international film festivals, experiencing the tangible rewards of their dedication.
                   </p>
                   <p>
-                    Standing on the podium and receiving accolades fuels their confidence, turning aspiring young talents into poised professionals.
+                    Standing on the podium and receiving accolades fuels their confidence, turning aspiring young performers into poised professionals.
                   </p>
                 </div>
              </div>

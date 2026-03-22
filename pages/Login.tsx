@@ -22,7 +22,7 @@ export default function Login() {
       // In a real environment, this would call fetch('/api/auth/login')
       await new Promise(res => setTimeout(res, 1200)); 
       
-      if (email === 'agent@althollywood.com' && password === 'admin123') {
+      if (email === 'admin@althollywood.com' && password === 'admin123') {
         login('mock-jwt-token');
         navigate('/dashboard');
       } else {
@@ -45,7 +45,7 @@ export default function Login() {
             <div className="w-16 h-16 brand-bg rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-brandCyan/20">
               <Lock size={28} className="text-white" />
             </div>
-            <h2 className="text-3xl font-cinematic font-black mb-2 tracking-tight">Agent Portal</h2>
+            <h2 className="text-3xl font-cinematic font-black mb-2 tracking-tight">Internal Portal</h2>
             <p className="text-brandGray text-xs uppercase tracking-widest font-bold">Authorized Personnel Only</p>
           </div>
 
@@ -66,7 +66,7 @@ export default function Login() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full bg-brandBlack/50 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:outline-none focus:border-brandCyan/60 transition-all text-sm"
-                  placeholder="agent@althollywood.com"
+                  placeholder="admin@althollywood.com"
                 />
               </div>
             </div>

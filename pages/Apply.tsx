@@ -98,7 +98,7 @@ export default function Apply() {
 
   const handleEmailDraft = () => {
     const subject = `Application: ${formData.englishName}`;
-    const body = `To ALT Hollywood Dream Star Casting,\n\nPlease find my application details attached.\n\nNOTE: I have attached the printed Application PDF and my Resume PDF.\n\nName: ${formData.englishName}\nMobile: ${formData.guardianMobile}\n\n`;
+    const body = `To ALT Hollywood Dream Star Production Team,\n\nPlease find my application details attached.\n\nNOTE: I have attached the printed Application PDF and my Resume PDF.\n\nName: ${formData.englishName}\nMobile: ${formData.guardianMobile}\n\n`;
     window.location.href = `mailto:altdreamstar@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
@@ -400,7 +400,7 @@ export default function Apply() {
                        <h5 className="text-white font-bold mb-1">2. Enrollment Process</h5>
                        <ul className="list-disc pl-4 space-y-1 marker:text-brandCyan">
                           <li>Complete the enrollment application</li>
-                          <li>Submit student information and optional materials (photo/video/talent introduction)</li>
+                          <li>Submit student information and optional materials (photo/video/performance introduction)</li>
                           <li>Selected courses may require an interview or audition</li>
                           <li>Admission will be confirmed upon review</li>
                           <li>Registration is finalized once enrollment procedures are completed</li>
@@ -480,7 +480,7 @@ export default function Apply() {
                 <h4 className="font-black uppercase tracking-[0.2em] text-[10px]">Registration Notice</h4>
               </div>
               <p className="text-xs text-brandGray leading-relaxed font-light">
-                Please fill out this digital form completely. Once submitted, the system will generate an <strong>Official Entry Form</strong> matching our casting standards. You can then print/save it and email it to us.
+                Please fill out this digital form completely. Once submitted, the system will generate an <strong>Official Entry Form</strong> matching our production standards. You can then print/save it and email it to us.
               </p>
             </div>
 
