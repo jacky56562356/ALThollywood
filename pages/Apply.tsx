@@ -680,6 +680,61 @@ export default function Apply() {
             </div>
           </div>
         </div>
+
+        {/* Summer Camp Section */}
+        <div className="mt-24 border-t border-white/10 pt-16">
+          <div className="text-center mb-12">
+            <h2 className="brand-gradient-text text-xs font-black tracking-[0.4em] uppercase mb-4">Special Program</h2>
+            <h1 className="text-3xl md:text-5xl font-cinematic font-black mb-6 tracking-tight">Hollywood Summer Camp</h1>
+            <p className="text-brandGray max-w-2xl mx-auto text-sm md:text-base font-light leading-relaxed">
+              An exclusive 2-week intensive program designed to immerse young performers in the magic of Hollywood filmmaking. From acting workshops to a real red-carpet premiere.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white/5 border border-white/10 p-8 rounded-2xl hover:border-brandCyan/50 transition-all group">
+              <div className="w-12 h-12 rounded-xl bg-brandCyan/10 flex items-center justify-center text-brandCyan mb-6 group-hover:scale-110 transition-transform">
+                <Activity size={24} />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">Intensive Training</h3>
+              <p className="text-brandGray text-sm leading-relaxed">Daily workshops in screen acting, voice projection, improvisation, and on-camera techniques led by industry professionals.</p>
+            </div>
+            
+            <div className="bg-white/5 border border-white/10 p-8 rounded-2xl hover:border-brandPurple/50 transition-all group">
+              <div className="w-12 h-12 rounded-xl bg-brandPurple/10 flex items-center justify-center text-brandPurple mb-6 group-hover:scale-110 transition-transform">
+                <FileType size={24} />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">Real Production</h3>
+              <p className="text-brandGray text-sm leading-relaxed">Students will be cast in a professionally produced short film, experiencing a real Hollywood set environment.</p>
+            </div>
+
+            <div className="bg-white/5 border border-white/10 p-8 rounded-2xl hover:border-amber-500/50 transition-all group">
+              <div className="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500 mb-6 group-hover:scale-110 transition-transform">
+                <ShieldCheck size={24} />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">Red Carpet Premiere</h3>
+              <p className="text-brandGray text-sm leading-relaxed">The camp concludes with a glamorous red carpet screening of their film, complete with certificates of achievement.</p>
+            </div>
+          </div>
+
+          <div className="mt-12 bg-brandBlack/60 border border-brandCyan/20 rounded-2xl p-8 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="absolute top-0 left-0 w-1 h-full brand-bg"></div>
+            <div>
+              <h3 className="text-2xl font-cinematic font-bold text-white mb-2">Ready for the Summer of a Lifetime?</h3>
+              <ul className="text-brandGray text-sm space-y-2">
+                <li><strong className="text-white">Ages:</strong> 6 - 18 years old</li>
+                <li><strong className="text-white">Location:</strong> Los Angeles, CA</li>
+                <li><strong className="text-white">Duration:</strong> 2 Weeks (July - August)</li>
+              </ul>
+            </div>
+            <button 
+              onClick={() => window.location.href = 'mailto:altdreamstar@gmail.com?subject=Summer Camp Application Inquiry'}
+              className="px-8 py-4 brand-bg text-white font-black rounded-xl uppercase tracking-widest text-xs flex items-center gap-3 hover:scale-105 transition-all shadow-xl shadow-brandCyan/20 whitespace-nowrap"
+            >
+              <Mail size={18} /> Inquire & Apply Now
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
