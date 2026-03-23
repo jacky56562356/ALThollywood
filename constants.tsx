@@ -195,7 +195,7 @@ export const FILMS: FilmProject[] = [
     genre: "Documentary",
     description: "Witness the dawn of a new generation of Hollywood performers in this exclusive feature presentation.",
     platform: "Global Premiere",
-    posterUrl: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=800",
+    posterUrl: "https://i.ibb.co/5W4kfjsB/intro-photo.jpg",
     stills: [
       "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=800",
@@ -208,7 +208,7 @@ export const FILMS: FilmProject[] = [
     genre: "Showcase",
     description: "A spectacular visual journey featuring the breakthrough performances of our 2026 cohort.",
     platform: "Streaming Now",
-    posterUrl: "https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&q=80&w=800",
+    posterUrl: "https://i.ibb.co/LXS8q7yn/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-5253418c-4b1d-4d9b-8f51-219cc38fdef7-3.png",
     stills: [
       "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?auto=format&fit=crop&q=80&w=800",
@@ -221,7 +221,7 @@ export const FILMS: FilmProject[] = [
     genre: "Event",
     description: "The grand celebration of our year-end achievements featuring all our stars. A night of glamour, awards, and cinematic excellence.",
     platform: "Live / Streaming",
-    posterUrl: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&q=80&w=800",
+    posterUrl: "https://i.ibb.co/HTFkhG1c/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-d6e137ff-dba2-42c3-a871-20cb4c914e36-3.png",
     stills: [
       "https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?auto=format&fit=crop&q=80&w=800",

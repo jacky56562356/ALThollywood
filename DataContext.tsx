@@ -1,5 +1,5 @@
 
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 import { ACTORS, RESOURCES, OPPORTUNITIES as INITIAL_OPPORTUNITIES } from './constants';
 import { Actor, Resource, Application, Opportunity, JobApplication } from './types';
 
@@ -28,27 +28,23 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [opportunities, setOpportunities] = useState<Opportunity[]>(INITIAL_OPPORTUNITIES);
   const [jobApplications, setJobApplications] = useState<JobApplication[]>([]);
   
-  // Initialize with one mock application for demonstration
-  const [applications, setApplications] = useState<Application[]>([
-    {
-      id: 'app-mock-1',
-      englishName: 'David Chen',
-      chineseName: '陈大卫',
-      gender: 'Male',
-      dob: '2015-05-20',
-      height: '145',
-      weight: '35',
-      race: 'Asian',
-      idNumber: 'A12345678',
-      address: '123 Hollywood Blvd, Los Angeles, CA',
-      guardianMobile: '+1 (555) 123-4567',
-      englishLevel: 'Fluent',
-      hobbies: 'Piano, Soccer',
-      resume: 'School play lead role 2024',
-      submittedAt: new Date().toISOString().split('T')[0],
-      headshotUrl: 'https://via.placeholder.com/150'
-    }
-  ]);
+  const [applications, setApplications] = useState<Application[]>([]);
+
+  // Fetch applications from backend
+  useEffect(() => {
+    const fetchApplications = async () => {
+      try {
+        const response = await fetch('/api/applications');
+        if (response.ok) {
+          const data = await response.json();
+          setApplications(data);
+        }
+      } catch (error) {
+        console.error('Failed to fetch applications:', error);
+      }
+    };
+    fetchApplications();
+  }, []);
 
   const addActor = (actor: Actor) => setActors(prev => [actor, ...prev]);
   
@@ -68,12 +64,38 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setResources(prev => prev.filter(r => r.id !== id));
   };
 
-  const submitApplication = (app: Application) => {
-    setApplications(prev => [app, ...prev]);
+  const submitApplication = async (app: Application) => {
+    try {
+      const response = await fetch('/api/applications', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(app),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        const newApp = { ...app, id: data.id };
+        setApplications(prev => [newApp, ...prev]);
+      } else {
+        console.error('Failed to submit application');
+      }
+    } catch (error) {
+      console.error('Error submitting application:', error);
+    }
   };
 
-  const deleteApplication = (id: string) => {
-    setApplications(prev => prev.filter(a => a.id !== id));
+  const deleteApplication = async (id: string) => {
+    try {
+      const response = await fetch(`/api/applications/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        setApplications(prev => prev.filter(a => a.id !== id));
+      }
+    } catch (error) {
+      console.error('Error deleting application:', error);
+    }
   };
 
   const addOpportunity = (job: Opportunity) => {
