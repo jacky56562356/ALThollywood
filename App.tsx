@@ -12,7 +12,7 @@ import Films from './pages/Films';
 import Apply from './pages/Apply';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
-import StudioPlan from './pages/StudioPlan';
+import SummerCamp from './pages/SummerCamp';
 
 // Context
 import { AuthProvider, useAuth } from './AuthContext';
@@ -57,7 +57,7 @@ const Header = () => {
     { name: 'Actors', path: '/actors' },
     { name: 'Films', path: '/films' },
     { name: 'Apply', path: '/apply' },
-    { name: 'Expansion', path: '/studio-plan' },
+    { name: 'Summer Camp', path: '/summer-camp' },
   ];
 
   const isActive = (path: string) => pathname === path;
@@ -266,7 +266,7 @@ export default function App() {
               <Route path="/actors" element={<YouthActors />} />
               <Route path="/films" element={<Films />} />
               <Route path="/apply" element={<Apply />} />
-              <Route path="/studio-plan" element={<StudioPlan />} />
+              <Route path="/summer-camp" element={<SummerCamp />} />
               <Route path="/login" element={<Login />} />
               <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             </Routes>

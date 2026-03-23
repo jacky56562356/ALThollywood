@@ -4,32 +4,36 @@ import { Layout, Video, Share2, Trophy, Award, Star, History as HistoryIcon, Spa
 import { HISTORY } from '../constants';
 
 const FESTIVAL_IMAGES = [
-  "https://i.ibb.co/rKMzdsBR/DSC00105-edited.jpg",
-  "https://i.ibb.co/DcFdsvB/DSC00101-edited.jpg",
-  "https://i.ibb.co/mVLjTDxj/DSC00090-edited.jpg",
-  "https://i.ibb.co/1kdG6hS/DSC00074-edited.jpg",
-  "https://i.ibb.co/354mNfx4/DSC00048-edited.jpg",
-  "https://i.ibb.co/QvxzDBmj/DSC00021-edited.jpg",
-  "https://i.ibb.co/Dgtd13Zm/DSC00025-edited.jpg",
-  "https://i.ibb.co/S4dhM5h4/ba7e5988f9f6f47f8b22f59fedb551e5.jpg",
-  "https://i.ibb.co/TqHKNcjx/1731693e1e0ea8102582bec61f0aed1d.jpg",
-  "https://i.ibb.co/CsXTwYVB/789f8972a2a611f0a39472362ca9b9d2.jpg",
-  "https://i.ibb.co/tpMxQ0z3/93e11fe81b005b241daf7fe0ede317e1.jpg",
-  "https://i.ibb.co/1JdcHFK9/179b50bd376d8cfa82289e99501dac49-1.jpg",
-  "https://i.ibb.co/1Gj2K8CX/d92babf9ca9b15b9fe754beaa383a6cf.jpg"
+  "https://storage.googleapis.com/aistudio-janus-prod-appspot/image-4-20260323_192134.jpg",
+  "https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1510511233900-1982d92bd260?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1518834107812-67b0b7c58434?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1533488765986-dfa2a9939acd?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=800"
 ];
 
 const MENTORSHIP_IMAGES = [
-  "https://i.ibb.co/Z1kzfsbV/20260122155720-1660-151.jpg",
-  "https://i.ibb.co/MWc9sm4/20260122155732-1661-151.jpg",
-  "https://i.ibb.co/gMwR9pqv/20260122155743-1662-151.jpg",
-  "https://i.ibb.co/Y4DfD2Vw/20260122155809-1664-151.jpg",
-  "https://i.ibb.co/Q3gXL7Gt/20260122155814-1665-151.jpg",
-  "https://i.ibb.co/6JTLb8tt/20260122155823-1666-151.jpg",
-  "https://i.ibb.co/F45Tp6qP/20260122155828-1667-151.jpg",
-  "https://i.ibb.co/0ynzzbsf/20260122155834-1668-151.jpg",
-  "https://i.ibb.co/Mxz5tV1h/20260122155855-1671-151.jpg",
-  "https://i.ibb.co/qLx5FzvQ/20260122155926-1673-151.jpg"
+  "https://storage.googleapis.com/aistudio-janus-prod-appspot/image-3-20260323_192134.jpg",
+  "https://storage.googleapis.com/aistudio-janus-prod-appspot/image-5-20260323_192134.jpg",
+  "https://storage.googleapis.com/aistudio-janus-prod-appspot/image-1-20260323_192134.jpg",
+  "https://storage.googleapis.com/aistudio-janus-prod-appspot/image-2-20260323_192134.jpg",
+  "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1581331474665-a0b6ed7174bc?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&q=80&w=800"
 ];
 
 const ProgramSection = ({ icon: Icon, title, items }: { icon: any, title: string, items: string[] }) => (
@@ -166,7 +170,11 @@ export default function Programs() {
             <div className="space-y-4">
                <h3 className="text-center text-amber-200/50 text-[10px] font-black uppercase tracking-[0.4em] mb-2">Behind The Scenes</h3>
                <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
-                  {MENTORSHIP_IMAGES.slice(3, 8).map((img, idx) => (
+                  {[
+                    ...MENTORSHIP_IMAGES.slice(3, 8),
+                    "https://i.ibb.co/0p2HWy3Z/filmmaking-in-classroom.jpg",
+                    "https://i.ibb.co/sp4fWHq3/Chat-GPT-Image-2026-3-23-12-23-22.png"
+                  ].map((img, idx) => (
                      <div key={idx} className="aspect-[4/3] rounded-lg overflow-hidden border border-white/5 relative group cursor-pointer">
                         <img src={img} className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" alt="On set" loading="lazy" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2">

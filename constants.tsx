@@ -8,7 +8,7 @@ export const ACTORS: Actor[] = [
     ageRange: '12-16',
     skills: ['Chinese Kong-Fu', 'Martial Arts Stunts', 'Action Acting'],
     credits: ['ALT Hollywood Movies Filmed', 'International Stunt Team'],
-    imageUrl: 'https://i.ibb.co/v40LfrmN/4.png',
+    imageUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'parker-davies',
@@ -16,7 +16,7 @@ export const ACTORS: Actor[] = [
     ageRange: '8-12',
     skills: ['Professional Acting', 'Runway Modeling', 'Public Speaking'],
     credits: ['4 Hollywood Films', 'National Commercials'],
-    imageUrl: 'https://i.ibb.co/6CwNLnd/1.png',
+    imageUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'veronica-chen',
@@ -24,7 +24,7 @@ export const ACTORS: Actor[] = [
     ageRange: '6-10',
     skills: ['Acting', 'Classical Dance', 'Modeling'],
     credits: ['4 Hollywood Movies Filmed', 'Global Brand Commercials'],
-    imageUrl: 'https://i.ibb.co/mVLL5mQs/2.png',
+    imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'catherine-jing',
@@ -32,7 +32,7 @@ export const ACTORS: Actor[] = [
     ageRange: '10-14',
     skills: ['Acting', 'Voiceover', 'Theater Performance'],
     credits: ['4 Hollywood Movies Filmed', 'Short Film Lead'],
-    imageUrl: 'https://i.ibb.co/fY46H6Dd/3.png',
+    imageUrl: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'jolin-wu',
@@ -40,7 +40,7 @@ export const ACTORS: Actor[] = [
     ageRange: '14-18',
     skills: ['Acting', 'Contemporary Dance', 'Bilingual (CN/EN)'],
     credits: ['ALT Hollywood Movies Filmed', 'Drama Series Lead'],
-    imageUrl: 'https://i.ibb.co/KpBnB6Mf/5.png',
+    imageUrl: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'chris-li',
@@ -48,7 +48,7 @@ export const ACTORS: Actor[] = [
     ageRange: '6-10',
     skills: ['On-Camera Acting', 'Fashion Modeling', 'Bilingual (CN/EN)'],
     credits: ['Hollywood Short Film', 'Brand Commercial'],
-    imageUrl: 'https://i.ibb.co/Y7v0Wdb0/20250.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'ethan-pan',
@@ -56,7 +56,7 @@ export const ACTORS: Actor[] = [
     ageRange: '8-12',
     skills: ['Acting', 'Hip-Hop Dance', 'Modeling'],
     credits: ['ALT Hollywood Movies Filmed', 'National Print Ad'],
-    imageUrl: 'https://i.ibb.co/7JMjy3DF/6.png',
+    imageUrl: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'chloe-yu',
@@ -64,7 +64,7 @@ export const ACTORS: Actor[] = [
     ageRange: '10-14',
     skills: ['High Fashion Modeling', 'Actor', 'Bilingual (CN/EN)'],
     credits: ['Multiple Hollywood Movies', 'Editorial Print'],
-    imageUrl: 'https://i.ibb.co/VF6CD9f/20250828205506-172-151.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'evan-wen',
@@ -72,7 +72,7 @@ export const ACTORS: Actor[] = [
     ageRange: '6-10',
     skills: ['Breakdancing', 'Acting', 'Live Performance'],
     credits: ['ALT Hollywood Movies Filmed', 'Performance Showcase winner'],
-    imageUrl: 'https://i.ibb.co/60K4WqJV/7.png',
+    imageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'xiaowan-jin',
@@ -80,7 +80,7 @@ export const ACTORS: Actor[] = [
     ageRange: '10-14',
     skills: ['High Fashion Modeling', 'Actor', 'Bilingual (CN/EN)'],
     credits: ['Multiple Hollywood Movies', 'Editorial Print'],
-    imageUrl: 'https://i.ibb.co/1YMZF3XS/9.png',
+    imageUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'kent-zhao',
@@ -88,7 +88,7 @@ export const ACTORS: Actor[] = [
     ageRange: '6-10',
     skills: ['Traditional Performance', 'Screen Acting', 'Public Speaking'],
     credits: ['Regional Film Credits', 'Commercial Performer'],
-    imageUrl: 'https://i.ibb.co/bgQnZQrP/1cbde033c8e622982d9b59686f383e73.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'sean-pan',
@@ -96,7 +96,7 @@ export const ACTORS: Actor[] = [
     ageRange: '14-18',
     skills: ['Acting', 'Modeling', 'Athletics'],
     credits: ['3 Hollywood Movies Filmed'],
-    imageUrl: 'https://i.ibb.co/VpH98tPD/retouched-Carin-Yates-Photography2-3-2024-retouched-sean4.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'elsa-gessesse',
@@ -104,7 +104,7 @@ export const ACTORS: Actor[] = [
     ageRange: '12-16',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['2 Hollywood Movies Filmed'],
-    imageUrl: 'https://i.ibb.co/CKX0y0xN/Wechat-IMG1393.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'scarlett-liu',
@@ -112,7 +112,7 @@ export const ACTORS: Actor[] = [
     ageRange: '6-10',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['Hollywood Movie Filmed', 'Brand Ambassador'],
-    imageUrl: 'https://i.ibb.co/F4K7rZqY/retouched-Carin-Yates-Photography2-3-2024-m-Scarlett-4169.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'elizabeth-valadez',
@@ -120,7 +120,7 @@ export const ACTORS: Actor[] = [
     ageRange: '8-12',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['Hollywood Movie Filmed', 'Commercial Project'],
-    imageUrl: 'https://i.ibb.co/CT2wNVk/DSC00028-edited.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'yuxi-ling',
@@ -128,7 +128,7 @@ export const ACTORS: Actor[] = [
     ageRange: '6-10',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['Hollywood Project', 'Performance Showcase'],
-    imageUrl: 'https://i.ibb.co/Z6FPqV6P/a1644427b71929307a2b9360bbca9fc3.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'charlene-liu',
@@ -136,7 +136,7 @@ export const ACTORS: Actor[] = [
     ageRange: '6-10',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['Hollywood Short Film', 'Brand Commercial'],
-    imageUrl: 'https://i.ibb.co/yc5YBNzL/retouched-Carin-Yates-Photography2-3-2024-Charlene-3m-30.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'ling-robison',
@@ -144,7 +144,7 @@ export const ACTORS: Actor[] = [
     ageRange: '10-14',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['Hollywood Movie Filmed', 'Fashion Print'],
-    imageUrl: 'https://i.ibb.co/nsVwcdPG/20260122131604-1.png',
+    imageUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'lexi-shen',
@@ -152,7 +152,7 @@ export const ACTORS: Actor[] = [
     ageRange: '6-10',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['Hollywood Movie Filmed', 'Commercial Project'],
-    imageUrl: 'https://i.ibb.co/RJMv66s/Carin-Yates-Photography10-27-2024-2-pp-removebg-preview.png',
+    imageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'katherine-zhang',
@@ -160,7 +160,7 @@ export const ACTORS: Actor[] = [
     ageRange: '8-12',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['Hollywood Movie Filmed', 'Fashion Print'],
-    imageUrl: 'https://i.ibb.co/3m7NqcW0/20260122132047-1628-151.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'mason-chen',
@@ -168,7 +168,7 @@ export const ACTORS: Actor[] = [
     ageRange: '6-10',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['Hollywood Movie Filmed', 'Commercial Project'],
-    imageUrl: 'https://i.ibb.co/GfGWD3mn/20260122132516-1633-151.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'jasmine-zhang',
@@ -176,7 +176,7 @@ export const ACTORS: Actor[] = [
     ageRange: '6-10',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['Hollywood Movie Filmed', 'Commercial Project'],
-    imageUrl: 'https://i.ibb.co/yTbPZXb/Wechat-IMG18.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400',
   },
   {
     id: 'caleb-lin',
@@ -184,7 +184,7 @@ export const ACTORS: Actor[] = [
     ageRange: '8-12',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['Hollywood Movie Filmed', 'Commercial Project'],
-    imageUrl: 'https://i.ibb.co/RpLLMkCc/20260122134407-1644-151.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400',
   },
 ];
 
@@ -195,11 +195,11 @@ export const FILMS: FilmProject[] = [
     genre: "Documentary",
     description: "Witness the dawn of a new generation of Hollywood performers in this exclusive feature presentation.",
     platform: "Global Premiere",
-    posterUrl: "https://i.ibb.co/0RBsdNHX/Chat-GPT-Image-2026-1-22-15-20-56.png",
+    posterUrl: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=800",
     stills: [
-      "https://i.ibb.co/HTFkhG1c/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-d6e137ff-dba2-42c3-a871-20cb4c914e36-3.png",
-      "https://i.ibb.co/qLx5FzvQ/20260122155926-1673-151.jpg",
-      "https://i.ibb.co/LXS8q7yn/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-5253418c-4b1d-4d9b-8f51-219cc38fdef7-3.png"
+      "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1581331474665-a0b6ed7174bc?auto=format&fit=crop&q=80&w=800"
     ]
   },
   {
@@ -208,11 +208,11 @@ export const FILMS: FilmProject[] = [
     genre: "Showcase",
     description: "A spectacular visual journey featuring the breakthrough performances of our 2026 cohort.",
     platform: "Streaming Now",
-    posterUrl: "https://i.ibb.co/Y7Pp984p/Chat-GPT-Image-2026-1-22-15-34-28.png",
+    posterUrl: "https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&q=80&w=800",
     stills: [
-      "https://i.ibb.co/S7JBKpZp/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-4ec21d2d-7796-4a10-a5a4-8ae8681d2ad7-1.png",
-      "https://i.ibb.co/6JTLb8tt/20260122155823-1666-151.jpg",
-      "https://i.ibb.co/Y4DfD2Vw/20260122155809-1664-151.jpg"
+      "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=800"
     ]
   },
   {
@@ -221,11 +221,11 @@ export const FILMS: FilmProject[] = [
     genre: "Event",
     description: "The grand celebration of our year-end achievements featuring all our stars. A night of glamour, awards, and cinematic excellence.",
     platform: "Live / Streaming",
-    posterUrl: "https://i.ibb.co/Lz53W353/YEAR-END-GRAND-CEREMONY.png",
+    posterUrl: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&q=80&w=800",
     stills: [
-      "https://i.ibb.co/LXS8q7yn/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-5253418c-4b1d-4d9b-8f51-219cc38fdef7-3.png",
-      "https://i.ibb.co/qLx5FzvQ/20260122155926-1673-151.jpg",
-      "https://i.ibb.co/HTFkhG1c/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-d6e137ff-dba2-42c3-a871-20cb4c914e36-3.png"
+      "https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1510511233900-1982d92bd260?auto=format&fit=crop&q=80&w=800"
     ]
   },
   {
@@ -234,11 +234,11 @@ export const FILMS: FilmProject[] = [
     genre: "Premiere",
     description: "Our latest feature film production showcasing the new wave of performers. Shot in professional studios in Los Angeles.",
     platform: "Theatrical",
-    posterUrl: "https://i.ibb.co/C5ym3kR9/ALT-DREAM-STAR-NEW-FILM.png",
+    posterUrl: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&q=80&w=800",
     stills: [
-      "https://i.ibb.co/6JTLb8tt/20260122155823-1666-151.jpg",
-      "https://i.ibb.co/Y4DfD2Vw/20260122155809-1664-151.jpg",
-      "https://i.ibb.co/S7JBKpZp/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-4ec21d2d-7796-4a10-a5a4-8ae8681d2ad7-1.png"
+      "https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1518834107812-67b0b7c58434?auto=format&fit=crop&q=80&w=800"
     ]
   },
   {
@@ -247,12 +247,12 @@ export const FILMS: FilmProject[] = [
     genre: "Drama",
     description: "The official showcase of ALT Hollywood Dream Star productions, featuring our top young performers in a professional cinematic environment.",
     platform: "Amazon Prime / Festival Circuit",
-    posterUrl: "https://i.ibb.co/5XkvwS0b/image.png",
+    posterUrl: "https://images.unsplash.com/photo-1533488765986-dfa2a9939acd?auto=format&fit=crop&q=80&w=800",
     stills: [
-      "https://i.ibb.co/HTFkhG1c/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-d6e137ff-dba2-42c3-a871-20cb4c914e36-3.png",
-      "https://i.ibb.co/S7JBKpZp/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-4ec21d2d-7796-4a10-a5a4-8ae8681d2ad7-1.png",
-      "https://i.ibb.co/LXS8q7yn/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-5253418c-4b1d-4d9b-8f51-219cc38fdef7-3.png",
-      "https://i.ibb.co/qLx5FzvQ/20260122155926-1673-151.jpg"
+      "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=800"
     ]
   }
 ];

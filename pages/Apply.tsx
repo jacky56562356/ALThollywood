@@ -1,6 +1,6 @@
 
 import React, { useState, useRef } from 'react';
-import { FileDown, CheckCircle2, User, Activity, MapPin, FileText, Phone, Mail, Info, Send, UploadCloud, Printer, ArrowLeft, ScrollText, ShieldCheck, FileType } from 'lucide-react';
+import { FileDown, CheckCircle2, User, Activity, MapPin, FileText, Phone, Mail, Info, Send, UploadCloud, Printer, ArrowLeft, ScrollText, ShieldCheck, FileType, Video, Clapperboard } from 'lucide-react';
 import { useData } from '../DataContext';
 
 export default function Apply() {
@@ -8,6 +8,7 @@ export default function Apply() {
   const { resources, submitApplication } = useData();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const resumeInputRef = useRef<HTMLInputElement>(null);
+  const videoInputRef = useRef<HTMLInputElement>(null);
 
   // Form State
   const [formData, setFormData] = useState({
@@ -27,7 +28,9 @@ export default function Apply() {
     resume: '',
     headshotUrl: '',
     resumeFileUrl: '',
-    resumeFileName: ''
+    resumeFileName: '',
+    videoFileUrl: '',
+    videoFileName: ''
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -62,6 +65,22 @@ export default function Apply() {
         }));
       };
       reader.readAsDataURL(file);
+    }
+  };
+
+  const handleVideoSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      if (!file.type.startsWith('video/')) {
+        alert("Please upload a valid video file.");
+        return;
+      }
+      const url = URL.createObjectURL(file);
+      setFormData(prev => ({ 
+        ...prev, 
+        videoFileUrl: url,
+        videoFileName: file.name
+      }));
     }
   };
 
@@ -126,7 +145,7 @@ export default function Apply() {
                   setSubmitted(false);
                   setFormData({
                     englishName: '', chineseName: '', gender: 'Male', dob: '', country: 'USA', height: '', weight: '', 
-                    race: '', idNumber: '', address: '', guardianMobile: '', englishLevel: '', hobbies: '', resume: '', headshotUrl: '', resumeFileUrl: '', resumeFileName: ''
+                    race: '', idNumber: '', address: '', guardianMobile: '', englishLevel: '', hobbies: '', resume: '', headshotUrl: '', resumeFileUrl: '', resumeFileName: '', videoFileUrl: '', videoFileName: ''
                   });
                 }}
                 className="px-8 py-3 text-gray-500 font-bold hover:text-black transition-colors flex items-center gap-2"
@@ -142,7 +161,13 @@ export default function Apply() {
           {/* Header Section */}
           <div className="text-center mb-6">
              <div className="flex justify-center mb-3">
-                <img src="https://i.ibb.co/c4Rn9W9/ALT-LOGO-2400x1800.png" className="h-20 object-contain" alt="Logo" />
+                <div className="flex items-center gap-3">
+                  <Clapperboard className="h-16 w-16 text-black" />
+                  <div className="flex flex-col leading-none text-left">
+                    <span className="text-3xl font-cinematic font-black text-black tracking-tight">ALT</span>
+                    <span className="text-xs text-black/80 font-bold tracking-[0.2em] uppercase">Hollywood Dream Star</span>
+                  </div>
+                </div>
              </div>
              <h1 className="text-2xl font-serif font-bold uppercase tracking-wide leading-none text-black">Hollywood Kids Movie Entry Form</h1>
              <h2 className="text-xl font-serif font-bold mt-2 text-black tracking-wide">ALT 好莱坞儿童电影报名表</h2>
@@ -319,24 +344,34 @@ export default function Apply() {
                 </div>
              </div>
 
-             {/* ROW 7: Personal Resume */}
+             {/* ROW 7: Personal Resume & Media */}
              <div className="flex h-64">
                 <div className="w-32 border-r border-black flex flex-col items-center justify-center text-center text-xs font-bold bg-gray-50 p-2">
-                   <div className="mb-4">Personal Resume</div>
-                   <div className="mb-2">个人简历</div>
+                   <div className="mb-4">Personal Resume & Media</div>
+                   <div className="mb-2">个人简历及作品</div>
                    <div className="text-[10px] text-gray-500 font-normal leading-tight">
                       (曾参与表演类似的活动<br/>或者赛事)
                    </div>
                 </div>
-                <div className="flex-grow p-4 text-sm font-medium whitespace-pre-wrap leading-relaxed relative">
-                   {formData.resumeFileUrl ? (
-                      <div className="absolute inset-0 flex items-center justify-center flex-col text-gray-600 bg-gray-50/50">
-                        <FileText size={40} className="mb-2" />
-                        <p className="font-bold">SEE ATTACHED RESUME PDF</p>
-                        <p className="text-xs">{formData.resumeFileName}</p>
-                      </div>
-                   ) : (
-                      formData.resume
+                <div className="flex-grow p-4 text-sm font-medium whitespace-pre-wrap leading-relaxed relative flex flex-col">
+                   <div className="flex-grow">
+                     {formData.resume}
+                   </div>
+                   
+                   {(formData.resumeFileName || formData.videoFileName) && (
+                     <div className="mt-4 pt-4 border-t border-dashed border-gray-300 flex flex-col gap-2">
+                       <p className="text-xs font-bold text-gray-500 uppercase">Attached Files:</p>
+                       {formData.resumeFileName && (
+                         <div className="flex items-center gap-2 text-sm">
+                           <FileText size={16} /> {formData.resumeFileName}
+                         </div>
+                       )}
+                       {formData.videoFileName && (
+                         <div className="flex items-center gap-2 text-sm">
+                           <Video size={16} /> {formData.videoFileName}
+                         </div>
+                       )}
+                     </div>
                    )}
                 </div>
              </div>
@@ -641,27 +676,48 @@ export default function Apply() {
                    
                    <div>
                       <div className="flex justify-between items-center mb-1">
-                        <label className="block text-[9px] text-brandGray uppercase font-bold">Resume (Text or PDF)</label>
-                        {formData.resumeFileName && <span className="text-[9px] text-brandCyan font-bold">{formData.resumeFileName} Uploaded</span>}
+                        <label className="block text-[9px] text-brandGray uppercase font-bold">Resume & Media</label>
                       </div>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                          <textarea name="resume" value={formData.resume} onChange={handleChange} rows={4} className="w-full bg-brandBlack/50 border border-white/10 px-4 py-2.5 focus:outline-none focus:border-brandCyan/60 text-sm font-medium rounded-lg transition-all resize-none text-white" placeholder="Type detailed experience here..."></textarea>
                          
-                         <div 
-                            onClick={() => resumeInputRef.current?.click()}
-                            className="w-full h-full min-h-[100px] border border-dashed border-white/10 rounded-lg flex flex-col items-center justify-center bg-white/5 hover:bg-white/10 hover:border-brandCyan/50 transition-all cursor-pointer group"
-                         >
-                            <FileType size={20} className="text-brandGray group-hover:text-brandCyan mb-2" />
-                            <p className="text-[10px] font-bold text-white">Upload PDF Resume</p>
-                            <p className="text-[9px] text-brandGray mt-1">(Optional)</p>
-                            <input 
-                              type="file" 
-                              ref={resumeInputRef} 
-                              onChange={handleResumeSelect} 
-                              accept="application/pdf" 
-                              className="hidden" 
-                            />
+                         <div className="flex flex-col gap-3">
+                           <div 
+                              onClick={() => resumeInputRef.current?.click()}
+                              className="w-full h-1/2 min-h-[50px] border border-dashed border-white/10 rounded-lg flex items-center justify-center bg-white/5 hover:bg-white/10 hover:border-brandCyan/50 transition-all cursor-pointer group px-4"
+                           >
+                              <FileType size={16} className="text-brandGray group-hover:text-brandCyan mr-3" />
+                              <div className="text-left flex-grow overflow-hidden">
+                                <p className="text-[10px] font-bold text-white">Upload PDF Resume</p>
+                                <p className="text-[9px] text-brandGray truncate">{formData.resumeFileName || "(Optional)"}</p>
+                              </div>
+                              <input 
+                                type="file" 
+                                ref={resumeInputRef} 
+                                onChange={handleResumeSelect} 
+                                accept="application/pdf" 
+                                className="hidden" 
+                              />
+                           </div>
+
+                           <div 
+                              onClick={() => videoInputRef.current?.click()}
+                              className="w-full h-1/2 min-h-[50px] border border-dashed border-white/10 rounded-lg flex items-center justify-center bg-white/5 hover:bg-white/10 hover:border-brandCyan/50 transition-all cursor-pointer group px-4"
+                           >
+                              <Video size={16} className="text-brandGray group-hover:text-brandCyan mr-3" />
+                              <div className="text-left flex-grow overflow-hidden">
+                                <p className="text-[10px] font-bold text-white">Upload Intro/Reel</p>
+                                <p className="text-[9px] text-brandGray truncate">{formData.videoFileName || "Video File (Optional)"}</p>
+                              </div>
+                              <input 
+                                type="file" 
+                                ref={videoInputRef} 
+                                onChange={handleVideoSelect} 
+                                accept="video/*" 
+                                className="hidden" 
+                              />
+                           </div>
                          </div>
                       </div>
                    </div>
@@ -672,8 +728,8 @@ export default function Apply() {
                    </div>
                 </div>
 
-                <button type="submit" disabled={!formData.headshotUrl} className="w-full py-4 brand-bg text-white font-black uppercase tracking-[0.3em] rounded-lg hover:scale-105 transition-all shadow-[0_0_30px_rgba(0,210,255,0.3)] text-xs flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
-                  <Send size={16} /> Generate Official Form
+                <button type="submit" disabled={!formData.headshotUrl} className="w-full py-5 bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-black font-black uppercase tracking-[0.3em] rounded-xl hover:scale-[1.02] transition-all shadow-[0_0_40px_rgba(191,149,63,0.4)] text-sm flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed animate-pulse hover:animate-none mt-6">
+                  <Send size={20} /> Generate Official Form
                 </button>
                 <p className="text-[9px] text-center text-brandGray mt-2">Steps: Upload Photo &rarr; Fill Form &rarr; Generate &rarr; Save PDF &rarr; Email Us</p>
               </form>

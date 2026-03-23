@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Play, Film, Star, TrendingUp, Users, Clapperboard, Monitor, Send, Search, Award, ShieldCheck, Globe, Camera, Zap, CheckCircle, Quote, ArrowRight, Trophy, Sparkles } from 'lucide-react';
+import { Play, Film, Star, TrendingUp, Users, Clapperboard, Monitor, Send, Search, Award, ShieldCheck, Globe, Camera, Zap, CheckCircle, Quote, ArrowRight, Trophy, Sparkles, X } from 'lucide-react';
 import { FILMS } from '../constants';
 
 const ECOSYSTEM_ITEMS = [
@@ -9,7 +9,7 @@ const ECOSYSTEM_ITEMS = [
     title: "Hands-on Sets",
     desc: "Experience the intensity of active soundstages. Master professional call sheets, set etiquette, and rigorous shooting schedules under the guidance of union-level crews.",
     icon: Camera,
-    image: "https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&q=80&w=800"
+    image: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=800"
   },
   {
     title: "Elite Training",
@@ -21,13 +21,13 @@ const ECOSYSTEM_ITEMS = [
     title: "Global Network",
     desc: "A bridge to the world's entertainment capitals. Direct production pipelines to major studios in LA, New York, and abroad, ensuring our students reach a global audience.",
     icon: Globe,
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
+    image: "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&q=80&w=800"
   },
   {
     title: "Career Credits",
     desc: "Graduate with a verifiable IMDb resume. We ensure every student earns professional credits, a cinematic showreel, and tangible industry recognition before they leave.",
     icon: Award,
-    image: "https://images.unsplash.com/photo-1616091216791-a5360b5fc78a?auto=format&fit=crop&q=80&w=800"
+    image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=800"
   }
 ];
 
@@ -36,19 +36,19 @@ const TESTIMONIALS = [
     quote: "ALT doesn't just teach acting; they build careers. My daughter went from a classroom to a professional set in 3 months.",
     author: "Jennifer Brooks",
     role: "Parent of Alumni",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150"
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150"
   },
   {
     quote: "The discipline and set etiquette these kids have is comparable to adult professionals. A joy to cast.",
     author: "Robert Harrison",
     role: "Production Director, LA",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150"
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=150"
   },
   {
     quote: "Finally, a program that understands the industry. The IMDb credits are real, and the experience is invaluable.",
     author: "Amanda Sterling",
     role: "Industry Professional",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150"
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150"
   }
 ];
 
@@ -58,16 +58,11 @@ export default function Home() {
       {/* Hero Section - Slightly tighter height */}
       <section className="relative h-[85vh] md:h-[90vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
+          <img 
+            src="https://i.ibb.co/ycRFxBZ4/Chat-GPT-Image-2026-3-23-12-23-04.png"
+            alt="ALT Hollywood Dream Star"
             className="w-full h-full object-cover opacity-60"
-            poster="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=1920"
-          >
-            <source src="https://videos.pexels.com/video-files/3196059/3196059-uhd_2560_1440_25fps.mp4" type="video/mp4" />
-          </video>
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-brandBlack via-brandBlack/50 to-brandBlack/30"></div>
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
         </div>
@@ -88,13 +83,31 @@ export default function Home() {
             "The premier bridge between world-class training and real Hollywood film production for the next generation of stars."
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link to="/summer-camp" className="w-56 sm:w-auto px-8 py-4 bg-gradient-to-r from-[#BF953F] to-[#B38728] text-black font-black rounded-sm uppercase tracking-[0.2em] text-xs hover:scale-105 transition-all flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(191,149,63,0.4)]">
+              <Star size={14} fill="currentColor" /> 2026 Summer Camp
+            </Link>
             <Link to="/programs" className="w-56 sm:w-auto px-8 py-4 brand-bg text-white font-black rounded-sm uppercase tracking-[0.2em] text-xs hover:scale-105 transition-all flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(0,229,255,0.4)]">
               <Play size={14} fill="currentColor" /> View Programs
             </Link>
-            <Link to="/films" className="w-56 sm:w-auto px-8 py-4 border-2 border-white/20 hover:border-brandCyan hover:text-brandCyan text-white font-black rounded-sm uppercase tracking-[0.2em] text-xs transition-all flex items-center justify-center gap-3 backdrop-blur-sm">
-              <Film size={14} /> Explore Films
-            </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Summer Camp Highlight Banner */}
+      <section className="bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] py-4 relative z-20 shadow-[0_0_30px_rgba(191,149,63,0.3)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-black">
+          <div className="flex items-center gap-4">
+            <div className="hidden sm:flex w-10 h-10 bg-black rounded-full items-center justify-center text-[#FCF6BA]">
+              <Star size={20} fill="currentColor" />
+            </div>
+            <div>
+              <h3 className="font-black uppercase tracking-widest text-sm md:text-base">2026 Hollywood Film Summer Camp</h3>
+              <p className="text-xs font-bold opacity-80">Real Film Production Experience for Kids • Limited Spots</p>
+            </div>
+          </div>
+          <Link to="/summer-camp" className="px-8 py-3 bg-black text-[#FCF6BA] text-xs font-black uppercase tracking-[0.2em] rounded-sm hover:scale-105 transition-transform whitespace-nowrap shadow-xl flex items-center gap-2">
+            Apply Now <ArrowRight size={14} />
+          </Link>
         </div>
       </section>
 
@@ -208,7 +221,7 @@ export default function Home() {
                 <div className="w-20 h-20 sm:w-24 sm:h-24 shrink-0 bg-black rounded-xl border border-white/20 flex items-center justify-center p-3 shadow-inner relative overflow-hidden">
                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
                    <img 
-                      src="https://i.ibb.co/kssxQ1DR/golden-state-film-festival-logo.jpg"
+                      src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=200"
                       onError={(e) => {
                          // Fallback visual if image fails
                          e.currentTarget.style.display = 'none';
@@ -237,9 +250,9 @@ export default function Home() {
              <div className="hidden lg:flex flex-col items-center justify-center relative mx-4">
                 <div className="absolute inset-0 bg-amber-500/20 blur-3xl rounded-full animate-pulse"></div>
                 <img 
-                   src="https://i.ibb.co/4nXRfxf5/tongxiang.png" 
+                   src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=200" 
                    alt="Award Trophy" 
-                   className="relative w-14 h-auto object-contain animate-pulse drop-shadow-[0_0_30px_rgba(245,158,11,0.4)]"
+                   className="relative w-14 h-auto object-cover rounded-full animate-pulse drop-shadow-[0_0_30px_rgba(245,158,11,0.4)]"
                    loading="lazy"
                 />
              </div>
@@ -249,7 +262,7 @@ export default function Home() {
                 <div className="absolute top-0 right-0 w-full h-full bg-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="w-20 h-20 sm:w-24 sm:h-24 shrink-0 bg-black rounded-xl border border-amber-500/30 flex items-center justify-center p-3 shadow-[0_0_30px_rgba(245,158,11,0.15)] relative z-10">
                    <img 
-                      src="https://i.ibb.co/TqJBkL9F/Chat-GPT-Image-2025-8-29-15-46-30-1.jpg"
+                      src="https://images.unsplash.com/photo-1581331474665-a0b6ed7174bc?auto=format&fit=crop&q=80&w=200"
                       onError={(e) => {
                          e.currentTarget.style.display = 'none';
                          e.currentTarget.nextElementSibling!.classList.remove('hidden');
@@ -338,7 +351,7 @@ export default function Home() {
                <div className="absolute inset-0 bg-brandCyan/20 blur-[100px] rounded-full opacity-20"></div>
                <div className="grid grid-cols-2 gap-4 relative z-10">
                   <div className="space-y-4 translate-y-8">
-                     <img src="https://images.unsplash.com/photo-1533488765986-dfa2a9939acd?auto=format&fit=crop&q=80&w=600" className="rounded-2xl shadow-2xl border border-white/10 opacity-80" alt="Camera" loading="lazy" />
+                     <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=800" className="rounded-2xl shadow-2xl border border-white/10 opacity-80" alt="Camera" loading="lazy" />
                      <div className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
                         <p className="text-3xl font-cinematic font-black text-white mb-1">20+</p>
                         <p className="text-[10px] text-brandGray uppercase tracking-widest font-bold">Festival Selections</p>
@@ -349,7 +362,7 @@ export default function Home() {
                         <p className="text-3xl font-cinematic font-black text-white mb-1">12+</p>
                         <p className="text-[10px] text-brandGray uppercase tracking-widest font-bold">Original Films</p>
                      </div>
-                     <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=600" className="rounded-2xl shadow-2xl border border-white/10 opacity-80" alt="Set Light" loading="lazy" />
+                     <img src="https://images.unsplash.com/photo-1581331474665-a0b6ed7174bc?auto=format&fit=crop&q=80&w=800" className="rounded-2xl shadow-2xl border border-white/10 opacity-80" alt="Set Light" loading="lazy" />
                   </div>
                </div>
             </div>
@@ -357,25 +370,82 @@ export default function Home() {
         </div>
       </section>
 
+      {/* NEW SECTION: Real Hollywood Production */}
+      <section className="py-24 bg-black relative overflow-hidden border-t border-white/5">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&q=80&w=2500" 
+            alt="Cinematic Camera on Set" 
+            className="w-full h-full object-cover opacity-30 grayscale"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brandCyan/30 bg-brandCyan/10 mb-6">
+              <Monitor size={14} className="text-brandCyan" />
+              <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-brandCyan">The ALT Difference</span>
+            </div>
+            
+            <h2 className="text-4xl md:text-6xl font-cinematic font-black text-white mb-6 leading-tight">
+              Beyond the Classroom.<br />
+              <span className="brand-gradient-text">Real Hollywood Production.</span>
+            </h2>
+            
+            <p className="text-lg text-brandGray font-light mb-12 leading-relaxed">
+              We believe the best way to learn filmmaking is to make films. We replace artificial classroom exercises with the high-stakes, high-reward environment of a professional Hollywood set.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
+                <div className="text-red-400 mb-4"><X size={24} /></div>
+                <h4 className="text-white font-bold mb-2 uppercase tracking-wider text-sm">Traditional Training</h4>
+                <ul className="space-y-3 text-brandGray text-sm">
+                  <li className="flex items-start gap-2"><span className="text-white/30">-</span> Simulated scenes in empty rooms</li>
+                  <li className="flex items-start gap-2"><span className="text-white/30">-</span> Theoretical blocking and lighting</li>
+                  <li className="flex items-start gap-2"><span className="text-white/30">-</span> No tangible career output</li>
+                  <li className="flex items-start gap-2"><span className="text-white/30">-</span> Disconnected from industry standards</li>
+                </ul>
+              </div>
+
+              <div className="bg-gradient-to-br from-brandCyan/10 to-brandPurple/10 border border-brandCyan/30 p-6 rounded-2xl backdrop-blur-sm relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-brandCyan/20 blur-3xl rounded-full pointer-events-none"></div>
+                <div className="text-brandCyan mb-4 relative z-10"><CheckCircle size={24} /></div>
+                <h4 className="text-white font-bold mb-2 uppercase tracking-wider text-sm relative z-10">The ALT Experience</h4>
+                <ul className="space-y-3 text-white/90 text-sm relative z-10">
+                  <li className="flex items-start gap-2"><span className="text-brandCyan">•</span> Active, professional soundstages</li>
+                  <li className="flex items-start gap-2"><span className="text-brandCyan">•</span> Industry-standard Arri/RED cameras</li>
+                  <li className="flex items-start gap-2"><span className="text-brandCyan">•</span> Verifiable IMDb credits upon wrap</li>
+                  <li className="flex items-start gap-2"><span className="text-brandCyan">•</span> Mentorship from union-level crews</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* NEW SECTION: Impact Statistics */}
-      <section className="py-8 border-y border-white/5 bg-brandBlack/50 relative">
-         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/5">
+      <section className="py-16 border-y border-[#BF953F]/20 bg-black relative overflow-hidden">
+         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#BF953F]/5 via-transparent to-transparent"></div>
+         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-[#BF953F]/10">
                <div className="group">
-                  <p className="text-4xl md:text-5xl font-cinematic font-black text-white mb-2 group-hover:brand-gradient-text transition-colors">80+</p>
-                  <p className="text-[10px] text-brandGray uppercase tracking-[0.2em] font-bold">Youth Stars</p>
+                  <p className="text-4xl md:text-6xl font-cinematic font-black bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-transparent bg-clip-text mb-2 drop-shadow-[0_0_15px_rgba(191,149,63,0.3)]">80+</p>
+                  <p className="text-[10px] md:text-xs text-[#FCF6BA]/80 uppercase tracking-[0.2em] font-bold">Youth Stars</p>
                </div>
                <div className="group">
-                  <p className="text-4xl md:text-5xl font-cinematic font-black text-white mb-2 group-hover:brand-gradient-text transition-colors">30+</p>
-                  <p className="text-[10px] text-brandGray uppercase tracking-[0.2em] font-bold">Trained Performers</p>
+                  <p className="text-4xl md:text-6xl font-cinematic font-black bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-transparent bg-clip-text mb-2 drop-shadow-[0_0_15px_rgba(191,149,63,0.3)]">30+</p>
+                  <p className="text-[10px] md:text-xs text-[#FCF6BA]/80 uppercase tracking-[0.2em] font-bold">Trained Performers</p>
                </div>
                <div className="group">
-                  <p className="text-4xl md:text-5xl font-cinematic font-black text-white mb-2 group-hover:brand-gradient-text transition-colors">20+</p>
-                  <p className="text-[10px] text-brandGray uppercase tracking-[0.2em] font-bold">Festival Selections</p>
+                  <p className="text-4xl md:text-6xl font-cinematic font-black bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-transparent bg-clip-text mb-2 drop-shadow-[0_0_15px_rgba(191,149,63,0.3)]">20+</p>
+                  <p className="text-[10px] md:text-xs text-[#FCF6BA]/80 uppercase tracking-[0.2em] font-bold">Festival Selections</p>
                </div>
                <div className="group">
-                  <p className="text-4xl md:text-5xl font-cinematic font-black text-white mb-2 group-hover:brand-gradient-text transition-colors">8+</p>
-                  <p className="text-[10px] text-brandGray uppercase tracking-[0.2em] font-bold">Industry Awards</p>
+                  <p className="text-4xl md:text-6xl font-cinematic font-black bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-transparent bg-clip-text mb-2 drop-shadow-[0_0_15px_rgba(191,149,63,0.3)]">8+</p>
+                  <p className="text-[10px] md:text-xs text-[#FCF6BA]/80 uppercase tracking-[0.2em] font-bold">Industry Awards</p>
                </div>
             </div>
          </div>
@@ -446,7 +516,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0 bg-brandBlack">
              {/* Grayscale Big Screen Effect */}
              <img 
-               src="https://i.ibb.co/5xXXdHrB/u8238228639-v-7-f5d92d51-ca1a-4aea-9a0c-c19abca23644-1.png" 
+               src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&q=80&w=1920" 
                className="w-full h-full object-cover opacity-60 grayscale brightness-75 contrast-125" 
                alt="Classic Hollywood Cinema" 
                loading="lazy" 
