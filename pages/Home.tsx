@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Play, Film, Star, TrendingUp, Users, Clapperboard, Monitor, Send, Search, Award, ShieldCheck, Globe, Camera, Zap, CheckCircle, Quote, ArrowRight, Trophy, Sparkles } from 'lucide-react';
+import { Play, Film, Star, TrendingUp, Users, Clapperboard, Monitor, Send, Search, Award, ShieldCheck, Globe, Camera, Zap, CheckCircle, Quote, ArrowRight, Trophy, Sparkles, X } from 'lucide-react';
 import { FILMS } from '../constants';
 
 const ECOSYSTEM_ITEMS = [
@@ -53,6 +53,8 @@ const TESTIMONIALS = [
 ];
 
 export default function Home() {
+  const [lightboxImage, setLightboxImage] = React.useState<string | null>(null);
+
   return (
     <div>
       {/* Hero Section - Slightly tighter height */}
@@ -130,8 +132,8 @@ export default function Home() {
                </Link>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-               {FILMS.slice(0, 4).map((film) => (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6 max-w-6xl mx-auto">
+               {FILMS.slice(0, 5).map((film) => (
                   <Link to="/films" key={film.id} className="group relative aspect-[2/3] rounded-xl overflow-hidden shadow-2xl border border-white/10 hover:border-brandCyan/50 transition-all cursor-pointer">
                      <img referrerPolicy="no-referrer"
                         src={film.posterUrl} 
@@ -219,85 +221,192 @@ export default function Home() {
              <div className="h-px bg-white/10 w-12 md:w-24"></div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-6 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
              {/* News Item 1: Golden State Film Festival */}
-             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6 group hover:border-brandCyan/30 transition-all shadow-lg hover:shadow-brandCyan/5 backdrop-blur-sm h-full relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-brandCyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="w-20 h-20 sm:w-24 sm:h-24 shrink-0 bg-black rounded-xl border border-white/20 flex items-center justify-center p-3 shadow-inner relative overflow-hidden">
-                   <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
-                   <img referrerPolicy="no-referrer"
-                      src="https://i.ibb.co/kssxQ1DR/golden-state-film-festival-logo.jpg"
-                      onError={(e) => {
-                         // Fallback visual if image fails
-                         e.currentTarget.style.display = 'none';
-                         e.currentTarget.nextElementSibling!.classList.remove('hidden');
-                      }}
-                      className="w-full h-full object-contain drop-shadow-md" 
-                      alt="Golden State Film Festival" 
-                      loading="lazy"
-                   />
-                   <div className="hidden flex flex-col items-center justify-center text-center">
-                      <Film size={28} className="text-white mb-1" />
-                      <span className="text-[8px] uppercase font-bold text-white leading-tight">Golden State<br/>Film Festival</span>
+             <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden group hover:border-brandCyan/50 transition-all shadow-2xl hover:shadow-brandCyan/10 flex flex-col">
+                {/* Image Gallery Area */}
+                <div className="relative h-64 sm:h-80 w-full bg-black p-1">
+                   <div className="absolute inset-0 grid grid-cols-2 gap-1 p-1">
+                      <div className="overflow-hidden rounded-tl-xl rounded-bl-xl cursor-pointer" onClick={() => setLightboxImage("https://i.ibb.co/Gf12rGbT/Chat-GPT-Image-2026-3-22-14-21-03.png")}>
+                         <img referrerPolicy="no-referrer" src="https://i.ibb.co/Gf12rGbT/Chat-GPT-Image-2026-3-22-14-21-03.png" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="The Garden Still 1" loading="lazy" />
+                      </div>
+                      <div className="grid grid-rows-2 gap-1 overflow-hidden rounded-tr-xl rounded-br-xl">
+                         <div className="overflow-hidden cursor-pointer" onClick={() => setLightboxImage("https://i.ibb.co/bMtVxnWT/20260301101021-372-10.jpg")}>
+                            <img referrerPolicy="no-referrer" src="https://i.ibb.co/bMtVxnWT/20260301101021-372-10.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="The Garden Still 2" loading="lazy" />
+                         </div>
+                         <div className="overflow-hidden cursor-pointer" onClick={() => setLightboxImage("https://i.ibb.co/rKrN1Sdx/20260301101027-374-10.jpg")}>
+                            <img referrerPolicy="no-referrer" src="https://i.ibb.co/rKrN1Sdx/20260301101027-374-10.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="The Garden Still 3" loading="lazy" />
+                         </div>
+                      </div>
                    </div>
+                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent pointer-events-none"></div>
                 </div>
-                <div className="text-center sm:text-left flex-1 relative z-10">
-                   <div className="inline-block px-3 py-1 border border-white/20 rounded-full bg-white/5 mb-2">
-                       <p className="text-[9px] font-black uppercase tracking-widest text-white/90">Official Selection</p>
+                
+                {/* Content Area */}
+                <div className="p-6 sm:p-8 relative z-10 flex-1 flex flex-col items-center text-center justify-center -mt-12">
+                   <div className="w-24 h-24 mb-5 bg-black rounded-full border border-white/20 p-2 shadow-[0_0_30px_rgba(0,255,255,0.1)] flex items-center justify-center z-20 overflow-hidden group-hover:scale-110 transition-transform duration-500">
+                      <img referrerPolicy="no-referrer"
+                         src="https://i.ibb.co/kssxQ1DR/golden-state-film-festival-logo.jpg"
+                         onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                            e.currentTarget.nextElementSibling!.classList.remove('hidden');
+                         }}
+                         className="w-full h-full object-contain drop-shadow-md rounded-full" 
+                         alt="Golden State Film Festival" 
+                         loading="lazy"
+                      />
+                      <div className="hidden flex flex-col items-center justify-center text-center h-full">
+                         <Film size={24} className="text-white mb-1" />
+                         <span className="text-[8px] uppercase font-bold text-white leading-tight">Golden State</span>
+                      </div>
                    </div>
-                   <h3 className="text-2xl font-cinematic font-black text-white mb-1 group-hover:text-brandCyan transition-colors">THE garden</h3>
-                   <div className="w-12 h-0.5 bg-brandCyan/50 mx-auto sm:mx-0 mb-2"></div>
-                   <p className="text-brandGray text-xs font-bold tracking-wide uppercase">Golden State Film Festival</p>
-                   <div className="flex gap-2 mt-4 justify-center sm:justify-start">
-                      <img referrerPolicy="no-referrer" src="https://i.ibb.co/Gf12rGbT/Chat-GPT-Image-2026-3-22-14-21-03.png" className="w-16 h-12 sm:w-20 sm:h-14 object-cover rounded-md border border-white/20 hover:scale-110 transition-transform shadow-md" alt="The Garden Still 1" loading="lazy" />
-                      <img referrerPolicy="no-referrer" src="https://i.ibb.co/bMtVxnWT/20260301101021-372-10.jpg" className="w-16 h-12 sm:w-20 sm:h-14 object-cover rounded-md border border-white/20 hover:scale-110 transition-transform shadow-md" alt="The Garden Still 2" loading="lazy" />
-                      <img referrerPolicy="no-referrer" src="https://i.ibb.co/rKrN1Sdx/20260301101027-374-10.jpg" className="w-16 h-12 sm:w-20 sm:h-14 object-cover rounded-md border border-white/20 hover:scale-110 transition-transform shadow-md" alt="The Garden Still 3" loading="lazy" />
+                   <div className="inline-block px-4 py-1.5 border border-brandCyan/30 rounded-full bg-brandCyan/10 mb-3">
+                       <p className="text-[10px] font-black uppercase tracking-widest text-brandCyan">Official Selection</p>
                    </div>
+                   <p className="text-brandGray text-xs font-bold tracking-[0.2em] uppercase mb-2">Golden State Film Festival</p>
+                   <h3 className="text-3xl sm:text-4xl font-cinematic font-black text-white mb-4 group-hover:text-brandCyan transition-colors">The Garden</h3>
+                   <p className="text-sm text-brandGray/80 leading-relaxed max-w-lg">
+                      Selected for its outstanding cinematography and compelling narrative, "The Garden" represents the pinnacle of our students' creative vision and technical execution.
+                   </p>
                 </div>
-             </div>
-
-             {/* CENTER TROPHY - Scaled down (w-14), centered, flash animation only (no movement) */}
-             <div className="hidden lg:flex flex-col items-center justify-center relative mx-4">
-                <div className="absolute inset-0 bg-amber-500/20 blur-3xl rounded-full animate-pulse"></div>
-                <img referrerPolicy="no-referrer"
-                   src="https://i.ibb.co/4nXRfxf5/tongxiang.png" 
-                   alt="Award Trophy" 
-                   className="relative w-14 h-auto object-contain animate-pulse drop-shadow-[0_0_30px_rgba(245,158,11,0.4)]"
-                   loading="lazy"
-                />
              </div>
 
              {/* News Item 2: Golden Feather Awards */}
-             <div className="bg-gradient-to-br from-[#1a1500] to-black border border-amber-500/20 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6 group hover:border-amber-500/50 transition-all shadow-lg hover:shadow-amber-500/10 relative overflow-hidden backdrop-blur-sm h-full">
-                <div className="absolute top-0 right-0 w-full h-full bg-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="w-20 h-20 sm:w-24 sm:h-24 shrink-0 bg-black rounded-xl border border-amber-500/30 flex items-center justify-center p-3 shadow-[0_0_30px_rgba(245,158,11,0.15)] relative z-10">
-                   <img referrerPolicy="no-referrer"
-                      src="https://i.ibb.co/TqJBkL9F/Chat-GPT-Image-2025-8-29-15-46-30-1.jpg"
-                      onError={(e) => {
-                         e.currentTarget.style.display = 'none';
-                         e.currentTarget.nextElementSibling!.classList.remove('hidden');
-                      }}
-                      className="w-full h-full object-contain drop-shadow-md" 
-                      alt="Golden Feather Awards" 
-                      loading="lazy"
-                   />
-                   <div className="hidden flex flex-col items-center justify-center text-center">
-                      <Trophy size={28} className="text-amber-400 mb-1" />
-                      <span className="text-[8px] uppercase font-bold text-amber-400 leading-tight">Golden Feather<br/>Awards</span>
+             <div className="bg-[#1a1500]/40 border border-amber-500/20 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-2xl hover:shadow-amber-500/10 flex flex-col">
+                {/* Image Gallery Area */}
+                <div className="relative h-64 sm:h-80 w-full bg-black p-1">
+                   <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1 p-1">
+                      <div className="overflow-hidden rounded-tl-xl cursor-pointer" onClick={() => setLightboxImage("https://i.ibb.co/1Gj2K8CX/d92babf9ca9b15b9fe754beaa383a6cf.jpg")}>
+                         <img referrerPolicy="no-referrer" src="https://i.ibb.co/1Gj2K8CX/d92babf9ca9b15b9fe754beaa383a6cf.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" alt="The Shift Still 1" loading="lazy" />
+                      </div>
+                      <div className="overflow-hidden rounded-tr-xl cursor-pointer" onClick={() => setLightboxImage("https://i.ibb.co/TqHKNcjx/1731693e1e0ea8102582bec61f0aed1d.jpg")}>
+                         <img referrerPolicy="no-referrer" src="https://i.ibb.co/TqHKNcjx/1731693e1e0ea8102582bec61f0aed1d.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" alt="The Shift Still 2" loading="lazy" />
+                      </div>
+                      <div className="overflow-hidden rounded-bl-xl cursor-pointer" onClick={() => setLightboxImage("https://i.ibb.co/KczJSxQZ/356736.jpg")}>
+                         <img referrerPolicy="no-referrer" src="https://i.ibb.co/KczJSxQZ/356736.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" alt="The Shift Still 3" loading="lazy" />
+                      </div>
+                      <div className="overflow-hidden rounded-br-xl cursor-pointer" onClick={() => setLightboxImage("https://i.ibb.co/5XPZYkgB/20260122155907-1672-151.jpg")}>
+                         <img referrerPolicy="no-referrer" src="https://i.ibb.co/5XPZYkgB/20260122155907-1672-151.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" alt="The Shift Still 4" loading="lazy" />
+                      </div>
                    </div>
+                   <div className="absolute inset-0 bg-gradient-to-t from-[#1a1500]/90 via-transparent to-transparent pointer-events-none"></div>
                 </div>
-                <div className="text-center sm:text-left flex-1 relative z-10">
-                   <div className="inline-block px-3 py-1 border border-amber-500/30 rounded-full bg-amber-500/10 mb-2">
-                       <p className="text-[9px] font-black uppercase tracking-widest text-amber-400 flex items-center gap-2">
-                          <Star size={8} fill="currentColor" /> Winner <Star size={8} fill="currentColor" />
+                
+                {/* Content Area */}
+                <div className="p-6 sm:p-8 relative z-10 flex-1 flex flex-col items-center text-center justify-center -mt-12">
+                   <div className="w-24 h-24 mb-5 bg-black rounded-full border border-amber-500/30 p-2 shadow-[0_0_30px_rgba(245,158,11,0.2)] flex items-center justify-center z-20 overflow-hidden group-hover:scale-110 transition-transform duration-500">
+                      <img referrerPolicy="no-referrer"
+                         src="https://i.ibb.co/TqJBkL9F/Chat-GPT-Image-2025-8-29-15-46-30-1.jpg"
+                         onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                            e.currentTarget.nextElementSibling!.classList.remove('hidden');
+                         }}
+                         className="w-full h-full object-contain drop-shadow-md rounded-full" 
+                         alt="Golden Feather Awards" 
+                         loading="lazy"
+                      />
+                      <div className="hidden flex flex-col items-center justify-center text-center h-full">
+                         <Trophy size={24} className="text-amber-400 mb-1" />
+                         <span className="text-[8px] uppercase font-bold text-amber-400 leading-tight">Golden Feather</span>
+                      </div>
+                   </div>
+                   <div className="inline-block px-4 py-1.5 border border-amber-500/30 rounded-full bg-amber-500/10 mb-3">
+                       <p className="text-[10px] font-black uppercase tracking-widest text-amber-400 flex items-center gap-2">
+                          <Star size={10} fill="currentColor" /> Jury Award Winner <Star size={10} fill="currentColor" />
                        </p>
                    </div>
-                   <h3 className="text-2xl font-cinematic font-black text-white mb-1 group-hover:text-amber-400 transition-colors">THE Shift</h3>
-                   <div className="w-12 h-0.5 bg-amber-500/50 mx-auto sm:mx-0 mb-2"></div>
-                   <p className="text-brandGray text-xs font-bold tracking-wide uppercase">Golden Feather Awards</p>
-                   <div className="flex flex-wrap justify-center sm:justify-start gap-1.5 mt-2">
-                      <span className="text-[8px] font-bold border border-amber-500/30 text-amber-200/90 px-1.5 py-0.5 rounded bg-amber-900/20">Best Story</span>
-                      <span className="text-[8px] font-bold border border-amber-500/30 text-amber-200/90 px-1.5 py-0.5 rounded bg-amber-900/20">Best Actor</span>
+                   <p className="text-brandGray text-xs font-bold tracking-[0.2em] uppercase mb-2">Golden Feather Awards</p>
+                   <h3 className="text-3xl sm:text-4xl font-cinematic font-black text-white mb-4 group-hover:text-amber-400 transition-colors">The Shift</h3>
+                   <div className="flex flex-wrap justify-center gap-2 mb-4">
+                      <span className="text-xs font-bold border border-amber-500/30 text-amber-200/90 px-2.5 py-1 rounded bg-amber-900/20">Best Story</span>
+                      <span className="text-xs font-bold border border-amber-500/30 text-amber-200/90 px-2.5 py-1 rounded bg-amber-900/20">Best Actor</span>
+                   </div>
+                   <p className="text-sm text-brandGray/80 leading-relaxed max-w-lg">
+                      A sweeping narrative that captured the hearts of the jury, taking home multiple top honors at this year's Golden Feather Awards.
+                   </p>
+                </div>
+             </div>
+          </div>
+
+          {/* 2025 Golden Feather Individual Awards */}
+          <div className="mt-20 pt-16 border-t border-white/10">
+             <div className="text-center mb-16">
+                <div className="inline-block px-4 py-1.5 border border-amber-500/30 rounded-full bg-amber-500/10 mb-4">
+                   <p className="text-xs font-black uppercase tracking-widest text-amber-400 flex items-center gap-2">
+                      <Trophy size={14} fill="currentColor" /> 2025 Golden Feather Awards <Trophy size={14} fill="currentColor" />
+                   </p>
+                </div>
+                <h3 className="text-3xl md:text-4xl font-cinematic font-black text-white">2025 Golden Feather Awards</h3>
+             </div>
+
+             {/* Best Actor */}
+             <div className="mb-16">
+                <h4 className="text-xl font-bold text-center text-white mb-10 flex items-center justify-center gap-4">
+                   <span className="h-px bg-white/20 w-12 sm:w-24"></span>
+                   <span className="tracking-widest uppercase text-sm sm:text-base">Best Actor Award</span>
+                   <span className="h-px bg-white/20 w-12 sm:w-24"></span>
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 max-w-md mx-auto gap-6">
+                   {/* Evan Wen */}
+                   <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all text-center shadow-xl hover:shadow-amber-500/10">
+                      <div className="aspect-[3/4] overflow-hidden cursor-pointer relative" onClick={() => setLightboxImage("https://i.ibb.co/TxPsjKY5/Carin-Yates-Photography2-3-2024-269.jpg")}>
+                         <img referrerPolicy="no-referrer" src="https://i.ibb.co/TxPsjKY5/Carin-Yates-Photography2-3-2024-269.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Evan Wen" loading="lazy" />
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                      </div>
+                      <div className="p-6">
+                         <h5 className="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Evan Wen</h5>
+                      </div>
+                   </div>
+                   {/* Paul yunsheng Liu */}
+                   <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all text-center shadow-xl hover:shadow-amber-500/10">
+                      <div className="aspect-[3/4] overflow-hidden cursor-pointer relative" onClick={() => setLightboxImage("https://i.ibb.co/v40LfrmN/4.png")}>
+                         <img referrerPolicy="no-referrer" src="https://i.ibb.co/v40LfrmN/4.png" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Paul yunsheng Liu" loading="lazy" />
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                      </div>
+                      <div className="p-6">
+                         <h5 className="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Paul yunsheng Liu</h5>
+                      </div>
+                   </div>
+                </div>
+             </div>
+
+             {/* Best Actress */}
+             <div>
+                <h4 className="text-xl font-bold text-center text-white mb-10 flex items-center justify-center gap-4">
+                   <span className="h-px bg-white/20 w-12 sm:w-24"></span>
+                   <span className="tracking-widest uppercase text-sm sm:text-base">Best Actress Award</span>
+                   <span className="h-px bg-white/20 w-12 sm:w-24"></span>
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-3 max-w-3xl mx-auto gap-6">
+                   {/* Veronica Tiffany Chen */}
+                   <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all text-center shadow-xl hover:shadow-amber-500/10">
+                      <div className="aspect-[3/4] overflow-hidden cursor-pointer relative" onClick={() => setLightboxImage("https://i.ibb.co/mVLL5mQs/2.png")}>
+                         <img referrerPolicy="no-referrer" src="https://i.ibb.co/mVLL5mQs/2.png" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Veronica Tiffany Chen" loading="lazy" />
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                      </div>
+                      <div className="p-6">
+                         <h5 className="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Veronica Tiffany Chen</h5>
+                      </div>
+                   </div>
+                   {/* Catherine Jing */}
+                   <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all text-center shadow-xl hover:shadow-amber-500/10">
+                      <div className="aspect-[3/4] overflow-hidden cursor-pointer relative" onClick={() => setLightboxImage("https://i.ibb.co/fY46H6Dd/3.png")}>
+                         <img referrerPolicy="no-referrer" src="https://i.ibb.co/fY46H6Dd/3.png" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Catherine Jing" loading="lazy" />
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                      </div>
+                      <div className="p-6">
+                         <h5 className="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Catherine Jing</h5>
+                      </div>
+                   </div>
+                   {/* Lexi Shen */}
+                   <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all text-center shadow-xl hover:shadow-amber-500/10">
+                      <div className="aspect-[3/4] overflow-hidden cursor-pointer relative" onClick={() => setLightboxImage("https://i.ibb.co/RJMv66s/Carin-Yates-Photography10-27-2024-2-pp-removebg-preview.png")}>
+                         <img referrerPolicy="no-referrer" src="https://i.ibb.co/RJMv66s/Carin-Yates-Photography10-27-2024-2-pp-removebg-preview.png" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Lexi Shen" loading="lazy" />
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                      </div>
+                      <div className="p-6">
+                         <h5 className="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Lexi Shen</h5>
+                      </div>
                    </div>
                 </div>
              </div>
@@ -492,6 +601,16 @@ export default function Home() {
            </div>
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      {lightboxImage && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4" onClick={() => setLightboxImage(null)}>
+          <button className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors bg-black/50 rounded-full p-2" onClick={() => setLightboxImage(null)}>
+            <X size={32} />
+          </button>
+          <img src={lightboxImage} alt="Full screen" className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl" onClick={(e) => e.stopPropagation()} />
+        </div>
+      )}
     </div>
   );
 }

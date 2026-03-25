@@ -195,7 +195,7 @@ export const FILMS: FilmProject[] = [
     genre: "Documentary",
     description: "Witness the dawn of a new generation of Hollywood performers in this exclusive feature presentation.",
     platform: "Global Premiere",
-    posterUrl: "https://i.ibb.co/5W4kfjsB/intro-photo.jpg",
+    posterUrl: "https://i.ibb.co/C5ym3kR9/ALT-DREAM-STAR-NEW-FILM.png",
     stills: [
       "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=800",
@@ -208,7 +208,7 @@ export const FILMS: FilmProject[] = [
     genre: "Showcase",
     description: "A spectacular visual journey featuring the breakthrough performances of our 2026 cohort.",
     platform: "Streaming Now",
-    posterUrl: "https://i.ibb.co/0p2HWy3Z/filmmaking-in-classroom.jpg",
+    posterUrl: "https://i.ibb.co/5XkvwS0b/image.png",
     stills: [
       "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?auto=format&fit=crop&q=80&w=800",
@@ -221,7 +221,7 @@ export const FILMS: FilmProject[] = [
     genre: "Event",
     description: "The grand celebration of our year-end achievements featuring all our stars. A night of glamour, awards, and cinematic excellence.",
     platform: "Live / Streaming",
-    posterUrl: "https://i.ibb.co/LXS8q7yn/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-5253418c-4b1d-4d9b-8f51-219cc38fdef7-3.png",
+    posterUrl: "https://i.ibb.co/Y7Pp984p/Chat-GPT-Image-2026-1-22-15-34-28.png",
     stills: [
       "https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?auto=format&fit=crop&q=80&w=800",
@@ -234,7 +234,7 @@ export const FILMS: FilmProject[] = [
     genre: "Premiere",
     description: "Our latest feature film production showcasing the new wave of performers. Shot in professional studios in Los Angeles.",
     platform: "Theatrical",
-    posterUrl: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&q=80&w=800",
+    posterUrl: "https://i.ibb.co/0RBsdNHX/Chat-GPT-Image-2026-1-22-15-20-56.png",
     stills: [
       "https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&q=80&w=800",
@@ -247,7 +247,7 @@ export const FILMS: FilmProject[] = [
     genre: "Drama",
     description: "The official showcase of ALT Hollywood Dream Star productions, featuring our top young performers in a professional cinematic environment.",
     platform: "Amazon Prime / Festival Circuit",
-    posterUrl: "https://images.unsplash.com/photo-1533488765986-dfa2a9939acd?auto=format&fit=crop&q=80&w=800",
+    posterUrl: "https://i.ibb.co/bgKF8pwy/Gemini-Generated-Image-jtsengjtsengjtse.png",
     stills: [
       "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&q=80&w=800",
