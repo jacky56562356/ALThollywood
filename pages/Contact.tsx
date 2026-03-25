@@ -66,7 +66,7 @@ export default function Contact() {
 
           <div className="relative">
             <div className="aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 relative group">
-               <img 
+               <img referrerPolicy="no-referrer" 
                  src="https://images.unsplash.com/photo-1543362906-acfc16c67564?auto=format&fit=crop&q=80&w=800" 
                  className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000"
                  alt="Los Angeles Map"

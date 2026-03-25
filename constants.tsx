@@ -208,7 +208,7 @@ export const FILMS: FilmProject[] = [
     genre: "Showcase",
     description: "A spectacular visual journey featuring the breakthrough performances of our 2026 cohort.",
     platform: "Streaming Now",
-    posterUrl: "https://i.ibb.co/LXS8q7yn/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-5253418c-4b1d-4d9b-8f51-219cc38fdef7-3.png",
+    posterUrl: "https://i.ibb.co/0p2HWy3Z/filmmaking-in-classroom.jpg",
     stills: [
       "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?auto=format&fit=crop&q=80&w=800",
@@ -221,7 +221,7 @@ export const FILMS: FilmProject[] = [
     genre: "Event",
     description: "The grand celebration of our year-end achievements featuring all our stars. A night of glamour, awards, and cinematic excellence.",
     platform: "Live / Streaming",
-    posterUrl: "https://i.ibb.co/HTFkhG1c/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-d6e137ff-dba2-42c3-a871-20cb4c914e36-3.png",
+    posterUrl: "https://i.ibb.co/LXS8q7yn/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-5253418c-4b1d-4d9b-8f51-219cc38fdef7-3.png",
     stills: [
       "https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?auto=format&fit=crop&q=80&w=800",

@@ -17,7 +17,7 @@ export default function History() {
                 {/* Image Component - Smaller (md:w-[50%]) */}
                 {item.imageUrl && (
                    <div className={`w-3/4 md:w-[50%] aspect-video rounded-xl overflow-hidden border border-white/10 mb-3 relative shadow-lg ${index % 2 === 0 ? 'ml-auto' : 'mr-auto'}`}>
-                      <img 
+                      <img referrerPolicy="no-referrer" 
                         src={item.imageUrl} 
                         alt={item.title} 
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"

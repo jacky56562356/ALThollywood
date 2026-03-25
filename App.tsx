@@ -31,7 +31,7 @@ const ProtectedRoute = ({ children }: { children?: React.ReactNode }) => {
 
 const Logo = ({ size = "normal" }: { size?: "normal" | "small" }) => (
   <Link to="/" className="flex items-center gap-3 group">
-    <img 
+    <img referrerPolicy="no-referrer" 
       src="https://i.ibb.co/c4Rn9W9/ALT-LOGO-2400x1800.png" 
       alt="ALT Logo"
       className={`${size === 'small' ? 'h-10 md:h-12' : 'h-12 md:h-16'} w-auto object-contain group-hover:scale-105 transition-transform`}
@@ -143,7 +143,7 @@ const Partners = () => {
         {/* Tripled list for seamless loop */}
         {[...PARTNER_LOGOS, ...PARTNER_LOGOS, ...PARTNER_LOGOS].map((logo, index) => (
           <div key={index} className="mx-4 md:mx-8 w-32 md:w-48 h-16 md:h-28 flex items-center justify-center bg-white rounded-xl md:rounded-2xl p-4 border border-white/10 hover:border-brandCyan/50 transition-all duration-300 shadow-lg">
-            <img 
+            <img referrerPolicy="no-referrer" 
               src={logo} 
               alt={`Partner ${index}`} 
               className="max-w-full max-h-full object-contain transition-all duration-300"

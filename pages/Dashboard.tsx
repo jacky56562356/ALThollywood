@@ -230,7 +230,7 @@ export default function Dashboard() {
                 {actors.map((actor) => (
                   <tr key={actor.id} className="group hover:bg-white/[0.02] transition-colors">
                     <td className="py-6">
-                      <img src={actor.imageUrl} className="w-16 h-20 object-cover rounded-lg border border-white/10 group-hover:border-brandCyan/40 transition-all" alt={actor.name} />
+                      <img referrerPolicy="no-referrer" src={actor.imageUrl} className="w-16 h-20 object-cover rounded-lg border border-white/10 group-hover:border-brandCyan/40 transition-all" alt={actor.name} />
                     </td>
                     <td className="py-6">
                       <h4 className="text-xl font-cinematic font-bold text-white mb-1">{actor.name}</h4>
@@ -350,7 +350,7 @@ export default function Dashboard() {
                             className="w-full h-48 border-2 border-dashed border-white/10 rounded-2xl flex flex-col items-center justify-center bg-white/[0.02] hover:bg-white/[0.05] hover:border-brandCyan/50 transition-all cursor-pointer relative group overflow-hidden"
                         >
                             {actorForm.imageUrl ? (
-                                <img src={actorForm.imageUrl} className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity" alt="Preview" />
+                                <img referrerPolicy="no-referrer" src={actorForm.imageUrl} className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity" alt="Preview" />
                             ) : (
                                 <div className="text-center p-6">
                                     <UploadCloud className="w-10 h-10 text-brandCyan mx-auto mb-4" />
@@ -475,7 +475,7 @@ export default function Dashboard() {
                         <p className="text-lg text-brandCyan">{viewingApp.chineseName}</p>
                       </div>
                       {viewingApp.headshotUrl && (
-                        <img src={viewingApp.headshotUrl} className="w-20 h-24 object-cover rounded-lg border border-white/10" alt="Headshot" />
+                        <img referrerPolicy="no-referrer" src={viewingApp.headshotUrl} className="w-20 h-24 object-cover rounded-lg border border-white/10" alt="Headshot" />
                       )}
                     </div>
                     

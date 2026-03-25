@@ -27,7 +27,7 @@ export default function About() {
 
           <div className="relative flex justify-center lg:justify-end">
              <div className="relative rounded-2xl overflow-hidden border border-white/10 group aspect-[3/4] shadow-xl shadow-brandCyan/10 w-full max-w-[300px] md:max-w-[400px]">
-                <img 
+                <img referrerPolicy="no-referrer" 
                   src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=800" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   alt="Young performers on set"
@@ -44,7 +44,7 @@ export default function About() {
           {/* Card 1 */}
           <div className="group rounded-2xl border border-white/10 bg-white/5 overflow-hidden hover:border-brandCyan/40 transition-all">
             <div className="h-40 overflow-hidden relative">
-                <img 
+                <img referrerPolicy="no-referrer" 
                   src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=800" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   alt="Professional Excellence"
@@ -64,7 +64,7 @@ export default function About() {
           {/* Card 2 */}
           <div className="group rounded-2xl border border-white/10 bg-white/5 overflow-hidden hover:border-brandCyan/40 transition-all">
             <div className="h-40 overflow-hidden relative">
-                <img 
+                <img referrerPolicy="no-referrer" 
                   src="https://images.unsplash.com/photo-1581331474665-a0b6ed7174bc?auto=format&fit=crop&q=80&w=800" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   alt="Production Hub"
@@ -84,7 +84,7 @@ export default function About() {
           {/* Card 3 */}
           <div className="group rounded-2xl border border-white/10 bg-white/5 overflow-hidden hover:border-brandCyan/40 transition-all">
             <div className="h-40 overflow-hidden relative">
-                <img 
+                <img referrerPolicy="no-referrer" 
                   src="https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&q=80&w=800" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   alt="Artistic Development"
@@ -131,7 +131,7 @@ export default function About() {
                <div className="group relative p-6 rounded-3xl border border-white/10 bg-brandBlack overflow-hidden hover:border-brandCyan/50 transition-all duration-500 min-h-[350px] flex flex-col justify-end">
                   {/* Background Image: Professional Recognition - Clearer */}
                 <div className="absolute inset-0 z-0">
-                    <img 
+                    <img referrerPolicy="no-referrer" 
                         src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?auto=format&fit=crop&q=80&w=800" 
                         className="w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity duration-700 group-hover:scale-110"
                         alt="Film Festival Recognition"
@@ -160,7 +160,7 @@ export default function About() {
                <div className="group relative p-6 rounded-3xl border border-white/10 bg-brandBlack overflow-hidden hover:border-brandPurple/50 transition-all duration-500 min-h-[350px] flex flex-col justify-end">
                    {/* Background Image: Professional Camera/Film Set - Clearer */}
                   <div className="absolute inset-0 z-0">
-                    <img 
+                    <img referrerPolicy="no-referrer" 
                         src="https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&q=80&w=800" 
                         className="w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity duration-700 group-hover:scale-110"
                         alt="Professional Film Production"
@@ -189,7 +189,7 @@ export default function About() {
                <div className="group relative p-6 rounded-3xl border border-white/10 bg-brandBlack overflow-hidden hover:border-amber-500/50 transition-all duration-500 min-h-[350px] flex flex-col justify-end">
                   {/* Background Image: Audition/Spotlight/Performance - Clearer */}
                   <div className="absolute inset-0 z-0">
-                    <img 
+                    <img referrerPolicy="no-referrer" 
                         src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=800" 
                         className="w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity duration-700 group-hover:scale-110"
                         alt="Artistic Performance"
@@ -240,8 +240,8 @@ export default function About() {
               </div>
            </div>
            <div className="grid grid-cols-2 gap-4">
-              <img src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&q=80&w=800" className="rounded-xl border border-white/10 h-32 w-full object-cover" alt="On set production" loading="lazy" />
-              <img src="https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?auto=format&fit=crop&q=80&w=800" className="rounded-xl border border-white/10 mt-6 h-32 w-full object-cover" alt="Film set" loading="lazy" />
+              <img referrerPolicy="no-referrer" src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&q=80&w=800" className="rounded-xl border border-white/10 h-32 w-full object-cover" alt="On set production" loading="lazy" />
+              <img referrerPolicy="no-referrer" src="https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?auto=format&fit=crop&q=80&w=800" className="rounded-xl border border-white/10 mt-6 h-32 w-full object-cover" alt="Film set" loading="lazy" />
            </div>
         </div>
       </div>

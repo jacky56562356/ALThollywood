@@ -160,8 +160,8 @@ export default function Programs() {
                <div className="relative">
                   <div className="absolute -inset-4 bg-amber-500/10 blur-3xl rounded-full opacity-20"></div>
                   <div className="grid grid-cols-2 gap-3 relative">
-                     <img src={MENTORSHIP_IMAGES[0]} className="w-full h-40 object-cover rounded-xl border border-white/10 shadow-2xl hover:scale-105 transition-transform duration-700" alt="Director mentoring student" loading="lazy" />
-                     <img src={MENTORSHIP_IMAGES[2]} className="w-full h-40 object-cover rounded-xl border border-white/10 shadow-2xl translate-y-4 hover:scale-105 transition-transform duration-700" alt="Camera crew" loading="lazy" />
+                     <img referrerPolicy="no-referrer" src={MENTORSHIP_IMAGES[0]} className="w-full h-40 object-cover rounded-xl border border-white/10 shadow-2xl hover:scale-105 transition-transform duration-700" alt="Director mentoring student" loading="lazy" />
+                     <img referrerPolicy="no-referrer" src={MENTORSHIP_IMAGES[2]} className="w-full h-40 object-cover rounded-xl border border-white/10 shadow-2xl translate-y-4 hover:scale-105 transition-transform duration-700" alt="Camera crew" loading="lazy" />
                   </div>
                </div>
             </div>
@@ -176,7 +176,7 @@ export default function Programs() {
                     "https://i.ibb.co/sp4fWHq3/Chat-GPT-Image-2026-3-23-12-23-22.png"
                   ].map((img, idx) => (
                      <div key={idx} className="aspect-[4/3] rounded-lg overflow-hidden border border-white/5 relative group cursor-pointer">
-                        <img src={img} className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" alt="On set" loading="lazy" />
+                        <img referrerPolicy="no-referrer" src={img} className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" alt="On set" loading="lazy" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2">
                            <span className="text-[9px] text-amber-400 uppercase font-bold tracking-widest">Still</span>
                         </div>
@@ -233,7 +233,7 @@ export default function Programs() {
                       className="group relative h-48 md:h-64 flex-shrink-0 rounded-lg overflow-hidden border border-white/10 cursor-pointer bg-brandBlack"
                       onClick={() => setSelectedImage(src)}
                    >
-                      <img 
+                      <img referrerPolicy="no-referrer" 
                         src={src} 
                         className="h-full w-auto max-w-none object-contain transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" 
                         alt="Festival Award Moment" 
@@ -256,7 +256,7 @@ export default function Programs() {
                       className="group relative h-48 md:h-64 flex-shrink-0 rounded-lg overflow-hidden border border-white/10 cursor-pointer bg-brandBlack"
                       onClick={() => setSelectedImage(src)}
                    >
-                      <img 
+                      <img referrerPolicy="no-referrer" 
                         src={src} 
                         className="h-full w-auto max-w-none object-contain transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" 
                         alt="Festival Award Moment" 
@@ -307,7 +307,7 @@ export default function Programs() {
                    {/* Image Card - Reduced Size */}
                    <div className={`w-3/4 md:w-[60%] aspect-video rounded-xl overflow-hidden border border-white/10 mb-3 relative shadow-lg ${index % 2 === 0 ? 'ml-auto' : 'mr-auto'}`}>
                       {item.imageUrl && (
-                        <img 
+                        <img referrerPolicy="no-referrer" 
                           src={item.imageUrl} 
                           alt={item.title} 
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -344,7 +344,7 @@ export default function Programs() {
           </button>
           
           <div className="max-w-[90vw] max-h-[85vh] relative" onClick={e => e.stopPropagation()}>
-             <img 
+             <img referrerPolicy="no-referrer" 
                src={selectedImage} 
                className="max-w-full max-h-[85vh] rounded-xl shadow-2xl border border-white/10" 
                alt="Enlarged view" 

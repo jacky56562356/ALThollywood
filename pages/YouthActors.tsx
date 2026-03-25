@@ -18,7 +18,7 @@ export default function YouthActors() {
           {ACTORS.map((actor, index) => (
             <div key={actor.id} className="group cursor-pointer">
               <div className="relative aspect-[4/5] overflow-hidden rounded-xl mb-3 border border-white/10 group-hover:border-brandCyan/50 transition-all duration-500">
-                <img 
+                <img referrerPolicy="no-referrer" 
                   src={actor.imageUrl} 
                   alt={actor.name}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"

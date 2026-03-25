@@ -36,7 +36,7 @@ export default function SummerCamp() {
       <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         {/* Cinematic Background */}
         <div className="absolute inset-0 z-0">
-          <img 
+          <img referrerPolicy="no-referrer" 
             src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=2500&auto=format&fit=crop" 
             alt="Cinematic Film Set" 
             className="w-full h-full object-cover opacity-40"
@@ -135,7 +135,7 @@ export default function SummerCamp() {
             
             {/* Left: Image */}
             <div className="relative aspect-[4/5] rounded-sm overflow-hidden border border-[#BF953F]/30 shadow-[0_0_50px_rgba(191,149,63,0.1)]">
-              <img 
+              <img referrerPolicy="no-referrer" 
                 src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=1600&auto=format&fit=crop" 
                 alt="Director on set" 
                 className="w-full h-full object-cover"

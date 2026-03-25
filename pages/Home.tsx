@@ -133,7 +133,7 @@ export default function Home() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                {FILMS.slice(0, 4).map((film) => (
                   <Link to="/films" key={film.id} className="group relative aspect-[2/3] rounded-xl overflow-hidden shadow-2xl border border-white/10 hover:border-brandCyan/50 transition-all cursor-pointer">
-                     <img 
+                     <img referrerPolicy="no-referrer"
                         src={film.posterUrl} 
                         alt={film.title} 
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -225,7 +225,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-br from-brandCyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="w-20 h-20 sm:w-24 sm:h-24 shrink-0 bg-black rounded-xl border border-white/20 flex items-center justify-center p-3 shadow-inner relative overflow-hidden">
                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
-                   <img 
+                   <img referrerPolicy="no-referrer"
                       src="https://i.ibb.co/kssxQ1DR/golden-state-film-festival-logo.jpg"
                       onError={(e) => {
                          // Fallback visual if image fails
@@ -248,13 +248,18 @@ export default function Home() {
                    <h3 className="text-2xl font-cinematic font-black text-white mb-1 group-hover:text-brandCyan transition-colors">THE garden</h3>
                    <div className="w-12 h-0.5 bg-brandCyan/50 mx-auto sm:mx-0 mb-2"></div>
                    <p className="text-brandGray text-xs font-bold tracking-wide uppercase">Golden State Film Festival</p>
+                   <div className="flex gap-2 mt-4 justify-center sm:justify-start">
+                      <img referrerPolicy="no-referrer" src="https://i.ibb.co/Gf12rGbT/Chat-GPT-Image-2026-3-22-14-21-03.png" className="w-16 h-12 sm:w-20 sm:h-14 object-cover rounded-md border border-white/20 hover:scale-110 transition-transform shadow-md" alt="The Garden Still 1" loading="lazy" />
+                      <img referrerPolicy="no-referrer" src="https://i.ibb.co/bMtVxnWT/20260301101021-372-10.jpg" className="w-16 h-12 sm:w-20 sm:h-14 object-cover rounded-md border border-white/20 hover:scale-110 transition-transform shadow-md" alt="The Garden Still 2" loading="lazy" />
+                      <img referrerPolicy="no-referrer" src="https://i.ibb.co/rKrN1Sdx/20260301101027-374-10.jpg" className="w-16 h-12 sm:w-20 sm:h-14 object-cover rounded-md border border-white/20 hover:scale-110 transition-transform shadow-md" alt="The Garden Still 3" loading="lazy" />
+                   </div>
                 </div>
              </div>
 
              {/* CENTER TROPHY - Scaled down (w-14), centered, flash animation only (no movement) */}
              <div className="hidden lg:flex flex-col items-center justify-center relative mx-4">
                 <div className="absolute inset-0 bg-amber-500/20 blur-3xl rounded-full animate-pulse"></div>
-                <img 
+                <img referrerPolicy="no-referrer"
                    src="https://i.ibb.co/4nXRfxf5/tongxiang.png" 
                    alt="Award Trophy" 
                    className="relative w-14 h-auto object-contain animate-pulse drop-shadow-[0_0_30px_rgba(245,158,11,0.4)]"
@@ -266,7 +271,7 @@ export default function Home() {
              <div className="bg-gradient-to-br from-[#1a1500] to-black border border-amber-500/20 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6 group hover:border-amber-500/50 transition-all shadow-lg hover:shadow-amber-500/10 relative overflow-hidden backdrop-blur-sm h-full">
                 <div className="absolute top-0 right-0 w-full h-full bg-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="w-20 h-20 sm:w-24 sm:h-24 shrink-0 bg-black rounded-xl border border-amber-500/30 flex items-center justify-center p-3 shadow-[0_0_30px_rgba(245,158,11,0.15)] relative z-10">
-                   <img 
+                   <img referrerPolicy="no-referrer"
                       src="https://i.ibb.co/TqJBkL9F/Chat-GPT-Image-2025-8-29-15-46-30-1.jpg"
                       onError={(e) => {
                          e.currentTarget.style.display = 'none';
@@ -356,7 +361,7 @@ export default function Home() {
                <div className="absolute inset-0 bg-brandCyan/20 blur-[100px] rounded-full opacity-20"></div>
                <div className="grid grid-cols-2 gap-4 relative z-10">
                   <div className="space-y-4 translate-y-8">
-                     <img src="https://images.unsplash.com/photo-1533488765986-dfa2a9939acd?auto=format&fit=crop&q=80&w=600" className="rounded-2xl shadow-2xl border border-white/10 opacity-80" alt="Camera" loading="lazy" />
+                     <img referrerPolicy="no-referrer" src="https://images.unsplash.com/photo-1533488765986-dfa2a9939acd?auto=format&fit=crop&q=80&w=600" className="rounded-2xl shadow-2xl border border-white/10 opacity-80" alt="Camera" loading="lazy" />
                      <div className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
                         <p className="text-3xl font-cinematic font-black text-white mb-1">20+</p>
                         <p className="text-[10px] text-brandGray uppercase tracking-widest font-bold">Festival Selections</p>
@@ -367,7 +372,7 @@ export default function Home() {
                         <p className="text-3xl font-cinematic font-black text-white mb-1">12+</p>
                         <p className="text-[10px] text-brandGray uppercase tracking-widest font-bold">Original Films</p>
                      </div>
-                     <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=600" className="rounded-2xl shadow-2xl border border-white/10 opacity-80" alt="Set Light" loading="lazy" />
+                     <img referrerPolicy="no-referrer" src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=600" className="rounded-2xl shadow-2xl border border-white/10 opacity-80" alt="Set Light" loading="lazy" />
                   </div>
                </div>
             </div>
@@ -412,7 +417,7 @@ export default function Home() {
             {ECOSYSTEM_ITEMS.map((item, index) => (
               <div key={index} className="group relative h-80 rounded-2xl overflow-hidden border border-white/10 hover:border-brandCyan/50 transition-all duration-500">
                 <div className="absolute inset-0">
-                  <img 
+                  <img referrerPolicy="no-referrer"
                     src={item.image} 
                     alt={item.title} 
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-60 group-hover:opacity-80"
@@ -446,7 +451,7 @@ export default function Home() {
                   <div key={i} className="bg-white/5 border border-white/5 p-8 rounded-2xl relative hover:bg-white/[0.07] transition-colors">
                      <Quote className="text-brandCyan/20 absolute top-6 right-6" size={40} />
                      <div className="flex items-center gap-4 mb-6">
-                        <img src={t.image} className="w-12 h-12 rounded-full object-cover border border-white/10" alt={t.author} loading="lazy" />
+                        <img referrerPolicy="no-referrer" src={t.image} className="w-12 h-12 rounded-full object-cover border border-white/10" alt={t.author} loading="lazy" />
                         <div>
                            <p className="text-white font-bold text-sm">{t.author}</p>
                            <p className="text-brandGray text-xs uppercase tracking-wider">{t.role}</p>
@@ -463,7 +468,7 @@ export default function Home() {
       <section className="py-20 relative overflow-hidden text-center flex items-center justify-center">
         <div className="absolute inset-0 z-0 bg-brandBlack">
              {/* Grayscale Big Screen Effect */}
-             <img 
+             <img referrerPolicy="no-referrer"
                src="https://i.ibb.co/5xXXdHrB/u8238228639-v-7-f5d92d51-ca1a-4aea-9a0c-c19abca23644-1.png" 
                className="w-full h-full object-cover opacity-60 grayscale brightness-75 contrast-125" 
                alt="Classic Hollywood Cinema" 

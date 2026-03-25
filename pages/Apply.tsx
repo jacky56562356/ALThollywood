@@ -7,7 +7,7 @@ export default function Apply() {
       {/* Hero Section */}
       <section className="relative py-20 md:py-32 overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 z-0">
-          <img 
+          <img referrerPolicy="no-referrer" 
             src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=2000" 
             alt="Film Production" 
             className="w-full h-full object-cover opacity-20"

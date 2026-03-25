@@ -36,7 +36,7 @@ export default function Films() {
             <div key={film.id} className="group flex flex-col h-full cursor-pointer" onClick={() => setSelectedFilm(film)}>
               {/* Vertical Poster Container (Aspect Ratio 2:3) */}
               <div className="relative aspect-[2/3] mb-3 overflow-hidden border border-white/10 rounded-lg group-hover:border-brandCyan/40 transition-all shadow-2xl bg-brandBlack">
-                <img 
+                <img referrerPolicy="no-referrer" 
                   src={film.posterUrl} 
                   className="w-full h-full object-contain transition-all duration-700 group-hover:scale-105"
                   alt={film.title}
@@ -99,7 +99,7 @@ const FilmModalContent = ({ film }: { film: FilmProject }) => {
           
           {/* Backdrop Header - Reduced Height */}
           <div className="absolute top-0 left-0 w-full h-[35vh] overflow-hidden pointer-events-none z-0">
-             <img src={film.stills[0]} className="w-full h-full object-cover blur-2xl opacity-20" alt="Backdrop" />
+             <img referrerPolicy="no-referrer" src={film.stills[0]} className="w-full h-full object-cover blur-2xl opacity-20" alt="Backdrop" />
              <div className="absolute inset-0 bg-gradient-to-b from-brandBlack/60 via-brandBlack/90 to-brandBlack"></div>
           </div>
 
@@ -109,7 +109,7 @@ const FilmModalContent = ({ film }: { film: FilmProject }) => {
                 {/* Left Column: Full Poster */}
                 <div className="flex-shrink-0 w-full max-w-[240px] mx-auto lg:mx-0">
                    <div className="aspect-[2/3] rounded-xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 relative group sticky top-6 bg-brandBlack">
-                      <img src={film.posterUrl} className="w-full h-full object-contain" alt="Full Poster" />
+                      <img referrerPolicy="no-referrer" src={film.posterUrl} className="w-full h-full object-contain" alt="Full Poster" />
                    </div>
                    
                    <div className="mt-4 space-y-3">
@@ -175,7 +175,7 @@ const FilmModalContent = ({ film }: { film: FilmProject }) => {
                               key={idx} 
                               className="aspect-video rounded-lg overflow-hidden cursor-pointer group relative border border-white/5 hover:border-brandCyan/40 transition-all"
                            >
-                               <img src={still} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt={`Still ${idx}`} loading="lazy" />
+                               <img referrerPolicy="no-referrer" src={still} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt={`Still ${idx}`} loading="lazy" />
                                <div className="absolute inset-0 bg-brandBlack/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                                   <div className="p-2 bg-brandBlack/80 rounded-full text-brandCyan backdrop-blur-sm">
                                      <Star size={16} />
