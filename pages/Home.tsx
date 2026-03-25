@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Play, Film, Star, TrendingUp, Users, Clapperboard, Monitor, Send, Search, Award, ShieldCheck, Globe, Camera, Zap, CheckCircle, Quote, ArrowRight, Trophy, Sparkles, X } from 'lucide-react';
+import { Play, Film, Star, TrendingUp, Users, Clapperboard, Monitor, Send, Search, Award, ShieldCheck, Globe, Camera, Zap, CheckCircle, Quote, ArrowRight, Trophy, Sparkles, X, GraduationCap } from 'lucide-react';
 import { FILMS } from '../constants';
 
 const ECOSYSTEM_ITEMS = [
@@ -9,7 +9,7 @@ const ECOSYSTEM_ITEMS = [
     title: "Hands-on Sets",
     desc: "Experience the intensity of active soundstages. Master professional call sheets, set etiquette, and rigorous shooting schedules under the guidance of union-level crews.",
     icon: Camera,
-    image: "https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&q=80&w=800"
+    image: "https://i.ibb.co/S7JBKpZp/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-4ec21d2d-7796-4a10-a5a4-8ae8681d2ad7-1.png"
   },
   {
     title: "Elite Training",
@@ -346,7 +346,7 @@ export default function Home() {
                    <span className="tracking-widest uppercase text-sm sm:text-base">Best Actor Award</span>
                    <span className="h-px bg-white/20 w-12 sm:w-24"></span>
                 </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 max-w-md mx-auto gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 max-w-xs mx-auto gap-4">
                    {/* Evan Wen */}
                    <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all text-center shadow-xl hover:shadow-amber-500/10">
                       <div className="aspect-[3/4] overflow-hidden cursor-pointer relative" onClick={() => setLightboxImage("https://i.ibb.co/TxPsjKY5/Carin-Yates-Photography2-3-2024-269.jpg")}>
@@ -377,7 +377,7 @@ export default function Home() {
                    <span className="tracking-widest uppercase text-sm sm:text-base">Best Actress Award</span>
                    <span className="h-px bg-white/20 w-12 sm:w-24"></span>
                 </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-3 max-w-3xl mx-auto gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-3 max-w-lg mx-auto gap-4">
                    {/* Veronica Tiffany Chen */}
                    <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all text-center shadow-xl hover:shadow-amber-500/10">
                       <div className="aspect-[3/4] overflow-hidden cursor-pointer relative" onClick={() => setLightboxImage("https://i.ibb.co/mVLL5mQs/2.png")}>
@@ -511,6 +511,50 @@ export default function Home() {
                </div>
             </div>
          </div>
+      </section>
+
+      {/* NEW SECTION: University Admissions */}
+      <section className="py-12 bg-brandBlack">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div className="order-2 lg:order-1 relative">
+               <div className="absolute inset-0 bg-brandCyan/20 blur-[100px] rounded-full opacity-20"></div>
+               <div className="grid grid-cols-2 gap-4 relative z-10">
+                  <div className="space-y-4 translate-y-8">
+                     <img referrerPolicy="no-referrer" src="https://i.ibb.co/8DDg94mN/professional-camera-man-at-work-2022-02-09-18-59-44-utc.jpg" className="rounded-2xl shadow-2xl border border-white/10 opacity-80 h-64 w-full object-cover" alt="Professional Camera Man" loading="lazy" />
+                  </div>
+                  <div className="space-y-4">
+                     <img referrerPolicy="no-referrer" src="https://i.ibb.co/qY9b9ypz/1251303140-shutterstock-1541269967-1.jpg" className="rounded-2xl shadow-2xl border border-white/10 opacity-80 h-64 w-full object-cover" alt="Film Set" loading="lazy" />
+                  </div>
+               </div>
+            </div>
+            
+            <div className="order-1 lg:order-2 animate-in fade-in slide-in-from-right duration-1000">
+              <h2 className="brand-gradient-text text-xs font-black tracking-[0.4em] uppercase mb-4">Academic Advancement</h2>
+              <h3 className="text-3xl md:text-5xl font-cinematic font-black mb-6 leading-tight tracking-tight text-white">
+                University <br/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">Admissions</span>
+              </h3>
+              
+              <div className="space-y-6 text-brandGray text-sm md:text-base leading-relaxed font-light mb-8">
+                <p>
+                  Our comprehensive training and professional IMDb credits provide a significant advantage for students applying to top-tier universities and film schools.
+                </p>
+                <p>
+                  We guide our students in building a standout portfolio that showcases their dedication, creativity, and real-world industry experience, setting them apart in the competitive college admissions process.
+                </p>
+              </div>
+              
+              <div className="flex items-center gap-4">
+                 <div className="p-3 rounded-full bg-brandCyan/10 text-brandCyan"><GraduationCap size={24} /></div>
+                 <div>
+                    <h5 className="text-white font-bold mb-0.5 text-sm">Portfolio Building</h5>
+                    <p className="text-xs text-brandGray">Crafting compelling applications.</p>
+                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Pillars Section */}
