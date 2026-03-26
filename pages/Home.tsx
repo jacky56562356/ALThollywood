@@ -15,7 +15,7 @@ const ECOSYSTEM_ITEMS = [
     title: "Elite Training",
     desc: "A dual-focus curriculum mastering method acting and technical screen performance. From deep emotional recall to precise blocking and camera continuity.",
     icon: Zap,
-    image: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&q=80&w=800"
+    image: "https://i.ibb.co/8DDg94mN/professional-camera-man-at-work-2022-02-09-18-59-44-utc.jpg"
   },
   {
     title: "Global Network",
@@ -27,7 +27,7 @@ const ECOSYSTEM_ITEMS = [
     title: "Career Credits",
     desc: "Graduate with a verifiable IMDb resume. We ensure every student earns professional credits, a cinematic showreel, and tangible industry recognition before they leave.",
     icon: Award,
-    image: "https://images.unsplash.com/photo-1616091216791-a5360b5fc78a?auto=format&fit=crop&q=80&w=800"
+    image: "https://i.ibb.co/qY9b9ypz/1251303140-shutterstock-1541269967-1.jpg"
   }
 ];
 
@@ -57,24 +57,26 @@ export default function Home() {
 
   return (
     <div>
-      {/* Hero Section - Slightly tighter height */}
-      <section className="relative h-[85vh] md:h-[90vh] flex items-center justify-center overflow-hidden">
+      {/* Hero Section - Full Screen */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <video 
             autoPlay 
             loop 
             muted 
             playsInline 
-            className="w-full h-full object-cover opacity-60"
-            poster="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=1920"
+            className="w-full h-full object-cover"
+            poster="https://images.unsplash.com/photo-1560109947-543149eceb16?auto=format&fit=crop&q=80&w=1920"
           >
-            <source src="https://videos.pexels.com/video-files/3196059/3196059-uhd_2560_1440_25fps.mp4" type="video/mp4" />
+            {/* Using a cinematic red carpet paparazzi video to represent the Hollywood premiere vibe */}
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-photographers-taking-pictures-at-a-red-carpet-event-4181-large.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-t from-brandBlack via-brandBlack/50 to-brandBlack/30"></div>
+          {/* Black gradient overlay from bottom to top for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/20"></div>
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
         </div>
         
-        <div className="relative z-10 max-w-7xl mx-auto text-center px-4 animate-fade-up">
+        <div className="relative z-10 max-w-7xl mx-auto text-center px-4 animate-fade-up mt-16">
           <h2 className="brand-gradient-text text-xs md:text-sm font-black tracking-[0.5em] mb-3 uppercase drop-shadow-lg">
             Training · Film Production · Global Exposure
           </h2>
@@ -221,37 +223,22 @@ export default function Home() {
              <div className="h-px bg-white/10 w-12 md:w-24"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          <div className="flex flex-col gap-12">
              {/* News Item 1: Golden State Film Festival */}
-             <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden group hover:border-brandCyan/50 transition-all shadow-2xl hover:shadow-brandCyan/10 flex flex-col">
-                {/* Image Gallery Area */}
-                <div className="relative h-64 sm:h-80 w-full bg-black p-1">
-                   <div className="absolute inset-0 grid grid-cols-2 gap-1 p-1">
-                      <div className="overflow-hidden rounded-tl-xl rounded-bl-xl cursor-pointer" onClick={() => setLightboxImage("https://i.ibb.co/Gf12rGbT/Chat-GPT-Image-2026-3-22-14-21-03.png")}>
-                         <img referrerPolicy="no-referrer" src="https://i.ibb.co/Gf12rGbT/Chat-GPT-Image-2026-3-22-14-21-03.png" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="The Garden Still 1" loading="lazy" />
-                      </div>
-                      <div className="grid grid-rows-2 gap-1 overflow-hidden rounded-tr-xl rounded-br-xl">
-                         <div className="overflow-hidden cursor-pointer" onClick={() => setLightboxImage("https://i.ibb.co/bMtVxnWT/20260301101021-372-10.jpg")}>
-                            <img referrerPolicy="no-referrer" src="https://i.ibb.co/bMtVxnWT/20260301101021-372-10.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="The Garden Still 2" loading="lazy" />
-                         </div>
-                         <div className="overflow-hidden cursor-pointer" onClick={() => setLightboxImage("https://i.ibb.co/rKrN1Sdx/20260301101027-374-10.jpg")}>
-                            <img referrerPolicy="no-referrer" src="https://i.ibb.co/rKrN1Sdx/20260301101027-374-10.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="The Garden Still 3" loading="lazy" />
-                         </div>
-                      </div>
-                   </div>
-                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent pointer-events-none"></div>
-                </div>
+             <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden group hover:border-brandCyan/50 transition-all duration-500 shadow-2xl flex flex-col lg:flex-row relative">
+                {/* Elegant Background Glow */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-brandCyan/5 blur-[60px] rounded-full pointer-events-none"></div>
                 
                 {/* Content Area */}
-                <div className="p-6 sm:p-8 relative z-10 flex-1 flex flex-col items-center text-center justify-center -mt-12">
-                   <div className="w-24 h-24 mb-5 bg-black rounded-full border border-white/20 p-2 shadow-[0_0_30px_rgba(0,255,255,0.1)] flex items-center justify-center z-20 overflow-hidden group-hover:scale-110 transition-transform duration-500">
+                <div className="p-8 lg:p-12 lg:w-1/2 flex flex-col justify-center relative z-10">
+                   <div className="mb-8 max-w-[200px]">
                       <img referrerPolicy="no-referrer"
                          src="https://i.ibb.co/kssxQ1DR/golden-state-film-festival-logo.jpg"
                          onError={(e) => {
                             e.currentTarget.style.display = 'none';
                             e.currentTarget.nextElementSibling!.classList.remove('hidden');
                          }}
-                         className="w-full h-full object-contain drop-shadow-md rounded-full" 
+                         className="w-full h-auto object-contain drop-shadow-lg rounded-lg" 
                          alt="Golden State Film Festival" 
                          loading="lazy"
                       />
@@ -260,48 +247,88 @@ export default function Home() {
                          <span className="text-[8px] uppercase font-bold text-white leading-tight">Golden State</span>
                       </div>
                    </div>
-                   <div className="inline-block px-4 py-1.5 border border-brandCyan/30 rounded-full bg-brandCyan/10 mb-3">
+                   
+                   <div className="inline-block px-4 py-1.5 border border-brandCyan/30 rounded-full bg-brandCyan/10 mb-4 w-max">
                        <p className="text-[10px] font-black uppercase tracking-widest text-brandCyan">Official Selection</p>
                    </div>
-                   <p className="text-brandGray text-xs font-bold tracking-[0.2em] uppercase mb-2">Golden State Film Festival</p>
-                   <h3 className="text-3xl sm:text-4xl font-cinematic font-black text-white mb-4 group-hover:text-brandCyan transition-colors">The Garden</h3>
-                   <p className="text-sm text-brandGray/80 leading-relaxed max-w-lg">
-                      Selected for its outstanding cinematography and compelling narrative, "The Garden" represents the pinnacle of our students' creative vision and technical execution.
-                   </p>
+                   
+                   <h3 className="text-3xl sm:text-4xl font-cinematic font-black text-white mb-2 group-hover:text-brandCyan transition-colors">The Garden</h3>
+                   <p className="text-brandGray text-sm font-bold tracking-[0.1em] uppercase mb-8">Golden State Film Festival</p>
+                   
+                   <div className="space-y-6">
+                      <div>
+                         <h4 className="text-white font-semibold mb-2 flex items-center gap-2">
+                            <Film size={16} className="text-brandCyan" /> About the Festival
+                         </h4>
+                         <p className="text-sm text-brandGray/80 leading-relaxed">
+                            The Golden State Film Festival serves as a premier platform for emerging filmmakers, hosted at the historic TCL Chinese Theatre in Hollywood. It recognizes outstanding independent cinema from around the globe.
+                         </p>
+                      </div>
+                      <div>
+                         <h4 className="text-white font-semibold mb-2 flex items-center gap-2">
+                            <Award size={16} className="text-brandCyan" /> Award & Recognition
+                         </h4>
+                         <p className="text-sm text-brandGray/80 leading-relaxed">
+                            Selected for its outstanding cinematography and compelling narrative, "The Garden" represents the pinnacle of our students' creative vision and technical execution, standing out among thousands of submissions.
+                         </p>
+                      </div>
+                   </div>
+                </div>
+
+                {/* Image Gallery Area - Decorated 4-Frame Layout */}
+                <div className="lg:w-1/2 p-8 lg:p-12 lg:pl-0 flex items-center justify-center relative z-10">
+                   <div className="relative p-4 sm:p-6 bg-[#050505] rounded-2xl border border-white/10 shadow-2xl w-full">
+                      {/* Decorative corner accents */}
+                      <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-brandCyan/50 rounded-tl-2xl"></div>
+                      <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-brandCyan/50 rounded-tr-2xl"></div>
+                      <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-brandCyan/50 rounded-bl-2xl"></div>
+                      <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-brandCyan/50 rounded-br-2xl"></div>
+                      
+                      {/* Film strip decorative holes */}
+                      <div className="absolute top-2 left-6 right-6 flex justify-between opacity-20">
+                         {[...Array(6)].map((_, i) => <div key={i} className="w-6 h-1.5 bg-white rounded-full"></div>)}
+                      </div>
+                      <div className="absolute bottom-2 left-6 right-6 flex justify-between opacity-20">
+                         {[...Array(6)].map((_, i) => <div key={i} className="w-6 h-1.5 bg-white rounded-full"></div>)}
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-4 mb-4">
+                         <div className="relative aspect-[4/3] bg-[#111] rounded-lg border border-white/5 overflow-hidden flex items-center justify-center p-2 cursor-pointer group/img shadow-inner" onClick={() => setLightboxImage("https://i.ibb.co/Gf12rGbT/Chat-GPT-Image-2026-3-22-14-21-03.png")}>
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
+                            <img referrerPolicy="no-referrer" src="https://i.ibb.co/Gf12rGbT/Chat-GPT-Image-2026-3-22-14-21-03.png" className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover/img:scale-105 drop-shadow-lg" alt="The Garden Still 1" loading="lazy" />
+                         </div>
+                         <div className="relative aspect-[4/3] bg-[#111] rounded-lg border border-white/5 overflow-hidden flex items-center justify-center p-2 cursor-pointer group/img shadow-inner" onClick={() => setLightboxImage("https://i.ibb.co/bMtVxnWT/20260301101021-372-10.jpg")}>
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
+                            <img referrerPolicy="no-referrer" src="https://i.ibb.co/bMtVxnWT/20260301101021-372-10.jpg" className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover/img:scale-105 drop-shadow-lg" alt="The Garden Still 2" loading="lazy" />
+                         </div>
+                         <div className="relative aspect-[4/3] bg-[#111] rounded-lg border border-white/5 overflow-hidden flex items-center justify-center p-2 cursor-pointer group/img shadow-inner" onClick={() => setLightboxImage("https://i.ibb.co/rKrN1Sdx/20260301101027-374-10.jpg")}>
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
+                            <img referrerPolicy="no-referrer" src="https://i.ibb.co/rKrN1Sdx/20260301101027-374-10.jpg" className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover/img:scale-105 drop-shadow-lg" alt="The Garden Still 3" loading="lazy" />
+                         </div>
+                         <div className="relative aspect-[4/3] bg-[#111] rounded-lg border border-white/5 overflow-hidden flex items-center justify-center p-2 cursor-pointer group/img shadow-inner" onClick={() => setLightboxImage("https://i.ibb.co/bMtVxnWT/20260301101021-372-10.jpg")}>
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
+                            <img referrerPolicy="no-referrer" src="https://i.ibb.co/bMtVxnWT/20260301101021-372-10.jpg" className="max-w-full max-h-full object-cover transition-transform duration-700 group-hover/img:scale-105 drop-shadow-lg" alt="The Garden Still 4" loading="lazy" />
+                         </div>
+                      </div>
+                   </div>
                 </div>
              </div>
 
              {/* News Item 2: Golden Feather Awards */}
-             <div className="bg-[#1a1500]/40 border border-amber-500/20 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-2xl hover:shadow-amber-500/10 flex flex-col">
-                {/* Image Gallery Area */}
-                <div className="relative h-64 sm:h-80 w-full bg-black p-1">
-                   <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1 p-1">
-                      <div className="overflow-hidden rounded-tl-xl cursor-pointer" onClick={() => setLightboxImage("https://i.ibb.co/1Gj2K8CX/d92babf9ca9b15b9fe754beaa383a6cf.jpg")}>
-                         <img referrerPolicy="no-referrer" src="https://i.ibb.co/1Gj2K8CX/d92babf9ca9b15b9fe754beaa383a6cf.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" alt="The Shift Still 1" loading="lazy" />
-                      </div>
-                      <div className="overflow-hidden rounded-tr-xl cursor-pointer" onClick={() => setLightboxImage("https://i.ibb.co/TqHKNcjx/1731693e1e0ea8102582bec61f0aed1d.jpg")}>
-                         <img referrerPolicy="no-referrer" src="https://i.ibb.co/TqHKNcjx/1731693e1e0ea8102582bec61f0aed1d.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" alt="The Shift Still 2" loading="lazy" />
-                      </div>
-                      <div className="overflow-hidden rounded-bl-xl cursor-pointer" onClick={() => setLightboxImage("https://i.ibb.co/KczJSxQZ/356736.jpg")}>
-                         <img referrerPolicy="no-referrer" src="https://i.ibb.co/KczJSxQZ/356736.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" alt="The Shift Still 3" loading="lazy" />
-                      </div>
-                      <div className="overflow-hidden rounded-br-xl cursor-pointer" onClick={() => setLightboxImage("https://i.ibb.co/5XPZYkgB/20260122155907-1672-151.jpg")}>
-                         <img referrerPolicy="no-referrer" src="https://i.ibb.co/5XPZYkgB/20260122155907-1672-151.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" alt="The Shift Still 4" loading="lazy" />
-                      </div>
-                   </div>
-                   <div className="absolute inset-0 bg-gradient-to-t from-[#1a1500]/90 via-transparent to-transparent pointer-events-none"></div>
-                </div>
+             <div className="bg-[#1a1500]/40 border border-amber-500/20 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all duration-500 shadow-2xl flex flex-col lg:flex-row relative">
+                {/* Elegant Background Glow */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-amber-500/5 blur-[60px] rounded-full pointer-events-none"></div>
                 
                 {/* Content Area */}
-                <div className="p-6 sm:p-8 relative z-10 flex-1 flex flex-col items-center text-center justify-center -mt-12">
-                   <div className="w-24 h-24 mb-5 bg-black rounded-full border border-amber-500/30 p-2 shadow-[0_0_30px_rgba(245,158,11,0.2)] flex items-center justify-center z-20 overflow-hidden group-hover:scale-110 transition-transform duration-500">
+                <div className="p-8 lg:p-12 lg:w-1/2 flex flex-col justify-center relative z-10">
+                   <div className="mb-8 max-w-[200px]">
                       <img referrerPolicy="no-referrer"
                          src="https://i.ibb.co/TqJBkL9F/Chat-GPT-Image-2025-8-29-15-46-30-1.jpg"
                          onError={(e) => {
                             e.currentTarget.style.display = 'none';
                             e.currentTarget.nextElementSibling!.classList.remove('hidden');
                          }}
-                         className="w-full h-full object-contain drop-shadow-md rounded-full" 
+                         className="w-full h-auto object-contain drop-shadow-lg rounded-lg" 
                          alt="Golden Feather Awards" 
                          loading="lazy"
                       />
@@ -310,20 +337,77 @@ export default function Home() {
                          <span className="text-[8px] uppercase font-bold text-amber-400 leading-tight">Golden Feather</span>
                       </div>
                    </div>
-                   <div className="inline-block px-4 py-1.5 border border-amber-500/30 rounded-full bg-amber-500/10 mb-3">
+                   
+                   <div className="inline-block px-4 py-1.5 border border-amber-500/30 rounded-full bg-amber-500/10 mb-4 w-max">
                        <p className="text-[10px] font-black uppercase tracking-widest text-amber-400 flex items-center gap-2">
                           <Star size={10} fill="currentColor" /> Jury Award Winner <Star size={10} fill="currentColor" />
                        </p>
                    </div>
-                   <p className="text-brandGray text-xs font-bold tracking-[0.2em] uppercase mb-2">Golden Feather Awards</p>
-                   <h3 className="text-3xl sm:text-4xl font-cinematic font-black text-white mb-4 group-hover:text-amber-400 transition-colors">The Shift</h3>
-                   <div className="flex flex-wrap justify-center gap-2 mb-4">
+                   
+                   <h3 className="text-3xl sm:text-4xl font-cinematic font-black text-white mb-2 group-hover:text-amber-400 transition-colors">The Shift</h3>
+                   <p className="text-brandGray text-sm font-bold tracking-[0.1em] uppercase mb-4">Golden Feather Awards</p>
+                   
+                   <div className="flex flex-wrap gap-2 mb-8">
                       <span className="text-xs font-bold border border-amber-500/30 text-amber-200/90 px-2.5 py-1 rounded bg-amber-900/20">Best Story</span>
                       <span className="text-xs font-bold border border-amber-500/30 text-amber-200/90 px-2.5 py-1 rounded bg-amber-900/20">Best Actor</span>
                    </div>
-                   <p className="text-sm text-brandGray/80 leading-relaxed max-w-lg">
-                      A sweeping narrative that captured the hearts of the jury, taking home multiple top honors at this year's Golden Feather Awards.
-                   </p>
+                   
+                   <div className="space-y-6">
+                      <div>
+                         <h4 className="text-white font-semibold mb-2 flex items-center gap-2">
+                            <Film size={16} className="text-amber-400" /> About the Festival
+                         </h4>
+                         <p className="text-sm text-brandGray/80 leading-relaxed">
+                            The Golden Feather Awards celebrates excellence in storytelling and cinematic arts. It is a highly competitive international festival dedicated to honoring visionary directors, actors, and crews who push the boundaries of modern filmmaking.
+                         </p>
+                      </div>
+                      <div>
+                         <h4 className="text-white font-semibold mb-2 flex items-center gap-2">
+                            <Trophy size={16} className="text-amber-400" /> Award & Recognition
+                         </h4>
+                         <p className="text-sm text-brandGray/80 leading-relaxed">
+                            A sweeping narrative that captured the hearts of the jury, taking home multiple top honors at this year's Golden Feather Awards for its emotional depth and powerful performances.
+                         </p>
+                      </div>
+                   </div>
+                </div>
+
+                {/* Image Gallery Area - Decorated 4-Frame Layout */}
+                <div className="lg:w-1/2 p-8 lg:p-12 lg:pl-0 flex items-center justify-center relative z-10">
+                   <div className="relative p-4 sm:p-6 bg-[#050505] rounded-2xl border border-white/10 shadow-2xl w-full">
+                      {/* Decorative corner accents */}
+                      <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-amber-500/50 rounded-tl-2xl"></div>
+                      <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-amber-500/50 rounded-tr-2xl"></div>
+                      <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-amber-500/50 rounded-bl-2xl"></div>
+                      <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-amber-500/50 rounded-br-2xl"></div>
+                      
+                      {/* Film strip decorative holes */}
+                      <div className="absolute top-2 left-6 right-6 flex justify-between opacity-20">
+                         {[...Array(6)].map((_, i) => <div key={i} className="w-6 h-1.5 bg-amber-500/50 rounded-full"></div>)}
+                      </div>
+                      <div className="absolute bottom-2 left-6 right-6 flex justify-between opacity-20">
+                         {[...Array(6)].map((_, i) => <div key={i} className="w-6 h-1.5 bg-amber-500/50 rounded-full"></div>)}
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-4 mb-4">
+                         <div className="relative aspect-[4/3] bg-[#111] rounded-lg border border-amber-500/10 overflow-hidden flex items-center justify-center p-2 cursor-pointer group/img shadow-inner" onClick={() => setLightboxImage("https://i.ibb.co/1Gj2K8CX/d92babf9ca9b15b9fe754beaa383a6cf.jpg")}>
+                            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
+                            <img referrerPolicy="no-referrer" src="https://i.ibb.co/1Gj2K8CX/d92babf9ca9b15b9fe754beaa383a6cf.jpg" className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover/img:scale-105 drop-shadow-lg opacity-90" alt="The Shift Still 1" loading="lazy" />
+                         </div>
+                         <div className="relative aspect-[4/3] bg-[#111] rounded-lg border border-amber-500/10 overflow-hidden flex items-center justify-center p-2 cursor-pointer group/img shadow-inner" onClick={() => setLightboxImage("https://i.ibb.co/TqHKNcjx/1731693e1e0ea8102582bec61f0aed1d.jpg")}>
+                            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
+                            <img referrerPolicy="no-referrer" src="https://i.ibb.co/TqHKNcjx/1731693e1e0ea8102582bec61f0aed1d.jpg" className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover/img:scale-105 drop-shadow-lg opacity-90" alt="The Shift Still 2" loading="lazy" />
+                         </div>
+                         <div className="relative aspect-[4/3] bg-[#111] rounded-lg border border-amber-500/10 overflow-hidden flex items-center justify-center p-2 cursor-pointer group/img shadow-inner" onClick={() => setLightboxImage("https://i.ibb.co/KczJSxQZ/356736.jpg")}>
+                            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
+                            <img referrerPolicy="no-referrer" src="https://i.ibb.co/KczJSxQZ/356736.jpg" className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover/img:scale-105 drop-shadow-lg opacity-90" alt="The Shift Still 3" loading="lazy" />
+                         </div>
+                         <div className="relative aspect-[4/3] bg-[#111] rounded-lg border border-amber-500/10 overflow-hidden flex items-center justify-center p-2 cursor-pointer group/img shadow-inner" onClick={() => setLightboxImage("https://i.ibb.co/5XPZYkgB/20260122155907-1672-151.jpg")}>
+                            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
+                            <img referrerPolicy="no-referrer" src="https://i.ibb.co/5XPZYkgB/20260122155907-1672-151.jpg" className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover/img:scale-105 drop-shadow-lg opacity-90" alt="The Shift Still 4" loading="lazy" />
+                         </div>
+                      </div>
+                   </div>
                 </div>
              </div>
           </div>
@@ -521,10 +605,10 @@ export default function Home() {
                <div className="absolute inset-0 bg-brandCyan/20 blur-[100px] rounded-full opacity-20"></div>
                <div className="grid grid-cols-2 gap-4 relative z-10">
                   <div className="space-y-4 translate-y-8">
-                     <img referrerPolicy="no-referrer" src="https://i.ibb.co/8DDg94mN/professional-camera-man-at-work-2022-02-09-18-59-44-utc.jpg" className="rounded-2xl shadow-2xl border border-white/10 opacity-80 h-64 w-full object-cover" alt="Professional Camera Man" loading="lazy" />
+                     <img referrerPolicy="no-referrer" src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800" className="rounded-2xl shadow-2xl border border-white/10 opacity-80 h-64 w-full object-cover" alt="University Campus" loading="lazy" />
                   </div>
                   <div className="space-y-4">
-                     <img referrerPolicy="no-referrer" src="https://i.ibb.co/qY9b9ypz/1251303140-shutterstock-1541269967-1.jpg" className="rounded-2xl shadow-2xl border border-white/10 opacity-80 h-64 w-full object-cover" alt="Film Set" loading="lazy" />
+                     <img referrerPolicy="no-referrer" src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800" className="rounded-2xl shadow-2xl border border-white/10 opacity-80 h-64 w-full object-cover" alt="Graduation" loading="lazy" />
                   </div>
                </div>
             </div>

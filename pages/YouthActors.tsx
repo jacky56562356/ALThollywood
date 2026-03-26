@@ -1,8 +1,10 @@
 
 import React from 'react';
-import { ACTORS } from '../constants';
+import { useData } from '../DataContext';
 
 export default function YouthActors() {
+  const { actors } = useData();
+
   return (
     <div className="pt-28 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -14,10 +16,10 @@ export default function YouthActors() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
-          {ACTORS.map((actor, index) => (
-            <div key={actor.id} className="group cursor-pointer">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-xl mb-3 border border-white/10 group-hover:border-brandCyan/50 transition-all duration-500">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+          {actors.map((actor, index) => (
+            <div key={actor.id} className="group cursor-pointer flex flex-col h-full bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden hover:border-brandCyan/40 transition-all duration-500 shadow-xl">
+              <div className="relative aspect-[4/5] overflow-hidden border-b border-white/10">
                 <img referrerPolicy="no-referrer" 
                   src={actor.imageUrl} 
                   alt={actor.name}
@@ -25,19 +27,43 @@ export default function YouthActors() {
                   loading={index < 8 ? "eager" : "lazy"}
                   fetchPriority={index < 4 ? "high" : "auto"}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brandPurple/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
-                  <p className="text-[9px] text-brandCyan uppercase font-black tracking-[0.2em] mb-1">Capabilities</p>
-                  <p className="text-xs text-white/90 font-medium leading-relaxed">{actor.skills.slice(0, 2).join(" · ")}</p>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-60"></div>
               </div>
-              <h3 className="text-base font-cinematic font-bold tracking-wide group-hover:brand-gradient-text transition-all mb-1">{actor.name}</h3>
-              <p className="text-[10px] text-brandGray font-black uppercase tracking-widest mb-2">Age: {actor.ageRange}</p>
-              <div className="flex flex-wrap gap-1.5">
-                {actor.credits.slice(0, 1).map((credit, i) => (
-                  <span key={i} className="text-[10px] font-black tracking-widest px-2 py-0.5 border border-brandCyan/30 rounded-full text-brandCyan/80 uppercase truncate max-w-full">
-                    {credit}
-                  </span>
-                ))}
+              
+              <div className="p-5 flex flex-col flex-grow">
+                <div className="mb-4">
+                  <h3 className="text-xl font-cinematic font-bold tracking-wide group-hover:text-brandCyan transition-colors mb-1">{actor.name}</h3>
+                  <p className="text-[10px] text-brandGray font-black uppercase tracking-widest">Age: {actor.ageRange}</p>
+                </div>
+                
+                <div className="space-y-4 mt-auto">
+                  <div>
+                    <p className="text-[10px] text-brandCyan uppercase font-black tracking-widest mb-2 flex items-center gap-2">
+                      <span className="w-3 h-px bg-brandCyan/50"></span> Skills
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {actor.skills.map((skill, i) => (
+                        <span key={i} className="text-[10px] font-medium px-2 py-1 bg-white/5 border border-white/10 rounded text-brandGray/90">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <p className="text-[10px] text-brandCyan uppercase font-black tracking-widest mb-2 flex items-center gap-2">
+                      <span className="w-3 h-px bg-brandCyan/50"></span> Credits
+                    </p>
+                    <ul className="space-y-1.5">
+                      {actor.credits.map((credit, i) => (
+                        <li key={i} className="text-[11px] text-brandGray/90 flex items-start gap-2 leading-snug">
+                          <span className="text-brandCyan/50 mt-1 text-[6px]">■</span>
+                          <span>{credit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           ))}

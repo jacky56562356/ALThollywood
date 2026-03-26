@@ -4,11 +4,11 @@ import { Actor, FilmProject, Opportunity, HistoryEvent, Resource } from './types
 export const ACTORS: Actor[] = [
   {
     id: 'paul-liu',
-    name: 'Paul Liu',
+    name: 'Paul yunsheng Liu',
     ageRange: '12-16',
     skills: ['Chinese Kong-Fu', 'Martial Arts Stunts', 'Action Acting'],
     credits: ['ALT Hollywood Movies Filmed', 'International Stunt Team'],
-    imageUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/v40LfrmN/4.png',
   },
   {
     id: 'parker-davies',
@@ -16,15 +16,15 @@ export const ACTORS: Actor[] = [
     ageRange: '8-12',
     skills: ['Professional Acting', 'Runway Modeling', 'Public Speaking'],
     credits: ['4 Hollywood Films', 'National Commercials'],
-    imageUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/KpBnB6Mf/5.png',
   },
   {
     id: 'veronica-chen',
-    name: 'Veronica Chen',
+    name: 'Veronica Tiffany Chen',
     ageRange: '6-10',
     skills: ['Acting', 'Classical Dance', 'Modeling'],
     credits: ['4 Hollywood Movies Filmed', 'Global Brand Commercials'],
-    imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/mVLL5mQs/2.png',
   },
   {
     id: 'catherine-jing',
@@ -32,7 +32,7 @@ export const ACTORS: Actor[] = [
     ageRange: '10-14',
     skills: ['Acting', 'Voiceover', 'Theater Performance'],
     credits: ['4 Hollywood Movies Filmed', 'Short Film Lead'],
-    imageUrl: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/fY46H6Dd/3.png',
   },
   {
     id: 'jolin-wu',
@@ -40,7 +40,7 @@ export const ACTORS: Actor[] = [
     ageRange: '14-18',
     skills: ['Acting', 'Contemporary Dance', 'Bilingual (CN/EN)'],
     credits: ['ALT Hollywood Movies Filmed', 'Drama Series Lead'],
-    imageUrl: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/7JMjy3DF/6.png',
   },
   {
     id: 'chris-li',
@@ -48,7 +48,7 @@ export const ACTORS: Actor[] = [
     ageRange: '6-10',
     skills: ['On-Camera Acting', 'Fashion Modeling', 'Bilingual (CN/EN)'],
     credits: ['Hollywood Short Film', 'Brand Commercial'],
-    imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/60K4WqJV/7.png',
   },
   {
     id: 'ethan-pan',
@@ -56,7 +56,7 @@ export const ACTORS: Actor[] = [
     ageRange: '8-12',
     skills: ['Acting', 'Hip-Hop Dance', 'Modeling'],
     credits: ['ALT Hollywood Movies Filmed', 'National Print Ad'],
-    imageUrl: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/1YMZF3XS/9.png',
   },
   {
     id: 'chloe-yu',
@@ -64,7 +64,7 @@ export const ACTORS: Actor[] = [
     ageRange: '10-14',
     skills: ['High Fashion Modeling', 'Actor', 'Bilingual (CN/EN)'],
     credits: ['Multiple Hollywood Movies', 'Editorial Print'],
-    imageUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/YF8W9F1R/20260106125626-1547-151.jpg',
   },
   {
     id: 'evan-wen',
@@ -72,7 +72,7 @@ export const ACTORS: Actor[] = [
     ageRange: '6-10',
     skills: ['Breakdancing', 'Acting', 'Live Performance'],
     credits: ['ALT Hollywood Movies Filmed', 'Performance Showcase winner'],
-    imageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/TxPsjKY5/Carin-Yates-Photography2-3-2024-269.jpg',
   },
   {
     id: 'xiaowan-jin',
@@ -80,7 +80,7 @@ export const ACTORS: Actor[] = [
     ageRange: '10-14',
     skills: ['High Fashion Modeling', 'Actor', 'Bilingual (CN/EN)'],
     credits: ['Multiple Hollywood Movies', 'Editorial Print'],
-    imageUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/Y7v0Wdb0/20250.jpg',
   },
   {
     id: 'kent-zhao',
@@ -88,7 +88,7 @@ export const ACTORS: Actor[] = [
     ageRange: '6-10',
     skills: ['Traditional Performance', 'Screen Acting', 'Public Speaking'],
     credits: ['Regional Film Credits', 'Commercial Performer'],
-    imageUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/VF6CD9f/20250828205506-172-151.jpg',
   },
   {
     id: 'sean-pan',
@@ -96,7 +96,7 @@ export const ACTORS: Actor[] = [
     ageRange: '14-18',
     skills: ['Acting', 'Modeling', 'Athletics'],
     credits: ['3 Hollywood Movies Filmed'],
-    imageUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/VpH98tPD/retouched-Carin-Yates-Photography2-3-2024-retouched-sean4.jpg',
   },
   {
     id: 'elsa-gessesse',
@@ -104,7 +104,7 @@ export const ACTORS: Actor[] = [
     ageRange: '12-16',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['2 Hollywood Movies Filmed'],
-    imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/Lzc28kLd/20250829092942-174-151.jpg',
   },
   {
     id: 'scarlett-liu',
@@ -112,7 +112,7 @@ export const ACTORS: Actor[] = [
     ageRange: '6-10',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['Hollywood Movie Filmed', 'Brand Ambassador'],
-    imageUrl: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/F4K7rZqY/retouched-Carin-Yates-Photography2-3-2024-m-Scarlett-4169.jpg',
   },
   {
     id: 'elizabeth-valadez',
@@ -120,7 +120,7 @@ export const ACTORS: Actor[] = [
     ageRange: '8-12',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['Hollywood Movie Filmed', 'Commercial Project'],
-    imageUrl: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/C51JFvqS/20250829092953-175-151.jpg',
   },
   {
     id: 'yuxi-ling',
@@ -128,7 +128,7 @@ export const ACTORS: Actor[] = [
     ageRange: '6-10',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['Hollywood Project', 'Performance Showcase'],
-    imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/bgQnZQrP/1cbde033c8e622982d9b59686f383e73.jpg',
   },
   {
     id: 'charlene-liu',
@@ -136,7 +136,7 @@ export const ACTORS: Actor[] = [
     ageRange: '6-10',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['Hollywood Short Film', 'Brand Commercial'],
-    imageUrl: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/yc5YBNzL/retouched-Carin-Yates-Photography2-3-2024-Charlene-3m-30.jpg',
   },
   {
     id: 'ling-robison',
@@ -144,7 +144,7 @@ export const ACTORS: Actor[] = [
     ageRange: '10-14',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['Hollywood Movie Filmed', 'Fashion Print'],
-    imageUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/yTbPZXb/Wechat-IMG18.jpg',
   },
   {
     id: 'lexi-shen',
@@ -152,7 +152,7 @@ export const ACTORS: Actor[] = [
     ageRange: '6-10',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['Hollywood Movie Filmed', 'Commercial Project'],
-    imageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/RJMv66s/Carin-Yates-Photography10-27-2024-2-pp-removebg-preview.png',
   },
   {
     id: 'katherine-zhang',
@@ -160,7 +160,7 @@ export const ACTORS: Actor[] = [
     ageRange: '8-12',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['Hollywood Movie Filmed', 'Fashion Print'],
-    imageUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/CKX0y0xN/Wechat-IMG1393.jpg',
   },
   {
     id: 'mason-chen',
@@ -168,7 +168,7 @@ export const ACTORS: Actor[] = [
     ageRange: '6-10',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['Hollywood Movie Filmed', 'Commercial Project'],
-    imageUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/nsVwcdPG/20260122131604-1622-151.jpg',
   },
   {
     id: 'jasmine-zhang',
@@ -176,7 +176,7 @@ export const ACTORS: Actor[] = [
     ageRange: '6-10',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['Hollywood Movie Filmed', 'Commercial Project'],
-    imageUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/3m7NqcW0/20260122132047-1628-151.jpg',
   },
   {
     id: 'caleb-lin',
@@ -184,7 +184,47 @@ export const ACTORS: Actor[] = [
     ageRange: '8-12',
     skills: ['Acting', 'Modeling', 'Performing Arts'],
     credits: ['Hollywood Movie Filmed', 'Commercial Project'],
-    imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400',
+    imageUrl: 'https://i.ibb.co/GfGWD3mn/20260122132516-1633-151.jpg',
+  },
+  {
+    id: 'rising-star-1',
+    name: 'Rising Star',
+    ageRange: '6-12',
+    skills: ['Acting', 'Modeling', 'Performing Arts'],
+    credits: ['Hollywood Movie Filmed', 'Commercial Project'],
+    imageUrl: 'https://i.ibb.co/RpLLMkCc/20260122134407-1644-151.jpg',
+  },
+  {
+    id: 'rising-star-2',
+    name: 'Rising Star',
+    ageRange: '6-12',
+    skills: ['Acting', 'Modeling', 'Performing Arts'],
+    credits: ['Hollywood Movie Filmed', 'Commercial Project'],
+    imageUrl: 'https://i.ibb.co/1kdG6hS/DSC00074-edited.jpg',
+  },
+  {
+    id: 'rising-star-3',
+    name: 'Rising Star',
+    ageRange: '6-12',
+    skills: ['Acting', 'Modeling', 'Performing Arts'],
+    credits: ['Hollywood Movie Filmed', 'Commercial Project'],
+    imageUrl: 'https://i.ibb.co/CT2wNVk/DSC00028-edited.jpg',
+  },
+  {
+    id: 'rising-star-4',
+    name: 'Rising Star',
+    ageRange: '6-12',
+    skills: ['Acting', 'Modeling', 'Performing Arts'],
+    credits: ['Hollywood Movie Filmed', 'Commercial Project'],
+    imageUrl: 'https://i.ibb.co/Z6FPqV6P/a1644427b71929307a2b9360bbca9fc3.jpg',
+  },
+  {
+    id: 'rising-star-5',
+    name: 'Rising Star',
+    ageRange: '6-12',
+    skills: ['Acting', 'Modeling', 'Performing Arts'],
+    credits: ['Hollywood Movie Filmed', 'Commercial Project'],
+    imageUrl: 'https://i.ibb.co/1f4HbvLx/DSC00033-edited.jpg',
   },
 ];
 
