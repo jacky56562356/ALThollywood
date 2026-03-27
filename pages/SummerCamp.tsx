@@ -19,10 +19,30 @@ export default function SummerCamp() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    // In a real app, this would send data to a server
+    
+    const form = e.target as HTMLFormElement;
+    const submitData = new FormData(form);
+    submitData.append("access_key", "6faf2627-3ed8-4219-b6a4-535edfe1f7c3");
+    submitData.append("subject", "New Summer Camp Application 2026");
+    submitData.append("from_name", "ALT Hollywood Dream Star");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: submitData
+      });
+      
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong. Please try again.");
+    }
   };
 
   const goldText = "bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-transparent bg-clip-text";

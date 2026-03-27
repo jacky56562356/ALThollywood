@@ -1,7 +1,42 @@
-import React from 'react';
-import { Mail, MapPin, Phone, ArrowRight, Star, Camera, Film, Users } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, MapPin, Phone, ArrowRight, Star, Camera, Film, Users, CheckCircle, AlertCircle } from 'lucide-react';
 
 export default function Apply() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setErrorMessage("");
+    
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json"
+        },
+        body: formData
+      });
+      
+      const result = await response.json();
+      if (result.success) {
+        setIsSubmitted(true);
+      } else {
+        setErrorMessage(result.message || "Submission failed. Please try again.");
+      }
+    } catch (error) {
+      console.error(error);
+      setErrorMessage("Network error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="pt-20 min-h-screen bg-brandBlack font-sans">
       {/* Hero Section */}
@@ -43,11 +78,29 @@ export default function Apply() {
             <div className="lg:col-span-2">
               <h2 className="text-3xl font-cinematic font-black mb-8 uppercase tracking-wider">Submit <span className="text-brandCyan">Application</span></h2>
               
-              <form action="https://formsubmit.co/Altdreamstar@gmail.com" method="POST" encType="multipart/form-data" target="_blank" className="space-y-6 bg-white/5 border border-white/10 p-8 rounded-2xl backdrop-blur-sm">
-                {/* Hidden Configuration Fields */}
-                <input type="hidden" name="_subject" value="New Training Application from Website" />
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_template" value="table" />
+              {isSubmitted ? (
+                <div className="bg-brandCyan/10 border border-brandCyan/30 p-12 text-center rounded-2xl backdrop-blur-sm">
+                  <div className="w-20 h-20 bg-brandCyan/20 rounded-full flex items-center justify-center mx-auto mb-6 text-brandCyan">
+                    <CheckCircle size={40} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4 uppercase tracking-wider">Application Received</h3>
+                  <p className="text-gray-300 text-lg">
+                    Thank you for applying to ALT Hollywood Dream Star. We have received your application and materials. Our casting team will review your submission and contact you shortly.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6 bg-white/5 border border-white/10 p-8 rounded-2xl backdrop-blur-sm">
+                  {errorMessage && (
+                    <div className="bg-red-500/10 border border-red-500/50 text-red-400 p-4 rounded-lg flex items-center gap-3">
+                      <AlertCircle size={20} />
+                      <p>{errorMessage}</p>
+                    </div>
+                  )}
+                  
+                  {/* Web3Forms Configuration Fields */}
+                  <input type="hidden" name="access_key" value="6faf2627-3ed8-4219-b6a4-535edfe1f7c3" />
+                  <input type="hidden" name="subject" value="New Training Application from Website" />
+                  <input type="hidden" name="from_name" value="ALT Hollywood Dream Star" />
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Applicant Name */}
@@ -125,14 +178,19 @@ export default function Apply() {
                 </div>
 
                 {/* Submit Button */}
-                <button type="submit" className="w-full mt-4 px-8 py-4 bg-brandCyan text-black font-black rounded-lg uppercase tracking-[0.2em] hover:bg-white transition-colors flex items-center justify-center gap-2">
-                  Submit Application <ArrowRight size={20} />
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="w-full mt-4 px-8 py-4 bg-brandCyan text-black font-black rounded-lg uppercase tracking-[0.2em] hover:bg-white transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? "Sending..." : "Submit Application"} {!isSubmitting && <ArrowRight size={20} />}
                 </button>
                 
                 <p className="text-xs text-gray-500 text-center mt-4">
                   By submitting this form, your application and uploaded files will be sent directly to Altdreamstar@gmail.com.
                 </p>
               </form>
+              )}
             </div>
 
             {/* Right: Contact Information */}

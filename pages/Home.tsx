@@ -58,26 +58,26 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section - Full Screen */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
         <div className="absolute inset-0 z-0">
           <video 
             autoPlay 
             loop 
             muted 
             playsInline 
-            className="w-full h-full object-cover"
-            poster="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=1920"
+            preload="auto"
+            className="w-full h-full object-cover bg-black"
           >
-            {/* Cinematic children's movie video background (Sintel - Open Movie Project) */}
-            <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4" type="video/mp4" />
+            {/* Cinematic animated movie background (Big Buck Bunny) - Fast loading CDN */}
+            <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
           </video>
           {/* Dark mask overlay for text readability */}
-          <div className="absolute inset-0 bg-black/40"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-brandBlack via-brandBlack/60 to-transparent"></div>
-          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+          <div className="absolute inset-0 bg-black/30"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-brandBlack via-brandBlack/50 to-transparent"></div>
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
         </div>
         
-        <div className="relative z-10 max-w-7xl mx-auto text-center px-4 animate-fade-up mt-16">
+        <div className="relative z-10 max-w-7xl mx-auto text-center px-4 animate-in fade-in zoom-in-95 duration-700 mt-16">
           <h2 className="brand-gradient-text text-xs md:text-sm font-black tracking-[0.5em] mb-3 uppercase drop-shadow-lg">
             Training · Film Production · Global Exposure
           </h2>
