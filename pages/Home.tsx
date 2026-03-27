@@ -66,13 +66,14 @@ export default function Home() {
             muted 
             playsInline 
             className="w-full h-full object-cover"
-            poster="https://images.unsplash.com/photo-1560109947-543149eceb16?auto=format&fit=crop&q=80&w=1920"
+            poster="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=1920"
           >
-            {/* Using a cinematic red carpet paparazzi video to represent the Hollywood premiere vibe */}
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-photographers-taking-pictures-at-a-red-carpet-event-4181-large.mp4" type="video/mp4" />
+            {/* Cinematic children's movie video background (Sintel - Open Movie Project) */}
+            <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4" type="video/mp4" />
           </video>
-          {/* Black gradient overlay from bottom to top for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/20"></div>
+          {/* Dark mask overlay for text readability */}
+          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-brandBlack via-brandBlack/60 to-transparent"></div>
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
         </div>
         
