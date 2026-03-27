@@ -136,7 +136,7 @@ export default function SummerCamp() {
             {/* Left: Image */}
             <div className="relative aspect-[4/5] rounded-sm overflow-hidden border border-[#BF953F]/30 shadow-[0_0_50px_rgba(191,149,63,0.1)]">
               <img referrerPolicy="no-referrer" 
-                src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=1600&auto=format&fit=crop" 
+                src="https://i.ibb.co/v6722zd0/20250929162853-135-10.jpg" 
                 alt="Director on set" 
                 className="w-full h-full object-cover"
               />

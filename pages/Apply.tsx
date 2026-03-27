@@ -37,53 +37,107 @@ export default function Apply() {
       {/* Contact Info & Process */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
             
-            {/* Left: Application Process */}
-            <div>
-              <h2 className="text-3xl font-cinematic font-black mb-8 uppercase tracking-wider">Application <span className="text-brandCyan">Process</span></h2>
+            {/* Left: Application Form */}
+            <div className="lg:col-span-2">
+              <h2 className="text-3xl font-cinematic font-black mb-8 uppercase tracking-wider">Submit <span className="text-brandCyan">Application</span></h2>
               
-              <div className="space-y-8">
-                <div className="flex gap-6">
-                  <div className="w-12 h-12 rounded-full bg-brandCyan/10 border border-brandCyan/30 flex items-center justify-center shrink-0 text-brandCyan">
-                    <span className="font-black text-xl">1</span>
-                  </div>
+              <form action="https://formsubmit.co/Altdreamstar@gmail.com" method="POST" encType="multipart/form-data" target="_blank" className="space-y-6 bg-white/5 border border-white/10 p-8 rounded-2xl backdrop-blur-sm">
+                {/* Hidden Configuration Fields */}
+                <input type="hidden" name="_subject" value="New Training Application from Website" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Applicant Name */}
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-wider">Prepare Your Materials</h3>
-                    <p className="text-gray-400 leading-relaxed">
-                      Gather your headshots, resume (if applicable), and any performance reels or videos. Don't worry if you're a beginner—we look for raw potential and passion.
-                    </p>
+                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Applicant Name *</label>
+                    <input type="text" name="Applicant Name" required className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors" placeholder="Full Name" />
+                  </div>
+                  {/* Date of Birth */}
+                  <div>
+                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Date of Birth *</label>
+                    <input type="date" name="Date of Birth" required className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors [color-scheme:dark]" />
                   </div>
                 </div>
 
-                <div className="flex gap-6">
-                  <div className="w-12 h-12 rounded-full bg-brandCyan/10 border border-brandCyan/30 flex items-center justify-center shrink-0 text-brandCyan">
-                    <span className="font-black text-xl">2</span>
-                  </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Parent/Guardian Name */}
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-wider">Send Us an Email</h3>
-                    <p className="text-gray-400 leading-relaxed">
-                      Click the "Apply Now" button or email us directly at <span className="text-white font-bold">altdreamstar@gmail.com</span>. Include your child's name, age, and a brief introduction.
-                    </p>
+                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Parent/Guardian *</label>
+                    <input type="text" name="Parent/Guardian Name" required className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors" placeholder="Parent/Guardian Name" />
+                  </div>
+                  {/* Gender */}
+                  <div>
+                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Gender</label>
+                    <select name="Gender" className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors appearance-none">
+                      <option value="" className="bg-brandBlack">Select Gender</option>
+                      <option value="Male" className="bg-brandBlack">Male</option>
+                      <option value="Female" className="bg-brandBlack">Female</option>
+                      <option value="Other" className="bg-brandBlack">Other</option>
+                    </select>
                   </div>
                 </div>
 
-                <div className="flex gap-6">
-                  <div className="w-12 h-12 rounded-full bg-brandCyan/10 border border-brandCyan/30 flex items-center justify-center shrink-0 text-brandCyan">
-                    <span className="font-black text-xl">3</span>
-                  </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Email */}
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-wider">Audition & Interview</h3>
-                    <p className="text-gray-400 leading-relaxed">
-                      Our casting directors will review your submission. Selected candidates will be invited for an in-person or virtual audition and interview.
-                    </p>
+                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Email Address *</label>
+                    <input type="email" name="Email" required className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors" placeholder="email@example.com" />
+                  </div>
+                  {/* Phone */}
+                  <div>
+                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Phone Number *</label>
+                    <input type="tel" name="Phone" required className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors" placeholder="+1 (555) 000-0000" />
                   </div>
                 </div>
-              </div>
+
+                {/* Address */}
+                <div>
+                  <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Home Address</label>
+                  <input type="text" name="Address" className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors" placeholder="123 Hollywood Blvd, Los Angeles, CA" />
+                </div>
+
+                {/* Experience */}
+                <div>
+                  <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Acting Experience</label>
+                  <textarea name="Experience" rows={3} className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors resize-none" placeholder="List any previous acting experience, training, or school plays. (Leave blank if none)"></textarea>
+                </div>
+
+                {/* Special Skills */}
+                <div>
+                  <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Special Skills</label>
+                  <textarea name="Skills" rows={2} className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors resize-none" placeholder="e.g., Dancing, Singing, Martial Arts, Languages spoken"></textarea>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Photo Upload */}
+                  <div>
+                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Upload Headshot/Photo *</label>
+                    <input type="file" name="Headshot" accept="image/*" required className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-2.5 text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-brandCyan file:text-black hover:file:bg-brandCyan/90 transition-colors cursor-pointer" />
+                  </div>
+                  {/* Resume Upload */}
+                  <div>
+                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Upload Resume (Optional)</label>
+                    <input type="file" name="Resume" accept=".pdf,.doc,.docx" className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-2.5 text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-white file:text-black hover:file:bg-gray-200 transition-colors cursor-pointer" />
+                  </div>
+                </div>
+
+                {/* Submit Button */}
+                <button type="submit" className="w-full mt-4 px-8 py-4 bg-brandCyan text-black font-black rounded-lg uppercase tracking-[0.2em] hover:bg-white transition-colors flex items-center justify-center gap-2">
+                  Submit Application <ArrowRight size={20} />
+                </button>
+                
+                <p className="text-xs text-gray-500 text-center mt-4">
+                  By submitting this form, your application and uploaded files will be sent directly to Altdreamstar@gmail.com.
+                </p>
+              </form>
             </div>
 
             {/* Right: Contact Information */}
-            <div className="bg-white/5 border border-white/10 p-8 md:p-12 rounded-2xl backdrop-blur-sm">
+            <div className="lg:col-span-1">
+              <div className="bg-white/5 border border-white/10 p-8 md:p-12 rounded-2xl backdrop-blur-sm sticky top-24">
               <h2 className="text-2xl font-cinematic font-black mb-8 uppercase tracking-wider">Contact <span className="text-brandCyan">Information</span></h2>
               
               <div className="space-y-8">
@@ -136,6 +190,7 @@ export default function Apply() {
                     </p>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
 
