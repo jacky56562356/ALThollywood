@@ -6,6 +6,8 @@ export interface Actor {
   skills: string[];
   credits: string[];
   imageUrl: string;
+  videoUrl?: string;
+  bio?: string;
 }
 
 export interface FilmProject {

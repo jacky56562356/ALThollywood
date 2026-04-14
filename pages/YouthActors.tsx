@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useData } from '../DataContext';
 
 export default function YouthActors() {
@@ -18,7 +19,7 @@ export default function YouthActors() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
           {actors.map((actor, index) => (
-            <div key={actor.id} className="group cursor-pointer flex flex-col h-full bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden hover:border-brandCyan/40 transition-all duration-500 shadow-xl">
+            <Link to={`/actors/${actor.id}`} key={actor.id} className="group cursor-pointer flex flex-col h-full bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden hover:border-brandCyan/40 transition-all duration-500 shadow-xl">
               <div className="relative aspect-[4/5] overflow-hidden border-b border-white/10">
                 <img referrerPolicy="no-referrer" 
                   src={actor.imageUrl} 
@@ -65,7 +66,7 @@ export default function YouthActors() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

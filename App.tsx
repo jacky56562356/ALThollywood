@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Programs from './pages/Programs';
 import YouthActors from './pages/YouthActors';
+import ActorProfile from './pages/ActorProfile';
 import Films from './pages/Films';
 import Apply from './pages/Apply';
 import Login from './pages/Login';
@@ -264,6 +265,7 @@ export default function App() {
               <Route path="/about" element={<About />} />
               <Route path="/programs" element={<Programs />} />
               <Route path="/actors" element={<YouthActors />} />
+              <Route path="/actors/:id" element={<ActorProfile />} />
               <Route path="/films" element={<Films />} />
               <Route path="/apply" element={<Apply />} />
               <Route path="/summer-camp" element={<SummerCamp />} />
