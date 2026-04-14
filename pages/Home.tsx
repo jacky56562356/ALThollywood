@@ -60,17 +60,15 @@ export default function Home() {
       {/* Hero Section - Full Screen */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
         <div className="absolute inset-0 z-0">
-          <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
-            preload="auto"
-            className="w-full h-full object-cover bg-black"
-          >
-            {/* Cinematic animated movie background (Big Buck Bunny) - Fast loading CDN */}
-            <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
-          </video>
+          {/* YouTube Video Background */}
+          <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
+            <iframe
+              src="https://www.youtube.com/embed/Z1ucuyxlmf0?autoplay=1&mute=1&loop=1&playlist=Z1ucuyxlmf0&controls=0&showinfo=0&rel=0&playsinline=1&modestbranding=1"
+              className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2"
+              allow="autoplay; encrypted-media"
+              frameBorder="0"
+            ></iframe>
+          </div>
           {/* Dark mask overlay for text readability */}
           <div className="absolute inset-0 bg-black/30"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-brandBlack via-brandBlack/50 to-transparent"></div>
