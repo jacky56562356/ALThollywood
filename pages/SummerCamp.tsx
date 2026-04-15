@@ -81,47 +81,98 @@ export default function SummerCamp() {
         }
       `}} />
 
-      {/* Hero Section */}
-      <section className="text-center pt-12 pb-9 px-6 bg-gradient-to-b from-[#1a1000] to-[#0A0A0A] relative overflow-hidden">
-        <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.15)_0%,transparent_70%)] pointer-events-none"></div>
+      {/* Hero Section with Image Background */}
+      <section className="relative w-full h-[60vh] min-h-[500px] flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+        {/* Background Image */}
+        <img 
+          src="https://i.ibb.co/3YzTyKhj/202603221706.jpg" 
+          alt="Hollywood Camp" 
+          className="absolute inset-0 w-full h-full object-cover opacity-50"
+          style={{ objectPosition: '50% 15%' }} // Focuses on the top half of the image
+          referrerPolicy="no-referrer"
+        />
+        {/* Gradient Overlay to blend into black */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-[#0A0A0A]"></div>
         
-        <div className="font-['Bebas_Neue'] text-[clamp(14px,3vw,18px)] tracking-[6px] text-[#C9A84C] mb-3 opacity-85">
-          ALT · HOLLYWOOD DREAM STAR · 好莱坞童星机构
-        </div>
-        <h1 className={`font-serif text-[clamp(28px,6vw,54px)] font-black leading-[1.15] mb-2.5 ${goldText}`}>
-          2026 好莱坞电影拍摄夏令营
-        </h1>
-        <div className="text-[clamp(13px,2.5vw,17px)] text-[#F0C45A] tracking-[1px] mb-1.5 font-light">
-          由好莱坞电影节获奖团队倾力打造 · THE GRDEN
-        </div>
-        <div className="text-[clamp(11px,2vw,14px)] text-[#888] tracking-[2px] uppercase mt-2">
-          绝非普通夏令营 ｜ 真正的、全程记录的电影拍摄体验
+        {/* Hero Content */}
+        <div className="relative z-10 max-w-4xl mx-auto mt-12">
+          <div className="font-['Bebas_Neue'] text-[clamp(14px,3vw,18px)] tracking-[6px] text-[#C9A84C] mb-3 opacity-90 drop-shadow-lg">
+            ALT · HOLLYWOOD DREAM STAR · 好莱坞童星机构
+          </div>
+          <h1 className={`font-serif text-[clamp(32px,6vw,64px)] font-black leading-[1.15] mb-4 ${goldText} drop-shadow-2xl`}>
+            2026 好莱坞电影拍摄夏令营
+          </h1>
+          <div className="text-[clamp(14px,2.5vw,18px)] text-[#F0C45A] tracking-[1px] mb-2 font-light drop-shadow-md">
+            由好莱坞电影节获奖团队倾力打造 · THE GRDEN
+          </div>
+          <div className="text-[clamp(12px,2vw,15px)] text-gray-300 tracking-[2px] uppercase mt-4 drop-shadow-md">
+            绝非普通夏令营 ｜ 真正的、全程记录的电影拍摄体验
+          </div>
         </div>
       </section>
 
       {/* Divider */}
-      <div className="flex items-center gap-4 mx-auto mb-8 max-w-[600px] px-6">
+      <div className="flex items-center gap-4 mx-auto mb-12 mt-8 max-w-[600px] px-6">
         <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent"></div>
-        <span className="text-[#C9A84C] text-lg">🎬</span>
+        <span className="text-[#C9A84C] text-xl">🎬</span>
         <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent"></div>
       </div>
 
       {/* Session Dates */}
-      <div className="flex justify-center gap-4 px-4 mb-10 flex-wrap">
-        <div className="border border-[#C9A84C] py-2.5 px-6 rounded-sm text-center bg-[#c9a84c0f] hover:bg-[#c9a84c24] transition-colors">
-          <div className="font-['Bebas_Neue'] text-[13px] tracking-[3px] text-[#C9A84C] mb-1">第 一 期</div>
-          <div className="text-[15px] font-bold text-white">6月15日 – 6月27日</div>
-          <div className="text-[11px] text-[#888] mt-1">每日 10:00 AM – 4:00 PM</div>
+      <div className="flex justify-center gap-6 px-4 mb-16 flex-wrap">
+        <div className="border border-[#C9A84C] py-4 px-8 rounded-sm text-center bg-[#c9a84c0f] hover:bg-[#c9a84c24] transition-colors shadow-[0_0_15px_rgba(201,168,76,0.1)]">
+          <div className="font-['Bebas_Neue'] text-[15px] tracking-[4px] text-[#C9A84C] mb-2">第 一 期</div>
+          <div className="text-[18px] font-bold text-white">6月15日 – 6月27日</div>
+          <div className="text-[13px] text-[#888] mt-2">每日 10:00 AM – 4:00 PM</div>
         </div>
-        <div className="border border-[#C9A84C] py-2.5 px-6 rounded-sm text-center bg-[#c9a84c0f] hover:bg-[#c9a84c24] transition-colors">
-          <div className="font-['Bebas_Neue'] text-[13px] tracking-[3px] text-[#C9A84C] mb-1">第 二 期</div>
-          <div className="text-[15px] font-bold text-white">7月20日 – 8月1日</div>
-          <div className="text-[11px] text-[#888] mt-1">每日 10:00 AM – 4:00 PM</div>
+        <div className="border border-[#C9A84C] py-4 px-8 rounded-sm text-center bg-[#c9a84c0f] hover:bg-[#c9a84c24] transition-colors shadow-[0_0_15px_rgba(201,168,76,0.1)]">
+          <div className="font-['Bebas_Neue'] text-[15px] tracking-[4px] text-[#C9A84C] mb-2">第 二 期</div>
+          <div className="text-[18px] font-bold text-white">7月20日 – 8月1日</div>
+          <div className="text-[13px] text-[#888] mt-2">每日 10:00 AM – 4:00 PM</div>
         </div>
       </div>
 
       {/* Main Container */}
       <div className="max-w-[860px] mx-auto px-5 pb-16">
+
+        {/* Previous Content: What to Expect & Schedule */}
+        <div className="mb-16">
+          <div className="flex items-center gap-3 font-['Bebas_Neue'] text-[22px] tracking-[4px] text-[#C9A84C] mb-8 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-[#8B6914] after:to-transparent">
+            🎥 营期安排
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-[#1A1A1A] border border-[#c9a84c33] p-6 rounded-lg relative overflow-hidden group hover:border-[#C9A84C] transition-colors">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[#C9A84C] opacity-5 rounded-bl-full -z-10 group-hover:opacity-10 transition-opacity"></div>
+              <h3 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                <span className="text-[#C9A84C]">第一周:</span> 剧本围读与表演大师课
+              </h3>
+              <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                在好莱坞获奖导师的带领下，学员将深入理解剧本，进行专业的角色分析与台词训练。从镜头前的基础站位到深层情绪表达，全面提升表演功底。
+              </p>
+              <ul className="space-y-2 text-sm text-gray-300">
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-[#C9A84C] mt-0.5 shrink-0" /> 好莱坞标准剧本围读 (Table Read)</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-[#C9A84C] mt-0.5 shrink-0" /> 镜头前表演技巧与走位 (Blocking)</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-[#C9A84C] mt-0.5 shrink-0" /> 角色塑造与情绪调动训练</li>
+              </ul>
+            </div>
+
+            <div className="bg-[#1A1A1A] border border-[#c9a84c33] p-6 rounded-lg relative overflow-hidden group hover:border-[#C9A84C] transition-colors">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[#C9A84C] opacity-5 rounded-bl-full -z-10 group-hover:opacity-10 transition-opacity"></div>
+              <h3 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                <span className="text-[#C9A84C]">第二周:</span> 实景拍摄与红毯首映
+              </h3>
+              <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                进入真实的电影片场！配备好莱坞专业摄制组（灯光、摄影、收音、服化道），学员将作为主演完成一部高质量微电影的拍摄，并最终走上红毯。
+              </p>
+              <ul className="space-y-2 text-sm text-gray-300">
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-[#C9A84C] mt-0.5 shrink-0" /> 专业级电影设备实景拍摄</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-[#C9A84C] mt-0.5 shrink-0" /> 剧组实战体验与团队协作</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-[#C9A84C] mt-0.5 shrink-0" /> 结营红毯仪式与作品首映礼</li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
         {/* Program Highlights */}
         <div className="flex items-center gap-3 font-['Bebas_Neue'] text-[22px] tracking-[4px] text-[#C9A84C] mb-5 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-[#8B6914] after:to-transparent">
