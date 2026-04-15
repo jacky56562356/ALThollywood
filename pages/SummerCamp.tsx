@@ -47,11 +47,12 @@ export default function SummerCamp() {
           document.getElementById('successMsg')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }, 100);
       } else {
-        alert("Something went wrong. Please try again.");
+        const errorData = await response.json();
+        alert(`提交失败 (Failed to submit): ${errorData.error || 'Please try again.'}`);
       }
     } catch (error) {
       console.error(error);
-      alert("Something went wrong. Please try again.");
+      alert("网络错误，请稍后重试 (Network error, please try again later).");
     } finally {
       setIsSubmitting(false);
     }
