@@ -22,8 +22,8 @@ async function startServer() {
     try {
       const data = req.body;
 
-      const userEmail = process.env.GMAIL_USER;
-      const appPassword = process.env.GMAIL_APP_PASSWORD;
+      const userEmail = process.env.GMAIL_USER || "altdreamstar@gmail.com";
+      const appPassword = process.env.GMAIL_APP_PASSWORD || "bhfi rvko awil tltn";
 
       if (!userEmail || !appPassword) {
         return res.status(500).json({ error: "Email configuration is missing on the server." });
