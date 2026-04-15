@@ -20,7 +20,7 @@ async function startServer() {
 
   app.post("/api/submit-application", async (req, res) => {
     try {
-      const { childFirstName, childLastName, age, gender, parentName, phone, email, experience } = req.body;
+      const data = req.body;
 
       const userEmail = process.env.GMAIL_USER;
       const appPassword = process.env.GMAIL_APP_PASSWORD;
@@ -37,22 +37,45 @@ async function startServer() {
         },
       });
 
+      // Format all form data into an HTML table
+      let htmlContent = `
+        <div style="font-family: sans-serif; max-width: 800px; margin: 0 auto;">
+          <h2 style="color: #C9A84C; background: #111; padding: 15px; text-align: center;">New Summer Camp Application 2026</h2>
+          <table border="1" cellpadding="10" style="border-collapse: collapse; width: 100%; border-color: #ddd;">
+            <tr style="background: #f8f8f8;">
+              <th style="width: 35%; text-align: left;">Field</th>
+              <th style="text-align: left;">Value</th>
+            </tr>
+      `;
+
+      for (const [key, value] of Object.entries(data)) {
+        // Skip empty values to keep email clean
+        if (!value) continue;
+        
+        // Format key to be more readable (e.g., studentNameZh -> Student Name Zh)
+        const formattedKey = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+        
+        htmlContent += `
+            <tr>
+              <td style="font-weight: bold; color: #333;">${formattedKey}</td>
+              <td style="color: #555; white-space: pre-wrap;">${value}</td>
+            </tr>
+        `;
+      }
+
+      htmlContent += `
+          </table>
+          <p style="text-align: center; color: #888; font-size: 12px; margin-top: 20px;">ALT Hollywood Dream Star System</p>
+        </div>
+      `;
+
+      const studentName = data.studentNameZh || data.studentNameEn || data.childFirstName || 'New Student';
+
       const mailOptions = {
         from: `"ALT Hollywood Dream Star" <${userEmail}>`,
         to: userEmail, // Send to yourself
-        subject: `New Summer Camp Application: ${childFirstName} ${childLastName}`,
-        html: `
-          <h2>New Summer Camp Application Received</h2>
-          <p><strong>Student Name:</strong> ${childFirstName} ${childLastName}</p>
-          <p><strong>Age:</strong> ${age}</p>
-          <p><strong>Gender:</strong> ${gender}</p>
-          <p><strong>Experience Level:</strong> ${experience}</p>
-          <hr />
-          <h3>Parent/Guardian Information</h3>
-          <p><strong>Name:</strong> ${parentName}</p>
-          <p><strong>Phone:</strong> ${phone}</p>
-          <p><strong>Email:</strong> ${email}</p>
-        `,
+        subject: `New Summer Camp Application: ${studentName}`,
+        html: htmlContent,
       };
 
       await transporter.sendMail(mailOptions);

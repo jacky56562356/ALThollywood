@@ -1,29 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { Camera, Star, Calendar, Clock, Users, Award, Play, ChevronRight, Quote, AlertCircle, Film, Clapperboard, Video, MapPin, Phone, Mail } from 'lucide-react';
+import { Camera, Star, Calendar, Clock, Users, Award, Play, ChevronRight, Quote, AlertCircle, Film, Clapperboard, Video, MapPin, Phone, Mail, CheckCircle2 } from 'lucide-react';
 
 export default function SummerCamp() {
-  const [formData, setFormData] = useState({
-    childName: '',
-    age: '',
-    parentName: '',
-    phone: '',
-    email: ''
-  });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
     const form = e.target as HTMLFormElement;
-    const formDataObj = Object.fromEntries(new FormData(form).entries());
+    const formData = new FormData(form);
+    
+    // Handle checkboxes correctly
+    const data: Record<string, any> = {};
+    const sources: string[] = [];
+    
+    formData.forEach((value, key) => {
+      if (key === 'source') {
+        sources.push(value.toString());
+      } else {
+        data[key] = value;
+      }
+    });
+    
+    if (sources.length > 0) {
+      data['howDidYouHearAboutUs'] = sources.join(', ');
+    }
 
     try {
       const response = await fetch("/api/submit-application", {
@@ -31,411 +38,511 @@ export default function SummerCamp() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formDataObj),
+        body: JSON.stringify(data),
       });
       
       if (response.ok) {
         setIsSubmitted(true);
+        setTimeout(() => {
+          document.getElementById('successMsg')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
       } else {
         alert("Something went wrong. Please try again.");
       }
     } catch (error) {
       console.error(error);
       alert("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
-  const goldText = "bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-transparent bg-clip-text";
-  const goldBg = "bg-gradient-to-r from-[#BF953F] to-[#B38728] text-black";
-  const goldBorder = "border-[#BF953F]/50";
+  const goldText = "bg-gradient-to-r from-[#F0C45A] via-[#C9A84C] to-[#8B6914] text-transparent bg-clip-text";
+  const goldBg = "bg-gradient-to-r from-[#C9A84C] to-[#8B6914] text-black";
+  const goldBorder = "border-[#C9A84C]/30";
 
   return (
-    <div className="min-h-screen bg-black text-white font-sans selection:bg-[#BF953F] selection:text-black">
+    <div className="min-h-screen bg-[#0A0A0A] text-[#F5F0E8] font-sans selection:bg-[#C9A84C] selection:text-black relative">
       
-      {/* HERO SECTION */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        {/* Cinematic Background */}
-        <div className="absolute inset-0 z-0">
-          <img referrerPolicy="no-referrer" 
-            src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=2500&auto=format&fit=crop" 
-            alt="Cinematic Film Set" 
-            className="w-full h-full object-cover opacity-40"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,black_100%)]"></div>
+      {/* Film Grain Overlay */}
+      <div className="pointer-events-none fixed inset-0 z-50 opacity-30 mix-blend-overlay" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E\")" }}></div>
+
+      {/* Filmstrip Top Decoration */}
+      <div className="w-full h-9 bg-[#1A1A1A] flex items-center overflow-hidden border-b border-[#8B6914] relative mt-16">
+        <div className="absolute whitespace-nowrap text-[#8B6914] text-lg tracking-[4px] animate-[filmroll_12s_linear_infinite]">
+          ▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯▮▯
         </div>
+      </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#BF953F]/30 bg-black/50 backdrop-blur-sm mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-            <Star className="w-4 h-4 text-[#BF953F]" />
-            <span className={`text-xs font-bold tracking-[0.3em] uppercase ${goldText}`}>ALT Hollywood Dream Star</span>
-          </div>
-          
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-black mb-6 tracking-tight leading-tight animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-150">
-            2026 Hollywood <br/>
-            <span className={goldText}>Film Summer Camp</span>
-          </h1>
-          
-          <p className="text-xl md:text-3xl text-gray-300 font-light mb-12 max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-            Real Film Production Experience for Kids. <br className="hidden md:block"/> Don't just watch movies. Make them.
-          </p>
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes filmroll {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+      `}} />
 
-          <div className="flex flex-col sm:flex-row gap-6 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-500">
-            <button 
-              onClick={() => document.getElementById('apply')?.scrollIntoView({ behavior: 'smooth' })}
-              className={`${goldBg} px-10 py-5 rounded-sm font-black uppercase tracking-widest text-sm hover:scale-105 transition-all shadow-[0_0_40px_rgba(191,149,63,0.3)] flex items-center justify-center gap-2`}
-            >
-              Apply Now <ChevronRight size={18} />
-            </button>
-            <button 
-              onClick={() => document.getElementById('program')?.scrollIntoView({ behavior: 'smooth' })}
-              className={`px-10 py-5 rounded-sm font-bold uppercase tracking-widest text-sm border border-[#BF953F] text-[#FCF6BA] hover:bg-[#BF953F]/10 transition-all flex items-center justify-center gap-2 backdrop-blur-sm`}
-            >
-              View Program
-            </button>
-          </div>
+      {/* Hero Section */}
+      <section className="text-center pt-12 pb-9 px-6 bg-gradient-to-b from-[#1a1000] to-[#0A0A0A] relative overflow-hidden">
+        <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.15)_0%,transparent_70%)] pointer-events-none"></div>
+        
+        <div className="font-['Bebas_Neue'] text-[clamp(14px,3vw,18px)] tracking-[6px] text-[#C9A84C] mb-3 opacity-85">
+          ALT · HOLLYWOOD DREAM STAR · 好莱坞童星机构
+        </div>
+        <h1 className={`font-serif text-[clamp(28px,6vw,54px)] font-black leading-[1.15] mb-2.5 ${goldText}`}>
+          2026 好莱坞电影拍摄夏令营
+        </h1>
+        <div className="text-[clamp(13px,2.5vw,17px)] text-[#F0C45A] tracking-[1px] mb-1.5 font-light">
+          由好莱坞电影节获奖团队倾力打造 · THE GRDEN
+        </div>
+        <div className="text-[clamp(11px,2vw,14px)] text-[#888] tracking-[2px] uppercase mt-2">
+          绝非普通夏令营 ｜ 真正的、全程记录的电影拍摄体验
         </div>
       </section>
 
-      {/* URGENCY & TRUST BAR */}
-      <section className="border-y border-[#BF953F]/20 bg-black/80 backdrop-blur-md sticky top-16 md:top-20 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex flex-wrap justify-center md:justify-between items-center gap-6 text-sm font-medium">
-            <div className="flex items-center gap-2 text-red-400 animate-pulse">
-              <AlertCircle size={16} />
-              <span className="uppercase tracking-wider font-bold">Strictly Limited to 15 Spots Per Session</span>
+      {/* Divider */}
+      <div className="flex items-center gap-4 mx-auto mb-8 max-w-[600px] px-6">
+        <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent"></div>
+        <span className="text-[#C9A84C] text-lg">🎬</span>
+        <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent"></div>
+      </div>
+
+      {/* Session Dates */}
+      <div className="flex justify-center gap-4 px-4 mb-10 flex-wrap">
+        <div className="border border-[#C9A84C] py-2.5 px-6 rounded-sm text-center bg-[#c9a84c0f] hover:bg-[#c9a84c24] transition-colors">
+          <div className="font-['Bebas_Neue'] text-[13px] tracking-[3px] text-[#C9A84C] mb-1">第 一 期</div>
+          <div className="text-[15px] font-bold text-white">6月15日 – 6月27日</div>
+          <div className="text-[11px] text-[#888] mt-1">每日 10:00 AM – 4:00 PM</div>
+        </div>
+        <div className="border border-[#C9A84C] py-2.5 px-6 rounded-sm text-center bg-[#c9a84c0f] hover:bg-[#c9a84c24] transition-colors">
+          <div className="font-['Bebas_Neue'] text-[13px] tracking-[3px] text-[#C9A84C] mb-1">第 二 期</div>
+          <div className="text-[15px] font-bold text-white">7月20日 – 8月1日</div>
+          <div className="text-[11px] text-[#888] mt-1">每日 10:00 AM – 4:00 PM</div>
+        </div>
+      </div>
+
+      {/* Main Container */}
+      <div className="max-w-[860px] mx-auto px-5 pb-16">
+
+        {/* Program Highlights */}
+        <div className="flex items-center gap-3 font-['Bebas_Neue'] text-[22px] tracking-[4px] text-[#C9A84C] mb-5 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-[#8B6914] after:to-transparent">
+          🌟 项目亮点
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+          {[
+            { icon: "🎭", title: "主演机会", desc: "获奖导演亲临指导，打造专业个人作品集演示盘" },
+            { icon: "🎥", title: "大师导师", desc: "好莱坞专业电影摄制组全程拍摄，大师全程导师辅导" },
+            { icon: "🏆", title: "电影节直通", desc: "作品入选国际青少年电影节，走上好莱坞红毯" },
+            { icon: "⭐", title: "IMDb 认证", desc: "为每位学员创建官方 IMDb 个人主页，留下永久印记" }
+          ].map((item, idx) => (
+            <div key={idx} className="bg-[#1A1A1A] border border-[#c9a84c33] p-5 rounded border-l-[3px] border-l-[#C9A84C]">
+              <div className="text-[22px] mb-2">{item.icon}</div>
+              <div className="text-[12px] tracking-[2px] text-[#C9A84C] uppercase mb-1.5">{item.title}</div>
+              <div className="text-[14px] text-white leading-[1.6]">{item.desc}</div>
             </div>
-            <div className="hidden md:flex items-center gap-8 text-gray-400">
-              <span className="flex items-center gap-2"><Users size={16} className="text-[#BF953F]"/> Ages 6-17</span>
-              <span className="flex items-center gap-2"><Calendar size={16} className="text-[#BF953F]"/> June & July Sessions</span>
-              <span className="flex items-center gap-2"><MapPin size={16} className="text-[#BF953F]"/> Los Angeles, CA</span>
-            </div>
-          </div>
+          ))}
         </div>
-      </section>
 
-      {/* EMOTIONAL HEADLINE */}
-      <section className="py-24 bg-black relative">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-serif font-light leading-relaxed text-gray-200">
-            "Give your child the gift of a <strong className={goldText}>real Hollywood production</strong>. They will build confidence, learn teamwork, and star in their own cinematic masterpiece."
-          </h2>
+        {/* REGISTRATION FORM */}
+        <div className="flex items-center gap-3 font-['Bebas_Neue'] text-[22px] tracking-[4px] text-[#C9A84C] mb-5 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-[#8B6914] after:to-transparent">
+          📋 报名表
         </div>
-      </section>
 
-      {/* WHY CHOOSE US */}
-      <section id="program" className="py-24 bg-zinc-950 relative border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h3 className={`text-sm font-bold tracking-[0.3em] uppercase mb-4 ${goldText}`}>The Experience</h3>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white">Why Choose Our Camp?</h2>
+        {isSubmitted ? (
+          <div id="successMsg" className="bg-[#27ae601f] border border-[#27ae6066] rounded p-8 text-center text-[#7ee8a2] text-[15px] mt-4 animate-in fade-in zoom-in duration-500">
+            <CheckCircle2 className="w-12 h-12 mx-auto mb-4 text-[#27ae60]" />
+            <h3 className="text-xl font-bold text-white mb-2">🌟 报名表已成功提交！</h3>
+            <p className="mb-4">我们的工作人员将在 2 个工作日内与您联系确认报名信息。</p>
+            <p className="text-sm text-white/70">如有疑问请致电：626-382-8849 ｜ 323-918-6688</p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { icon: <Video size={32}/>, title: "Real Film Production", desc: "Not a traditional classroom. Students learn on a professional, active film set." },
-              { icon: <Users size={32}/>, title: "Hollywood Crew", desc: "Mentored by active industry professionals, directors, and cinematographers." },
-              { icon: <Award size={32}/>, title: "Festival Submission", desc: "Completed films are submitted to international youth film festivals." },
-              { icon: <Film size={32}/>, title: "Build Demo Reel", desc: "Every student leaves with high-quality footage for their professional acting portfolio." }
-            ].map((feature, idx) => (
-              <div key={idx} className={`p-8 bg-black border ${goldBorder} rounded-sm hover:-translate-y-2 transition-transform duration-300 group`}>
-                <div className="text-[#BF953F] mb-6 group-hover:scale-110 transition-transform">{feature.icon}</div>
-                <h4 className="text-xl font-bold text-white mb-3">{feature.title}</h4>
-                <p className="text-gray-400 text-sm leading-relaxed">{feature.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SPLIT SECTION: DETAILS & SCHEDULE */}
-      <section className="py-24 bg-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        ) : (
+          <form onSubmit={handleSubmit} className="space-y-7">
             
-            {/* Left: Image */}
-            <div className="relative aspect-[4/5] rounded-sm overflow-hidden border border-[#BF953F]/30 shadow-[0_0_50px_rgba(191,149,63,0.1)]">
-              <img referrerPolicy="no-referrer" 
-                src="https://i.ibb.co/v6722zd0/20250929162853-135-10.jpg" 
-                alt="Director on set" 
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-              <div className="absolute bottom-8 left-8 right-8">
-                <div className={`inline-block px-4 py-1 bg-black/80 backdrop-blur-md border ${goldBorder} text-[#FCF6BA] text-xs font-bold tracking-widest uppercase mb-3`}>
-                  Program Details
-                </div>
-                <ul className="space-y-3 text-lg font-serif text-white">
-                  <li className="flex items-center gap-3"><CheckCircle /> Acting Training & Character Study</li>
-                  <li className="flex items-center gap-3"><CheckCircle /> Directing Guidance & Set Etiquette</li>
-                  <li className="flex items-center gap-3"><CheckCircle /> Camera Performance Techniques</li>
-                  <li className="flex items-center gap-3"><CheckCircle /> Real Shooting & Production</li>
-                </ul>
+            {/* Part 1: Student Info */}
+            <div className="bg-[#1A1A1A] border border-[#c9a84c40] rounded-md p-6 sm:p-9">
+              <div className="text-[16px] font-bold text-[#C9A84C] mb-6 flex items-center gap-3 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-[#8B6914] after:to-transparent">
+                一、学员基本信息
               </div>
-            </div>
-
-            {/* Right: Schedule & Outcomes */}
-            <div className="space-y-12">
-              <div>
-                <h3 className={`text-sm font-bold tracking-[0.3em] uppercase mb-4 ${goldText}`}>Logistics</h3>
-                <h2 className="text-4xl font-serif font-bold text-white mb-8">Schedule & Outcomes</h2>
-                
-                <div className="space-y-6">
-                  <div className={`p-6 border ${goldBorder} bg-zinc-950/50 rounded-sm`}>
-                    <h4 className="text-[#FCF6BA] font-bold uppercase tracking-widest text-xs mb-4 flex items-center gap-2"><Calendar size={14}/> 2026 Sessions</h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="bg-black p-4 border border-white/5">
-                        <p className="font-bold text-white text-lg">Session 1</p>
-                        <p className="text-gray-400 text-sm">June 15 – June 27</p>
-                      </div>
-                      <div className="bg-black p-4 border border-white/5">
-                        <p className="font-bold text-white text-lg">Session 2</p>
-                        <p className="text-gray-400 text-sm">July 20 – August 1</p>
-                      </div>
-                    </div>
-                    <div className="mt-4 flex items-center gap-2 text-gray-300 text-sm">
-                      <Clock size={16} className="text-[#BF953F]" />
-                      <span>Daily Schedule: <strong>10:00 AM – 4:00 PM</strong></span>
-                    </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">学员姓名（中文）<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <input type="text" name="studentNameZh" required placeholder="请输入中文姓名" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">Student Name (English)<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <input type="text" name="studentNameEn" required placeholder="Full name as on ID" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">出生日期<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <input type="date" name="dob" required className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full [color-scheme:dark]" />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">年龄<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <input type="number" name="age" required min="6" max="17" placeholder="6–17 岁" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
+                </div>
+                <div className="flex flex-col gap-1.5 sm:col-span-2">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">性别<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <div className="flex gap-3 flex-wrap mt-0.5">
+                    <label className="flex items-center gap-2 cursor-pointer text-[14px] text-white bg-white/5 border border-[#c9a84c33] py-2 px-3.5 rounded-sm hover:border-[#C9A84C] hover:bg-[#c9a84c14] transition-all has-[:checked]:border-[#C9A84C] has-[:checked]:bg-[#c9a84c14]">
+                      <input type="radio" name="gender" value="男" required className="accent-[#C9A84C]" />男
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer text-[14px] text-white bg-white/5 border border-[#c9a84c33] py-2 px-3.5 rounded-sm hover:border-[#C9A84C] hover:bg-[#c9a84c14] transition-all has-[:checked]:border-[#C9A84C] has-[:checked]:bg-[#c9a84c14]">
+                      <input type="radio" name="gender" value="女" className="accent-[#C9A84C]" />女
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer text-[14px] text-white bg-white/5 border border-[#c9a84c33] py-2 px-3.5 rounded-sm hover:border-[#C9A84C] hover:bg-[#c9a84c14] transition-all has-[:checked]:border-[#C9A84C] has-[:checked]:bg-[#c9a84c14]">
+                      <input type="radio" name="gender" value="其他" className="accent-[#C9A84C]" />其他 / 不愿透露
+                    </label>
                   </div>
                 </div>
-              </div>
-
-              <div>
-                <h4 className="text-white font-serif text-2xl mb-6">Final Outcomes</h4>
-                <div className="grid grid-cols-2 gap-6">
-                  {[
-                    { title: "Short Film Production", icon: <Film size={20}/> },
-                    { title: "Professional Demo Reel", icon: <Play size={20}/> },
-                    { title: "Professional Photos", icon: <Camera size={20}/> },
-                    { title: "Certificate of Completion", icon: <Award size={20}/> }
-                  ].map((outcome, idx) => (
-                    <div key={idx} className="flex items-start gap-3">
-                      <div className="mt-1 text-[#BF953F]">{outcome.icon}</div>
-                      <span className="text-gray-300 font-medium">{outcome.title}</span>
-                    </div>
-                  ))}
+                <div className="flex flex-col gap-1.5 sm:col-span-2">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">选择期次<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <div className="flex gap-3 flex-wrap mt-0.5">
+                    <label className="flex items-center gap-2 cursor-pointer text-[14px] text-white bg-white/5 border border-[#c9a84c33] py-2 px-3.5 rounded-sm hover:border-[#C9A84C] hover:bg-[#c9a84c14] transition-all has-[:checked]:border-[#C9A84C] has-[:checked]:bg-[#c9a84c14]">
+                      <input type="radio" name="session" value="第一期" required className="accent-[#C9A84C]" />第一期（6/15–6/27）
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer text-[14px] text-white bg-white/5 border border-[#c9a84c33] py-2 px-3.5 rounded-sm hover:border-[#C9A84C] hover:bg-[#c9a84c14] transition-all has-[:checked]:border-[#C9A84C] has-[:checked]:bg-[#c9a84c14]">
+                      <input type="radio" name="session" value="第二期" className="accent-[#C9A84C]" />第二期（7/20–8/1）
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer text-[14px] text-white bg-white/5 border border-[#c9a84c33] py-2 px-3.5 rounded-sm hover:border-[#C9A84C] hover:bg-[#c9a84c14] transition-all has-[:checked]:border-[#C9A84C] has-[:checked]:bg-[#c9a84c14]">
+                      <input type="radio" name="session" value="两期均报名" className="accent-[#C9A84C]" />两期均报名
+                    </label>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">学校名称<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填）</span></label>
+                  <input type="text" name="school" placeholder="就读学校" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">年级</label>
+                  <input type="text" name="grade" placeholder="如：4年级 / Grade 4" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
                 </div>
               </div>
             </div>
 
-          </div>
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="py-24 bg-zinc-950 border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-serif font-bold text-white">What Parents Say</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { quote: "The transformation in my daughter's confidence is unbelievable. She didn't just learn acting; she learned how a real movie is made.", author: "Sarah J., Parent of 12yo" },
-              { quote: "This is far beyond a typical summer camp. The production quality of the final short film blew our entire family away.", author: "Michael T., Parent of 15yo" },
-              { quote: "Professional, organized, and truly inspiring. The Hollywood crew treated the kids like real actors. Highly recommended!", author: "Elena R., Parent of 9yo" }
-            ].map((test, idx) => (
-              <div key={idx} className="p-8 bg-black border border-white/10 relative">
-                <Quote className="absolute top-6 right-6 text-[#BF953F] opacity-20" size={40} />
-                <p className="text-gray-300 italic mb-6 relative z-10 leading-relaxed">"{test.quote}"</p>
-                <p className={`text-xs font-bold uppercase tracking-widest ${goldText}`}>{test.author}</p>
+            {/* Part 2: Parent/Guardian */}
+            <div className="bg-[#1A1A1A] border border-[#c9a84c40] rounded-md p-6 sm:p-9">
+              <div className="text-[16px] font-bold text-[#C9A84C] mb-6 flex items-center gap-3 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-[#8B6914] after:to-transparent">
+                二、家长 / 监护人信息
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* APPLICATION FORM & CONTACT */}
-      <section id="apply" className="py-24 bg-black relative overflow-hidden">
-        {/* Background Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#BF953F]/10 rounded-full blur-[120px] pointer-events-none"></div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            
-            {/* Left: Strong CTA & Contact */}
-            <div className="flex flex-col justify-center">
-              <h2 className="text-5xl md:text-6xl font-serif font-black text-white leading-tight mb-8">
-                This is not a camp. <br/>
-                <span className={goldText}>This is your child's first film.</span>
-              </h2>
-              <p className="text-xl text-gray-400 font-light mb-12">
-                Secure your spot today. Spaces are strictly limited to ensure every child receives personalized directing and screen time.
-              </p>
-
-              <div className="space-y-6">
-                <h4 className="text-white font-bold uppercase tracking-widest text-sm mb-4 border-b border-white/10 pb-2">Contact Us</h4>
-                <div className="flex items-center gap-4 text-gray-300">
-                  <div className="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center text-[#BF953F]"><Phone size={18}/></div>
-                  <div>
-                    <p>+1 (626) 382-8849</p>
-                    <p>+1 (323) 918-6688</p>
-                  </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">家长姓名（中文）<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <input type="text" name="parentNameZh" required placeholder="请输入姓名" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
                 </div>
-                <div className="flex items-center gap-4 text-gray-300">
-                  <div className="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center text-[#BF953F]"><Mail size={18}/></div>
-                  <p>altdreamstar@gmail.com</p>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">Parent Name (English)<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <input type="text" name="parentNameEn" required placeholder="Full name" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
                 </div>
-                <div className="flex items-center gap-4 text-gray-300">
-                  <div className="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center text-[#BF953F]"><MapPin size={18}/></div>
-                  <p>www.althollywood.com</p>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">与学员关系<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <select name="parentRelation" required className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full appearance-none">
+                    <option value="" className="bg-[#1a1a1a]">请选择</option>
+                    <option value="父亲" className="bg-[#1a1a1a]">父亲</option>
+                    <option value="母亲" className="bg-[#1a1a1a]">母亲</option>
+                    <option value="祖父母" className="bg-[#1a1a1a]">祖父母</option>
+                    <option value="法定监护人" className="bg-[#1a1a1a]">法定监护人</option>
+                    <option value="其他" className="bg-[#1a1a1a]">其他</option>
+                  </select>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">联系电话<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <input type="tel" name="parentPhone" required placeholder="手机号码" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">备用联系电话<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <input type="tel" name="parentAltPhone" required placeholder="紧急联系人电话" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">电子邮件<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <input type="email" name="parentEmail" required placeholder="example@email.com" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
+                </div>
+                <div className="flex flex-col gap-1.5 sm:col-span-2">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">家庭住址<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <input type="text" name="address" required placeholder="街道地址 / Street Address" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">城市 / City<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <input type="text" name="city" required placeholder="Los Angeles" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">邮政编码 / ZIP<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <input type="text" name="zip" required placeholder="90001" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
                 </div>
               </div>
             </div>
 
-            {/* Right: Form */}
-            <div className={`bg-zinc-950 p-8 md:p-12 border ${goldBorder} rounded-sm shadow-2xl`}>
-              <h3 className="text-2xl font-serif font-bold text-white mb-2">Apply for 2026 Summer Camp</h3>
-              <p className="text-gray-400 text-sm mb-8">Fill out the form below and our casting director will contact you within 24 hours.</p>
-
-              {isSubmitted ? (
-                <div className="bg-green-950/30 border border-green-500/50 p-8 text-center rounded-sm">
-                  <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-green-400">
-                    <CheckCircle size={32} />
-                  </div>
-                  <h4 className="text-xl font-bold text-white mb-2">Application Received</h4>
-                  <p className="text-gray-300 text-sm">Thank you! We will be in touch shortly to confirm your child's spot.</p>
+            {/* Part 3: Emergency Contact */}
+            <div className="bg-[#1A1A1A] border border-[#c9a84c40] rounded-md p-6 sm:p-9">
+              <div className="text-[16px] font-bold text-[#C9A84C] mb-6 flex items-center gap-3 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-[#8B6914] after:to-transparent">
+                三、紧急联系人
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">紧急联系人姓名<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <input type="text" name="emergencyName" required placeholder="（须为家长以外的成年人）" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-2 gap-6">
-                    <div className="col-span-2 sm:col-span-1 group">
-                      <label className="block text-[10px] font-black text-brandCyan uppercase tracking-widest mb-2 transition-colors group-focus-within:text-white">Student First Name</label>
-                      <div className="relative">
-                        <input 
-                          type="text" 
-                          name="childFirstName"
-                          required
-                          className="w-full bg-black/50 border border-white/10 px-4 py-3.5 text-white focus:outline-none focus:border-brandCyan focus:bg-white/5 transition-all rounded-lg"
-                          placeholder="e.g. John"
-                        />
-                      </div>
-                    </div>
-                    <div className="col-span-2 sm:col-span-1 group">
-                      <label className="block text-[10px] font-black text-brandCyan uppercase tracking-widest mb-2 transition-colors group-focus-within:text-white">Student Last Name</label>
-                      <div className="relative">
-                        <input 
-                          type="text" 
-                          name="childLastName"
-                          required
-                          className="w-full bg-black/50 border border-white/10 px-4 py-3.5 text-white focus:outline-none focus:border-brandCyan focus:bg-white/5 transition-all rounded-lg"
-                          placeholder="e.g. Doe"
-                        />
-                      </div>
-                    </div>
-                  </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">与学员关系<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <input type="text" name="emergencyRelation" required placeholder="如：祖父、叔叔" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">联系电话<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <input type="tel" name="emergencyPhone" required placeholder="紧急联系电话" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">备用电话<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填）</span></label>
+                  <input type="tel" name="emergencyAltPhone" placeholder="" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
+                </div>
+                <div className="flex flex-col gap-1.5 sm:col-span-2">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">授权接送人员 <span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（除家长外，可接送孩子的人员姓名，每行一个）</span></label>
+                  <textarea name="authorizedPickup" placeholder="姓名 1&#10;姓名 2&#10;姓名 3" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
+                </div>
+              </div>
+            </div>
 
-                  <div className="grid grid-cols-2 gap-6">
-                    <div className="col-span-2 sm:col-span-1 group">
-                      <label className="block text-[10px] font-black text-brandCyan uppercase tracking-widest mb-2 transition-colors group-focus-within:text-white">Age (6-17)</label>
-                      <input 
-                        type="number" 
-                        name="age"
-                        required
-                        min="6" max="17"
-                        className="w-full bg-black/50 border border-white/10 px-4 py-3.5 text-white focus:outline-none focus:border-brandCyan focus:bg-white/5 transition-all rounded-lg"
-                        placeholder="e.g. 12"
-                      />
-                    </div>
-                    <div className="col-span-2 sm:col-span-1 group">
-                      <label className="block text-[10px] font-black text-brandCyan uppercase tracking-widest mb-2 transition-colors group-focus-within:text-white">Gender</label>
-                      <select 
-                        name="gender"
-                        required
-                        className="w-full bg-black/50 border border-white/10 px-4 py-3.5 text-white focus:outline-none focus:border-brandCyan focus:bg-white/5 transition-all rounded-lg appearance-none"
-                      >
-                        <option value="" disabled selected>Select Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                      </select>
-                    </div>
-                  </div>
+            {/* Part 4: Medical Info */}
+            <div className="bg-[#1A1A1A] border border-[#c9a84c40] rounded-md p-6 sm:p-9">
+              <div className="text-[16px] font-bold text-[#C9A84C] mb-6 flex items-center gap-3 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-[#8B6914] after:to-transparent">
+                四、健康与医疗信息
+              </div>
 
-                  <div className="border-t border-white/10 pt-6 mt-6">
-                    <label className="block text-[10px] font-black text-brandCyan uppercase tracking-widest mb-2 transition-colors group-focus-within:text-white">Parent/Guardian Name</label>
-                    <input 
-                      type="text" 
-                      name="parentName"
-                      required
-                      className="w-full bg-black/50 border border-white/10 px-4 py-3.5 text-white focus:outline-none focus:border-brandCyan focus:bg-white/5 transition-all rounded-lg"
-                      placeholder="Enter parent or guardian's full name"
-                    />
-                  </div>
+              <div className="bg-[#c0392b14] border border-[#c0392b59] rounded p-4 mb-5 flex gap-3 items-start text-[13px] text-[#e0a0a0] leading-[1.7]">
+                <span className="text-[18px] shrink-0">⚠️</span>
+                <span>以下信息将严格保密，仅用于紧急医疗处置及确保学员安全。请如实完整填写，以便工作人员在紧急情况下做出最佳判断。</span>
+              </div>
 
-                  <div className="grid grid-cols-2 gap-6">
-                    <div className="col-span-2 sm:col-span-1 group">
-                      <label className="block text-[10px] font-black text-brandCyan uppercase tracking-widest mb-2 transition-colors group-focus-within:text-white">Phone Number</label>
-                      <input 
-                        type="tel" 
-                        name="phone"
-                        required
-                        className="w-full bg-black/50 border border-white/10 px-4 py-3.5 text-white focus:outline-none focus:border-brandCyan focus:bg-white/5 transition-all rounded-lg"
-                        placeholder="(555) 000-0000"
-                      />
-                    </div>
-                    <div className="col-span-2 sm:col-span-1 group">
-                      <label className="block text-[10px] font-black text-brandCyan uppercase tracking-widest mb-2 transition-colors group-focus-within:text-white">Email Address</label>
-                      <input 
-                        type="email" 
-                        name="email"
-                        required
-                        className="w-full bg-black/50 border border-white/10 px-4 py-3.5 text-white focus:outline-none focus:border-brandCyan focus:bg-white/5 transition-all rounded-lg"
-                        placeholder="email@example.com"
-                      />
-                    </div>
-                  </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">主治医生 / 儿科医生姓名<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填）</span></label>
+                  <input type="text" name="doctorName" placeholder="Dr. 姓名" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">医生联系电话<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填）</span></label>
+                  <input type="tel" name="doctorPhone" placeholder="" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
+                </div>
+                <div className="flex flex-col gap-1.5 sm:col-span-2">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">医疗保险信息<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填）</span></label>
+                  <input type="text" name="insurance" placeholder="保险公司名称 · 保单号码" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
+                </div>
 
-                  <div className="border-t border-white/10 pt-6 mt-6">
-                    <label className="block text-[10px] font-black text-brandCyan uppercase tracking-widest mb-2 transition-colors group-focus-within:text-white">Acting Experience Level</label>
-                    <div className="grid grid-cols-3 gap-3">
-                      <label className="cursor-pointer">
-                        <input type="radio" name="experience" value="Beginner" className="peer sr-only" required />
-                        <div className="text-center px-3 py-3 border border-white/10 rounded-lg text-sm text-gray-400 peer-checked:border-brandCyan peer-checked:text-brandCyan peer-checked:bg-brandCyan/10 transition-all">
-                          Beginner
-                        </div>
+                {/* Allergies */}
+                <div className="flex flex-col gap-1.5 sm:col-span-2">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">过敏史<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <div className="flex gap-3 flex-wrap mb-2.5">
+                    <label className="flex items-center gap-2 cursor-pointer text-[14px] text-white bg-white/5 border border-[#c9a84c33] py-2 px-3.5 rounded-sm hover:border-[#C9A84C] hover:bg-[#c9a84c14] transition-all has-[:checked]:border-[#C9A84C] has-[:checked]:bg-[#c9a84c14]">
+                      <input type="radio" name="allergy" value="无" required className="accent-[#C9A84C]" />无已知过敏
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer text-[14px] text-white bg-white/5 border border-[#c9a84c33] py-2 px-3.5 rounded-sm hover:border-[#C9A84C] hover:bg-[#c9a84c14] transition-all has-[:checked]:border-[#C9A84C] has-[:checked]:bg-[#c9a84c14]">
+                      <input type="radio" name="allergy" value="有" className="accent-[#C9A84C]" />有过敏史（请详述↓）
+                    </label>
+                  </div>
+                  <textarea name="allergyDetails" placeholder="请注明过敏原（食物、药物、花粉、动物、乳胶等）及过敏反应症状和严重程度。如携带 EpiPen 请注明。" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
+                </div>
+
+                {/* Hereditary diseases */}
+                <div className="flex flex-col gap-1.5 sm:col-span-2">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">遗传性疾病 / 家族病史<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <div className="flex gap-3 flex-wrap mb-2.5">
+                    <label className="flex items-center gap-2 cursor-pointer text-[14px] text-white bg-white/5 border border-[#c9a84c33] py-2 px-3.5 rounded-sm hover:border-[#C9A84C] hover:bg-[#c9a84c14] transition-all has-[:checked]:border-[#C9A84C] has-[:checked]:bg-[#c9a84c14]">
+                      <input type="radio" name="hereditary" value="无" required className="accent-[#C9A84C]" />无
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer text-[14px] text-white bg-white/5 border border-[#c9a84c33] py-2 px-3.5 rounded-sm hover:border-[#C9A84C] hover:bg-[#c9a84c14] transition-all has-[:checked]:border-[#C9A84C] has-[:checked]:bg-[#c9a84c14]">
+                      <input type="radio" name="hereditary" value="有" className="accent-[#C9A84C]" />有（请详述↓）
+                    </label>
+                  </div>
+                  <textarea name="hereditaryDetails" placeholder="请注明相关遗传性疾病或家族病史，包括心脏病、癫痫、哮喘、糖尿病等。" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
+                </div>
+
+                {/* Current medications */}
+                <div className="flex flex-col gap-1.5 sm:col-span-2">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">目前用药情况<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <div className="flex gap-3 flex-wrap mb-2.5">
+                    <label className="flex items-center gap-2 cursor-pointer text-[14px] text-white bg-white/5 border border-[#c9a84c33] py-2 px-3.5 rounded-sm hover:border-[#C9A84C] hover:bg-[#c9a84c14] transition-all has-[:checked]:border-[#C9A84C] has-[:checked]:bg-[#c9a84c14]">
+                      <input type="radio" name="meds" value="无" required className="accent-[#C9A84C]" />目前未服用任何药物
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer text-[14px] text-white bg-white/5 border border-[#c9a84c33] py-2 px-3.5 rounded-sm hover:border-[#C9A84C] hover:bg-[#c9a84c14] transition-all has-[:checked]:border-[#C9A84C] has-[:checked]:bg-[#c9a84c14]">
+                      <input type="radio" name="meds" value="有" className="accent-[#C9A84C]" />正在服药（请详述↓）
+                    </label>
+                  </div>
+                  <textarea name="medsDetails" placeholder="请注明药物名称、剂量、服用频率及用途。如需在营期间服药，请标注是否需要工作人员协助。" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
+                  <div className="text-[11px] text-[#888] mt-[-2px] leading-[1.5]">* 需在夏令营期间服用的处方药，请另行提交医生授权书</div>
+                </div>
+
+                {/* Existing conditions */}
+                <div className="flex flex-col gap-1.5 sm:col-span-2">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">现有医疗状况 / 慢性病<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <div className="flex gap-3 flex-wrap mb-2.5">
+                    <label className="flex items-center gap-2 cursor-pointer text-[14px] text-white bg-white/5 border border-[#c9a84c33] py-2 px-3.5 rounded-sm hover:border-[#C9A84C] hover:bg-[#c9a84c14] transition-all has-[:checked]:border-[#C9A84C] has-[:checked]:bg-[#c9a84c14]">
+                      <input type="radio" name="conditions" value="无" required className="accent-[#C9A84C]" />无
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer text-[14px] text-white bg-white/5 border border-[#c9a84c33] py-2 px-3.5 rounded-sm hover:border-[#C9A84C] hover:bg-[#c9a84c14] transition-all has-[:checked]:border-[#C9A84C] has-[:checked]:bg-[#c9a84c14]">
+                      <input type="radio" name="conditions" value="有" className="accent-[#C9A84C]" />有（请详述↓）
+                    </label>
+                  </div>
+                  <textarea name="conditionsDetails" placeholder="包括但不限于：哮喘、糖尿病、心脏病、癫痫、ADHD、自闭症谱系、焦虑症、抑郁症等。" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
+                </div>
+
+                {/* Recent illness/surgery */}
+                <div className="flex flex-col gap-1.5 sm:col-span-2">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">近期疾病 / 手术史<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填）</span></label>
+                  <textarea name="recentIllness" placeholder="过去12个月内是否有住院、手术或重大疾病？请注明。" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
+                </div>
+
+                {/* Dietary restrictions */}
+                <div className="flex flex-col gap-1.5 sm:col-span-2">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">饮食限制 / 宗教禁忌<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填）</span></label>
+                  <textarea name="dietary" placeholder="如：素食、清真、犹太洁食、无麸质、坚果过敏等" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
+                </div>
+
+                {/* Physical limitations */}
+                <div className="flex flex-col gap-1.5 sm:col-span-2">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">活动限制 / 行动能力<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填）</span></label>
+                  <textarea name="physicalLimits" placeholder="学员是否有任何身体上的活动限制？如需特殊协助或无障碍设施，请注明。" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
+                </div>
+
+                {/* Additional notes */}
+                <div className="flex flex-col gap-1.5 sm:col-span-2">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">其他医疗备注<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填）</span></label>
+                  <textarea name="medicalNotes" placeholder="任何其他我们应了解的健康信息，包括心理健康需求、特殊教育需求等。" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
+                </div>
+              </div>
+            </div>
+
+            {/* Part 5: Program specific */}
+            <div className="bg-[#1A1A1A] border border-[#c9a84c40] rounded-md p-6 sm:p-9">
+              <div className="text-[16px] font-bold text-[#C9A84C] mb-6 flex items-center gap-3 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-[#8B6914] after:to-transparent">
+                五、项目相关信息
+              </div>
+              <div className="grid grid-cols-1 gap-5">
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">表演 / 影视经验<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填）</span></label>
+                  <textarea name="experience" placeholder="请简述学员的表演、模特、配音或其他影视相关经历（如无经验也可报名）" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">特长技能<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填）</span></label>
+                  <textarea name="skills" placeholder="如：舞蹈、武术、乐器、外语、体育特长等" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">报名动机 / 期望收获<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填）</span></label>
+                  <textarea name="motivation" placeholder="您希望孩子通过本次夏令营获得什么？" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">您如何得知本夏令营？</label>
+                  <div className="flex gap-3 flex-wrap mt-0.5">
+                    {['微信朋友圈', 'Instagram', '朋友推荐', '微信群', 'Google 搜索', '其他'].map((source) => (
+                      <label key={source} className="flex items-center gap-2 cursor-pointer text-[14px] text-white bg-white/5 border border-[#c9a84c33] py-2 px-3.5 rounded-sm hover:border-[#C9A84C] hover:bg-[#c9a84c14] transition-all has-[:checked]:border-[#C9A84C] has-[:checked]:bg-[#c9a84c14]">
+                        <input type="checkbox" name="source" value={source} className="accent-[#C9A84C]" />{source}
                       </label>
-                      <label className="cursor-pointer">
-                        <input type="radio" name="experience" value="Intermediate" className="peer sr-only" />
-                        <div className="text-center px-3 py-3 border border-white/10 rounded-lg text-sm text-gray-400 peer-checked:border-brandCyan peer-checked:text-brandCyan peer-checked:bg-brandCyan/10 transition-all">
-                          Intermediate
-                        </div>
-                      </label>
-                      <label className="cursor-pointer">
-                        <input type="radio" name="experience" value="Advanced" className="peer sr-only" />
-                        <div className="text-center px-3 py-3 border border-white/10 rounded-lg text-sm text-gray-400 peer-checked:border-brandCyan peer-checked:text-brandCyan peer-checked:bg-brandCyan/10 transition-all">
-                          Advanced
-                        </div>
-                      </label>
-                    </div>
+                    ))}
                   </div>
-
-                  <button 
-                    type="submit"
-                    className="w-full bg-brandCyan text-black py-4 rounded-lg font-black uppercase tracking-[0.2em] text-sm hover:bg-white transition-colors shadow-[0_0_30px_rgba(0,255,255,0.2)] mt-8 flex items-center justify-center gap-2"
-                  >
-                    Submit Application <ChevronRight size={18} />
-                  </button>
-                  <p className="text-center text-[10px] text-gray-500 mt-4 uppercase tracking-widest">
-                    Secure Submission • No Payment Required Yet
-                  </p>
-                </form>
-              )}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
 
-// Helper component for the checkmarks
-function CheckCircle() {
-  return (
-    <div className="w-6 h-6 rounded-full bg-[#BF953F]/20 flex items-center justify-center text-[#BF953F] shrink-0">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="20 6 9 17 4 12"></polyline>
-      </svg>
+            {/* Part 6: Consents & Releases */}
+            <div className="flex items-center gap-3 font-['Bebas_Neue'] text-[22px] tracking-[4px] text-[#C9A84C] mb-5 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-[#8B6914] after:to-transparent mt-10">
+              ⚖️ 声明与授权
+            </div>
+
+            <div className="bg-[#c9a84c0a] border border-[#c9a84c40] rounded p-5 mb-4">
+              <div className="text-[12px] tracking-[2px] text-[#C9A84C] uppercase mb-2.5 font-bold">📸 媒体使用授权</div>
+              <div className="text-[12px] text-[#aaa] leading-[1.8] mb-3.5">
+                本夏令营活动期间将进行专业拍摄，包括照片、视频及影片制作。所产生的影像素材可能用于宣传推广、社交媒体、教育展示及相关电影节放映等目的。ALT Hollywood Dream Star / THE GRDEN 将妥善保管所有素材，不会将其出售给第三方商业机构。
+              </div>
+              <label className="flex items-start gap-2.5 text-[13px] text-white cursor-pointer">
+                <input type="checkbox" name="consentMedia" required className="accent-[#C9A84C] mt-1 shrink-0" />
+                <span>本人同意 ALT Hollywood Dream Star / THE GRDEN 使用学员在夏令营期间的照片、视频及影片素材，用于宣传推广及教育相关目的。<span className="text-[#e74c3c]">*</span></span>
+              </label>
+            </div>
+
+            <div className="bg-[#c9a84c0a] border border-[#c9a84c40] rounded p-5 mb-4">
+              <div className="text-[12px] tracking-[2px] text-[#C9A84C] uppercase mb-2.5 font-bold">🏥 医疗授权声明</div>
+              <div className="text-[12px] text-[#aaa] leading-[1.8] mb-3.5">
+                紧急情况下，若本人（家长/监护人）无法及时联系，本人授权 ALT Hollywood Dream Star / THE GRDEN 工作人员代为联系医疗机构并同意必要的紧急医疗处置。本人承诺上述填写的所有医疗信息真实准确，若有变化将及时更新通知。
+              </div>
+              <label className="flex items-start gap-2.5 text-[13px] text-white cursor-pointer">
+                <input type="checkbox" name="consentMedical" required className="accent-[#C9A84C] mt-1 shrink-0" />
+                <span>本人授权夏令营工作人员在紧急情况下为学员寻求必要的医疗救助，且确认本表单内医疗信息真实完整。<span className="text-[#e74c3c]">*</span></span>
+              </label>
+            </div>
+
+            <div className="bg-[#c9a84c0a] border border-[#c9a84c40] rounded p-5 mb-4">
+              <div className="text-[12px] tracking-[2px] text-[#C9A84C] uppercase mb-2.5 font-bold">⚠️ 责任豁免与安全声明</div>
+              <div className="text-[12px] text-[#aaa] leading-[1.8] mb-3.5">
+                本夏令营活动时间为每日 <strong className="text-[#C9A84C] font-normal">上午10:00至下午4:00</strong>，活动期间学员须遵守全部安全规程及行为准则。参与者及家长/监护人了解并接受，参与影视拍摄活动存在一定风险，包括但不限于户内外拍摄环境、专业器材操作等。ALT Hollywood Dream Star 将采取一切合理措施确保学员安全，但对于学员故意违规或隐瞒重要健康信息所导致的意外情况，本机构不承担相关责任。本人已阅读并理解夏令营行为准则，并同意确保学员遵守。
+              </div>
+              <label className="flex items-start gap-2.5 text-[13px] text-white cursor-pointer mb-3">
+                <input type="checkbox" name="consentLiability" required className="accent-[#C9A84C] mt-1 shrink-0" />
+                <span>本人已充分阅读并理解上述责任豁免声明，自愿参加本夏令营活动，同意遵守所有规程及行为准则。<span className="text-[#e74c3c]">*</span></span>
+              </label>
+              <label className="flex items-start gap-2.5 text-[13px] text-white cursor-pointer">
+                <input type="checkbox" name="consentTruth" required className="accent-[#C9A84C] mt-1 shrink-0" />
+                <span>本人确认，本表单中填写的所有信息（包括健康、医疗及联系信息）真实、准确、完整，如有变更将及时通知主办方。<span className="text-[#e74c3c]">*</span></span>
+              </label>
+            </div>
+
+            <div className="bg-[#c9a84c0a] border border-[#c9a84c40] rounded p-5 mb-4">
+              <div className="text-[12px] tracking-[2px] text-[#C9A84C] uppercase mb-2.5 font-bold">🔒 隐私保护声明</div>
+              <div className="text-[12px] text-[#aaa] leading-[1.8] mb-3.5">
+                您所填写的所有个人及医疗信息将严格保密，仅供 ALT Hollywood Dream Star / THE GRDEN 工作人员在营期安全管理及紧急情况处理中使用，不会向第三方披露，除非法律要求或紧急医疗情况所需。
+              </div>
+              <label className="flex items-start gap-2.5 text-[13px] text-white cursor-pointer">
+                <input type="checkbox" name="consentPrivacy" required className="accent-[#C9A84C] mt-1 shrink-0" />
+                <span>本人已阅读隐私保护声明，同意按上述方式使用学员个人及医疗信息。<span className="text-[#e74c3c]">*</span></span>
+              </label>
+            </div>
+
+            {/* Signature */}
+            <div className="bg-[#1A1A1A] border border-[#c9a84c40] rounded-md p-6 sm:p-9 mt-6">
+              <div className="text-[16px] font-bold text-[#C9A84C] mb-5 flex items-center gap-3 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-[#8B6914] after:to-transparent">
+                六、家长 / 监护人签名确认
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">签名（打印全名）<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <input type="text" name="signatureName" required placeholder="请输入您的全名作为电子签名" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">日期<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <input type="date" name="signatureDate" required className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full [color-scheme:dark]" />
+                </div>
+                <div className="flex flex-col gap-1.5 sm:col-span-2">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">与学员关系<span className="text-[#e74c3c] ml-1">*</span></label>
+                  <input type="text" name="signatureRelation" required placeholder="如：母亲 / 父亲 / 法定监护人" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
+                </div>
+              </div>
+            </div>
+
+            {/* Submit Button */}
+            <button 
+              type="submit" 
+              disabled={isSubmitting}
+              className="w-full p-4.5 bg-gradient-to-br from-[#8B6914] via-[#C9A84C] to-[#F0C45A] border-none rounded-sm font-['Bebas_Neue'] text-[22px] tracking-[5px] text-black cursor-pointer transition-all mt-2 relative overflow-hidden hover:-translate-y-px hover:shadow-[0_8px_32px_rgba(201,168,76,0.3)] active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed group"
+            >
+              <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
+              {isSubmitting ? "正在提交..." : "🎬 提交报名表"}
+            </button>
+
+          </form>
+        )}
+
+      </div>
+
+      {/* Contact Footer */}
+      <div className="text-center py-8 px-5 bg-[#1A1A1A] border-t border-[#c9a84c33] mt-10">
+        <div className="font-['Bebas_Neue'] text-[clamp(20px,4vw,28px)] tracking-[3px] text-[#C9A84C] mb-2">
+          626-382-8849 ｜ 323-918-6688
+        </div>
+        <div className="text-[13px] text-[#888]">
+          <a href="http://www.althollywood.com" className="text-[#C9A84C] no-underline hover:underline">www.althollywood.com</a>
+          &nbsp;·&nbsp;
+          <a href="mailto:altdreamstar@gmail.com" className="text-[#C9A84C] no-underline hover:underline">altdreamstar@gmail.com</a>
+        </div>
+        <div className="text-[11px] text-[#444] mt-4 leading-relaxed">
+          © 2026 ALT Hollywood Dream Star · THE GRDEN · 好莱坞童星机构<br/>
+          年龄要求：6–17 岁 · 夏令营时间：每日 10:00 AM – 4:00 PM
+        </div>
+      </div>
+
     </div>
   );
 }
