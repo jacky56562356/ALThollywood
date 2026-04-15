@@ -488,6 +488,14 @@ export default function SummerCamp() {
               </div>
               <div className="grid grid-cols-1 gap-5">
                 <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">上传个人简历<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填，支持 PDF/Word 等格式）</span></label>
+                  <input type="file" name="resume" accept=".pdf,.doc,.docx" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-[#C9A84C] file:text-black hover:file:bg-[#F0C45A] cursor-pointer" />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">上传大头照 / 形象照<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填，支持 JPG/PNG 等格式）</span></label>
+                  <input type="file" name="headshot" accept="image/*" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-[#C9A84C] file:text-black hover:file:bg-[#F0C45A] cursor-pointer" />
+                </div>
+                <div className="flex flex-col gap-1.5">
                   <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">表演 / 影视经验<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填）</span></label>
                   <textarea name="experience" placeholder="请简述学员的表演、模特、配音或其他影视相关经历（如无经验也可报名）" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
                 </div>
