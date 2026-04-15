@@ -28,7 +28,7 @@ export default function About() {
           <div className="relative flex justify-center lg:justify-end">
              <div className="relative rounded-2xl overflow-hidden border border-white/10 group aspect-[3/4] shadow-xl shadow-brandCyan/10 w-full max-w-[300px] md:max-w-[400px]">
                 <img referrerPolicy="no-referrer" 
-                  src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=800" 
+                  src="https://i.ibb.co/ycRFxBZ4/Chat-GPT-Image-2026-3-23-12-23-04.png" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   alt="Young performers on set"
                   loading="lazy"
@@ -38,6 +38,19 @@ export default function About() {
              {/* Decorative backing element */}
              <div className="absolute top-2 -right-2 w-full max-w-[300px] md:max-w-[400px] h-full border border-white/5 rounded-2xl -z-10 hidden md:block"></div>
           </div>
+        </div>
+
+        {/* NEW IMAGE GALLERY */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 mb-16">
+           <div className="aspect-video md:aspect-square rounded-2xl overflow-hidden border border-white/10">
+              <img referrerPolicy="no-referrer" src="https://i.ibb.co/8DDg94mN/professional-camera-man-at-work-2022-02-09-18-59-44-utc.jpg" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Professional Camera Man" loading="lazy" />
+           </div>
+           <div className="aspect-video md:aspect-square rounded-2xl overflow-hidden border border-white/10">
+              <img referrerPolicy="no-referrer" src="https://i.ibb.co/gZhJvX2t/blog-1.jpg" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Blog 1" loading="lazy" />
+           </div>
+           <div className="aspect-video md:aspect-square rounded-2xl overflow-hidden border border-white/10">
+              <img referrerPolicy="no-referrer" src="https://i.ibb.co/tM4zj1Zt/blog-3.jpg" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Blog 3" loading="lazy" />
+           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
@@ -240,8 +253,8 @@ export default function About() {
               </div>
            </div>
            <div className="grid grid-cols-2 gap-4">
-              <img referrerPolicy="no-referrer" src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&q=80&w=800" className="rounded-xl border border-white/10 h-32 w-full object-cover" alt="On set production" loading="lazy" />
-              <img referrerPolicy="no-referrer" src="https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?auto=format&fit=crop&q=80&w=800" className="rounded-xl border border-white/10 mt-6 h-32 w-full object-cover" alt="Film set" loading="lazy" />
+              <img referrerPolicy="no-referrer" src="https://i.ibb.co/gZhJvX2t/blog-1.jpg" className="rounded-xl border border-white/10 h-32 w-full object-cover" alt="On set production" loading="lazy" />
+              <img referrerPolicy="no-referrer" src="https://i.ibb.co/tM4zj1Zt/blog-3.jpg" className="rounded-xl border border-white/10 mt-6 h-32 w-full object-cover" alt="Film set" loading="lazy" />
            </div>
         </div>
       </div>

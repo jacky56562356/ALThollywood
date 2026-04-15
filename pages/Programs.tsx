@@ -160,25 +160,52 @@ export default function Programs() {
                <div className="relative">
                   <div className="absolute -inset-4 bg-amber-500/10 blur-3xl rounded-full opacity-20"></div>
                   <div className="grid grid-cols-2 gap-3 relative">
-                     <img referrerPolicy="no-referrer" src={MENTORSHIP_IMAGES[0]} className="w-full h-40 object-cover rounded-xl border border-white/10 shadow-2xl hover:scale-105 transition-transform duration-700" alt="Director mentoring student" loading="lazy" />
-                     <img referrerPolicy="no-referrer" src={MENTORSHIP_IMAGES[2]} className="w-full h-40 object-cover rounded-xl border border-white/10 shadow-2xl translate-y-4 hover:scale-105 transition-transform duration-700" alt="Camera crew" loading="lazy" />
+                     <img referrerPolicy="no-referrer" src="https://i.ibb.co/Mxz5tV1h/20260122155855-1671-151.jpg" className="w-full h-40 object-cover rounded-xl border border-white/10 shadow-2xl hover:scale-105 transition-transform duration-700" alt="Director mentoring student" loading="lazy" />
+                     <img referrerPolicy="no-referrer" src="https://i.ibb.co/Z1kzfsbV/20260122155720-1660-151.jpg" className="w-full h-40 object-cover rounded-xl border border-white/10 shadow-2xl translate-y-4 hover:scale-105 transition-transform duration-700" alt="Camera crew" loading="lazy" />
                   </div>
                </div>
             </div>
 
-            {/* BTS Gallery Grid */}
-            <div className="space-y-4">
-               <h3 className="text-center text-amber-200/50 text-[10px] font-black uppercase tracking-[0.4em] mb-2">Behind The Scenes</h3>
-               <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
+            {/* Hollywood Veteran Training Gallery */}
+            <div className="space-y-4 mb-12">
+               <h3 className="text-center text-brandCyan/80 text-[12px] font-black uppercase tracking-[0.4em] mb-4">Hollywood Veteran Training</h3>
+               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                   {[
-                    ...MENTORSHIP_IMAGES.slice(3, 8),
-                    "https://i.ibb.co/0p2HWy3Z/filmmaking-in-classroom.jpg",
-                    "https://i.ibb.co/sp4fWHq3/Chat-GPT-Image-2026-3-23-12-23-22.png"
+                    "https://i.ibb.co/0ynzzbsf/20260122155834-1668-151.jpg",
+                    "https://i.ibb.co/Q3gXL7Gt/20260122155814-1665-151.jpg",
+                    "https://i.ibb.co/5W4kfjsB/intro-photo.jpg",
+                    "https://i.ibb.co/0p2HWy3Z/filmmaking-in-classroom.jpg"
                   ].map((img, idx) => (
-                     <div key={idx} className="aspect-[4/3] rounded-lg overflow-hidden border border-white/5 relative group cursor-pointer">
+                     <div key={`train-${idx}`} className="aspect-[4/3] rounded-lg overflow-hidden border border-white/5 relative group cursor-pointer">
+                        <img referrerPolicy="no-referrer" src={img} className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" alt="Training" loading="lazy" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2">
+                           <span className="text-[9px] text-brandCyan uppercase font-bold tracking-widest">Classroom</span>
+                        </div>
+                     </div>
+                  ))}
+               </div>
+            </div>
+
+            {/* On-Set Production Gallery */}
+            <div className="space-y-4">
+               <h3 className="text-center text-amber-200/50 text-[12px] font-black uppercase tracking-[0.4em] mb-4">On-Set Production</h3>
+               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                  {[
+                    "https://i.ibb.co/QvgYZ8fk/20250929162843-133-10.jpg",
+                    "https://i.ibb.co/N24nbFRN/20250929162811-129-10.jpg",
+                    "https://i.ibb.co/rfRcKg31/20250929162748-126-10.jpg",
+                    "https://i.ibb.co/v6722zd0/20250929162853-135-10.jpg",
+                    "https://i.ibb.co/ksvQBvsD/1-25-26-11-18-05-1.jpg",
+                    "https://i.ibb.co/F45Tp6qP/20260122155828-1667-151.jpg",
+                    "https://i.ibb.co/qLx5FzvQ/20260122155926-1673-151.jpg",
+                    "https://i.ibb.co/6JTLb8tt/20260122155823-1666-151.jpg",
+                    "https://i.ibb.co/Y4DfD2Vw/20260122155809-1664-151.jpg",
+                    "https://i.ibb.co/LXS8q7yn/u8238228639-behind-the-scenes-photo-of-a-real-childrens-movie-5253418c-4b1d-4d9b-8f51-219cc38fdef7-3.png"
+                  ].map((img, idx) => (
+                     <div key={`onset-${idx}`} className="aspect-[4/3] rounded-lg overflow-hidden border border-white/5 relative group cursor-pointer">
                         <img referrerPolicy="no-referrer" src={img} className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" alt="On set" loading="lazy" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2">
-                           <span className="text-[9px] text-amber-400 uppercase font-bold tracking-widest">Still</span>
+                           <span className="text-[9px] text-amber-400 uppercase font-bold tracking-widest">On Set</span>
                         </div>
                      </div>
                   ))}
