@@ -8,6 +8,7 @@ export interface Actor {
   imageUrl: string;
   videoUrl?: string;
   bio?: string;
+  isAwardWinner?: boolean;
 }
 
 export interface FilmProject {

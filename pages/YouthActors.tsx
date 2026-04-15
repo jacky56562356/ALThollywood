@@ -29,6 +29,16 @@ export default function YouthActors() {
                   fetchPriority={index < 4 ? "high" : "auto"}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-60"></div>
+                {actor.isAwardWinner && (
+                  <div className="absolute top-3 right-3 z-10 bg-black/40 backdrop-blur-sm p-1 rounded-lg border border-white/10">
+                    <img 
+                      src="https://i.ibb.co/TqJBkL9F/Chat-GPT-Image-2025-8-29-15-46-30-1.jpg" 
+                      alt="Award Winner" 
+                      className="h-8 w-auto object-contain rounded"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                )}
               </div>
               
               <div className="p-5 flex flex-col flex-grow">

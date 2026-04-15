@@ -23,15 +23,15 @@ export default function SummerCamp() {
     e.preventDefault();
     
     const form = e.target as HTMLFormElement;
-    const submitData = new FormData(form);
-    submitData.append("access_key", "6faf2627-3ed8-4219-b6a4-535edfe1f7c3");
-    submitData.append("subject", "New Summer Camp Application 2026");
-    submitData.append("from_name", "ALT Hollywood Dream Star");
+    const formDataObj = Object.fromEntries(new FormData(form).entries());
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/submit-application", {
         method: "POST",
-        body: submitData
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formDataObj),
       });
       
       if (response.ok) {
@@ -299,81 +299,125 @@ export default function SummerCamp() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-2 gap-6">
-                    <div className="col-span-2 sm:col-span-1">
-                      <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Child's Name</label>
-                      <input 
-                        type="text" 
-                        name="childName"
-                        required
-                        value={formData.childName}
-                        onChange={handleChange}
-                        className="w-full bg-black border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-[#BF953F] transition-colors rounded-sm"
-                        placeholder="Enter child's name"
-                      />
+                    <div className="col-span-2 sm:col-span-1 group">
+                      <label className="block text-[10px] font-black text-brandCyan uppercase tracking-widest mb-2 transition-colors group-focus-within:text-white">Student First Name</label>
+                      <div className="relative">
+                        <input 
+                          type="text" 
+                          name="childFirstName"
+                          required
+                          className="w-full bg-black/50 border border-white/10 px-4 py-3.5 text-white focus:outline-none focus:border-brandCyan focus:bg-white/5 transition-all rounded-lg"
+                          placeholder="e.g. John"
+                        />
+                      </div>
                     </div>
-                    <div className="col-span-2 sm:col-span-1">
-                      <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Age (6-17)</label>
+                    <div className="col-span-2 sm:col-span-1 group">
+                      <label className="block text-[10px] font-black text-brandCyan uppercase tracking-widest mb-2 transition-colors group-focus-within:text-white">Student Last Name</label>
+                      <div className="relative">
+                        <input 
+                          type="text" 
+                          name="childLastName"
+                          required
+                          className="w-full bg-black/50 border border-white/10 px-4 py-3.5 text-white focus:outline-none focus:border-brandCyan focus:bg-white/5 transition-all rounded-lg"
+                          placeholder="e.g. Doe"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="col-span-2 sm:col-span-1 group">
+                      <label className="block text-[10px] font-black text-brandCyan uppercase tracking-widest mb-2 transition-colors group-focus-within:text-white">Age (6-17)</label>
                       <input 
                         type="number" 
                         name="age"
                         required
                         min="6" max="17"
-                        value={formData.age}
-                        onChange={handleChange}
-                        className="w-full bg-black border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-[#BF953F] transition-colors rounded-sm"
-                        placeholder="Child's age"
+                        className="w-full bg-black/50 border border-white/10 px-4 py-3.5 text-white focus:outline-none focus:border-brandCyan focus:bg-white/5 transition-all rounded-lg"
+                        placeholder="e.g. 12"
                       />
+                    </div>
+                    <div className="col-span-2 sm:col-span-1 group">
+                      <label className="block text-[10px] font-black text-brandCyan uppercase tracking-widest mb-2 transition-colors group-focus-within:text-white">Gender</label>
+                      <select 
+                        name="gender"
+                        required
+                        className="w-full bg-black/50 border border-white/10 px-4 py-3.5 text-white focus:outline-none focus:border-brandCyan focus:bg-white/5 transition-all rounded-lg appearance-none"
+                      >
+                        <option value="" disabled selected>Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                      </select>
                     </div>
                   </div>
 
-                  <div>
-                    <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Parent's Name</label>
+                  <div className="border-t border-white/10 pt-6 mt-6">
+                    <label className="block text-[10px] font-black text-brandCyan uppercase tracking-widest mb-2 transition-colors group-focus-within:text-white">Parent/Guardian Name</label>
                     <input 
                       type="text" 
                       name="parentName"
                       required
-                      value={formData.parentName}
-                      onChange={handleChange}
-                      className="w-full bg-black border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-[#BF953F] transition-colors rounded-sm"
-                      placeholder="Enter parent's name"
+                      className="w-full bg-black/50 border border-white/10 px-4 py-3.5 text-white focus:outline-none focus:border-brandCyan focus:bg-white/5 transition-all rounded-lg"
+                      placeholder="Enter parent or guardian's full name"
                     />
                   </div>
 
                   <div className="grid grid-cols-2 gap-6">
-                    <div className="col-span-2 sm:col-span-1">
-                      <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Phone Number</label>
+                    <div className="col-span-2 sm:col-span-1 group">
+                      <label className="block text-[10px] font-black text-brandCyan uppercase tracking-widest mb-2 transition-colors group-focus-within:text-white">Phone Number</label>
                       <input 
                         type="tel" 
                         name="phone"
                         required
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="w-full bg-black border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-[#BF953F] transition-colors rounded-sm"
+                        className="w-full bg-black/50 border border-white/10 px-4 py-3.5 text-white focus:outline-none focus:border-brandCyan focus:bg-white/5 transition-all rounded-lg"
                         placeholder="(555) 000-0000"
                       />
                     </div>
-                    <div className="col-span-2 sm:col-span-1">
-                      <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Email Address</label>
+                    <div className="col-span-2 sm:col-span-1 group">
+                      <label className="block text-[10px] font-black text-brandCyan uppercase tracking-widest mb-2 transition-colors group-focus-within:text-white">Email Address</label>
                       <input 
                         type="email" 
                         name="email"
                         required
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full bg-black border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-[#BF953F] transition-colors rounded-sm"
+                        className="w-full bg-black/50 border border-white/10 px-4 py-3.5 text-white focus:outline-none focus:border-brandCyan focus:bg-white/5 transition-all rounded-lg"
                         placeholder="email@example.com"
                       />
                     </div>
                   </div>
 
+                  <div className="border-t border-white/10 pt-6 mt-6">
+                    <label className="block text-[10px] font-black text-brandCyan uppercase tracking-widest mb-2 transition-colors group-focus-within:text-white">Acting Experience Level</label>
+                    <div className="grid grid-cols-3 gap-3">
+                      <label className="cursor-pointer">
+                        <input type="radio" name="experience" value="Beginner" className="peer sr-only" required />
+                        <div className="text-center px-3 py-3 border border-white/10 rounded-lg text-sm text-gray-400 peer-checked:border-brandCyan peer-checked:text-brandCyan peer-checked:bg-brandCyan/10 transition-all">
+                          Beginner
+                        </div>
+                      </label>
+                      <label className="cursor-pointer">
+                        <input type="radio" name="experience" value="Intermediate" className="peer sr-only" />
+                        <div className="text-center px-3 py-3 border border-white/10 rounded-lg text-sm text-gray-400 peer-checked:border-brandCyan peer-checked:text-brandCyan peer-checked:bg-brandCyan/10 transition-all">
+                          Intermediate
+                        </div>
+                      </label>
+                      <label className="cursor-pointer">
+                        <input type="radio" name="experience" value="Advanced" className="peer sr-only" />
+                        <div className="text-center px-3 py-3 border border-white/10 rounded-lg text-sm text-gray-400 peer-checked:border-brandCyan peer-checked:text-brandCyan peer-checked:bg-brandCyan/10 transition-all">
+                          Advanced
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
                   <button 
                     type="submit"
-                    className={`w-full ${goldBg} py-4 rounded-sm font-black uppercase tracking-widest text-sm hover:scale-[1.02] transition-all shadow-[0_0_30px_rgba(191,149,63,0.2)] mt-4`}
+                    className="w-full bg-brandCyan text-black py-4 rounded-lg font-black uppercase tracking-[0.2em] text-sm hover:bg-white transition-colors shadow-[0_0_30px_rgba(0,255,255,0.2)] mt-8 flex items-center justify-center gap-2"
                   >
-                    Apply Now
+                    Submit Application <ChevronRight size={18} />
                   </button>
-                  <p className="text-center text-xs text-gray-500 mt-4">
-                    By applying, you agree to our terms and conditions. No payment required at this stage.
+                  <p className="text-center text-[10px] text-gray-500 mt-4 uppercase tracking-widest">
+                    Secure Submission • No Payment Required Yet
                   </p>
                 </form>
               )}

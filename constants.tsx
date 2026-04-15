@@ -19,6 +19,8 @@ Martial Arts: Proficient in Chinese Kung Fu with a solid foundation in tradition
 
 【Performance Profile】
 Paul is a versatile young actor who uniquely combines classical artistic temperament with high-performance physical skills. Capable of portraying complex characters with precision, he embodies the talent and resilience of today’s youth.`,
+    videoUrl: 'https://youtu.be/GvJLd6KQ8iY',
+    isAwardWinner: true,
   },
   {
     id: 'jolin-wu-2',
@@ -35,10 +37,20 @@ Paul is a versatile young actor who uniquely combines classical artistic tempera
     skills: ['Acting', 'Classical Dance', 'Modeling'],
     credits: ['4 Hollywood Movies Filmed', 'Global Brand Commercials'],
     imageUrl: 'https://i.ibb.co/mVLL5mQs/2.png',
+    bio: `Leading Talent: Starred as the female lead in The Shift 1, showcasing her professional-grade figure skating skills on screen.
+
+Multidisciplinary Artist: A versatile performer proficient in Figure Skating, Dance, and Gymnastics, bringing elite athleticism to her acting.
+
+Captivating Performance: Known for her sweet and charismatic screen presence, she possesses a unique ability to portray characters with emotional depth and grace.
+
+Academic Excellence: A straight-A student defined by extraordinary dedication; famously balanced demanding filming schedules by studying in her car late into the night.
+
+Ambitious & Disciplined: A rising star who embodies the perfect synergy of artistic talent, hard work, and intellectual pursuit.`,
+    isAwardWinner: true,
   },
   {
-    id: 'new-star-1',
-    name: 'Rising Star',
+    id: 'parker-davies',
+    name: 'Parker Davies',
     ageRange: 'TBD',
     skills: ['Acting', 'Modeling'],
     credits: ['ALT Hollywood Dream Star'],
@@ -52,30 +64,52 @@ Paul is a versatile young actor who uniquely combines classical artistic tempera
     credits: ['4 Hollywood Movies Filmed', 'Short Film Lead'],
     imageUrl: 'https://i.ibb.co/fY46H6Dd/3.png',
     videoUrl: 'https://youtu.be/cHIB4Nnpgz4',
+    isAwardWinner: true,
   },
   {
-    id: 'jolin-wu',
-    name: 'Jolin Wu',
-    ageRange: '14-18',
+    id: 'ethan-pan-6',
+    name: 'Ethan Pan',
+    ageRange: 'TBD',
     skills: ['Acting', 'Contemporary Dance', 'Bilingual (CN/EN)'],
     credits: ['ALT Hollywood Movies Filmed', 'Drama Series Lead'],
     imageUrl: 'https://i.ibb.co/7JMjy3DF/6.png',
   },
   {
-    id: 'chris-li',
-    name: 'Chris Li',
+    id: 'evan-wen-7',
+    name: 'Evan Wen',
     ageRange: '6-10',
     skills: ['On-Camera Acting', 'Fashion Modeling', 'Bilingual (CN/EN)'],
     credits: ['Hollywood Short Film', 'Brand Commercial'],
     imageUrl: 'https://i.ibb.co/60K4WqJV/7.png',
+    bio: `Elite Representation: A distinguished talent represented by ALT Hollywood Dream Star, recognized for his artistic potential and professionalism.
+
+Award-Winning Actor: Winner of the Best Actor award at the 2025 Golden Feather Awards for his outstanding performance in the film The Shift.
+
+Commercial Star: A high-profile talent featured in major campaigns, including official NBA commercials and Hollywood Bowl advertisements, among many other national spots.
+
+Extensive Portfolio: Boasts a prolific career with over 10 professional Hollywood film and commercial credits, demonstrating remarkable versatility.
+
+Exceptional Artistry: Recognized as a highly gifted performer who brings precision and depth to every role, mastering complex characters with natural ease.
+
+Rising Talent: Represented by ALT Hollywood Dream Star, he continues to expand his craft by taking on diverse and challenging roles in the global film industry.`,
+    isAwardWinner: true,
   },
   {
-    id: 'ethan-pan',
-    name: 'Ethan Pan',
+    id: 'xiaowan-jin-8',
+    name: 'Xiaowan Jin',
     ageRange: '8-12',
     skills: ['Acting', 'Hip-Hop Dance', 'Modeling'],
     credits: ['ALT Hollywood Movies Filmed', 'National Print Ad'],
     imageUrl: 'https://i.ibb.co/1YMZF3XS/9.png',
+    bio: `Seasoned Career: A rising Hollywood star with 6 years of professional acting experience and over 50 film credits to her name.
+
+Elite Training: A standout member of the 3rd cohort of "ALTHOLLYWOOD DREAM STAR," achieving significant breakthroughs in vocal delivery and emotive performance.
+
+Industry Favorite: Renowned for a mature and profound acting style, earning high praise and frequent collaborations from major film studios.
+
+Global Credentials: A prolific performer with an extensive portfolio available for review on her official IMDb profile.
+
+Dynamic Growth: Continuously refining her craft by taking on diverse and challenging roles annually, representing the next generation of Hollywood talent.`,
   },
   {
     id: 'chloe-yu',
@@ -84,14 +118,6 @@ Paul is a versatile young actor who uniquely combines classical artistic tempera
     skills: ['High Fashion Modeling', 'Actor', 'Bilingual (CN/EN)'],
     credits: ['Multiple Hollywood Movies', 'Editorial Print'],
     imageUrl: 'https://i.ibb.co/YF8W9F1R/20260106125626-1547-151.jpg',
-  },
-  {
-    id: 'evan-wen',
-    name: 'Evan Wen',
-    ageRange: '6-10',
-    skills: ['Breakdancing', 'Acting', 'Live Performance'],
-    credits: ['ALT Hollywood Movies Filmed', 'Performance Showcase winner'],
-    imageUrl: 'https://i.ibb.co/TxPsjKY5/Carin-Yates-Photography2-3-2024-269.jpg',
   },
   {
     id: 'xiaowan-jin',

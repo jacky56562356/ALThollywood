@@ -56,7 +56,17 @@ export default function ActorProfile() {
           {/* Right Column - Details */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             <div className="mb-8">
-              <h1 className="text-4xl md:text-6xl font-cinematic font-black mb-2 tracking-tight">{actor.name}</h1>
+              <div className="flex flex-col md:flex-row md:items-center gap-4 mb-2">
+                <h1 className="text-4xl md:text-6xl font-cinematic font-black tracking-tight">{actor.name}</h1>
+                {actor.isAwardWinner && (
+                  <img 
+                    src="https://i.ibb.co/TqJBkL9F/Chat-GPT-Image-2025-8-29-15-46-30-1.jpg" 
+                    alt="Award Winner" 
+                    className="h-16 w-auto object-contain rounded-lg"
+                    referrerPolicy="no-referrer"
+                  />
+                )}
+              </div>
               <div className="flex items-center gap-4 text-brandCyan font-black tracking-widest uppercase text-sm">
                 <span>Age Range: {actor.ageRange}</span>
               </div>
