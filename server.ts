@@ -10,8 +10,9 @@ async function startServer() {
   const app = express();
   const PORT = 3000;
 
-  // Middleware to parse JSON bodies
-  app.use(express.json());
+  // Middleware to parse JSON bodies (increased limit for file uploads)
+  app.use(express.json({ limit: '50mb' }));
+  app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
   // API routes FIRST
   app.get("/api/health", (req, res) => {
@@ -20,7 +21,7 @@ async function startServer() {
 
   app.post("/api/submit-application", async (req, res) => {
     try {
-      const data = req.body;
+      const { attachments, ...data } = req.body;
 
       const userEmail = "altdreamstar@gmail.com";
       const appPassword = "bhfirvkoawiltltn";
@@ -135,11 +136,24 @@ async function startServer() {
 
       const studentName = data.studentNameZh || data.studentNameEn || data.childFirstName || 'New Student';
 
+      const mailAttachments = [];
+      if (attachments && Array.isArray(attachments)) {
+        for (const att of attachments) {
+          mailAttachments.push({
+            filename: att.filename,
+            content: att.data,
+            encoding: 'base64',
+            contentType: att.contentType
+          });
+        }
+      }
+
       const mailOptions = {
         from: `"ALT Hollywood Dream Star" <${userEmail}>`,
         to: userEmail, // Send to yourself
         subject: `New Summer Camp Application: ${studentName}`,
         html: htmlContent,
+        attachments: mailAttachments,
       };
 
       await transporter.sendMail(mailOptions);

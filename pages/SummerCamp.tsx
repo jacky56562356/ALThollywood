@@ -16,21 +16,43 @@ export default function SummerCamp() {
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
     
-    // Handle checkboxes correctly
+    // Handle checkboxes and files correctly
     const data: Record<string, any> = {};
     const sources: string[] = [];
+    const attachments: any[] = [];
     
-    formData.forEach((value, key) => {
+    for (const [key, value] of formData.entries()) {
       if (key === 'source') {
         sources.push(value.toString());
-      } else {
+      } else if (value instanceof File && value.size > 0) {
+        // Convert file to base64
+        try {
+          const base64 = await new Promise<string>((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(value);
+            reader.onload = () => resolve(reader.result as string);
+            reader.onerror = error => reject(error);
+          });
+          
+          attachments.push({
+            fieldName: key,
+            filename: value.name,
+            contentType: value.type,
+            data: base64.split(',')[1] // Get base64 string without data URL prefix
+          });
+        } catch (err) {
+          console.error("Error reading file:", err);
+        }
+      } else if (!(value instanceof File)) {
         data[key] = value;
       }
-    });
+    }
     
     if (sources.length > 0) {
       data['howDidYouHearAboutUs'] = sources.join(', ');
     }
+    
+    const payload = { ...data, attachments };
 
     try {
       const response = await fetch("/api/submit-application", {
@@ -38,7 +60,7 @@ export default function SummerCamp() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
       });
       
       if (response.ok) {
