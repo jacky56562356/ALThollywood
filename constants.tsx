@@ -276,11 +276,12 @@ Dynamic Growth: Continuously refining her craft by taking on diverse and challen
 export const FILMS: FilmProject[] = [
   {
     id: 'film-poster-new-3',
-    title: 'ALT Hollywood: The New Era',
+    title: 'The Garden',
     genre: "Documentary",
     description: "Witness the dawn of a new generation of Hollywood performers in this exclusive feature presentation.",
     platform: "Global Premiere",
     posterUrl: "https://i.ibb.co/C5ym3kR9/ALT-DREAM-STAR-NEW-FILM.png",
+    videoUrl: "https://www.youtube.com/embed/XL9s8YRZ69s?autoplay=1",
     stills: [
       "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=800",
@@ -289,11 +290,12 @@ export const FILMS: FilmProject[] = [
   },
   {
     id: 'film-poster-new-4',
-    title: 'Rising Stars 2026',
+    title: 'The Right Snow',
     genre: "Showcase",
     description: "A spectacular visual journey featuring the breakthrough performances of our 2026 cohort.",
     platform: "Streaming Now",
     posterUrl: "https://i.ibb.co/5XkvwS0b/image.png",
+    videoUrl: "https://www.youtube.com/embed/EDUD-rTPC2Y?autoplay=1",
     stills: [
       "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?auto=format&fit=crop&q=80&w=800",

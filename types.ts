@@ -19,6 +19,7 @@ export interface FilmProject {
   platform: string;
   posterUrl: string;
   stills: string[];
+  videoUrl?: string;
 }
 
 export interface Opportunity {

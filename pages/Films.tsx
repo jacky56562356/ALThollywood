@@ -6,10 +6,11 @@ import type { FilmProject } from '../types';
 
 export default function Films() {
   const [selectedFilm, setSelectedFilm] = useState<FilmProject | null>(null);
+  const [playingVideo, setPlayingVideo] = useState<string | null>(null);
 
   // Lock body scroll when modal is open
   useEffect(() => {
-    if (selectedFilm) {
+    if (selectedFilm || playingVideo) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -17,7 +18,7 @@ export default function Films() {
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [selectedFilm]);
+  }, [selectedFilm, playingVideo]);
 
   return (
     <div className="pt-28 pb-16">
@@ -33,7 +34,17 @@ export default function Films() {
         {/* Updated Grid: 5 Columns, Vertical Posters */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-4 gap-y-8">
           {FILMS.map((film, index) => (
-            <div key={film.id} className="group flex flex-col h-full cursor-pointer" onClick={() => setSelectedFilm(film)}>
+            <div 
+              key={film.id} 
+              className="group flex flex-col h-full cursor-pointer" 
+              onClick={() => {
+                if (film.videoUrl) {
+                  setPlayingVideo(film.videoUrl);
+                } else {
+                  setSelectedFilm(film);
+                }
+              }}
+            >
               {/* Vertical Poster Container (Aspect Ratio 2:3) */}
               <div className="relative aspect-[2/3] mb-3 overflow-hidden border border-white/10 rounded-lg group-hover:border-brandCyan/40 transition-all shadow-2xl bg-brandBlack">
                 <img referrerPolicy="no-referrer" 
@@ -84,8 +95,35 @@ export default function Films() {
               <X size={18} />
             </button>
 
-            <FilmModalContent film={selectedFilm} />
+            <FilmModalContent film={selectedFilm} onPlay={() => {
+              if (selectedFilm.videoUrl) {
+                setPlayingVideo(selectedFilm.videoUrl);
+              }
+            }} />
 
+          </div>
+        </div>
+      )}
+
+      {/* Video Player Modal */}
+      {playingVideo && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm animate-in fade-in duration-300">
+          <div className="relative w-full max-w-5xl aspect-video bg-black rounded-lg overflow-hidden border border-brandCyan/30 shadow-[0_0_50px_rgba(0,0,0,0.8)]">
+            <button 
+              onClick={() => setPlayingVideo(null)}
+              className="absolute -top-12 right-0 text-white/70 hover:text-white transition-colors text-sm tracking-widest uppercase"
+            >
+              关闭 [Close]
+            </button>
+            <iframe 
+              className="w-full h-full"
+              src={playingVideo} 
+              title="Video Player" 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerPolicy="strict-origin-when-cross-origin" 
+              allowFullScreen
+            ></iframe>
           </div>
         </div>
       )}
@@ -93,7 +131,7 @@ export default function Films() {
   );
 }
 
-const FilmModalContent = ({ film }: { film: FilmProject }) => {
+const FilmModalContent = ({ film, onPlay }: { film: FilmProject, onPlay: () => void }) => {
     return (
         <div className="overflow-y-auto flex-1 custom-scrollbar relative">
           
@@ -113,7 +151,10 @@ const FilmModalContent = ({ film }: { film: FilmProject }) => {
                    </div>
                    
                    <div className="mt-4 space-y-3">
-                      <button className="w-full py-3 brand-bg text-white font-black uppercase tracking-[0.2em] rounded-xl flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform shadow-lg shadow-brandCyan/20 text-xs">
+                      <button 
+                        onClick={onPlay}
+                        className="w-full py-3 brand-bg text-white font-black uppercase tracking-[0.2em] rounded-xl flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform shadow-lg shadow-brandCyan/20 text-xs"
+                      >
                         <Play size={16} fill="currentColor" /> Watch Full Film
                       </button>
                       <button className="w-full py-3 bg-white/5 border border-white/10 text-white font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white/10 transition-colors text-xs">
