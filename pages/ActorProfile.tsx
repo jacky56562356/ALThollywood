@@ -20,6 +20,17 @@ export default function ActorProfile() {
     );
   }
 
+  const getEmbedUrl = (url: string) => {
+    if (url.includes('youtu.be/')) {
+      const id = url.split('youtu.be/')[1].split('?')[0];
+      return `https://www.youtube.com/embed/${id}`;
+    } else if (url.includes('youtube.com/watch?v=')) {
+      const id = url.split('v=')[1].split('&')[0];
+      return `https://www.youtube.com/embed/${id}`;
+    }
+    return url;
+  };
+
   return (
     <div className="pt-24 pb-16 min-h-screen bg-brandBlack">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -52,6 +63,25 @@ export default function ActorProfile() {
             </div>
 
             <div className="space-y-8">
+              {/* Biography Section */}
+              <div>
+                <h3 className="text-xl font-cinematic font-bold mb-4 flex items-center gap-2">
+                  <Star className="text-brandCyan" size={20} /> Biography
+                </h3>
+                <div className="text-brandGray leading-relaxed bg-white/5 p-6 rounded-2xl border border-white/5">
+                  {actor.bio ? (
+                    <div className="whitespace-pre-wrap space-y-4">{actor.bio}</div>
+                  ) : (
+                    <p>
+                      {actor.name} is a talented young performer represented by ALT Hollywood Dream Star. 
+                      With a diverse skill set and a passion for the craft, {actor.name} has been actively 
+                      involved in professional training and film productions, demonstrating exceptional dedication 
+                      and on-screen presence.
+                    </p>
+                  )}
+                </div>
+              </div>
+
               {/* Skills Section */}
               <div>
                 <h3 className="text-xl font-cinematic font-bold mb-4 flex items-center gap-2">
@@ -81,16 +111,38 @@ export default function ActorProfile() {
                 </ul>
               </div>
 
-              {/* Video Section (Placeholder for now) */}
+              {/* Video Section */}
               <div className="pt-8 border-t border-white/10">
                 <h3 className="text-xl font-cinematic font-bold mb-4 flex items-center gap-2">
                   <PlayCircle className="text-brandCyan" size={20} /> Featured Videos
                 </h3>
-                <div className="aspect-video bg-white/5 border border-white/10 rounded-2xl flex flex-col items-center justify-center text-brandGray">
-                  <PlayCircle size={48} className="mb-4 opacity-50" />
-                  <p className="font-medium">Videos coming soon...</p>
-                  <p className="text-sm opacity-70">Please upload the videos for this actor.</p>
-                </div>
+                {actor.videoUrl ? (
+                  <div className="aspect-video bg-black border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
+                    {actor.videoUrl.includes('youtu') ? (
+                      <iframe 
+                        src={getEmbedUrl(actor.videoUrl)} 
+                        title="YouTube video player" 
+                        frameBorder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowFullScreen
+                        className="w-full h-full"
+                      ></iframe>
+                    ) : (
+                      <video 
+                        src={actor.videoUrl} 
+                        controls 
+                        className="w-full h-full object-contain"
+                        poster={actor.imageUrl}
+                      />
+                    )}
+                  </div>
+                ) : (
+                  <div className="aspect-video bg-white/5 border border-white/10 rounded-2xl flex flex-col items-center justify-center text-brandGray">
+                    <PlayCircle size={48} className="mb-4 opacity-50" />
+                    <p className="font-medium">Videos coming soon...</p>
+                    <p className="text-sm opacity-70">Please upload the videos for this actor.</p>
+                  </div>
+                )}
               </div>
 
             </div>

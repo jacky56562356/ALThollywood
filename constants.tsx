@@ -4,16 +4,26 @@ import { Actor, FilmProject, Opportunity, HistoryEvent, Resource } from './types
 export const ACTORS: Actor[] = [
   {
     id: 'paul-liu',
-    name: 'Paul yunsheng Liu',
-    ageRange: '12-16',
-    skills: ['Chinese Kong-Fu', 'Martial Arts Stunts', 'Action Acting'],
-    credits: ['ALT Hollywood Movies Filmed', 'International Stunt Team'],
+    name: 'Paul Yunsheng Liu',
+    ageRange: '13',
+    skills: ['Acting', 'Piano', 'Martial Arts', 'Chinese Kung Fu'],
+    credits: ['The Garden (Lead)', 'Golden State Film Festival Award Winner', 'Musikverein (Vienna) Performer'],
     imageUrl: 'https://i.ibb.co/v40LfrmN/4.png',
+    bio: `【Key Achievements】
+From 2023 to 2025, Paul demonstrated exceptional acting talent and screen presence as the lead in four outstanding children's short films. Notably, his representative work, The Garden, stood out at the Golden State Film Festival and was honored with a major award.
+
+【Core Skills】
+Musical Artistry: An accomplished pianist who was invited to perform at the world-renowned Musikverein (Vienna). He possesses remarkable stage presence and profound artistic expression.
+
+Martial Arts: Proficient in Chinese Kung Fu with a solid foundation in traditional techniques. He has delivered numerous high-profile stage performances, seamlessly blending martial aesthetics with power.
+
+【Performance Profile】
+Paul is a versatile young actor who uniquely combines classical artistic temperament with high-performance physical skills. Capable of portraying complex characters with precision, he embodies the talent and resilience of today’s youth.`,
   },
   {
-    id: 'parker-davies',
-    name: 'Parker Davies', 
-    ageRange: '8-12',
+    id: 'jolin-wu-2',
+    name: 'Jolin Wu', 
+    ageRange: '16',
     skills: ['Professional Acting', 'Runway Modeling', 'Public Speaking'],
     credits: ['4 Hollywood Films', 'National Commercials'],
     imageUrl: 'https://i.ibb.co/KpBnB6Mf/5.png',
@@ -21,10 +31,18 @@ export const ACTORS: Actor[] = [
   {
     id: 'veronica-chen',
     name: 'Veronica Tiffany Chen',
-    ageRange: '6-10',
+    ageRange: '10',
     skills: ['Acting', 'Classical Dance', 'Modeling'],
     credits: ['4 Hollywood Movies Filmed', 'Global Brand Commercials'],
     imageUrl: 'https://i.ibb.co/mVLL5mQs/2.png',
+  },
+  {
+    id: 'new-star-1',
+    name: 'Rising Star',
+    ageRange: 'TBD',
+    skills: ['Acting', 'Modeling'],
+    credits: ['ALT Hollywood Dream Star'],
+    imageUrl: 'https://i.ibb.co/6CwNLnd/1.png',
   },
   {
     id: 'catherine-jing',
@@ -33,6 +51,7 @@ export const ACTORS: Actor[] = [
     skills: ['Acting', 'Voiceover', 'Theater Performance'],
     credits: ['4 Hollywood Movies Filmed', 'Short Film Lead'],
     imageUrl: 'https://i.ibb.co/fY46H6Dd/3.png',
+    videoUrl: 'https://youtu.be/cHIB4Nnpgz4',
   },
   {
     id: 'jolin-wu',
