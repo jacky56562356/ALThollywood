@@ -4,19 +4,19 @@ import { Layout, Video, Share2, Trophy, Award, Star, History as HistoryIcon, Spa
 import { HISTORY } from '../constants';
 
 const FESTIVAL_IMAGES = [
-  "https://storage.googleapis.com/aistudio-janus-prod-appspot/image-4-20260323_192134.jpg",
-  "https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1510511233900-1982d92bd260?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1518834107812-67b0b7c58434?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1533488765986-dfa2a9939acd?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=800"
+  "https://i.ibb.co/1JdcHFK9/179b50bd376d8cfa82289e99501dac49-1.jpg",
+  "https://i.ibb.co/tpMxQ0z3/93e11fe81b005b241daf7fe0ede317e1.jpg",
+  "https://i.ibb.co/jZ8b7DQD/IMG-3304.jpg",
+  "https://i.ibb.co/1Gj2K8CX/d92babf9ca9b15b9fe754beaa383a6cf.jpg",
+  "https://i.ibb.co/5XPZYkgB/20260122155907-1672-151.jpg",
+  "https://i.ibb.co/bMtVxnWT/20260301101021-372-10.jpg",
+  "https://i.ibb.co/m7XVxC4/20260301100525-317-10.jpg",
+  "https://i.ibb.co/67yDvWwf/20260301101011-369-10.jpg",
+  "https://i.ibb.co/FLWhVFqW/20260326145512-455-10.jpg",
+  "https://i.ibb.co/YB6gWM9L/20260326145435-449-10.jpg",
+  "https://i.ibb.co/hxyLy7WK/20260326145502-453-10.jpg",
+  "https://i.ibb.co/CsXTwYVB/789f8972a2a611f0a39472362ca9b9d2.jpg",
+  "https://i.ibb.co/TqHKNcjx/1731693e1e0ea8102582bec61f0aed1d.jpg"
 ];
 
 const MENTORSHIP_IMAGES = [
