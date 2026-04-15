@@ -22,8 +22,8 @@ async function startServer() {
     try {
       const data = req.body;
 
-      const userEmail = process.env.GMAIL_USER || "altdreamstar@gmail.com";
-      const appPassword = process.env.GMAIL_APP_PASSWORD || "bhfirvkoawiltltn";
+      const userEmail = "altdreamstar@gmail.com";
+      const appPassword = "bhfirvkoawiltltn";
 
       if (!userEmail || !appPassword) {
         return res.status(500).json({ error: "Email configuration is missing on the server." });
@@ -80,9 +80,9 @@ async function startServer() {
 
       await transporter.sendMail(mailOptions);
       res.json({ success: true, message: "Application submitted successfully" });
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error sending email:", error);
-      res.status(500).json({ error: "Failed to send application" });
+      res.status(500).json({ error: "Failed to send application", details: error.message });
     }
   });
 
