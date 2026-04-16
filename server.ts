@@ -31,6 +31,11 @@ async function startServer() {
     try {
       const data = req.body;
       const files = req.files as Express.Multer.File[];
+      
+      console.log("Received application submission:", {
+        bodyKeys: Object.keys(data),
+        filesCount: files?.length
+      });
 
       const userEmail = "altdreamstar@gmail.com";
       const appPassword = "bhfirvkoawiltltn";
@@ -172,6 +177,12 @@ async function startServer() {
     }
   });
 
+  // Catch-all for unhandled API routes
+  app.use("/api", (req, res) => {
+    console.log(`404 API Route Not Found: ${req.method} ${req.originalUrl}`);
+    res.status(404).json({ error: `API route not found: ${req.originalUrl}` });
+  });
+
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
@@ -186,6 +197,17 @@ async function startServer() {
       res.sendFile(path.join(distPath, 'index.html'));
     });
   }
+
+  // Global error handler
+  app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    console.error("Global error handler caught:", err);
+    if (err instanceof multer.MulterError) {
+      if (err.code === 'LIMIT_FILE_SIZE') {
+        return res.status(413).json({ error: "File too large" });
+      }
+    }
+    res.status(500).json({ error: err.message || "Internal Server Error" });
+  });
 
   app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on http://localhost:${PORT}`);
