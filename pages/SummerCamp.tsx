@@ -206,7 +206,7 @@ export default function SummerCamp() {
             { icon: "🎭", title: "主演机会", desc: "获奖导演亲临指导，打造专业个人作品集演示盘" },
             { icon: "🎥", title: "大师导师", desc: "好莱坞专业电影摄制组全程拍摄，大师全程导师辅导" },
             { icon: "🏆", title: "电影节直通", desc: "作品入选国际青少年电影节，走上好莱坞红毯" },
-            { icon: "⭐", title: "IMDb 认证", desc: "为每位学员创建官方 IMDb 个人主页，留下永久印记" }
+            { icon: "⭐", title: "IMDb 认证", desc: "拍摄影片上线后提交IMDB网站，每个人饰演的角色将保留IMDB演员库，为升学做背书" }
           ].map((item, idx) => (
             <div key={idx} className="bg-[#1A1A1A] border border-[#c9a84c33] p-5 rounded border-l-[3px] border-l-[#C9A84C]">
               <div className="text-[22px] mb-2">{item.icon}</div>
