@@ -16,58 +16,34 @@ export default function SummerCamp() {
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
     
-    // Handle checkboxes and files correctly
-    const data: Record<string, any> = {};
+    // Handle checkboxes
     const sources: string[] = [];
-    const attachments: any[] = [];
     
+    // Check file sizes before submitting
     for (const [key, value] of formData.entries()) {
       if (key === 'source') {
         sources.push(value.toString());
       } else if (value instanceof File && value.size > 0) {
-        // Check file size (limit to 15MB per file to be safe for email and base64)
-        if (value.size > 15 * 1024 * 1024) {
-          alert(`文件 ${value.name} 太大 (${(value.size / 1024 / 1024).toFixed(1)}MB)。请上传小于 15MB 的文件。`);
+        // Check file size (limit to 20MB per file to be safe for email)
+        if (value.size > 20 * 1024 * 1024) {
+          alert(`文件 ${value.name} 太大 (${(value.size / 1024 / 1024).toFixed(1)}MB)。请上传小于 20MB 的文件。`);
           setIsSubmitting(false);
           return;
         }
-
-        // Convert file to base64
-        try {
-          const base64 = await new Promise<string>((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(value);
-            reader.onload = () => resolve(reader.result as string);
-            reader.onerror = error => reject(error);
-          });
-          
-          attachments.push({
-            fieldName: key,
-            filename: value.name,
-            contentType: value.type,
-            data: base64.split(',')[1] // Get base64 string without data URL prefix
-          });
-        } catch (err) {
-          console.error("Error reading file:", err);
-        }
-      } else if (!(value instanceof File)) {
-        data[key] = value;
       }
     }
     
     if (sources.length > 0) {
-      data['howDidYouHearAboutUs'] = sources.join(', ');
+      formData.set('howDidYouHearAboutUs', sources.join(', '));
+      // Remove individual source entries to clean up the payload
+      formData.delete('source');
     }
-    
-    const payload = { ...data, attachments };
 
     try {
       const response = await fetch("/api/submit-application", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
+        // Do not set Content-Type header, let the browser set it with the boundary for multipart/form-data
+        body: formData,
       });
       
       if (response.ok) {

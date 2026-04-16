@@ -3,8 +3,16 @@ import { createServer as createViteServer } from "vite";
 import path from "path";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
+import multer from "multer";
 
 dotenv.config();
+
+const upload = multer({ 
+  storage: multer.memoryStorage(),
+  limits: {
+    fileSize: 25 * 1024 * 1024, // 25 MB limit per file
+  }
+});
 
 async function startServer() {
   const app = express();
@@ -19,9 +27,10 @@ async function startServer() {
     res.json({ status: "ok" });
   });
 
-  app.post("/api/submit-application", async (req, res) => {
+  app.post("/api/submit-application", upload.any(), async (req, res) => {
     try {
-      const { attachments, ...data } = req.body;
+      const data = req.body;
+      const files = req.files as Express.Multer.File[];
 
       const userEmail = "altdreamstar@gmail.com";
       const appPassword = "bhfirvkoawiltltn";
@@ -137,13 +146,12 @@ async function startServer() {
       const studentName = data.studentNameZh || data.studentNameEn || data.childFirstName || 'New Student';
 
       const mailAttachments = [];
-      if (attachments && Array.isArray(attachments)) {
-        for (const att of attachments) {
+      if (files && files.length > 0) {
+        for (const file of files) {
           mailAttachments.push({
-            filename: att.filename,
-            content: att.data,
-            encoding: 'base64',
-            contentType: att.contentType
+            filename: file.originalname,
+            content: file.buffer,
+            contentType: file.mimetype
           });
         }
       }
