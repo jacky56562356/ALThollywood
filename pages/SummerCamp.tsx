@@ -162,6 +162,7 @@ export default function SummerCamp() {
       payloadData.append('howDidYouHearAboutUs', sources.join(', '));
     }
 
+    console.log("Submitting application to /api/submit-application... [v1.3]");
     try {
       const response = await fetch("/api/submit-application", {
         method: "POST",
@@ -179,18 +180,23 @@ export default function SummerCamp() {
         try {
           const errorData = await response.json();
           errorMessage = errorData.error || errorMessage;
+          if (errorData.suggestion) {
+            errorMessage += `\nSuggestion: ${errorData.suggestion}`;
+          }
         } catch (parseError) {
           if (response.status === 413) {
             errorMessage = '上传的文件太大，请压缩照片或简历后再试 (File too large).';
+          } else if (response.status === 404) {
+            errorMessage = '找不到提交接口 (404 API not found). Please help the developer check the server routes.';
           } else {
-            errorMessage = `Server error: ${response.status}`;
+            errorMessage = `Server error: ${response.status} ${response.statusText}`;
           }
         }
         alert(`提交失败 (Failed to submit): ${errorMessage}`);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Submit error:", error);
-      alert("网络错误或文件过大，请稍后重试 (Network error or file too large, please try again).");
+      alert(`网络错误 (Network error): ${error.message || 'Please check your connection.'}`);
     } finally {
       setIsSubmitting(false);
     }

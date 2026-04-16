@@ -18,6 +18,12 @@ async function startServer() {
   const app = express();
   const PORT = 3000;
 
+  // Middleware to log all requests
+  app.use((req, res, next) => {
+    console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+    next();
+  });
+
   // Middleware to parse JSON bodies (increased limit for file uploads)
   app.use(express.json({ limit: '200mb' }));
   app.use(express.urlencoded({ limit: '200mb', extended: true }));
@@ -177,10 +183,14 @@ async function startServer() {
     }
   });
 
-  // Catch-all for unhandled API routes
+  // Catch-all for unhandled API routes (moved to ensure it doesn't conflict)
   app.use("/api", (req, res) => {
     console.log(`404 API Route Not Found: ${req.method} ${req.originalUrl}`);
-    res.status(404).json({ error: `API route not found: ${req.originalUrl}` });
+    res.status(404).json({ 
+      error: `API route not found: ${req.originalUrl}`,
+      method: req.method,
+      suggestion: "Check if the path is correct and the method is POST"
+    });
   });
 
   // Vite middleware for development
