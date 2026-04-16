@@ -109,7 +109,12 @@ export default function SummerCamp() {
 
             canvas.toBlob((blob) => {
               if (blob) {
-                resolve(new File([blob], file.name, { type: 'image/jpeg', lastModified: Date.now() }));
+                try {
+                  resolve(new File([blob], file.name, { type: 'image/jpeg', lastModified: Date.now() }));
+                } catch (e) {
+                  // Fallback for older browsers that don't support File constructor
+                  resolve(file);
+                }
               } else {
                 resolve(file);
               }
@@ -130,18 +135,24 @@ export default function SummerCamp() {
       if (key === 'source') {
         sources.push(value.toString());
       } else if (value instanceof File && value.size > 0) {
+        let fileToUpload = value;
+        
         if (value.type.startsWith('image/')) {
-          const compressedFile = await compressImage(value);
-          payloadData.append(key, compressedFile);
-        } else {
-          // Check file size for non-images (limit to 10MB per file to be safe for email)
-          if (value.size > 10 * 1024 * 1024) {
-            alert(`文件 ${value.name} 太大 (${(value.size / 1024 / 1024).toFixed(1)}MB)。非图片文件请上传小于 10MB 的文件。`);
-            setIsSubmitting(false);
-            return;
+          try {
+            fileToUpload = await compressImage(value);
+          } catch (e) {
+            console.error("Compression error:", e);
           }
-          payloadData.append(key, value);
         }
+        
+        // Strict file size check AFTER compression (limit to 5MB to prevent Nginx connection drop)
+        if (fileToUpload.size > 5 * 1024 * 1024) {
+          alert(`文件 ${value.name} 太大 (${(fileToUpload.size / 1024 / 1024).toFixed(1)}MB)。请上传小于 5MB 的文件。如果是照片，请尝试截屏后再上传。`);
+          setIsSubmitting(false);
+          return;
+        }
+        
+        payloadData.append(key, fileToUpload);
       } else if (!(value instanceof File)) {
         payloadData.append(key, value);
       }
