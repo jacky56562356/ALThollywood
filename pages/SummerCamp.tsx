@@ -14,36 +14,148 @@ export default function SummerCamp() {
     setIsSubmitting(true);
     
     const form = e.target as HTMLFormElement;
-    const formData = new FormData(form);
-    
-    // Handle checkboxes
+
+    // --- MANUAL VALIDATION FOR MOBILE BROWSERS ---
+    const requiredElements = form.querySelectorAll('[required]');
+    let firstInvalidElement: HTMLElement | null = null;
+    let hasErrors = false;
+
+    // Reset previous error styles
+    form.querySelectorAll('.error-border').forEach(el => el.classList.remove('error-border', '!border-red-500'));
+    form.querySelectorAll('.error-text').forEach(el => el.remove());
+
+    requiredElements.forEach((el) => {
+      const input = el as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+      let isInvalid = false;
+
+      if (input.type === 'radio' || input.type === 'checkbox') {
+        const name = input.name;
+        const checked = form.querySelector(`input[name="${name}"]:checked`);
+        if (!checked) {
+          isInvalid = true;
+        }
+      } else if (!input.value.trim()) {
+        isInvalid = true;
+      }
+
+      if (isInvalid) {
+        hasErrors = true;
+        // Find the closest container to add red border
+        const container = input.type === 'radio' || input.type === 'checkbox' 
+          ? input.closest('.flex.gap-3') || input.parentElement
+          : input;
+          
+        if (container) {
+          container.classList.add('error-border', '!border-red-500');
+          // Add error message text if not already there
+          if (!container.parentElement?.querySelector('.error-text')) {
+            const errorText = document.createElement('div');
+            errorText.className = 'error-text text-red-500 text-xs mt-1 font-bold';
+            errorText.innerText = '此项为必填项 (This field is required)';
+            container.parentElement?.appendChild(errorText);
+          }
+        }
+
+        if (!firstInvalidElement) {
+          firstInvalidElement = container as HTMLElement;
+        }
+      }
+    });
+
+    if (hasErrors) {
+      setIsSubmitting(false);
+      alert('请填写所有必填项 (Please fill in all required fields). 标红的区域为必填。');
+      if (firstInvalidElement) {
+        firstInvalidElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+    // --- END MANUAL VALIDATION ---
+
+    const compressImage = (file: File): Promise<File> => {
+      return new Promise((resolve) => {
+        if (!file.type.startsWith('image/')) {
+          resolve(file);
+          return;
+        }
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (event) => {
+          const img = new Image();
+          img.src = event.target?.result as string;
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const MAX_WIDTH = 1920;
+            const MAX_HEIGHT = 1920;
+            let width = img.width;
+            let height = img.height;
+
+            if (width > height) {
+              if (width > MAX_WIDTH) {
+                height *= MAX_WIDTH / width;
+                width = MAX_WIDTH;
+              }
+            } else {
+              if (height > MAX_HEIGHT) {
+                width *= MAX_HEIGHT / height;
+                height = MAX_HEIGHT;
+              }
+            }
+
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx?.drawImage(img, 0, 0, width, height);
+
+            canvas.toBlob((blob) => {
+              if (blob) {
+                resolve(new File([blob], file.name, { type: 'image/jpeg', lastModified: Date.now() }));
+              } else {
+                resolve(file);
+              }
+            }, 'image/jpeg', 0.8);
+          };
+          img.onerror = () => resolve(file);
+        };
+        reader.onerror = () => resolve(file);
+      });
+    };
+
+    const originalFormData = new FormData(form);
+    const payloadData = new FormData();
     const sources: string[] = [];
     
-    // Check file sizes before submitting
-    for (const [key, value] of formData.entries()) {
+    // Check file sizes and compress images before submitting
+    for (const [key, value] of originalFormData.entries()) {
       if (key === 'source') {
         sources.push(value.toString());
       } else if (value instanceof File && value.size > 0) {
-        // Check file size (limit to 20MB per file to be safe for email)
-        if (value.size > 20 * 1024 * 1024) {
-          alert(`文件 ${value.name} 太大 (${(value.size / 1024 / 1024).toFixed(1)}MB)。请上传小于 20MB 的文件。`);
-          setIsSubmitting(false);
-          return;
+        if (value.type.startsWith('image/')) {
+          const compressedFile = await compressImage(value);
+          payloadData.append(key, compressedFile);
+        } else {
+          // Check file size for non-images (limit to 10MB per file to be safe for email)
+          if (value.size > 10 * 1024 * 1024) {
+            alert(`文件 ${value.name} 太大 (${(value.size / 1024 / 1024).toFixed(1)}MB)。非图片文件请上传小于 10MB 的文件。`);
+            setIsSubmitting(false);
+            return;
+          }
+          payloadData.append(key, value);
         }
+      } else if (!(value instanceof File)) {
+        payloadData.append(key, value);
       }
     }
     
     if (sources.length > 0) {
-      formData.set('howDidYouHearAboutUs', sources.join(', '));
-      // Remove individual source entries to clean up the payload
-      formData.delete('source');
+      payloadData.append('howDidYouHearAboutUs', sources.join(', '));
     }
 
     try {
       const response = await fetch("/api/submit-application", {
         method: "POST",
         // Do not set Content-Type header, let the browser set it with the boundary for multipart/form-data
-        body: formData,
+        body: payloadData,
       });
       
       if (response.ok) {
@@ -222,7 +334,7 @@ export default function SummerCamp() {
             <p className="text-sm text-white/70">如有疑问请致电：626-382-8849 ｜ 323-918-6688</p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-7">
+          <form onSubmit={handleSubmit} noValidate className="space-y-7">
             
             {/* Part 1: Student Info */}
             <div className="bg-[#1A1A1A] border border-[#c9a84c40] rounded-md p-6 sm:p-9">
