@@ -4,7 +4,6 @@ import { Camera, Star, Calendar, Clock, Users, Award, Play, ChevronRight, Quote,
 export default function SummerCamp() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showTrailer, setShowTrailer] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -106,30 +105,20 @@ export default function SummerCamp() {
       `}} />
 
       {/* Hero Section with Image Background */}
-      <section 
-        onClick={() => setShowTrailer(true)}
-        className="relative w-full h-[60vh] min-h-[500px] flex flex-col items-center justify-center text-center px-6 overflow-hidden cursor-pointer group"
-      >
+      <section className="relative w-full h-[60vh] min-h-[500px] flex flex-col items-center justify-center text-center px-6 overflow-hidden">
         {/* Background Image */}
         <img 
           src="https://i.ibb.co/3YzTyKhj/202603221706.jpg" 
           alt="Hollywood Camp" 
-          className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-60 transition-opacity duration-500"
+          className="absolute inset-0 w-full h-full object-cover opacity-50"
           style={{ objectPosition: '50% 15%' }} // Focuses on the top half of the image
           referrerPolicy="no-referrer"
         />
         {/* Gradient Overlay to blend into black */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/60 to-[#0A0A0A]"></div>
-        
-        {/* Giant Play Button Overlay */}
-        <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
-          <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-black/40 border-2 border-[#C9A84C]/50 flex items-center justify-center backdrop-blur-sm group-hover:scale-110 group-hover:bg-[#C9A84C]/20 group-hover:border-[#C9A84C] transition-all duration-500 shadow-[0_0_50px_rgba(201,168,76,0.2)]">
-            <Play className="w-10 h-10 sm:w-14 sm:h-14 text-[#C9A84C] ml-2 opacity-80 group-hover:opacity-100 transition-opacity" fill="currentColor" />
-          </div>
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-[#0A0A0A]"></div>
         
         {/* Hero Content */}
-        <div className="relative z-10 max-w-4xl mx-auto mt-32 pointer-events-none">
+        <div className="relative z-10 max-w-4xl mx-auto mt-12">
           <div className="font-['Bebas_Neue'] text-[clamp(14px,3vw,18px)] tracking-[6px] text-[#C9A84C] mb-3 opacity-90 drop-shadow-lg">
             ALT · HOLLYWOOD DREAM STAR · 好莱坞童星机构
           </div>
@@ -140,33 +129,10 @@ export default function SummerCamp() {
             由好莱坞电影节获奖团队倾力打造 · THE GRDEN
           </div>
           <div className="text-[clamp(12px,2vw,15px)] text-gray-300 tracking-[2px] uppercase mt-4 drop-shadow-md">
-            点击海报观看预告片 ｜ 真正的、全程记录的电影拍摄体验
+            绝非普通夏令营 ｜ 真正的、全程记录的电影拍摄体验
           </div>
         </div>
       </section>
-
-      {/* Trailer Modal */}
-      {showTrailer && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm animate-in fade-in duration-300">
-          <div className="relative w-full max-w-5xl aspect-video bg-black rounded-lg overflow-hidden border border-[#C9A84C]/30 shadow-[0_0_50px_rgba(0,0,0,0.8)]">
-            <button 
-              onClick={() => setShowTrailer(false)}
-              className="absolute -top-12 right-0 text-white/70 hover:text-white transition-colors text-sm tracking-widest uppercase"
-            >
-              关闭 [Close]
-            </button>
-            <iframe 
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/XL9s8YRZ69s?autoplay=1" 
-              title="THE GARDEN Trailer" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              referrerPolicy="strict-origin-when-cross-origin" 
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-      )}
 
       {/* Divider */}
       <div className="flex items-center gap-4 mx-auto mb-12 mt-8 max-w-[600px] px-6">
@@ -217,15 +183,15 @@ export default function SummerCamp() {
             <div className="bg-[#1A1A1A] border border-[#c9a84c33] p-6 rounded-lg relative overflow-hidden group hover:border-[#C9A84C] transition-colors">
               <div className="absolute top-0 right-0 w-24 h-24 bg-[#C9A84C] opacity-5 rounded-bl-full -z-10 group-hover:opacity-10 transition-opacity"></div>
               <h3 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
-                <span className="text-[#C9A84C]">第二周:</span> 实景拍摄与红毯首映
+                <span className="text-[#C9A84C]">第二周:</span> 实景拍摄与剧组体验
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed mb-4">
-                进入真实的电影片场！配备好莱坞专业摄制组（灯光、摄影、收音、服化道），学员将作为主演完成一部高质量微电影的拍摄，并最终走上红毯。
+                进入真实的电影片场！配备好莱坞专业摄制组（灯光、摄影、收音、服化道），学员将作为主演完成一部高质量微电影的拍摄，深度体验真实剧组运作。
               </p>
               <ul className="space-y-2 text-sm text-gray-300">
                 <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-[#C9A84C] mt-0.5 shrink-0" /> 专业级电影设备实景拍摄</li>
                 <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-[#C9A84C] mt-0.5 shrink-0" /> 剧组实战体验与团队协作</li>
-                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-[#C9A84C] mt-0.5 shrink-0" /> 结营红毯仪式与作品首映礼</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-[#C9A84C] mt-0.5 shrink-0" /> 评选最佳演员：获奖者将进入 ALT Dream Star 童星库，并推荐给各大经纪公司</li>
               </ul>
             </div>
           </div>
