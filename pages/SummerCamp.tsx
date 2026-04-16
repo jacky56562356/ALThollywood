@@ -25,6 +25,13 @@ export default function SummerCamp() {
       if (key === 'source') {
         sources.push(value.toString());
       } else if (value instanceof File && value.size > 0) {
+        // Check file size (limit to 15MB per file to be safe for email and base64)
+        if (value.size > 15 * 1024 * 1024) {
+          alert(`文件 ${value.name} 太大 (${(value.size / 1024 / 1024).toFixed(1)}MB)。请上传小于 15MB 的文件。`);
+          setIsSubmitting(false);
+          return;
+        }
+
         // Convert file to base64
         try {
           const base64 = await new Promise<string>((resolve, reject) => {
@@ -69,12 +76,22 @@ export default function SummerCamp() {
           document.getElementById('successMsg')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }, 100);
       } else {
-        const errorData = await response.json();
-        alert(`提交失败 (Failed to submit): ${errorData.error || 'Please try again.'}`);
+        let errorMessage = 'Please try again.';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.error || errorMessage;
+        } catch (parseError) {
+          if (response.status === 413) {
+            errorMessage = '上传的文件太大，请压缩照片或简历后再试 (File too large).';
+          } else {
+            errorMessage = `Server error: ${response.status}`;
+          }
+        }
+        alert(`提交失败 (Failed to submit): ${errorMessage}`);
       }
     } catch (error) {
-      console.error(error);
-      alert("网络错误，请稍后重试 (Network error, please try again later).");
+      console.error("Submit error:", error);
+      alert("网络错误或文件过大，请稍后重试 (Network error or file too large, please try again).");
     } finally {
       setIsSubmitting(false);
     }
