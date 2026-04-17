@@ -164,11 +164,10 @@ export default function SummerCamp() {
 
    console.log("Submitting application to Formspree...");
     try {
-   const response = await fetch("https://formspree.io/f/mwvaorek", {
-        method: "POST",headers: { "Accept": "application/json" },
-        // Do not set Content-Type header, let the browser set it with the boundary for multipart/form-data
-        body: payloadData,
-      });
+const response = await fetch("/api/submit-form", {
+  method: "POST",
+  body: payloadData,
+});
       
       if (response.ok) {
         setIsSubmitted(true);
