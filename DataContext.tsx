@@ -1,5 +1,4 @@
-
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext } from 'react';
 import { ACTORS, RESOURCES, OPPORTUNITIES as INITIAL_OPPORTUNITIES } from './constants';
 import { Actor, Resource, Application, Opportunity, JobApplication } from './types';
 
@@ -27,27 +26,10 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [resources, setResources] = useState<Resource[]>(RESOURCES);
   const [opportunities, setOpportunities] = useState<Opportunity[]>(INITIAL_OPPORTUNITIES);
   const [jobApplications, setJobApplications] = useState<JobApplication[]>([]);
-  
   const [applications, setApplications] = useState<Application[]>([]);
 
-// Fetch applications from backend
-useEffect(() => {
-  const fetchApplications = async () => {
-    try {
-      const response = await fetch('/api/applications');
-      if (response.ok) {
-        const data = await response.json();
-        setApplications(data);
-      }
-    } catch (error) {
-      console.error('Failed to fetch applications:', error);
-    }
-  };
-  fetchApplications();
-}, []);
-
   const addActor = (actor: Actor) => setActors(prev => [actor, ...prev]);
-  
+
   const updateActor = (updatedActor: Actor) => {
     setActors(prev => prev.map(a => a.id === updatedActor.id ? updatedActor : a));
   };
@@ -64,38 +46,13 @@ useEffect(() => {
     setResources(prev => prev.filter(r => r.id !== id));
   };
 
-  const submitApplication = async (app: Application) => {
-    try {
-      const response = await fetch('/api/applications', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(app),
-      });
-      if (response.ok) {
-        const data = await response.json();
-        const newApp = { ...app, id: data.id };
-        setApplications(prev => [newApp, ...prev]);
-      } else {
-        console.error('Failed to submit application');
-      }
-    } catch (error) {
-      console.error('Error submitting application:', error);
-    }
+  const submitApplication = (app: Application) => {
+    const newApp = { ...app, id: app.id || `app-${Date.now()}` };
+    setApplications(prev => [newApp, ...prev]);
   };
 
-  const deleteApplication = async (id: string) => {
-    try {
-      const response = await fetch(`/api/applications/${id}`, {
-        method: 'DELETE',
-      });
-      if (response.ok) {
-        setApplications(prev => prev.filter(a => a.id !== id));
-      }
-    } catch (error) {
-      console.error('Error deleting application:', error);
-    }
+  const deleteApplication = (id: string) => {
+    setApplications(prev => prev.filter(a => a.id !== id));
   };
 
   const addOpportunity = (job: Opportunity) => {
@@ -107,16 +64,16 @@ useEffect(() => {
   };
 
   return (
-    <DataContext.Provider value={{ 
-      actors, 
-      resources, 
-      applications, 
+    <DataContext.Provider value={{
+      actors,
+      resources,
+      applications,
       opportunities,
       jobApplications,
-      addActor, 
-      updateActor, 
-      deleteActor, 
-      addResource, 
+      addActor,
+      updateActor,
+      deleteActor,
+      addResource,
       deleteResource,
       submitApplication,
       deleteApplication,
