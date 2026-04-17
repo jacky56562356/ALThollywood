@@ -7,6 +7,7 @@
     "@google/genai": "^1.46.0",
     "@vitejs/plugin-react": "^4.2.0",
     "cors": "^2.8.6",
+    "cross-env": "^10.1.0",
     "dotenv": "^17.3.1",
     "esbuild": "^0.28.0",
     "express": "^5.2.1",
@@ -23,10 +24,10 @@
   },
   "scripts": {
     "dev": "tsx server.ts",
-    "build": "vite build && esbuild server.ts --bundle --platform=node --format=esm --packages=external --outdir=dist",
+    "build": "vite build",
     "preview": "vite preview",
     "lint": "vite build --mode development",
-    "start": "node dist/server.js"
+    "start": "node server.ts"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
