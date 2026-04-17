@@ -85,7 +85,7 @@ export default function Apply() {
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-4 uppercase tracking-wider">Application Received</h3>
                   <p className="text-gray-300 text-lg">
-                    Thank you for applying to ALT Hollywood Dream Star. We have received your application and materials. Our casting team will review your submission and contact you shortly.
+                    Thank you for applying to ALT Hollywood Dream Star. We have received your application. Our casting team will review your submission and contact you shortly.
                   </p>
                 </div>
               ) : (
@@ -102,153 +102,138 @@ export default function Apply() {
                   <input type="hidden" name="subject" value="New Training Application from Website" />
                   <input type="hidden" name="from_name" value="ALT Hollywood Dream Star" />
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Applicant Name */}
-                  <div>
-                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Applicant Name *</label>
-                    <input type="text" name="Applicant Name" required className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors" placeholder="Full Name" />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Applicant Name *</label>
+                      <input type="text" name="Applicant Name" required className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors" placeholder="Full Name" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Date of Birth *</label>
+                      <input type="date" name="Date of Birth" required className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors [color-scheme:dark]" />
+                    </div>
                   </div>
-                  {/* Date of Birth */}
-                  <div>
-                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Date of Birth *</label>
-                    <input type="date" name="Date of Birth" required className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors [color-scheme:dark]" />
-                  </div>
-                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Parent/Guardian Name */}
-                  <div>
-                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Parent/Guardian *</label>
-                    <input type="text" name="Parent/Guardian Name" required className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors" placeholder="Parent/Guardian Name" />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Parent/Guardian *</label>
+                      <input type="text" name="Parent/Guardian Name" required className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors" placeholder="Parent/Guardian Name" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Gender</label>
+                      <select name="Gender" className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors appearance-none">
+                        <option value="" className="bg-brandBlack">Select Gender</option>
+                        <option value="Male" className="bg-brandBlack">Male</option>
+                        <option value="Female" className="bg-brandBlack">Female</option>
+                        <option value="Other" className="bg-brandBlack">Other</option>
+                      </select>
+                    </div>
                   </div>
-                  {/* Gender */}
-                  <div>
-                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Gender</label>
-                    <select name="Gender" className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors appearance-none">
-                      <option value="" className="bg-brandBlack">Select Gender</option>
-                      <option value="Male" className="bg-brandBlack">Male</option>
-                      <option value="Female" className="bg-brandBlack">Female</option>
-                      <option value="Other" className="bg-brandBlack">Other</option>
-                    </select>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Email Address *</label>
+                      <input type="email" name="Email" required className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors" placeholder="email@example.com" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Phone Number *</label>
+                      <input type="tel" name="Phone" required className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors" placeholder="+1 (555) 000-0000" />
+                    </div>
                   </div>
-                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Email */}
                   <div>
-                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Email Address *</label>
-                    <input type="email" name="Email" required className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors" placeholder="email@example.com" />
+                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Home Address</label>
+                    <input type="text" name="Address" className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors" placeholder="123 Hollywood Blvd, Los Angeles, CA" />
                   </div>
-                  {/* Phone */}
+
                   <div>
-                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Phone Number *</label>
-                    <input type="tel" name="Phone" required className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors" placeholder="+1 (555) 000-0000" />
+                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Acting Experience</label>
+                    <textarea name="Experience" rows={3} className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors resize-none" placeholder="List any previous acting experience, training, or school plays. (Leave blank if none)"></textarea>
                   </div>
-                </div>
 
-                {/* Address */}
-                <div>
-                  <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Home Address</label>
-                  <input type="text" name="Address" className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors" placeholder="123 Hollywood Blvd, Los Angeles, CA" />
-                </div>
-
-                {/* Experience */}
-                <div>
-                  <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Acting Experience</label>
-                  <textarea name="Experience" rows={3} className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors resize-none" placeholder="List any previous acting experience, training, or school plays. (Leave blank if none)"></textarea>
-                </div>
-
-                {/* Special Skills */}
-                <div>
-                  <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Special Skills</label>
-                  <textarea name="Skills" rows={2} className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors resize-none" placeholder="e.g., Dancing, Singing, Martial Arts, Languages spoken"></textarea>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Photo Upload */}
                   <div>
-                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Upload Headshot/Photo *</label>
-                    <input type="file" name="Headshot" accept="image/*" required className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-2.5 text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-brandCyan file:text-black hover:file:bg-brandCyan/90 transition-colors cursor-pointer" />
+                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Special Skills</label>
+                    <textarea name="Skills" rows={2} className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors resize-none" placeholder="e.g., Dancing, Singing, Martial Arts, Languages spoken"></textarea>
                   </div>
-                  {/* Resume Upload */}
-                  <div>
-                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Upload Resume (Optional)</label>
-                    <input type="file" name="Resume" accept=".pdf,.doc,.docx" className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-2.5 text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-white file:text-black hover:file:bg-gray-200 transition-colors cursor-pointer" />
-                  </div>
-                </div>
 
-                {/* Submit Button */}
-                <button 
-                  type="submit" 
-                  disabled={isSubmitting}
-                  className="w-full mt-4 px-8 py-4 bg-brandCyan text-black font-black rounded-lg uppercase tracking-[0.2em] hover:bg-white transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? "Sending..." : "Submit Application"} {!isSubmitting && <ArrowRight size={20} />}
-                </button>
-                
-                <p className="text-xs text-gray-500 text-center mt-4">
-                  By submitting this form, your application and uploaded files will be sent directly to Altdreamstar@gmail.com.
-                </p>
-              </form>
+                  {/* Photo Link instead of file upload */}
+                  <div>
+                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Headshot Photo Link (Optional)</label>
+                    <input type="url" name="Headshot URL" className="w-full bg-brandBlack/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brandCyan focus:ring-1 focus:ring-brandCyan transition-colors" placeholder="https://drive.google.com/... or any photo link" />
+                    <p className="text-xs text-gray-500 mt-1">Upload your photo to Google Drive or any hosting site and paste the link here. You can also email photos directly to altdreamstar@gmail.com</p>
+                  </div>
+
+                  {/* Submit Button */}
+                  <button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="w-full mt-4 px-8 py-4 bg-brandCyan text-black font-black rounded-lg uppercase tracking-[0.2em] hover:bg-white transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? "Sending..." : "Submit Application"} {!isSubmitting && <ArrowRight size={20} />}
+                  </button>
+                  
+                  <p className="text-xs text-gray-500 text-center mt-4">
+                    By submitting this form, your application will be sent directly to altdreamstar@gmail.com.
+                  </p>
+                </form>
               )}
             </div>
 
             {/* Right: Contact Information */}
             <div className="lg:col-span-1">
               <div className="bg-white/5 border border-white/10 p-8 md:p-12 rounded-2xl backdrop-blur-sm sticky top-24">
-              <h2 className="text-2xl font-cinematic font-black mb-8 uppercase tracking-wider">Contact <span className="text-brandCyan">Information</span></h2>
-              
-              <div className="space-y-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-brandCyan/10 flex items-center justify-center shrink-0 text-brandCyan mt-1">
-                    <Mail size={20} />
+                <h2 className="text-2xl font-cinematic font-black mb-8 uppercase tracking-wider">Contact <span className="text-brandCyan">Information</span></h2>
+                
+                <div className="space-y-8">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-brandCyan/10 flex items-center justify-center shrink-0 text-brandCyan mt-1">
+                      <Mail size={20} />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Email Us</h4>
+                      <a href="mailto:altdreamstar@gmail.com" className="text-lg text-white font-medium hover:text-brandCyan transition-colors">
+                        altdreamstar@gmail.com
+                      </a>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Email Us</h4>
-                    <a href="mailto:altdreamstar@gmail.com" className="text-lg text-white font-medium hover:text-brandCyan transition-colors">
-                      altdreamstar@gmail.com
-                    </a>
-                  </div>
-                </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-brandCyan/10 flex items-center justify-center shrink-0 text-brandCyan mt-1">
-                    <Phone size={20} />
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-brandCyan/10 flex items-center justify-center shrink-0 text-brandCyan mt-1">
+                      <Phone size={20} />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Call Us</h4>
+                      <a href="tel:+13239186688" className="text-lg text-white font-medium hover:text-brandCyan transition-colors">
+                        +1 (323) 918-6688
+                      </a>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Call Us</h4>
-                    <a href="tel:+13239186688" className="text-lg text-white font-medium hover:text-brandCyan transition-colors">
-                      +1 (323) 918-6688
-                    </a>
-                  </div>
-                </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-brandCyan/10 flex items-center justify-center shrink-0 text-brandCyan mt-1">
-                    <MapPin size={20} />
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-brandCyan/10 flex items-center justify-center shrink-0 text-brandCyan mt-1">
+                      <MapPin size={20} />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Headquarters</h4>
+                      <p className="text-lg text-white font-medium">
+                        633 W 5th St<br />
+                        Los Angeles, CA 90071
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Headquarters</h4>
-                    <p className="text-lg text-white font-medium">
-                      633 W 5th St<br />
-                      Los Angeles, CA 90071
-                    </p>
-                  </div>
-                </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-brandCyan/10 flex items-center justify-center shrink-0 text-brandCyan mt-1">
-                    <MapPin size={20} />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Branch Office</h4>
-                    <p className="text-lg text-white font-medium">
-                      17800 Castleton St, Suite 173<br />
-                      City of Industry, CA 91748
-                    </p>
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-brandCyan/10 flex items-center justify-center shrink-0 text-brandCyan mt-1">
+                      <MapPin size={20} />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Branch Office</h4>
+                      <p className="text-lg text-white font-medium">
+                        17800 Castleton St, Suite 173<br />
+                        City of Industry, CA 91748
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
               </div>
             </div>
 
