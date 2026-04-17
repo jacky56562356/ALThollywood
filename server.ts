@@ -4,6 +4,7 @@ import path from "path";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 import multer from "multer";
+import cors from "cors";
 
 dotenv.config();
 
@@ -17,6 +18,9 @@ const upload = multer({
 async function startServer() {
   const app = express();
   const PORT = 3000;
+
+  // Enable all CORS requests to ensure mobile browsers don't fail on preflight OPTIONS
+  app.use(cors());
 
   // Middleware to log all requests
   app.use((req, res, next) => {
@@ -33,7 +37,13 @@ async function startServer() {
     res.json({ status: "ok" });
   });
 
-  app.post("/api/submit-application", upload.any(), async (req, res) => {
+  app.get("/api/submit-application", (req, res) => {
+    console.log("GET request made to /api/submit-application. Likely a redirect drop.");
+    return res.status(405).json({ error: "Method not allowed. Use POST.", method: req.method, suggestion: "If you see this, the POST request was converted to a GET (often due to http->https redirect or missing trailing slash)." });
+  });
+
+  // Handle both with and without trailing slash just in case Exress 5 strictly requires it
+  const handleSubmission = async (req: express.Request, res: express.Response) => {
     try {
       const data = req.body;
       const files = req.files as Express.Multer.File[];
@@ -65,12 +75,11 @@ async function startServer() {
           <p style="color: #555; font-size: 14px; text-align: center; margin-bottom: 20px;">A new application has been submitted. Please review the details below.</p>
           <table border="1" cellpadding="12" style="border-collapse: collapse; width: 100%; border-color: #e0e0e0; font-size: 14px;">
             <tr style="background-color: #f8f9fa;">
-              <th style="width: 35%; text-align: left; color: #333; border-bottom: 2px solid #C9A84C;">Field (字段)</th>
-              <th style="text-align: left; color: #333; border-bottom: 2px solid #C9A84C;">Value (内容)</th>
+               <th style="width: 35%; text-align: left; color: #333; border-bottom: 2px solid #C9A84C;">Field (字段)</th>
+               <th style="text-align: left; color: #333; border-bottom: 2px solid #C9A84C;">Value (内容)</th>
             </tr>
       `;
 
-      // Define a mapping for better field names in the email
       const fieldNames: Record<string, string> = {
         studentNameZh: "学员姓名（中文）",
         studentNameEn: "Student Name (English)",
@@ -124,16 +133,11 @@ async function startServer() {
       };
 
       for (const [key, value] of Object.entries(data)) {
-        // Skip empty values to keep email clean
         if (!value || value === "") continue;
-        
-        // Use mapped name if available, otherwise format the key
         let formattedKey = fieldNames[key];
         if (!formattedKey) {
           formattedKey = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
         }
-        
-        // Format boolean/checkbox values
         let displayValue = value;
         if (value === "on") displayValue = "是 (Yes)";
         
@@ -156,7 +160,7 @@ async function startServer() {
 
       const studentName = data.studentNameZh || data.studentNameEn || data.childFirstName || 'New Student';
 
-      const mailAttachments = [];
+      const mailAttachments: any[] = [];
       if (files && files.length > 0) {
         for (const file of files) {
           mailAttachments.push({
@@ -169,19 +173,22 @@ async function startServer() {
 
       const mailOptions = {
         from: `"ALT Hollywood Dream Star" <${userEmail}>`,
-        to: userEmail, // Send to yourself
+        to: userEmail,
         subject: `New Summer Camp Application: ${studentName}`,
         html: htmlContent,
         attachments: mailAttachments,
       };
 
       await transporter.sendMail(mailOptions);
-      res.json({ success: true, message: "Application submitted successfully" });
+      return res.json({ success: true, message: "Application submitted successfully" });
     } catch (error: any) {
       console.error("Error sending email:", error);
-      res.status(500).json({ error: "Failed to send application", details: error.message });
+      return res.status(500).json({ error: "Failed to send application", details: error.message });
     }
-  });
+  };
+
+  app.post("/api/submit-application", upload.any(), handleSubmission);
+  app.post("/api/submit-application/", upload.any(), handleSubmission);
 
   // Catch-all for unhandled API routes (moved to ensure it doesn't conflict)
   app.use("/api", (req, res) => {

@@ -162,9 +162,10 @@ export default function SummerCamp() {
       payloadData.append('howDidYouHearAboutUs', sources.join(', '));
     }
 
-    console.log("Submitting application to /api/submit-application... [v1.3]");
+    console.log("Submitting application to /api/submit-application... [v1.4]");
     try {
-      const response = await fetch("/api/submit-application", {
+      const apiUrl = window.location.origin + "/api/submit-application";
+      const response = await fetch(apiUrl, {
         method: "POST",
         // Do not set Content-Type header, let the browser set it with the boundary for multipart/form-data
         body: payloadData,
@@ -187,7 +188,7 @@ export default function SummerCamp() {
           if (response.status === 413) {
             errorMessage = '上传的文件太大，请压缩照片或简历后再试 (File too large).';
           } else if (response.status === 404) {
-            errorMessage = '找不到提交接口 (404 API not found). Please help the developer check the server routes.';
+            errorMessage = `找不到提交接口 (404 API not found). Path: ${apiUrl}. Please help the developer check the server routes.`;
           } else {
             errorMessage = `Server error: ${response.status} ${response.statusText}`;
           }
