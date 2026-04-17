@@ -162,10 +162,10 @@ export default function SummerCamp() {
       payloadData.append('howDidYouHearAboutUs', sources.join(', '));
     }
 
-    console.log("Submitting application to /api/submit-application... [v1.5]");
+   console.log("Submitting application to Formspree...");
     try {
-      const response = await fetch("/api/submit-application", {
-        method: "POST",
+   const response = await fetch("https://formspree.io/f/mwvaorek", {
+        method: "POST",headers: { "Accept": "application/json" },
         // Do not set Content-Type header, let the browser set it with the boundary for multipart/form-data
         body: payloadData,
       });
