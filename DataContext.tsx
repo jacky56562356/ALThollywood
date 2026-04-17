@@ -30,21 +30,21 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
   
   const [applications, setApplications] = useState<Application[]>([]);
 
-  // Fetch applications from backend
-  useEffect(() => {
-    const fetchApplications = async () => {
-      try {
-        const response = await fetch('/api/applications');
-        if (response.ok) {
-          const data = await response.json();
-          setApplications(data);
-        }
-      } catch (error) {
-        console.error('Failed to fetch applications:', error);
+// Fetch applications from backend
+useEffect(() => {
+  const fetchApplications = async () => {
+    try {
+      const response = await fetch('/api/applications');
+      if (response.ok) {
+        const data = await response.json();
+        setApplications(data);
       }
-    };
-    fetchApplications();
-  }, []);
+    } catch (error) {
+      console.error('Failed to fetch applications:', error);
+    }
+  };
+  fetchApplications();
+}, []);
 
   const addActor = (actor: Actor) => setActors(prev => [actor, ...prev]);
   
