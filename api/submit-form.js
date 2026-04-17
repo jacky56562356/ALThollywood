@@ -1,15 +1,8 @@
-import { Resend } from 'resend';
-import formidable from 'formidable';
-import fs from 'fs';
-import path from 'path';
+const { Resend } = require('resend');
+const formidable = require('formidable');
+const fs = require('fs');
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -24,7 +17,6 @@ export default async function handler(req, res) {
     try {
       const resend = new Resend(process.env.RESEND_API_KEY);
 
-      // Build email content from form fields
       let htmlContent = '<h2>New Application Submission</h2><table border="1" cellpadding="8" style="border-collapse:collapse;width:100%">';
       
       for (const [key, value] of Object.entries(fields)) {
@@ -35,7 +27,6 @@ export default async function handler(req, res) {
       }
       htmlContent += '</table>';
 
-      // Handle file attachments
       const attachments = [];
       
       if (files.headshot) {
@@ -73,4 +64,4 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: error.message });
     }
   });
-}
+};
