@@ -45,7 +45,7 @@ async function startServer() {
   // Handle both with and without trailing slash just in case Exress 5 strictly requires it
   const handleSubmission = async (req: express.Request, res: express.Response) => {
     try {
-      const data = req.body;
+      const data = req.body || {};
       const files = req.files as Express.Multer.File[];
       
       console.log("Received application submission:", {
