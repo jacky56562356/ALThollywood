@@ -15,10 +15,12 @@ export default function SummerCamp() {
     
     const form = e.target as HTMLFormElement;
 
+    // --- MANUAL VALIDATION FOR MOBILE BROWSERS ---
     const requiredElements = form.querySelectorAll('[required]');
     let firstInvalidElement: HTMLElement | null = null;
     let hasErrors = false;
 
+    // Reset previous error styles
     form.querySelectorAll('.error-border').forEach(el => el.classList.remove('error-border', '!border-red-500'));
     form.querySelectorAll('.error-text').forEach(el => el.remove());
 
@@ -38,12 +40,14 @@ export default function SummerCamp() {
 
       if (isInvalid) {
         hasErrors = true;
+        // Find the closest container to add red border
         const container = input.type === 'radio' || input.type === 'checkbox' 
           ? input.closest('.flex.gap-3') || input.parentElement
           : input;
           
         if (container) {
           container.classList.add('error-border', '!border-red-500');
+          // Add error message text if not already there
           if (!container.parentElement?.querySelector('.error-text')) {
             const errorText = document.createElement('div');
             errorText.className = 'error-text text-red-500 text-xs mt-1 font-bold';
@@ -66,14 +70,89 @@ export default function SummerCamp() {
       }
       return;
     }
+    // --- END MANUAL VALIDATION ---
+
+    const compressImage = (file: File): Promise<File> => {
+      return new Promise((resolve) => {
+        if (!file.type.startsWith('image/')) {
+          resolve(file);
+          return;
+        }
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (event) => {
+          const img = new Image();
+          img.src = event.target?.result as string;
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const MAX_WIDTH = 1920;
+            const MAX_HEIGHT = 1920;
+            let width = img.width;
+            let height = img.height;
+
+            if (width > height) {
+              if (width > MAX_WIDTH) {
+                height *= MAX_WIDTH / width;
+                width = MAX_WIDTH;
+              }
+            } else {
+              if (height > MAX_HEIGHT) {
+                width *= MAX_HEIGHT / height;
+                height = MAX_HEIGHT;
+              }
+            }
+
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx?.drawImage(img, 0, 0, width, height);
+
+            canvas.toBlob((blob) => {
+              if (blob) {
+                try {
+                  resolve(new File([blob], file.name, { type: 'image/jpeg', lastModified: Date.now() }));
+                } catch (e) {
+                  // Fallback for older browsers that don't support File constructor
+                  resolve(file);
+                }
+              } else {
+                resolve(file);
+              }
+            }, 'image/jpeg', 0.8);
+          };
+          img.onerror = () => resolve(file);
+        };
+        reader.onerror = () => resolve(file);
+      });
+    };
 
     const originalFormData = new FormData(form);
     const payloadData = new FormData();
     const sources: string[] = [];
     
+    // Check file sizes and compress images before submitting
     for (const [key, value] of originalFormData.entries()) {
       if (key === 'source') {
         sources.push(value.toString());
+      } else if (value instanceof File && value.size > 0) {
+        let fileToUpload = value;
+        
+        if (value.type.startsWith('image/')) {
+          try {
+            fileToUpload = await compressImage(value);
+          } catch (e) {
+            console.error("Compression error:", e);
+          }
+        }
+        
+        // Strict file size check AFTER compression (limit to 5MB to prevent Nginx connection drop)
+        if (fileToUpload.size > 5 * 1024 * 1024) {
+          alert(`文件 ${value.name} 太大 (${(fileToUpload.size / 1024 / 1024).toFixed(1)}MB)。请上传小于 5MB 的文件。如果是照片，请尝试截屏后再上传。`);
+          setIsSubmitting(false);
+          return;
+        }
+        
+        payloadData.append(key, fileToUpload);
       } else if (!(value instanceof File)) {
         payloadData.append(key, value);
       }
@@ -83,12 +162,12 @@ export default function SummerCamp() {
       payloadData.append('howDidYouHearAboutUs', sources.join(', '));
     }
 
-    console.log("Submitting application to Formspree...");
+   console.log("Submitting application to Formspree...");
     try {
-      const response = await fetch("/api/submit-form", {
-        method: "POST",
-        body: payloadData,
-      });
+const response = await fetch("/api/submit-form", {
+  method: "POST",
+  body: payloadData,
+});
       
       if (response.ok) {
         setIsSubmitted(true);
@@ -105,7 +184,7 @@ export default function SummerCamp() {
           }
         } catch (parseError) {
           if (response.status === 413) {
-            errorMessage = '提交失败，请重试 (Submission failed, please try again).';
+            errorMessage = '上传的文件太大，请压缩照片或简历后再试 (File too large).';
           } else if (response.status === 404) {
             errorMessage = `找不到提交接口 (404 API not found). Please help the developer check the server routes.`;
           } else {
@@ -146,17 +225,20 @@ export default function SummerCamp() {
         }
       `}} />
 
-      {/* Hero Section */}
+      {/* Hero Section with Image Background */}
       <section className="relative w-full h-[60vh] min-h-[500px] flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+        {/* Background Image */}
         <img 
           src="https://i.ibb.co/3YzTyKhj/202603221706.jpg" 
           alt="Hollywood Camp" 
           className="absolute inset-0 w-full h-full object-cover opacity-50"
-          style={{ objectPosition: '50% 15%' }}
+          style={{ objectPosition: '50% 15%' }} // Focuses on the top half of the image
           referrerPolicy="no-referrer"
         />
+        {/* Gradient Overlay to blend into black */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-[#0A0A0A]"></div>
         
+        {/* Hero Content */}
         <div className="relative z-10 max-w-4xl mx-auto mt-12">
           <div className="font-['Bebas_Neue'] text-[clamp(14px,3vw,18px)] tracking-[6px] text-[#C9A84C] mb-3 opacity-90 drop-shadow-lg">
             ALT · HOLLYWOOD DREAM STAR · 好莱坞童星机构
@@ -197,7 +279,7 @@ export default function SummerCamp() {
       {/* Main Container */}
       <div className="max-w-[860px] mx-auto px-5 pb-16">
 
-        {/* Schedule */}
+        {/* Previous Content: What to Expect & Schedule */}
         <div className="mb-16">
           <div className="flex items-center gap-3 font-['Bebas_Neue'] text-[22px] tracking-[4px] text-[#C9A84C] mb-8 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-[#8B6914] after:to-transparent">
             🎥 营期安排
@@ -265,7 +347,6 @@ export default function SummerCamp() {
             <CheckCircle2 className="w-12 h-12 mx-auto mb-4 text-[#27ae60]" />
             <h3 className="text-xl font-bold text-white mb-2">🌟 报名表已成功提交！</h3>
             <p className="mb-4">我们的工作人员将在 2 个工作日内与您联系确认报名信息。</p>
-            <p className="mb-4 text-[#C9A84C] font-bold">📎 请记得将大头照及简历发送至：altdreamstar@gmail.com</p>
             <p className="text-sm text-white/70">如有疑问请致电：626-382-8849 ｜ 323-918-6688</p>
           </div>
         ) : (
@@ -418,10 +499,12 @@ export default function SummerCamp() {
               <div className="text-[16px] font-bold text-[#C9A84C] mb-6 flex items-center gap-3 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-[#8B6914] after:to-transparent">
                 四、健康与医疗信息
               </div>
+
               <div className="bg-[#c0392b14] border border-[#c0392b59] rounded p-4 mb-5 flex gap-3 items-start text-[13px] text-[#e0a0a0] leading-[1.7]">
                 <span className="text-[18px] shrink-0">⚠️</span>
                 <span>以下信息将严格保密，仅用于紧急医疗处置及确保学员安全。请如实完整填写，以便工作人员在紧急情况下做出最佳判断。</span>
               </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="flex flex-col gap-1.5">
                   <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">主治医生 / 儿科医生姓名<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填）</span></label>
@@ -435,6 +518,8 @@ export default function SummerCamp() {
                   <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">医疗保险信息<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填）</span></label>
                   <input type="text" name="insurance" placeholder="保险公司名称 · 保单号码" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full" />
                 </div>
+
+                {/* Allergies */}
                 <div className="flex flex-col gap-1.5 sm:col-span-2">
                   <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">过敏史<span className="text-[#e74c3c] ml-1">*</span></label>
                   <div className="flex gap-3 flex-wrap mb-2.5">
@@ -447,6 +532,8 @@ export default function SummerCamp() {
                   </div>
                   <textarea name="allergyDetails" placeholder="请注明过敏原（食物、药物、花粉、动物、乳胶等）及过敏反应症状和严重程度。如携带 EpiPen 请注明。" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
                 </div>
+
+                {/* Hereditary diseases */}
                 <div className="flex flex-col gap-1.5 sm:col-span-2">
                   <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">遗传性疾病 / 家族病史<span className="text-[#e74c3c] ml-1">*</span></label>
                   <div className="flex gap-3 flex-wrap mb-2.5">
@@ -459,6 +546,8 @@ export default function SummerCamp() {
                   </div>
                   <textarea name="hereditaryDetails" placeholder="请注明相关遗传性疾病或家族病史，包括心脏病、癫痫、哮喘、糖尿病等。" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
                 </div>
+
+                {/* Current medications */}
                 <div className="flex flex-col gap-1.5 sm:col-span-2">
                   <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">目前用药情况<span className="text-[#e74c3c] ml-1">*</span></label>
                   <div className="flex gap-3 flex-wrap mb-2.5">
@@ -472,6 +561,8 @@ export default function SummerCamp() {
                   <textarea name="medsDetails" placeholder="请注明药物名称、剂量、服用频率及用途。如需在营期间服药，请标注是否需要工作人员协助。" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
                   <div className="text-[11px] text-[#888] mt-[-2px] leading-[1.5]">* 需在夏令营期间服用的处方药，请另行提交医生授权书</div>
                 </div>
+
+                {/* Existing conditions */}
                 <div className="flex flex-col gap-1.5 sm:col-span-2">
                   <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">现有医疗状况 / 慢性病<span className="text-[#e74c3c] ml-1">*</span></label>
                   <div className="flex gap-3 flex-wrap mb-2.5">
@@ -484,18 +575,26 @@ export default function SummerCamp() {
                   </div>
                   <textarea name="conditionsDetails" placeholder="包括但不限于：哮喘、糖尿病、心脏病、癫痫、ADHD、自闭症谱系、焦虑症、抑郁症等。" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
                 </div>
+
+                {/* Recent illness/surgery */}
                 <div className="flex flex-col gap-1.5 sm:col-span-2">
                   <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">近期疾病 / 手术史<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填）</span></label>
                   <textarea name="recentIllness" placeholder="过去12个月内是否有住院、手术或重大疾病？请注明。" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
                 </div>
+
+                {/* Dietary restrictions */}
                 <div className="flex flex-col gap-1.5 sm:col-span-2">
                   <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">饮食限制 / 宗教禁忌<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填）</span></label>
                   <textarea name="dietary" placeholder="如：素食、清真、犹太洁食、无麸质、坚果过敏等" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
                 </div>
+
+                {/* Physical limitations */}
                 <div className="flex flex-col gap-1.5 sm:col-span-2">
                   <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">活动限制 / 行动能力<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填）</span></label>
                   <textarea name="physicalLimits" placeholder="学员是否有任何身体上的活动限制？如需特殊协助或无障碍设施，请注明。" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
                 </div>
+
+                {/* Additional notes */}
                 <div className="flex flex-col gap-1.5 sm:col-span-2">
                   <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">其他医疗备注<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填）</span></label>
                   <textarea name="medicalNotes" placeholder="任何其他我们应了解的健康信息，包括心理健康需求、特殊教育需求等。" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
@@ -503,35 +602,20 @@ export default function SummerCamp() {
               </div>
             </div>
 
-            {/* Part 5: Program specific - 修改：删除文件上传，改为邮箱说明 */}
+            {/* Part 5: Program specific */}
             <div className="bg-[#1A1A1A] border border-[#c9a84c40] rounded-md p-6 sm:p-9">
               <div className="text-[16px] font-bold text-[#C9A84C] mb-6 flex items-center gap-3 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-[#8B6914] after:to-transparent">
                 五、项目相关信息
               </div>
               <div className="grid grid-cols-1 gap-5">
-
-                {/* 邮箱提交说明 - 替换原来的文件上传 */}
                 <div className="flex flex-col gap-1.5">
-                  <div className="bg-[#0d1f0d] border-2 border-[#C9A84C] rounded-lg p-6 text-center">
-                    <div className="text-[#C9A84C] text-[16px] font-bold mb-2 tracking-[1px]">
-                      📎 请将大头照及个人简历发送至以下邮箱
-                    </div>
-                    <div className="text-[13px] text-[#aaa] mb-4 leading-relaxed">
-                      Please send your headshot photo and resume/CV to the email address below
-                    </div>
-                    <a
-                      href="mailto:altdreamstar@gmail.com"
-                      className="inline-block bg-gradient-to-r from-[#C9A84C] to-[#F0C45A] text-black font-bold text-[16px] px-8 py-3 rounded-sm tracking-[1px] hover:opacity-90 transition-opacity"
-                    >
-                      ✉️ altdreamstar@gmail.com
-                    </a>
-                    <div className="text-[12px] text-[#888] mt-4 leading-relaxed">
-                      邮件主题请注明：<span className="text-white">学员姓名 + 夏令营报名</span><br/>
-                      Subject: <span className="text-white">Student Name + Summer Camp Application</span>
-                    </div>
-                  </div>
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">上传个人简历<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填，支持 PDF/Word 等格式）</span></label>
+                  <input type="file" name="resume" accept=".pdf,.doc,.docx" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-[#C9A84C] file:text-black hover:file:bg-[#F0C45A] cursor-pointer" />
                 </div>
-
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">上传大头照 / 形象照<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填，支持 JPG/PNG 等格式）</span></label>
+                  <input type="file" name="headshot" accept="image/*" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-[#C9A84C] file:text-black hover:file:bg-[#F0C45A] cursor-pointer" />
+                </div>
                 <div className="flex flex-col gap-1.5">
                   <label className="text-[12px] tracking-[1.5px] text-[#C9A84C] uppercase font-medium">表演 / 影视经验<span className="text-[#888] text-[10px] tracking-normal normal-case ml-1.5">（选填）</span></label>
                   <textarea name="experience" placeholder="请简述学员的表演、模特、配音或其他影视相关经历（如无经验也可报名）" className="bg-white/5 border border-[#c9a84c4d] rounded-sm text-white text-[14px] p-3 focus:border-[#C9A84C] focus:bg-[#c9a84c0f] outline-none transition-all w-full min-h-[80px] resize-y"></textarea>
@@ -557,7 +641,7 @@ export default function SummerCamp() {
               </div>
             </div>
 
-            {/* Part 6: Consents */}
+            {/* Part 6: Consents & Releases */}
             <div className="flex items-center gap-3 font-['Bebas_Neue'] text-[22px] tracking-[4px] text-[#C9A84C] mb-5 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-[#8B6914] after:to-transparent mt-10">
               ⚖️ 声明与授权
             </div>
@@ -632,8 +716,8 @@ export default function SummerCamp() {
             </div>
 
             {/* Submit Button */}
-            <button
-              type="submit"
+            <button 
+              type="submit" 
               disabled={isSubmitting}
               className="w-full p-4.5 bg-gradient-to-br from-[#8B6914] via-[#C9A84C] to-[#F0C45A] border-none rounded-sm font-['Bebas_Neue'] text-[22px] tracking-[5px] text-black cursor-pointer transition-all mt-2 relative overflow-hidden hover:-translate-y-px hover:shadow-[0_8px_32px_rgba(201,168,76,0.3)] active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed group"
             >
