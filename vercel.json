@@ -1,18 +1,22 @@
 {
   "version": 2,
-  "functions": {
-    "api/submit-form.js": {
-      "runtime": "@vercel/node"
+  "builds": [
+    {
+      "src": "api/submit-form.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
     }
-  },
+  ],
   "routes": [
     {
       "src": "/api/submit-form",
       "dest": "/api/submit-form.js"
-    },
-    {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
     },
     {
       "src": "/(.*)",
